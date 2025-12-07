@@ -2,6 +2,7 @@ import NextLink from 'next/link';
 import Image from 'next/image';
 import { Box, Text, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import { Global } from '@emotion/react';
+import { useClientSide } from './use-client-side';
 
 export const GridItem = ({ children, href, title, thumbnail }) => {
   return (
@@ -18,13 +19,24 @@ export const GridItem = ({ children, href, title, thumbnail }) => {
 };
 
 export const ProjectGridItem = ({ children, url = "#", title, thumbnail }) => {
+  const isClient = useClientSide();
+  
   return (
-    <Box w="100%" textAlign="center">
-      <LinkBox as={NextLink} href={url} scroll={false} cursor="pointer">
-        <Image src={thumbnail} alt={title} className="grid-item-thumbnail" placeholder="blur" />
-        <LinkOverlay as="div">
-          <Text mt={2} fontSize={20}>{title}</Text>
-        </LinkOverlay>
+    <Box w="100%" textAlign="center" suppressHydrationWarning>
+      <LinkBox cursor="pointer">
+        {/* Use regular img during SSR to avoid hydration mismatch with Next.js Image */}
+        {isClient ? (
+          <Image src={thumbnail} alt={title} className="grid-item-thumbnail" placeholder="blur" />
+        ) : (
+          <Box className="grid-item-thumbnail" position="relative" width="100%" height="auto" paddingBottom="56.25%" overflow="hidden" borderRadius="12px">
+            {/* Empty during SSR, will be replaced by Image on client */}
+          </Box>
+        )}
+        <NextLink href={url} scroll={false} passHref legacyBehavior>
+          <LinkOverlay>
+            <Text mt={2} fontSize={20}>{title}</Text>
+          </LinkOverlay>
+        </NextLink>
         <Text fontSize={14}>{children}</Text>
       </LinkBox>
     </Box>

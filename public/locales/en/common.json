@@ -1,6 +1,21 @@
 {
+  "locale": "en",
+  "navbar": {
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "posts": "Posts"
+  },
+  "footer": {
+    "contact": "Contact",
+    "about": "About",
+    "copyright": "© 2024 Hattanzorg. All rights reserved."
+  },
   "projects": {
     "title": "Projects",
+    "description": "Here are some of my recent projects",
+    "viewSource": "View Source",
+    "viewDemo": "View Demo",
     "NomadX": "NomadX",
     "NomadXDescription": "Mongolian NFT Market Place Web Application and Mobile Application",
     "mongolnet": "mongolnet",
@@ -11,9 +26,105 @@
     "madoka_reactDescription": "My Custom React JS Vite Based SASS animated web",
     "nyanvim": "nyanvim",
     "nyanvimDescription": "My custom NeoVim project"
-  }, 
-  "footer": {
-    "contact": "Contact",
-    "about": "About"
+  },
+  "home": {
+    "title": "Hattanzorg",
+    "subtitle": "Kernel Enjoyer Geek (Developer / Designer / Anime Fan)",
+    "workExperience": "Work Experience",
+    "bio": "Hattanzorg is a full-stack developer based in Ulaanbaatar who has a passion for solving problems through product planning, design, and coding. With 5 years of experience in mobile and web development, he has provided professional expertise across diverse projects using skills cultivated since his third year of university. He has a strong interest in reverse engineering and exploit development, and has also challenged himself with building his own operating system. Offline, he enjoys anime, manga, and light novels, and occasionally cosplays as a hobby. Currently, he works on Odoo ERP business projects while also engaging in personal projects such as developing a simple kernel OS.",
+    "projectsButton": "My Projects",
+    "history": "History",
+    "timeline": {
+      "2000": "Born in Ulaanbaatar, Mongolia.",
+      "2019": "Completed internship at Able Soft and worked as a developer.",
+      "2021": "Completed bachelor's degree at MUST and started working at Sod Mongol LLC.",
+      "2023-01": "Finished work at Sod Mongol LLC.",
+      "2023-02": "Currently working at Next Social Platform LLC."
+    },
+    "socialNetwork": "Social Network",
+    "resumeButton": "Resume"
+  },
+  "navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "github": "GitHub"
+  },
+  "about": {
+    "hello": "Hello, I'm a full-stack developer based in Ulaanbaatar!",
+    "description": "Hattanzorg is a full-stack developer with a passion for problem-solving through product planning, design, and coding. He has experience in both web and mobile development, enjoys learning new technologies, and when not coding, loves playing with his dog."
+  },
+  "bio": {
+    "title": "Bio",
+    "items": [
+      {
+        "year": "1997",
+        "text": "Born in Ulaanbaatar, Mongolia."
+      },
+      {
+        "year": "2015-2019",
+        "text": "Studied Computer Science at the National University of Mongolia."
+      },
+      {
+        "year": "2019-2021",
+        "text": "Worked as a Frontend Developer at various startups."
+      },
+      {
+        "year": "2021-2023",
+        "text": "Full-stack Developer at TechCorp Solutions."
+      },
+      {
+        "year": "2023-Present",
+        "text": "Senior Developer at Next Social Platform LLC."
+      }
+    ]
+  },
+  "hobbies": {
+    "title": "I ♥",
+    "items": [
+      "Art",
+      "Music",
+      "Drawing",
+      "Playing Guitar",
+      "Machine Learning",
+      "Photography"
+    ]
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "Have a project in mind? Let's work together!",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "your.email@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "What would you like to discuss?",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your project...",
+      "send": "Send Message",
+      "sending": "Sending..."
+    },
+    "errors": {
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email",
+      "subjectRequired": "Subject is required",
+      "messageRequired": "Message is required",
+      "messageMinLength": "Message must be at least 10 characters"
+    },
+    "success": {
+      "title": "Message sent!",
+      "description": "Thank you for your message. I'll get back to you soon!"
+    },
+    "error": {
+      "title": "Error sending message",
+      "description": "Something went wrong. Please try again."
+    },
+    "social": {
+      "title": "Or connect with me on"
+    },
+    "seo": {
+      "description": "Get in touch with me for your next project. Let's work together to bring your ideas to life."
+    }
   }
 }
