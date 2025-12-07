@@ -7,7 +7,6 @@ import { AnimatePresence } from 'framer-motion';
 import Layout from '../components/layouts/main';
 import { Analytics } from '@vercel/analytics/react';
 import { useEffect } from 'react';
-import ClientOnly from '../components/client-only';
 
 if (typeof window !== 'undefined') {
   window.history.scrollRestoration = 'manual';
@@ -20,11 +19,7 @@ function Website({ Component, pageProps, router }) {
       navigator.serviceWorker
         .register('/sw.js')
         .catch(() => {
-<<<<<<< Current (Your changes)
-          // Silently fail in production - errors are handled by error boundary
-=======
           // Silent fail in production
->>>>>>> Incoming (Background Agent changes)
         });
     }
   }, []);
@@ -43,12 +38,7 @@ function Website({ Component, pageProps, router }) {
               }
             }}
           >
-            {/* Wrap the component to prevent hydration issues */}
-            <div suppressHydrationWarning>
-              <ClientOnly>
-                <Component {...pageProps} key={router.route} />
-              </ClientOnly>
-            </div>
+            <Component {...pageProps} key={router.route} />
           </AnimatePresence>
           <Analytics />
         </Layout>

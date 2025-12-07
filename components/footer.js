@@ -11,11 +11,8 @@ import {
   Heading
 } from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
-import OptimizedImage from './optimized-image';
 import { IoLogoGithub, IoLogoTwitter, IoLogoInstagram, IoMail } from 'react-icons/io5';
 import { motion } from 'framer-motion';
-import { MagneticButton, HoverCard, FloatingActionButton } from './interactive-effects-v2';
-import { GlassCard } from './advanced-theme-elements';
 
 const MotionBox = motion(Box);
 
@@ -41,8 +38,21 @@ const Footer = () => {
     { name: 'Contact', href: '/contact' },
   ];
 
+  // Call all hooks at the top level
   const bgColor = useColorModeValue('glass.light', 'glass.dark');
   const borderColor = useColorModeValue('rgba(236, 72, 153, 0.1)', 'rgba(254, 128, 160, 0.2)');
+  const bgGradient = useColorModeValue(
+    "linear(to-b, transparent, rgba(236, 72, 153, 0.05))",
+    "linear(to-b, transparent, rgba(254, 128, 160, 0.1))"
+  );
+  const textColorMuted = useColorModeValue("gray.600", "gray.400");
+  const textColorLight = useColorModeValue("gray.600", "gray.300");
+  const headingColor = useColorModeValue("gray.800", "white");
+  const dividerColor = useColorModeValue("gray.200", "gray.700");
+  const copyrightColor = useColorModeValue("gray.500", "gray.500");
+  const glassLight = useColorModeValue("glass.light", "glass.dark");
+  const socialBorderColor = useColorModeValue("rgba(236, 72, 153, 0.2)", "rgba(254, 128, 160, 0.2)");
+  const linkHoverBg = useColorModeValue("rgba(236, 72, 153, 0.1)", "rgba(254, 128, 160, 0.1)");
 
   return (
     <MotionBox
@@ -69,45 +79,41 @@ const Footer = () => {
         left="0"
         right="0"
         bottom="0"
-        bgGradient={useColorModeValue(
-          "linear(to-b, transparent, rgba(236, 72, 153, 0.05))",
-          "linear(to-b, transparent, rgba(254, 128, 160, 0.1))"
-        )}
+        bgGradient={bgGradient}
         zIndex={-1}
       />
 
       <Box maxW="container.xl" mx="auto" px={8}>
         {/* Main Footer Content */}
-        <GlassCard p={12} opacity={0.1} borderColor="rgba(236, 72, 153, 0.2)">
+        <Box
+          p={12}
+          bg="rgba(255, 255, 255, 0.05)"
+          backdropFilter="blur(20px)"
+          border="1px solid rgba(236, 72, 153, 0.2)"
+          borderRadius="2xl"
+        >
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={12}>
             {/* Profile Section */}
             <VStack spacing={6} align={{ base: "center", md: "start" }}>
-              <MotionBox
-                whileHover={{ scale: 1.05, rotate: 5 }}
-                transition={{ duration: 0.3 }}
+              <Box
+                width="120px"
+                height="120px"
+                borderRadius="full"
+                overflow="hidden"
+                border="3px solid"
+                borderColor="feminine.300"
+                boxShadow="lg"
+                bg="gray.200"
               >
                 <Box
-                  width="120px"
-                  height="120px"
-                  borderRadius="full"
-                  overflow="hidden"
-                  border="3px solid"
-                  borderColor="feminine.300"
-                  boxShadow="lg"
-                >
-                  <OptimizedImage
-                    src="/images/maya.png"
-                    width={120}
-                    height={120}
-                    alt="Profile picture"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover'
-                    }}
-                  />
-                </Box>
-              </MotionBox>
+                  as="img"
+                  src="/images/maya.png"
+                  alt="Profile picture"
+                  width="100%"
+                  height="100%"
+                  objectFit="cover"
+                />
+              </Box>
 
               <VStack spacing={2} textAlign={{ base: "center", md: "left" }}>
                 <Heading
@@ -120,7 +126,7 @@ const Footer = () => {
                 </Heading>
                 <Text
                   fontSize="sm"
-                  color={useColorModeValue("gray.600", "gray.400")}
+                  color={textColorMuted}
                   fontStyle="italic"
                 >
                   Creative Developer & Designer
@@ -132,33 +138,30 @@ const Footer = () => {
             <VStack spacing={4} align={{ base: "center", md: "start" }}>
               <Heading
                 size="sm"
-                color={useColorModeValue("gray.800", "white")}
+                color={headingColor}
                 fontFamily="'Playfair Display', serif"
               >
                 Quick Links
               </Heading>
               <VStack spacing={2} align={{ base: "center", md: "start" }}>
                 {quickLinks.map((link, index) => (
-                  <MagneticButton key={index} strength={0.1}>
-                    <HoverCard hoverScale={1.05} glowEffect={true}>
-                      <Link
-                        href={link.href}
-                        color={useColorModeValue("gray.600", "gray.300")}
-                        fontWeight="500"
-                        px={3}
-                        py={2}
-                        borderRadius="md"
-                        transition="all 0.3s ease"
-                        _hover={{
-                          color: "feminine.500",
-                          textDecoration: "none",
-                          bg: useColorModeValue("rgba(236, 72, 153, 0.1)", "rgba(254, 128, 160, 0.1)")
-                        }}
-                      >
-                        {link.name}
-                      </Link>
-                    </HoverCard>
-                  </MagneticButton>
+                  <Link
+                    key={index}
+                    href={link.href}
+                    color={textColorLight}
+                    fontWeight="500"
+                    px={3}
+                    py={2}
+                    borderRadius="md"
+                    transition="all 0.3s ease"
+                    _hover={{
+                      color: "feminine.500",
+                      textDecoration: "none",
+                      bg: linkHoverBg
+                    }}
+                  >
+                    {link.name}
+                  </Link>
                 ))}
               </VStack>
             </VStack>
@@ -167,85 +170,62 @@ const Footer = () => {
             <VStack spacing={4} align={{ base: "center", md: "start" }}>
               <Heading
                 size="sm"
-                color={useColorModeValue("gray.800", "white")}
+                color={headingColor}
                 fontFamily="'Playfair Display', serif"
               >
                 Connect
               </Heading>
               <HStack spacing={4}>
                 {socialLinks.map((social, index) => (
-                  <MagneticButton key={index} strength={0.3}>
-                    <FloatingActionButton
-                      amplitude={3}
-                      duration={2 + index * 0.5}
-                      delay={index * 0.2}
-                    >
-                      <HoverCard
-                        hoverScale={1.1}
-                        rotateOnHover={true}
-                        glowEffect={true}
-                        shadowEffect={true}
-                      >
-                        <Box
-                          as={Link}
-                          href={social.href}
-                          target="_blank"
-                          p={3}
-                          borderRadius="full"
-                          bg={useColorModeValue("glass.light", "glass.dark")}
-                          color="feminine.500"
-                          border="1px solid"
-                          borderColor={useColorModeValue("rgba(236, 72, 153, 0.2)", "rgba(254, 128, 160, 0.2)")}
-                          backdropFilter="blur(10px)"
-                          transition="all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)"
-                          aria-label={social.label}
-                        >
-                          <social.icon size={20} />
-                        </Box>
-                      </HoverCard>
-                    </FloatingActionButton>
-                  </MagneticButton>
+                  <Box
+                    key={index}
+                    as={Link}
+                    href={social.href}
+                    target="_blank"
+                    p={3}
+                    borderRadius="full"
+                    bg={glassLight}
+                    color="feminine.500"
+                    border="1px solid"
+                    borderColor={socialBorderColor}
+                    backdropFilter="blur(10px)"
+                    transition="all 0.3s ease"
+                    aria-label={social.label}
+                    _hover={{
+                      transform: "scale(1.1)",
+                      color: "feminine.600"
+                    }}
+                  >
+                    <social.icon size={20} />
+                  </Box>
                 ))}
               </HStack>
             </VStack>
           </SimpleGrid>
 
-          <Divider
-            my={8}
-            borderColor={useColorModeValue("gray.200", "gray.700")}
-          />
+          <Divider my={8} borderColor={dividerColor} />
 
           {/* Quote Section */}
-          <MotionBox
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            viewport={{ once: true }}
-            textAlign="center"
-            mb={8}
-          >
+          <Box textAlign="center" mb={8}>
             <Text
               fontSize="lg"
               fontStyle="italic"
-              color={useColorModeValue("gray.600", "gray.300")}
+              color={textColorLight}
               maxW="600px"
               mx="auto"
               lineHeight="tall"
             >
               {footerQuotes[t('locale')] || footerQuotes.jp}
             </Text>
-          </MotionBox>
+          </Box>
 
           {/* Copyright */}
           <Box textAlign="center">
-            <Text
-              fontSize="sm"
-              color={useColorModeValue("gray.500", "gray.500")}
-            >
-              © {new Date().getFullYear()} 霜花 (Shimoka). Made with ❤️ and lots of ☕
+            <Text fontSize="sm" color={copyrightColor}>
+              © 2024 霜花 (Shimoka). Made with ❤️ and lots of ☕
             </Text>
           </Box>
-        </GlassCard>
+        </Box>
       </Box>
     </MotionBox>
   );

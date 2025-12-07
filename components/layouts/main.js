@@ -3,20 +3,12 @@ import { Box } from '@chakra-ui/react';
 import Footer from '../footer';
 import KeyboardNavigation from '../keyboard-navigation';
 import SEOHead from '../seo-head';
-import { ParticleField, MorphingShapes } from '../advanced-theme-elements';
-import { ClientOnly } from '../use-client-side';
 
 const Main = ({ children, router }) => {
   return (
     <KeyboardNavigation>
       <Box as="main" pb={8} position="relative">
         <SEOHead />
-
-        {/* Advanced Background Elements - Render only on client side */}
-        <ClientOnly>
-          <ParticleField />
-          <MorphingShapes />
-        </ClientOnly>
 
         <NavBar path={router.asPath} id="navigation" />
 
