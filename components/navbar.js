@@ -13,7 +13,6 @@ import {
 	MenuList,
 	MenuButton,
 	IconButton,
-	useColorModeValue,
 	HStack,
 	Text,
 	keyframes,
@@ -108,36 +107,44 @@ const Navbar = (props) => {
 	}, []);
 
 	// Call all hooks at top level
-	const bgColor = useColorModeValue(
-		'rgba(255, 255, 255, 0.85)',
-		'rgba(26, 32, 44, 0.85)'
-	);
-	const borderColor = useColorModeValue(
-		'rgba(236, 72, 153, 0.15)',
-		'rgba(254, 128, 160, 0.2)'
-	);
-	const shadowColor = useColorModeValue(
-		'0 8px 32px rgba(236, 72, 153, 0.1)',
-		'0 8px 32px rgba(0, 0, 0, 0.3)'
-	);
+	const bgColorLight = 'rgba(255, 255, 255, 0.85)';
+	const bgColorDark = 'rgba(26, 32, 44, 0.85)';
+	const borderColorLight = 'rgba(236, 72, 153, 0.15)';
+	const borderColorDark = 'rgba(254, 128, 160, 0.2)';
+	const shadowDark = '0 8px 32px rgba(0, 0, 0, 0.3)';
+
+	// Static values to prevent hydration mismatch
+	const navPillBg = 'rgba(255, 255, 255, 0.05)';
+	const navPillBorder = 'rgba(255, 255, 255, 0.1)';
+	const menuListBg = 'gray.800';
+	const menuItemTextColor = 'gray.100';
+
+	// Use transparent background on first render to avoid flash
+	// The backdrop-filter will still provide visual separation
+	const initialBg = mounted ? bgColorDark : 'transparent';
+	const initialBorder = mounted ? borderColorDark : 'transparent';
+	const initialShadow = mounted ? shadowDark : 'none';
 
 	return (
 		<MotionBox
 			position="fixed"
 			as="nav"
 			w="100%"
-			bg={bgColor}
+			bg={initialBg}
 			css={{
 				backdropFilter: 'blur(20px)',
 				WebkitBackdropFilter: 'blur(20px)',
 			}}
 			borderBottom="1px solid"
-			borderColor={borderColor}
-			boxShadow={shadowColor}
+			borderColor={initialBorder}
+			boxShadow={initialShadow}
 			zIndex={1000}
 			initial={{ y: -100, opacity: 0 }}
 			animate={{ y: 0, opacity: 1 }}
 			transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+			sx={{
+				transition: 'background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
+			}}
 			{...props}
 		>
 			{/* Cute decorative top border gradient */}
@@ -184,10 +191,10 @@ const Navbar = (props) => {
 					spacing={2}
 					ml={8}
 					p={1}
-					bg="rgba(0, 0, 0, 0.03)"
+					bg={navPillBg}
 					borderRadius="full"
 					border="1px solid"
-					borderColor="rgba(0, 0, 0, 0.05)"
+					borderColor={navPillBorder}
 				>
 					<LinkItem href="/projects" path={path} icon={IoSparkles}>
 						{t('navigation.projects')}
@@ -268,7 +275,7 @@ const Navbar = (props) => {
 								transition="all 0.2s ease"
 							/>
 							<MenuList
-								bg="white"
+								bg={menuListBg}
 								borderColor="pink.200"
 								borderRadius="2xl"
 								border="2px solid"
@@ -293,7 +300,7 @@ const Navbar = (props) => {
 									as={MenuLink}
 									href="/"
 									bg="transparent"
-									color="gray.700"
+									color={menuItemTextColor}
 									_hover={{
 										bg: 'rgba(236, 72, 153, 0.1)',
 										color: 'pink.500',
@@ -313,7 +320,7 @@ const Navbar = (props) => {
 									as={MenuLink}
 									href="/projects"
 									bg="transparent"
-									color="gray.700"
+									color={menuItemTextColor}
 									_hover={{
 										bg: 'rgba(236, 72, 153, 0.1)',
 										color: 'pink.500',
@@ -333,7 +340,7 @@ const Navbar = (props) => {
 									as={MenuLink}
 									href="/contact"
 									bg="transparent"
-									color="gray.700"
+									color={menuItemTextColor}
 									_hover={{
 										bg: 'rgba(236, 72, 153, 0.1)',
 										color: 'pink.500',
@@ -354,7 +361,7 @@ const Navbar = (props) => {
 									href="https://github.com/kyuna312"
 									target="_blank"
 									bg="transparent"
-									color="gray.700"
+									color={menuItemTextColor}
 									_hover={{
 										bg: 'rgba(236, 72, 153, 0.1)',
 										color: 'pink.500',

@@ -1,216 +1,520 @@
-import { Container, SimpleGrid, Text, VStack, Badge, HStack, Box, Heading, Flex } from '@chakra-ui/react';
+import { Container, SimpleGrid, Text, VStack, Badge, HStack, Box, Heading, Image, Link, keyframes } from '@chakra-ui/react';
 import Layout from '../components/layouts/article';
-import { ProjectGridItem} from '../components/grid-item';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import {
-  ElegantBackground,
-  ElegantSection,
-  ElegantText,
-} from '../components/elegant-elements';
-import {
-  HexagonProjectCard,
-  MasonryProjectGrid,
-  ProjectStats,
-  SectionDivider,
-} from '../components/unique-project-elements';
+import { useState, useEffect } from 'react';
+import { ElegantBackground } from '../components/elegant-elements';
 import { ConstellationBackground } from '../components/projects-background-effects';
 import { motion } from 'framer-motion';
-
-import nomadx from '../public/images/works/nomadx.png';
-import mongolnet from '../public/images/works/mongolnet.png';
-import nyanmarkdown from '../public/images/works/nyanmarkdown.png';
-import madoka_react from '../public/images/works/madoka_react.png';
+import { IoLogoGithub, IoEyeOutline } from 'react-icons/io5';
 
 const MotionBox = motion(Box);
 
-// Elegant Project Card Component
-const ElegantProjectCard = ({ children, title, thumbnail, url, tags = [], delay = 0, ...props }) => {
-	return (
-		<ElegantSection delay={delay} {...props}>
-			<VStack spacing={4} align="start">
-				<ProjectGridItem
-					title={title}
-					thumbnail={thumbnail}
-					url={url}
-					{...props}
-				>
-					{children}
-				</ProjectGridItem>
-				{tags.length > 0 && (
-					<HStack spacing={2} wrap="wrap">
-						{tags.map((tag, index) => (
-							<Badge
-								key={index}
-								colorScheme="pink"
-								variant="subtle"
-								borderRadius="full"
-								px={3}
-								py={1}
-								fontSize="xs"
-								fontWeight="semibold"
-							>
-								{tag}
-							</Badge>
-						))}
-					</HStack>
-				)}
-			</VStack>
-		</ElegantSection>
-	);
+// Cute animations
+const floatAnimation = keyframes`
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+`;
+
+const gradientShift = keyframes`
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+`;
+
+// Cute Project Card Component
+const CuteProjectCard = ({ title, description, thumbnail, url, github, tech = [], featured = false }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <MotionBox
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ y: -8 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      bg="rgba(26, 32, 44, 0.8)"
+      backdropFilter="blur(10px)"
+      borderRadius="24px"
+      overflow="hidden"
+      border="2px solid"
+      borderColor={isHovered ? "pink.400" : "rgba(236, 72, 153, 0.2)"}
+      boxShadow={isHovered ? "0 20px 40px rgba(236, 72, 153, 0.3)" : "0 10px 30px rgba(0, 0, 0, 0.2)"}
+      position="relative"
+      sx={{ transition: "all 0.3s ease" }}
+    >
+      {/* Featured Badge */}
+      {featured && (
+        <Box
+          position="absolute"
+          top={4}
+          left={4}
+          zIndex={10}
+          px={3}
+          py={1}
+          bg="linear-gradient(135deg, #ec4899, #a855f7)"
+          borderRadius="full"
+          fontSize="xs"
+          fontWeight="bold"
+          color="white"
+        >
+          ⭐ Featured
+        </Box>
+      )}
+
+      {/* Image */}
+      <Box position="relative" overflow="hidden" h="200px">
+        <Image
+          src={thumbnail}
+          alt={title}
+          w="100%"
+          h="100%"
+          objectFit="cover"
+          transition="transform 0.5s ease"
+          transform={isHovered ? "scale(1.1)" : "scale(1)"}
+        />
+        {/* Overlay on hover */}
+        <Box
+          position="absolute"
+          top={0}
+          left={0}
+          right={0}
+          bottom={0}
+          bg="rgba(236, 72, 153, 0.8)"
+          opacity={isHovered ? 1 : 0}
+          transition="opacity 0.3s ease"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          gap={4}
+        >
+          {url && (
+            <Link
+              href={url}
+              target="_blank"
+              p={3}
+              bg="white"
+              borderRadius="full"
+              color="pink.500"
+              _hover={{ transform: "scale(1.1)" }}
+              transition="transform 0.2s"
+            >
+              <IoEyeOutline size={24} />
+            </Link>
+          )}
+          {github && (
+            <Link
+              href={github}
+              target="_blank"
+              p={3}
+              bg="white"
+              borderRadius="full"
+              color="pink.500"
+              _hover={{ transform: "scale(1.1)" }}
+              transition="transform 0.2s"
+            >
+              <IoLogoGithub size={24} />
+            </Link>
+          )}
+        </Box>
+      </Box>
+
+      {/* Content */}
+      <Box p={6}>
+        <Heading
+          fontSize="xl"
+          fontFamily="'Playfair Display', serif"
+          color="white"
+          mb={2}
+        >
+          {title}
+        </Heading>
+        <Text color="gray.400" fontSize="sm" mb={4} noOfLines={2}>
+          {description}
+        </Text>
+
+        {/* Tech Tags */}
+        <HStack spacing={2} flexWrap="wrap">
+          {tech.slice(0, 4).map((t, i) => (
+            <Badge
+              key={i}
+              bg="rgba(236, 72, 153, 0.15)"
+              color="pink.300"
+              borderRadius="full"
+              px={3}
+              py={1}
+              fontSize="xs"
+              border="1px solid"
+              borderColor="rgba(236, 72, 153, 0.3)"
+            >
+              {t}
+            </Badge>
+          ))}
+        </HStack>
+      </Box>
+    </MotionBox>
+  );
 };
 
 const Projects = () => {
-	const { t } = useTranslation('common');
+  const { t } = useTranslation('common');
+  const [mounted, setMounted] = useState(false);
 
-	// Project statistics for visual impact
-	const projectStats = [
-		{ value: "15+", label: "Projects" },
-		{ value: "5+", label: "Technologies" },
-		{ value: "3+", label: "Years Experience" },
-		{ value: "∞", label: "Passion" }
-	];
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
- 	return (
-		<Layout title={t('projects.title')}>
-			<ElegantBackground>
-				<ConstellationBackground />
-				<Container maxW="container.xl" paddingTop={20}>
-					{/* Hero Section with Enhanced Animation */}
-					<MotionBox
-						initial={{ opacity: 0, y: -50 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 1, ease: "easeOut" }}
-						textAlign="center"
-						mb={16}
-					>
-						<Heading
-							as="h1"
-							fontSize={{ base: "4xl", md: "6xl", lg: "7xl" }}
-							fontFamily="'Playfair Display', serif"
-							bgGradient="linear(to-r, pink.400, rose.400, purple.500)"
-							bgClip="text"
-							mb={6}
-							fontWeight="bold"
-						>
-							Creative Universe
-						</Heading>
-						<Text
-							fontSize={{ base: "lg", md: "xl" }}
-							maxW="800px"
-							mx="auto"
-							lineHeight="tall"
-							opacity={0.9}
-						>
-							Explore a curated collection of digital masterpieces where innovation
-							meets artistry. Each project tells a unique story of creativity,
-							technical excellence, and passionate craftsmanship.
-						</Text>
-					</MotionBox>
+  // Project data with cute emojis
+  const projects = [
+    {
+      title: t('projects.NomadX'),
+      description: t('projects.NomadXDescription'),
+      thumbnail: '/images/works/nomadx.png',
+      url: 'https://nomadx.world',
+      github: 'https://github.com/kyuna312/nomadx',
+      tech: ['⚛️ React', '▲ Next.js', '💙 TypeScript', '🎨 Chakra UI'],
+      featured: true
+    },
+    {
+      title: t('projects.madoka_react'),
+      description: t('projects.madoka_reactDescription'),
+      thumbnail: '/images/works/madoka_react.png',
+      url: 'https://madoka-kappa.vercel.app',
+      github: 'https://github.com/kyuna312/madoka-react',
+      tech: ['⚛️ React', '💫 CSS3', '✨ Animation', '🎬 GSAP']
+    },
+    {
+      title: t('projects.mongolnet'),
+      description: t('projects.mongolnetDescription'),
+      thumbnail: '/images/works/mongolnet.png',
+      url: 'https://mongol.net',
+      github: 'https://github.com/kyuna312/mongolnet',
+      tech: ['🌐 Full Stack', '🟢 Node.js', '🍃 MongoDB']
+    },
+    {
+      title: t('projects.NyanMarkDown'),
+      description: t('projects.NyanMarkDownDescription'),
+      thumbnail: '/images/works/nyanmarkdown.png',
+      url: 'https://github.com/kyuna312/NyanVim',
+      github: 'https://github.com/kyuna312/NyanVim',
+      tech: ['📝 Vim', '🌙 Lua', '💝 Open Source']
+    }
+  ];
 
-					{/* Project Statistics */}
-					<ProjectStats stats={projectStats} delay={0.3} />
+  // Cute project statistics
+  const projectStats = [
+    { value: "15+", label: "✨ Projects", emoji: "🌸" },
+    { value: "5+", label: "💻 Technologies", emoji: "🎨" },
+    { value: "3+", label: "🌟 Years", emoji: "⭐" },
+    { value: "∞", label: "💖 Passion", emoji: "💝" }
+  ];
 
-					{/* Section Divider */}
-					<SectionDivider delay={0.5} />
+  return (
+    <Layout title={t('projects.title')}>
+      <ElegantBackground>
+        <ConstellationBackground />
+        <Container maxW="container.xl" paddingTop={20} position="relative" pb={20}>
+          {/* Cute floating decorations */}
+          {mounted && (
+            <>
+              <Box position="absolute" top="5%" left="5%" fontSize="2xl" opacity={0.3} animation={`${floatAnimation} 3s ease-in-out infinite`}>
+                ✨
+              </Box>
+              <Box position="absolute" top="15%" right="8%" fontSize="xl" opacity={0.4} animation={`${floatAnimation} 4s ease-in-out 0.5s infinite`}>
+                🌸
+              </Box>
+              <Box position="absolute" top="30%" left="10%" fontSize="lg" opacity={0.35} animation={`${floatAnimation} 3.5s ease-in-out 1s infinite`}>
+                🎀
+              </Box>
+              <Box position="absolute" bottom="40%" right="5%" fontSize="lg" opacity={0.35} animation={`${floatAnimation} 3.2s ease-in-out 0.7s infinite`}>
+                💫
+              </Box>
+              <Box position="absolute" bottom="20%" left="8%" fontSize="xl" opacity={0.3} animation={`${floatAnimation} 4.2s ease-in-out 1.2s infinite`}>
+                🌟
+              </Box>
+              <Box position="absolute" top="50%" right="12%" fontSize="sm" opacity={0.4} animation={`${floatAnimation} 2.8s ease-in-out 0.3s infinite`}>
+                💝
+              </Box>
+            </>
+          )}
 
-					{/* Featured Projects Section */}
-					<VStack spacing={12} align="stretch">
-						<MotionBox
-							initial={{ opacity: 0, x: -50 }}
-							animate={{ opacity: 1, x: 0 }}
-							transition={{ duration: 0.8, delay: 0.7 }}
-						>
-							<Heading
-								as="h2"
-								fontSize={{ base: "2xl", md: "3xl" }}
-								fontFamily="'Playfair Display', serif"
-								mb={8}
-								textAlign="center"
-							>
-								Featured Projects
-							</Heading>
-						</MotionBox>
+          {/* Hero Section */}
+          <MotionBox
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            textAlign="center"
+            mb={12}
+          >
+            {/* Cute Badge */}
+            <Box
+              display="inline-flex"
+              alignItems="center"
+              gap={2}
+              px={5}
+              py={2}
+              bg="rgba(236, 72, 153, 0.1)"
+              borderRadius="full"
+              border="1px solid"
+              borderColor="pink.400"
+              mb={6}
+            >
+              <Text fontSize="sm" color="pink.300">🎨 My Creative Space 🎨</Text>
+            </Box>
 
-						{/* Unique Masonry Grid Layout */}
-						<MasonryProjectGrid>
-							<HexagonProjectCard
-								delay={0.8}
-								featured
-								title={t('projects.NomadX')}
-								description={t('projects.NomadXDescription')}
-								thumbnail={nomadx}
-								url='https://nomadx.world'
-								github='https://github.com/kyuna312/nomadx'
-								tech={['React', 'Next.js', 'TypeScript', 'Chakra UI', 'Framer Motion']}
-								gridColumn={{ lg: "span 2" }}
-							/>
+            <Heading
+              as="h1"
+              fontSize={{ base: "4xl", md: "6xl" }}
+              fontFamily="'Playfair Display', serif"
+              mb={6}
+            >
+              <Box
+                as="span"
+                bgGradient="linear(135deg, #ff6b8a 0%, #a855f7 50%, #ff6b8a 100%)"
+                bgSize="200% 200%"
+                bgClip="text"
+                animation={`${gradientShift} 4s ease infinite`}
+              >
+                Creative Universe ✨
+              </Box>
+            </Heading>
 
-							<HexagonProjectCard
-								delay={0.9}
-								title={t('projects.madoka_react')}
-								description={t('projects.madoka_reactDescription')}
-								thumbnail={madoka_react}
-								url='https://madoka-kappa.vercel.app'
-								github='https://github.com/kyuna312/madoka-react'
-								tech={['React', 'CSS3', 'Animation', 'GSAP']}
-							/>
+            <Text fontSize={{ base: "md", md: "lg" }} color="gray.400" maxW="700px" mx="auto">
+              Welcome to my portfolio! Here you&apos;ll find projects that showcase my journey
+              as a developer and creative soul 💖
+            </Text>
 
-							<HexagonProjectCard
-								delay={1.0}
-								title={t('projects.mongolnet')}
-								description={t('projects.mongolnetDescription')}
-								thumbnail={mongolnet}
-								url='https://mongol.net'
-								github='https://github.com/kyuna312/mongolnet'
-								tech={['Full Stack', 'Node.js', 'MongoDB', 'Express']}
-							/>
+            {/* Cute divider */}
+            <HStack justify="center" spacing={4} mt={6}>
+              <Box h="1px" w="40px" bgGradient="linear(to-r, transparent, pink.400)" />
+              <Text color="pink.400">♡</Text>
+              <Box h="1px" w="40px" bgGradient="linear(to-r, pink.400, purple.400)" />
+              <Text color="purple.400">♡</Text>
+              <Box h="1px" w="40px" bgGradient="linear(to-r, purple.400, transparent)" />
+            </HStack>
+          </MotionBox>
 
-							<HexagonProjectCard
-								delay={1.1}
-								title={t('projects.NyanMarkDown')}
-								description={t('projects.NyanMarkDownDescription')}
-								thumbnail={nyanmarkdown}
-								url='https://github.com/kyuna312/NyanVim'
-								github='https://github.com/kyuna312/NyanVim'
-								tech={['Vim', 'Lua', 'Tools', 'Open Source']}
-								gridColumn={{ md: "span 2", lg: "span 1" }}
-							/>
-						</MasonryProjectGrid>
-					</VStack>
+          {/* Stats Section */}
+          <MotionBox
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            mb={16}
+          >
+            <Box
+              bg="rgba(26, 32, 44, 0.5)"
+              backdropFilter="blur(10px)"
+              borderRadius="24px"
+              p={8}
+              border="1px solid"
+              borderColor="rgba(236, 72, 153, 0.2)"
+            >
+              <SimpleGrid columns={{ base: 2, md: 4 }} spacing={8}>
+                {projectStats.map((stat, index) => (
+                  <MotionBox
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                  >
+                    <VStack spacing={2}>
+                      <Box
+                        fontSize="3xl"
+                        animation={`${floatAnimation} ${3 + index * 0.5}s ease-in-out infinite`}
+                      >
+                        {stat.emoji}
+                      </Box>
+                      <Text
+                        fontSize={{ base: "2xl", md: "3xl" }}
+                        fontWeight="bold"
+                        bgGradient="linear(to-r, pink.400, purple.400)"
+                        bgClip="text"
+                      >
+                        {stat.value}
+                      </Text>
+                      <Text color="gray.400" fontSize="sm" textAlign="center">
+                        {stat.label}
+                      </Text>
+                    </VStack>
+                  </MotionBox>
+                ))}
+              </SimpleGrid>
+            </Box>
+          </MotionBox>
 
-					{/* Bottom Section */}
-					<MotionBox
-						initial={{ opacity: 0, y: 50 }}
-						animate={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.8, delay: 1.3 }}
-						textAlign="center"
-						mt={20}
-						mb={10}
-					>
-						<Text
-							fontSize="lg"
-							opacity={0.8}
-							maxW="600px"
-							mx="auto"
-							fontStyle="italic"
-						>
-							"Every project is a journey of discovery, where challenges become
-							opportunities and ideas transform into digital reality."
-						</Text>
-					</MotionBox>
-				</Container>
-			</ElegantBackground>
-		</Layout>
-	);
+          {/* Section Header */}
+          <MotionBox
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            textAlign="center"
+            mb={10}
+          >
+            <Box
+              display="inline-flex"
+              alignItems="center"
+              gap={2}
+              px={4}
+              py={2}
+              bg="rgba(167, 139, 250, 0.1)"
+              borderRadius="full"
+              border="1px solid"
+              borderColor="purple.400"
+              mb={4}
+            >
+              <Text fontSize="sm" color="purple.300">💻 Code & Creativity 💻</Text>
+            </Box>
+            <Heading
+              as="h2"
+              fontSize={{ base: "2xl", md: "4xl" }}
+              fontFamily="'Playfair Display', serif"
+              bgGradient="linear(to-r, purple.400, pink.400)"
+              bgClip="text"
+              mb={3}
+            >
+              ✨ Featured Projects ✨
+            </Heading>
+            <Text color="gray.400" fontSize="lg">
+              Projects I&apos;m most proud of 💖
+            </Text>
+          </MotionBox>
+
+          {/* Projects Grid */}
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8} mb={16}>
+            {projects.map((project, index) => (
+              <CuteProjectCard
+                key={index}
+                {...project}
+              />
+            ))}
+          </SimpleGrid>
+
+          {/* Cosplay Section Teaser */}
+          <MotionBox
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Box
+              bg="rgba(26, 32, 44, 0.6)"
+              backdropFilter="blur(20px)"
+              borderRadius="32px"
+              p={{ base: 8, md: 12 }}
+              border="2px solid"
+              borderColor="rgba(236, 72, 153, 0.3)"
+              textAlign="center"
+              position="relative"
+              overflow="hidden"
+            >
+              {/* Decorative gradient */}
+              <Box
+                position="absolute"
+                top={0}
+                left="10%"
+                right="10%"
+                h="4px"
+                bgGradient="linear(to-r, transparent, pink.400, purple.400, pink.400, transparent)"
+              />
+
+              <Box
+                display="inline-flex"
+                alignItems="center"
+                gap={2}
+                px={4}
+                py={2}
+                bg="rgba(236, 72, 153, 0.1)"
+                borderRadius="full"
+                border="1px solid"
+                borderColor="pink.400"
+                mb={6}
+              >
+                <Text fontSize="sm" color="pink.300">🎭 Other Interests 🎭</Text>
+              </Box>
+
+              <Heading
+                fontSize={{ base: "xl", md: "2xl" }}
+                fontFamily="'Playfair Display', serif"
+                bgGradient="linear(to-r, pink.400, purple.400)"
+                bgClip="text"
+                mb={4}
+              >
+                Cosplay & Creative Arts ✨
+              </Heading>
+
+              <Text color="gray.400" maxW="600px" mx="auto" mb={6}>
+                Besides coding, I love expressing creativity through cosplay!
+                Check out my Instagram for photos and behind-the-scenes content 🌸
+              </Text>
+
+              <Box
+                as="a"
+                href="https://instagram.com/m1or3n"
+                target="_blank"
+                display="inline-block"
+                px={6}
+                py={3}
+                bgGradient="linear(135deg, #ff6b8a, #a855f7)"
+                borderRadius="full"
+                color="white"
+                fontWeight="bold"
+                transition="all 0.3s ease"
+                _hover={{
+                  transform: "translateY(-3px)",
+                  boxShadow: "0 15px 35px rgba(236, 72, 153, 0.4)"
+                }}
+              >
+                📸 View Cosplay Gallery
+              </Box>
+            </Box>
+          </MotionBox>
+
+          {/* Bottom Quote */}
+          <MotionBox
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            textAlign="center"
+            mt={16}
+          >
+            <Box
+              p={8}
+              bg="rgba(26, 32, 44, 0.3)"
+              borderRadius="24px"
+              border="1px dashed"
+              borderColor="rgba(236, 72, 153, 0.3)"
+            >
+              <Text
+                fontSize="lg"
+                color="gray.300"
+                fontStyle="italic"
+                maxW="600px"
+                mx="auto"
+              >
+                &quot;Every project is a journey of discovery, where challenges become
+                opportunities and ideas transform into digital reality~ ✨&quot;
+              </Text>
+              <Text color="pink.400" mt={4} fontSize="sm">
+                — 霜花 (Shimoka) 💖
+              </Text>
+            </Box>
+          </MotionBox>
+        </Container>
+      </ElegantBackground>
+    </Layout>
+  );
 };
 
 export async function getStaticProps({ locale }) {
-	return {
-		props: {
-			...(await serverSideTranslations(locale, ['common'])),
-		},
-	};
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
 }
 
 export default Projects;

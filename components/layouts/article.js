@@ -1,12 +1,35 @@
 import { motion } from 'framer-motion';
 import SEOHead from '../seo-head';
+import { Box } from '@chakra-ui/react';
 
+// Cute page transition animations 💖
 const variants = {
-  hidden: { opacity: 0, x: 0, y: 20 },
-  enter: { opacity: 1, x: 0, y: 0 },
-  exit: { opacity: 0, x: -0, y: 20 }
+  hidden: {
+    opacity: 0,
+    y: 20,
+    scale: 0.98
+  },
+  enter: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.25, 0.46, 0.45, 0.94]
+    }
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    scale: 0.98,
+    transition: {
+      duration: 0.3,
+      ease: [0.25, 0.46, 0.45, 0.94]
+    }
+  }
 };
 
+// Article Layout Component with smooth animations ✨
 const Layout = ({ children, title, description, image }) => {
   return (
     <motion.article
@@ -14,16 +37,25 @@ const Layout = ({ children, title, description, image }) => {
       animate="enter"
       exit="exit"
       variants={variants}
-      transition={{ duration: 0.4, type: 'easeInOut' }}
-      style={{ position: 'relative' }}
-      color='#fe80a0'
+      style={{ position: 'relative', width: '100%' }}
     >
-      <SEOHead
-        title={title}
-        description={description}
-        image={image}
-      />
-      {children}
+      {/* Page-specific SEO */}
+      {(title || description || image) && (
+        <SEOHead
+          title={title}
+          description={description}
+          image={image}
+        />
+      )}
+
+      {/* Content wrapper with cute styling 💖 */}
+      <Box
+        w="100%"
+        minH={{ base: '50vh', md: '60vh' }}
+        position="relative"
+      >
+        {children}
+      </Box>
     </motion.article>
   );
 };

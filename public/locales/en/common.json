@@ -9,122 +9,125 @@
   "footer": {
     "contact": "Contact",
     "about": "About",
-    "copyright": "© 2024 Hattanzorg. All rights reserved."
+    "copyright": "© 2024 霜花 (Shimoka). Made with ❤️ and lots of ☕"
   },
   "projects": {
-    "title": "Projects",
-    "description": "Here are some of my recent projects",
-    "viewSource": "View Source",
-    "viewDemo": "View Demo",
+    "title": "Projects ✨",
+    "description": "Here are some of my creative projects~",
+    "viewSource": "View Source 💻",
+    "viewDemo": "View Demo ✨",
     "NomadX": "NomadX",
-    "NomadXDescription": "Mongolian NFT Market Place Web Application and Mobile Application",
-    "mongolnet": "mongolnet",
-    "mongolnetDescription": "I developed a National Social Network Platform called Mongol.net using React with Vite, Tailwind CSS, NestJS, Flutter, and GraphQL. If you have any specific inquiries or would like more information about this project",
+    "NomadXDescription": "A beautiful Mongolian NFT Marketplace - Web & Mobile Application crafted with love 💖",
+    "mongolnet": "Mongol.net",
+    "mongolnetDescription": "A National Social Network Platform built with React, Vite, Tailwind CSS, NestJS, Flutter, and GraphQL. A project close to my heart~ 🌸",
     "NyanMarkDown": "NyanMarkDown",
-    "NyanMarkDownDescription": "NyanMarkDown Custom Markdown Editor",
-    "madoka_react": "madoka_react",
-    "madoka_reactDescription": "My Custom React JS Vite Based SASS animated web",
-    "nyanvim": "nyanvim",
-    "nyanvimDescription": "My custom NeoVim project"
+    "NyanMarkDownDescription": "A cute custom Markdown Editor with a kawaii twist~ 🐱",
+    "madoka_react": "Madoka React",
+    "madoka_reactDescription": "An animated web experience inspired by magical girl aesthetics ✨",
+    "nyanvim": "NyanVim",
+    "nyanvimDescription": "My custom NeoVim configuration - because even coding should be cute! 🎀"
   },
   "home": {
-    "title": "Hattanzorg",
-    "subtitle": "Kernel Enjoyer Geek (Developer / Designer / Anime Fan)",
+    "title": "霜花 (Shimoka)",
+    "subtitle": "Developer 💻 • Designer 🎨 • Cosplayer 🎭",
+    "description": "Welcome to my creative universe! I'm a full-stack developer who loves bringing ideas to life through beautiful code and design ✨",
+    "viewProjects": "View My Projects 💻",
+    "getInTouch": "Say Hello! 💌",
     "workExperience": "Work Experience",
-    "bio": "Hattanzorg is a full-stack developer based in Ulaanbaatar who has a passion for solving problems through product planning, design, and coding. With 5 years of experience in mobile and web development, he has provided professional expertise across diverse projects using skills cultivated since his third year of university. He has a strong interest in reverse engineering and exploit development, and has also challenged himself with building his own operating system. Offline, he enjoys anime, manga, and light novels, and occasionally cosplays as a hobby. Currently, he works on Odoo ERP business projects while also engaging in personal projects such as developing a simple kernel OS.",
-    "projectsButton": "My Projects",
-    "history": "History",
+    "bio": "Hi there! I'm Shimoka, a passionate full-stack developer based in Ulaanbaatar, Mongolia 🇲🇳 I love creating beautiful digital experiences and expressing creativity through both code and cosplay! When I'm not coding, you can find me working on cosplay projects or enjoying anime~ ✨",
+    "projectsButton": "My Projects 💻",
+    "history": "My Journey 🌸",
     "timeline": {
-      "2000": "Born in Ulaanbaatar, Mongolia.",
-      "2019": "Completed internship at Able Soft and worked as a developer.",
-      "2021": "Completed bachelor's degree at MUST and started working at Sod Mongol LLC.",
-      "2023-01": "Finished work at Sod Mongol LLC.",
-      "2023-02": "Currently working at Next Social Platform LLC."
+      "2000": "Born in Ulaanbaatar, Mongolia 🇲🇳 - The beginning of my adventure!",
+      "2019": "Started my developer journey at Able Soft - First steps into the coding world! ✨",
+      "2021": "Graduated from MUST & joined Sod Mongol LLC - Growing stronger every day! 💪",
+      "2023-01": "Completed my journey at Sod Mongol LLC - Time for new adventures!",
+      "2023-02": "Currently creating magic at Next Social Platform LLC 🌟"
     },
-    "socialNetwork": "Social Network",
-    "resumeButton": "Resume"
+    "socialNetwork": "Let's Connect! 💖",
+    "resumeButton": "View Resume 📄"
   },
   "navigation": {
-    "home": "Home",
-    "projects": "Projects",
+    "home": "Home 🏠",
+    "projects": "Projects 💻",
     "github": "GitHub"
   },
   "about": {
-    "hello": "Hello, I'm a full-stack developer based in Ulaanbaatar!",
-    "description": "Hattanzorg is a full-stack developer with a passion for problem-solving through product planning, design, and coding. He has experience in both web and mobile development, enjoys learning new technologies, and when not coding, loves playing with his dog."
+    "hello": "Hello! Welcome to my little corner of the internet~ ✨",
+    "description": "I'm a full-stack developer with a passion for creating beautiful, functional applications. I love combining technical skills with creative design to build experiences that bring joy to users! 💖"
   },
   "bio": {
-    "title": "Bio",
+    "title": "About Me 🌸",
     "items": [
       {
-        "year": "1997",
-        "text": "Born in Ulaanbaatar, Mongolia."
+        "year": "2000",
+        "text": "Born in Ulaanbaatar, Mongolia 🇲🇳"
       },
       {
         "year": "2015-2019",
-        "text": "Studied Computer Science at the National University of Mongolia."
+        "text": "Studied Computer Science at MUST - Where my coding journey began! 💻"
       },
       {
         "year": "2019-2021",
-        "text": "Worked as a Frontend Developer at various startups."
+        "text": "Frontend Developer adventures at various startups ✨"
       },
       {
         "year": "2021-2023",
-        "text": "Full-stack Developer at TechCorp Solutions."
+        "text": "Full-stack Developer at Sod Mongol LLC - Growing my skills! 🌱"
       },
       {
         "year": "2023-Present",
-        "text": "Senior Developer at Next Social Platform LLC."
+        "text": "Creating magic at Next Social Platform LLC 🌟"
       }
     ]
   },
   "hobbies": {
-    "title": "I ♥",
+    "title": "Things I Love 💖",
     "items": [
-      "Art",
-      "Music",
-      "Drawing",
-      "Playing Guitar",
-      "Machine Learning",
-      "Photography"
+      "Cosplay 🎭",
+      "Anime & Manga 📚",
+      "Digital Art 🎨",
+      "Music 🎵",
+      "Photography 📸",
+      "Gaming 🎮"
     ]
   },
   "contact": {
-    "title": "Get in Touch",
-    "description": "Have a project in mind? Let's work together!",
+    "title": "Let's Connect! 💌",
+    "description": "Have a project in mind? Want to collaborate? Or just want to say hi? I'd love to hear from you! 💖",
     "form": {
-      "name": "Name",
-      "namePlaceholder": "Your full name",
-      "email": "Email",
+      "name": "Your Name ✨",
+      "namePlaceholder": "What should I call you?",
+      "email": "Email 📧",
       "emailPlaceholder": "your.email@example.com",
-      "subject": "Subject",
-      "subjectPlaceholder": "What would you like to discuss?",
-      "message": "Message",
-      "messagePlaceholder": "Tell me about your project...",
-      "send": "Send Message",
-      "sending": "Sending..."
+      "subject": "Subject 💭",
+      "subjectPlaceholder": "What would you like to chat about?",
+      "message": "Message 💌",
+      "messagePlaceholder": "Tell me about your ideas~",
+      "send": "Send Message ✨",
+      "sending": "Sending... 💫"
     },
     "errors": {
-      "nameRequired": "Name is required",
-      "emailRequired": "Email is required",
-      "emailInvalid": "Please enter a valid email",
-      "subjectRequired": "Subject is required",
-      "messageRequired": "Message is required",
-      "messageMinLength": "Message must be at least 10 characters"
+      "nameRequired": "Please tell me your name~ 💭",
+      "emailRequired": "I need your email to reply! 📧",
+      "emailInvalid": "Hmm, that email doesn't look right 🤔",
+      "subjectRequired": "What's this about? 💭",
+      "messageRequired": "Don't be shy, say something! 💖",
+      "messageMinLength": "Tell me a bit more~ (at least 10 characters)"
     },
     "success": {
-      "title": "Message sent!",
-      "description": "Thank you for your message. I'll get back to you soon!"
+      "title": "Message sent! 🎉",
+      "description": "Thank you so much! I'll get back to you soon~ 💖"
     },
     "error": {
-      "title": "Error sending message",
-      "description": "Something went wrong. Please try again."
+      "title": "Oops! Something went wrong 😿",
+      "description": "Please try again, or reach out through social media!"
     },
     "social": {
-      "title": "Or connect with me on"
+      "title": "Or find me on 🌐"
     },
     "seo": {
-      "description": "Get in touch with me for your next project. Let's work together to bring your ideas to life."
+      "description": "Get in touch with Shimoka for your next project. Let's create something beautiful together! 💖"
     }
   }
 }

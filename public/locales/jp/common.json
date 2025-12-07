@@ -1,42 +1,133 @@
 {
   "locale": "jp",
-  "projects": {
-    "title": "プロジェクト",
-    "NomadX": "NomadX",
-    "NomadXDescription": "モンゴルのNFTマーケットプレイスWebアプリケーションおよびモバイルアプリケーション",
-    "mongolnet": "mongolnet",
-    "mongolnetDescription": "React、Vite、Tailwind CSS、NestJS、Flutter、GraphQLを使用してMongol.netという国立ソーシャルネットワークプラットフォームを開発しました。このプロジェクトに関する具体的な問い合わせや詳細については、お問い合わせください。",
-    "NyanMarkDown": "NyanMarkDown",
-    "NyanMarkDownDescription": "NyanMarkDownカスタムMarkdownエディタ",
-    "madoka_react": "madoka_react",
-    "madoka_reactDescription": "私のカスタムReact JS ViteベースのSASSアニメーションウェブ",
-    "nyanvim": "nyanvim",
-    "nyanvimDescription": "私のカスタムNeoVimプロジェクト"
+  "navbar": {
+    "about": "私について",
+    "projects": "プロジェクト",
+    "contact": "お問い合わせ",
+    "posts": "投稿"
   },
   "footer": {
     "contact": "お問い合わせ",
-    "about": "概要"
+    "about": "私について",
+    "copyright": "© 2024 霜花. ❤️とたくさんの☕で作りました"
+  },
+  "projects": {
+    "title": "プロジェクト ✨",
+    "description": "私のクリエイティブなプロジェクトをご覧ください~",
+    "viewSource": "ソースを見る 💻",
+    "viewDemo": "デモを見る ✨",
+    "NomadX": "NomadX",
+    "NomadXDescription": "愛情を込めて作ったモンゴルのNFTマーケットプレイス 💖",
+    "mongolnet": "Mongol.net",
+    "mongolnetDescription": "React、Vite、Tailwind CSS、NestJS、Flutter、GraphQLで構築した国立ソーシャルネットワークプラットフォーム 🌸",
+    "NyanMarkDown": "NyanMarkDown",
+    "NyanMarkDownDescription": "可愛いカスタムMarkdownエディタ 🐱",
+    "madoka_react": "Madoka React",
+    "madoka_reactDescription": "魔法少女の美学にインスパイアされたアニメーションウェブ体験 ✨",
+    "nyanvim": "NyanVim",
+    "nyanvimDescription": "私のカスタムNeoVim設定 - コーディングも可愛く！🎀"
   },
   "home": {
-    "title": "ハタンゾリグ",
-    "subtitle": "Kernel Enjoyer Geek (開発者 / デザイナー / アニメファン)",
+    "title": "霜花 (Shimoka)",
+    "subtitle": "開発者 💻 • デザイナー 🎨 • コスプレイヤー 🎭",
+    "description": "私のクリエイティブな世界へようこそ！美しいコードとデザインでアイデアを形にするフルスタック開発者です ✨",
+    "viewProjects": "プロジェクトを見る 💻",
+    "getInTouch": "連絡する！💌",
     "workExperience": "職務経歴",
-    "bio": "ハタンゾリグは、ウランバートルを拠点とするフルスタック開発者であり、プロダクトの企画、デザイン、コーディングを通じた問題解決に情熱を持っています。5年間にわたるモバイルおよびウェブ開発の経験を持ち、大学3年生の頃から培ってきた技術を活かし、多様なプロジェクトで専門的な知識を提供してきました。リバースエンジニアリングやエクスプロイト開発にも強い関心を抱いており、自作のオペレーティングシステムの構築にも挑戦しています。オフラインでは、アニメやマンガ、ライトノベルを楽しみ、時にはコスプレも趣味としています。現在は、Odoo ERPの業務プロジェクトに携わりながら、シンプルなカーネルOSの開発などの個人プロジェクトにも取り組んでいます。",
-    "projectsButton": "担当したプロジェクト",
-    "history": "経歴",
+    "bio": "こんにちは！モンゴル・ウランバートル在住のフルスタック開発者、霜花です 🇲🇳 コードとコスプレを通じて創造性を表現することが大好きです！コーディングをしていない時は、コスプレ制作やアニメを楽しんでいます~ ✨",
+    "projectsButton": "プロジェクト 💻",
+    "history": "私の旅 🌸",
     "timeline": {
-      "2000": "モンゴル国ウランバートルに生まれました。",
-      "2019": "Able Softでインターンシップを行い、開発者として勤務しました。",
-      "2021": "モンゴル国立科学技術大学の学士課程を修了し、Sod Mongol LLCで勤務を開始しました。",
-      "2023-01": "Sod Mongol LLCでの勤務を終了しました。",
-      "2023-02": "Next Social Platform LLCで勤務しています。"
+      "2000": "モンゴル・ウランバートルに生まれる 🇲🇳 - 冒険の始まり！",
+      "2019": "Able Softで開発者としてのキャリアをスタート - コーディングの世界への第一歩！✨",
+      "2021": "MUST卒業 & Sod Mongol LLC入社 - 日々成長中！💪",
+      "2023-01": "Sod Mongol LLCでの旅を終える - 新しい冒険へ！",
+      "2023-02": "現在Next Social Platform LLCで魔法を創造中 🌟"
     },
-    "socialNetwork": "ソーシャルネットワーク",
-    "resumeButton": "履歴書"
+    "socialNetwork": "つながろう！💖",
+    "resumeButton": "履歴書を見る 📄"
   },
   "navigation": {
-    "home": "ホーム",
-    "projects": "プロジェクト",
+    "home": "ホーム 🏠",
+    "projects": "プロジェクト 💻",
     "github": "GitHub"
+  },
+  "about": {
+    "hello": "こんにちは！私の小さなインターネットの隅へようこそ~ ✨",
+    "description": "美しく機能的なアプリケーションを作ることに情熱を持つフルスタック開発者です。技術とクリエイティブなデザインを組み合わせて、ユーザーに喜びを届ける体験を作ることが大好きです！💖"
+  },
+  "bio": {
+    "title": "私について 🌸",
+    "items": [
+      {
+        "year": "2000",
+        "text": "モンゴル・ウランバートルに生まれる 🇲🇳"
+      },
+      {
+        "year": "2015-2019",
+        "text": "MUSTでコンピュータサイエンスを学ぶ - コーディングの旅が始まった場所！💻"
+      },
+      {
+        "year": "2019-2021",
+        "text": "様々なスタートアップでフロントエンド開発者として冒険 ✨"
+      },
+      {
+        "year": "2021-2023",
+        "text": "Sod Mongol LLCでフルスタック開発者 - スキルを磨く！🌱"
+      },
+      {
+        "year": "2023-現在",
+        "text": "Next Social Platform LLCで魔法を創造中 🌟"
+      }
+    ]
+  },
+  "hobbies": {
+    "title": "好きなこと 💖",
+    "items": [
+      "コスプレ 🎭",
+      "アニメ & 漫画 📚",
+      "デジタルアート 🎨",
+      "音楽 🎵",
+      "写真 📸",
+      "ゲーム 🎮"
+    ]
+  },
+  "contact": {
+    "title": "連絡しよう！💌",
+    "description": "プロジェクトのアイデアがありますか？コラボしたいですか？それとも挨拶したいだけ？ぜひ連絡してください！💖",
+    "form": {
+      "name": "お名前 ✨",
+      "namePlaceholder": "何とお呼びしましょうか？",
+      "email": "メール 📧",
+      "emailPlaceholder": "your.email@example.com",
+      "subject": "件名 💭",
+      "subjectPlaceholder": "何についてお話ししましょうか？",
+      "message": "メッセージ 💌",
+      "messagePlaceholder": "あなたのアイデアを教えてください~",
+      "send": "送信する ✨",
+      "sending": "送信中... 💫"
+    },
+    "errors": {
+      "nameRequired": "お名前を教えてください~ 💭",
+      "emailRequired": "返信するためにメールが必要です！📧",
+      "emailInvalid": "うーん、そのメールは正しくないようです 🤔",
+      "subjectRequired": "何についてですか？💭",
+      "messageRequired": "恥ずかしがらずに、何か言ってください！💖",
+      "messageMinLength": "もう少し教えてください~（10文字以上）"
+    },
+    "success": {
+      "title": "メッセージ送信完了！🎉",
+      "description": "ありがとうございます！すぐに返信しますね~ 💖"
+    },
+    "error": {
+      "title": "おっと！何かがうまくいきませんでした 😿",
+      "description": "もう一度お試しいただくか、SNSでご連絡ください！"
+    },
+    "social": {
+      "title": "または、こちらで見つけてください 🌐"
+    },
+    "seo": {
+      "description": "霜花に連絡して、次のプロジェクトについて話しましょう。一緒に美しいものを作りましょう！💖"
+    }
   }
 }

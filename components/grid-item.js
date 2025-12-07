@@ -2,7 +2,18 @@ import NextLink from 'next/link';
 import Image from 'next/image';
 import { Box, Text, LinkBox, LinkOverlay } from '@chakra-ui/react';
 import { Global } from '@emotion/react';
-import { useClientSide } from './use-client-side';
+import { useState, useEffect } from 'react';
+
+// Simple client-side hook to check if we're in the browser
+const useClientSide = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  return isClient;
+};
 
 export const GridItem = ({ children, href, title, thumbnail }) => {
   return (
@@ -20,7 +31,7 @@ export const GridItem = ({ children, href, title, thumbnail }) => {
 
 export const ProjectGridItem = ({ children, url = "#", title, thumbnail }) => {
   const isClient = useClientSide();
-  
+
   return (
     <Box w="100%" textAlign="center" suppressHydrationWarning>
       <LinkBox cursor="pointer">

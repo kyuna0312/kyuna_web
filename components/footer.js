@@ -1,28 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Box,
   VStack,
   HStack,
   Text,
   Link,
-  useColorModeValue,
   Divider,
   SimpleGrid,
-  Heading
+  Heading,
+  keyframes
 } from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
-import { IoLogoGithub, IoLogoTwitter, IoLogoInstagram, IoMail } from 'react-icons/io5';
+import { IoLogoGithub, IoLogoTwitter, IoLogoInstagram, IoMail, IoHeart } from 'react-icons/io5';
 import { motion } from 'framer-motion';
 
 const MotionBox = motion(Box);
 
+// Cute animations
+const floatAnimation = keyframes`
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+`;
+
+const heartbeat = keyframes`
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.2); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.2); }
+  70% { transform: scale(1); }
+`;
+
+const sparkle = keyframes`
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+`;
+
 const Footer = () => {
   const { t } = useTranslation('common');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const footerQuotes = {
-    en: "💞👠⚜️ One step, two steps... The path to the 'future' is at your feet. 💞👠⚜️",
-    jp: "💞👠⚜️ 一歩、二歩…「未来」への道は足元にある。💞👠⚜️",
-    mn: "💞👠⚜️ Нэг алхам, хоёр алхам... 'Ирээдүй' рүү чиглэх зам хөл дор байна. 💞👠⚜️"
+    en: "✨ One step, two steps... The path to the 'future' is at your feet. ✨",
+    jp: "✨ 一歩、二歩…「未来」への道は足元にある。✨",
+    mn: "✨ Нэг алхам, хоёр алхам... 'Ирээдүй' рүү чиглэх зам хөл дор байна. ✨"
   };
 
   const socialLinks = [
@@ -33,32 +57,17 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Home', href: '/', emoji: '🏠' },
+    { name: 'Projects', href: '/projects', emoji: '💻' },
+    { name: 'Contact', href: '/contact', emoji: '💌' },
   ];
-
-  // Call all hooks at the top level
-  const bgColor = useColorModeValue('glass.light', 'glass.dark');
-  const borderColor = useColorModeValue('rgba(236, 72, 153, 0.1)', 'rgba(254, 128, 160, 0.2)');
-  const bgGradient = useColorModeValue(
-    "linear(to-b, transparent, rgba(236, 72, 153, 0.05))",
-    "linear(to-b, transparent, rgba(254, 128, 160, 0.1))"
-  );
-  const textColorMuted = useColorModeValue("gray.600", "gray.400");
-  const textColorLight = useColorModeValue("gray.600", "gray.300");
-  const headingColor = useColorModeValue("gray.800", "white");
-  const dividerColor = useColorModeValue("gray.200", "gray.700");
-  const copyrightColor = useColorModeValue("gray.500", "gray.500");
-  const glassLight = useColorModeValue("glass.light", "glass.dark");
-  const socialBorderColor = useColorModeValue("rgba(236, 72, 153, 0.2)", "rgba(254, 128, 160, 0.2)");
-  const linkHoverBg = useColorModeValue("rgba(236, 72, 153, 0.1)", "rgba(254, 128, 160, 0.1)");
 
   return (
     <MotionBox
       as="footer"
-      bg={bgColor}
-      borderTop={`1px solid ${borderColor}`}
+      bg="rgba(26, 32, 44, 0.9)"
+      borderTop="1px solid"
+      borderColor="rgba(236, 72, 153, 0.2)"
       css={{
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
@@ -71,39 +80,87 @@ const Footer = () => {
       pt={16}
       pb={8}
       position="relative"
+      overflow="hidden"
     >
-      {/* Background Gradient */}
+      {/* Background decorations */}
+      {mounted && (
+        <>
+          <Box
+            position="absolute"
+            top="10%"
+            left="5%"
+            fontSize="xl"
+            opacity={0.1}
+            animation={`${floatAnimation} 4s ease-in-out infinite`}
+          >
+            ✨
+          </Box>
+          <Box
+            position="absolute"
+            top="20%"
+            right="10%"
+            fontSize="lg"
+            opacity={0.1}
+            animation={`${sparkle} 3s ease-in-out infinite`}
+          >
+            🌸
+          </Box>
+          <Box
+            position="absolute"
+            bottom="30%"
+            left="8%"
+            fontSize="md"
+            opacity={0.1}
+            animation={`${floatAnimation} 3.5s ease-in-out 1s infinite`}
+          >
+            💫
+          </Box>
+        </>
+      )}
+
+      {/* Gradient top border */}
       <Box
         position="absolute"
-        top="0"
-        left="0"
-        right="0"
-        bottom="0"
-        bgGradient={bgGradient}
-        zIndex={-1}
+        top={0}
+        left="10%"
+        right="10%"
+        h="3px"
+        bgGradient="linear(to-r, transparent, pink.400, purple.400, pink.400, transparent)"
       />
 
       <Box maxW="container.xl" mx="auto" px={8}>
         {/* Main Footer Content */}
         <Box
-          p={12}
-          bg="rgba(255, 255, 255, 0.05)"
-          backdropFilter="blur(20px)"
-          border="1px solid rgba(236, 72, 153, 0.2)"
-          borderRadius="2xl"
+          p={{ base: 8, md: 12 }}
+          bg="rgba(255, 255, 255, 0.03)"
+          backdropFilter="blur(10px)"
+          border="1px solid"
+          borderColor="rgba(236, 72, 153, 0.15)"
+          borderRadius="32px"
+          position="relative"
         >
+          {/* Corner sparkles */}
+          {mounted && (
+            <>
+              <Box position="absolute" top={4} left={4} fontSize="sm" opacity={0.3}>✦</Box>
+              <Box position="absolute" top={4} right={4} fontSize="sm" opacity={0.3}>✦</Box>
+              <Box position="absolute" bottom={4} left={4} fontSize="sm" opacity={0.3}>✦</Box>
+              <Box position="absolute" bottom={4} right={4} fontSize="sm" opacity={0.3}>✦</Box>
+            </>
+          )}
+
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={12}>
             {/* Profile Section */}
             <VStack spacing={6} align={{ base: "center", md: "start" }}>
               <Box
-                width="120px"
-                height="120px"
+                width="100px"
+                height="100px"
                 borderRadius="full"
                 overflow="hidden"
                 border="3px solid"
-                borderColor="feminine.300"
-                boxShadow="lg"
-                bg="gray.200"
+                borderColor="pink.400"
+                boxShadow="0 0 30px rgba(236, 72, 153, 0.3)"
+                position="relative"
               >
                 <Box
                   as="img"
@@ -113,54 +170,72 @@ const Footer = () => {
                   height="100%"
                   objectFit="cover"
                 />
+                {/* Cute badge */}
+                <Box
+                  position="absolute"
+                  bottom={-1}
+                  right={-1}
+                  bg="pink.500"
+                  borderRadius="full"
+                  p={1}
+                  fontSize="xs"
+                >
+                  ✨
+                </Box>
               </Box>
 
               <VStack spacing={2} textAlign={{ base: "center", md: "left" }}>
                 <Heading
                   size="md"
                   fontFamily="'Playfair Display', serif"
-                  bgGradient="linear(to-r, pink.400, rose.400)"
+                  bgGradient="linear(to-r, pink.400, purple.400)"
                   bgClip="text"
                 >
-                  霜花 (Shimoka)
+                  霜花 (Shimoka) ✨
                 </Heading>
                 <Text
                   fontSize="sm"
-                  color={textColorMuted}
-                  fontStyle="italic"
+                  color="gray.400"
                 >
-                  Creative Developer & Designer
+                  Developer 💻 • Designer 🎨 • Cosplayer 🎭
                 </Text>
               </VStack>
             </VStack>
 
             {/* Quick Links */}
             <VStack spacing={4} align={{ base: "center", md: "start" }}>
-              <Heading
-                size="sm"
-                color={headingColor}
-                fontFamily="'Playfair Display', serif"
+              <Box
+                display="inline-flex"
+                alignItems="center"
+                gap={2}
+                px={3}
+                py={1}
+                bg="rgba(167, 139, 250, 0.1)"
+                borderRadius="full"
+                border="1px solid"
+                borderColor="purple.400"
               >
-                Quick Links
-              </Heading>
+                <Text fontSize="xs" color="purple.300">Quick Links</Text>
+              </Box>
               <VStack spacing={2} align={{ base: "center", md: "start" }}>
                 {quickLinks.map((link, index) => (
                   <Link
                     key={index}
                     href={link.href}
-                    color={textColorLight}
+                    color="gray.300"
                     fontWeight="500"
                     px={3}
                     py={2}
-                    borderRadius="md"
+                    borderRadius="lg"
                     transition="all 0.3s ease"
                     _hover={{
-                      color: "feminine.500",
+                      color: "pink.400",
                       textDecoration: "none",
-                      bg: linkHoverBg
+                      bg: "rgba(236, 72, 153, 0.1)",
+                      transform: "translateX(5px)"
                     }}
                   >
-                    {link.name}
+                    {link.emoji} {link.name}
                   </Link>
                 ))}
               </VStack>
@@ -168,14 +243,20 @@ const Footer = () => {
 
             {/* Social Links */}
             <VStack spacing={4} align={{ base: "center", md: "start" }}>
-              <Heading
-                size="sm"
-                color={headingColor}
-                fontFamily="'Playfair Display', serif"
+              <Box
+                display="inline-flex"
+                alignItems="center"
+                gap={2}
+                px={3}
+                py={1}
+                bg="rgba(236, 72, 153, 0.1)"
+                borderRadius="full"
+                border="1px solid"
+                borderColor="pink.400"
               >
-                Connect
-              </Heading>
-              <HStack spacing={4}>
+                <Text fontSize="xs" color="pink.300">Connect ♡</Text>
+              </Box>
+              <HStack spacing={3}>
                 {socialLinks.map((social, index) => (
                   <Box
                     key={index}
@@ -184,34 +265,43 @@ const Footer = () => {
                     target="_blank"
                     p={3}
                     borderRadius="full"
-                    bg={glassLight}
-                    color="feminine.500"
+                    bg="rgba(255, 255, 255, 0.05)"
+                    color="gray.400"
                     border="1px solid"
-                    borderColor={socialBorderColor}
-                    backdropFilter="blur(10px)"
+                    borderColor="rgba(255, 255, 255, 0.1)"
                     transition="all 0.3s ease"
                     aria-label={social.label}
                     _hover={{
-                      transform: "scale(1.1)",
-                      color: "feminine.600"
+                      transform: "scale(1.1) translateY(-3px)",
+                      color: "pink.400",
+                      borderColor: "pink.400",
+                      bg: "rgba(236, 72, 153, 0.1)",
+                      boxShadow: "0 10px 20px rgba(236, 72, 153, 0.2)"
                     }}
                   >
-                    <social.icon size={20} />
+                    <social.icon size={18} />
                   </Box>
                 ))}
               </HStack>
             </VStack>
           </SimpleGrid>
 
-          <Divider my={8} borderColor={dividerColor} />
+          {/* Cute divider */}
+          <HStack justify="center" spacing={4} my={8}>
+            <Box h="1px" flex={1} bgGradient="linear(to-r, transparent, rgba(236, 72, 153, 0.3))" />
+            <Text color="pink.400" fontSize="sm">♡</Text>
+            <Box h="1px" w="50px" bgGradient="linear(to-r, pink.400, purple.400)" />
+            <Text color="purple.400" fontSize="sm">♡</Text>
+            <Box h="1px" flex={1} bgGradient="linear(to-l, transparent, rgba(167, 139, 250, 0.3))" />
+          </HStack>
 
           {/* Quote Section */}
-          <Box textAlign="center" mb={8}>
+          <Box textAlign="center" mb={6}>
             <Text
-              fontSize="lg"
+              fontSize="md"
               fontStyle="italic"
-              color={textColorLight}
-              maxW="600px"
+              color="gray.400"
+              maxW="500px"
               mx="auto"
               lineHeight="tall"
             >
@@ -221,9 +311,21 @@ const Footer = () => {
 
           {/* Copyright */}
           <Box textAlign="center">
-            <Text fontSize="sm" color={copyrightColor}>
-              © 2024 霜花 (Shimoka). Made with ❤️ and lots of ☕
-            </Text>
+            <HStack justify="center" spacing={2}>
+              <Text fontSize="sm" color="gray.500">
+                © 2024 霜花 (Shimoka)
+              </Text>
+              <Text fontSize="sm" color="gray.500">•</Text>
+              <Text fontSize="sm" color="gray.500">
+                Made with
+              </Text>
+              <Box animation={`${heartbeat} 1.5s ease-in-out infinite`}>
+                <IoHeart color="#ec4899" size={14} />
+              </Box>
+              <Text fontSize="sm" color="gray.500">
+                and lots of ☕
+              </Text>
+            </HStack>
           </Box>
         </Box>
       </Box>
