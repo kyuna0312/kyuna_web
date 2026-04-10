@@ -1,27 +1,30 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import type { SEOHeadProps } from '@/types'
 
 const SEOHead = ({
   title,
   description,
   image = '/images/icon.png',
   type = 'website',
-  author = 'Amari Hana'
-}) => {
+  author = 'Kyuna',
+}: SEOHeadProps) => {
   const router = useRouter()
 
-  const siteTitle = 'Amari Hana - Portfolio'
+  const siteTitle = 'Kyuna — Portfolio'
   const pageTitle = title ? `${title} | ${siteTitle}` : siteTitle
   const siteUrl = 'https://kyuna-web.vercel.app' // Update with your actual domain
   const currentUrl = `${siteUrl}${router.asPath}`
 
   const defaultDescription = {
-    en: 'Full-stack developer based in Ulaanbaatar with passion for solving problems through product planning, design, and coding.',
-    jp: 'ウランバートルを拠点とするフルスタック開発者。プロダクトの企画、デザイン、コーディングを通じた問題解決に情熱を持っています。',
-    mn: 'Улаанбаатарт төвтэй фулл стак хөгжүүлэгч. Бүтээгдэхүүний төлөвлөлт, дизайн, кодчилолоор дамжуулан асуудал шийдвэрлэхэд хүсэл тэмүүлэлтэй.'
-  }
+    en: 'Kyuna — engineer, OSS, AI comic pipelines, YouTube @amarihana. TS/JS apps, Go/Rust, terminal-coded aesthetics.',
+    jp: 'Kyuna — エンジニア、OSS、AI漫画パイプライン、YouTube @amarihana。TS/JS、Go/Rust、ターミナル美学。',
+    mn: 'Kyuna — инженер, OSS, AI комик урсгал, YouTube @amarihana. TS/JS, Go/Rust.',
+  } as const
 
-  const pageDescription = description || defaultDescription[router.locale] || defaultDescription.en
+  const localeKey =
+    router.locale === 'jp' || router.locale === 'mn' ? router.locale : 'en'
+  const pageDescription = description || defaultDescription[localeKey]
 
   return (
     <Head>
@@ -31,10 +34,10 @@ const SEOHead = ({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
       {/* PWA Meta Tags */}
-      <meta name="application-name" content="Hattanzorg Portfolio" />
+      <meta name="application-name" content="Kyuna Portfolio" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-      <meta name="apple-mobile-web-app-title" content="Hattanzorg" />
+      <meta name="apple-mobile-web-app-title" content="Kyuna" />
       <meta name="format-detection" content="telephone=no" />
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="msapplication-config" content="/browserconfig.xml" />
@@ -55,7 +58,7 @@ const SEOHead = ({
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
       <meta name="twitter:image" content={`${siteUrl}${image}`} />
-      <meta name="twitter:creator" content="@m1or3n" />
+      <meta name="twitter:creator" content="@kyuna0312" />
 
       {/* Language alternates */}
       <link rel="alternate" hrefLang="en" href={`${siteUrl}/en${router.asPath}`} />
@@ -76,7 +79,7 @@ const SEOHead = ({
 
       {/* Preconnect to external domains */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
       {/* Theme color */}
       <meta name="theme-color" content="#9f7aea" />
@@ -92,17 +95,21 @@ const SEOHead = ({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": "Hattanzorg",
+            "name": "Kyuna",
             "url": siteUrl,
             "sameAs": [
-              "https://github.com/kyuna312",
-              "https://twitter.com/m1or3n",
-              "https://instagram.com/m1or3n"
+              "https://github.com/kyuna0312",
+              "https://kyuna-web.vercel.app",
+              "https://amane312.vercel.app",
+              "https://www.youtube.com/@amarihana",
+              "https://x.com/kyuna0312",
+              "https://www.instagram.com/kyuna0312/",
+              "https://discord.gg/shiba"
             ],
-            "jobTitle": "Full-stack Developer",
+            "jobTitle": "Software Engineer",
             "worksFor": {
               "@type": "Organization",
-              "name": "Next Social Platform LLC"
+              "name": "Amari Hana Inc."
             },
             "address": {
               "@type": "PostalAddress",
@@ -110,18 +117,18 @@ const SEOHead = ({
               "addressCountry": "Mongolia"
             },
             "knowsAbout": [
+              "TypeScript",
               "JavaScript",
+              "Go",
+              "Rust",
               "React",
               "Next.js",
               "Node.js",
-              "MongoDB",
-              "PostgreSQL",
-              "TypeScript",
-              "Python",
-              "Flutter",
-              "Mobile Development",
+              "Open Source Software",
+              "Generative AI",
+              "Linux",
               "Web Development",
-              "Full Stack Development"
+              "Content Creation"
             ]
           })
         }}

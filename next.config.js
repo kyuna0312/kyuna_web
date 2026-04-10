@@ -1,8 +1,12 @@
 const { i18n } = require('./next-i18next.config')
 
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   i18n,
 
   // Enhanced Image Optimization
@@ -40,6 +44,9 @@ module.exports = {
   experimental: {
     optimizePackageImports: ['@chakra-ui/react', '@chakra-ui/icons', 'framer-motion', 'next-i18next', 'react-icons'],
   },
+
+  // Dev uses Turbopack by default; empty config opts in explicitly alongside `webpack` (used for `next build --webpack`).
+  turbopack: {},
 
   // Single unified webpack configuration
   webpack: (config, { dev, isServer }) => {
@@ -175,3 +182,5 @@ module.exports = {
   // Power by header removal for security
   poweredByHeader: false,
 }
+
+module.exports = withBundleAnalyzer(nextConfig)

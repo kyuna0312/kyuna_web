@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { Box } from '@chakra-ui/react'
 
 // Simple client-side hook to check if we're in the browser
@@ -12,11 +12,11 @@ const useClientSide = () => {
   return isClient;
 };
 
-const KeyboardNavigation = ({ children }) => {
+const KeyboardNavigation = ({ children }: { children: ReactNode }) => {
   const isClient = useClientSide();
 
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       // Skip to main content with Alt + M
       if (event.altKey && event.key === 'm') {
         event.preventDefault()
@@ -33,7 +33,7 @@ const KeyboardNavigation = ({ children }) => {
         const navigation = document.querySelector('nav')
         if (navigation) {
           const firstLink = navigation.querySelector('a, button')
-          if (firstLink) {
+          if (firstLink instanceof HTMLElement) {
             firstLink.focus()
           }
         }

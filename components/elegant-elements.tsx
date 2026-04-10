@@ -10,6 +10,13 @@ import {
 } from '@chakra-ui/react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import type {
+  ElegantTimelineProps,
+  ElegantTimelineItemProps,
+  ElegantSocialLink,
+} from '@/types'
+
+export type { TimelineItem } from '@/types'
 
 const MotionBox = motion(Box)
 const MotionFlex = motion(Flex)
@@ -56,7 +63,12 @@ export const ElegantSection = ({ children, delay = 0, bg, ...props }) => {
 }
 
 // Sophisticated Button Component
-export const ElegantButton = ({ children, variant = "elegant", isLoading, ...props }) => {
+export const ElegantButton = ({
+  children,
+  variant = 'elegant',
+  isLoading = false,
+  ...props
+}) => {
   return (
     <MotionBox
       whileHover={{ scale: 1.02 }}
@@ -171,10 +183,15 @@ export const ElegantCard = ({ children, icon, title, ...props }) => {
 }
 
 // Sophisticated Text Component
-export const ElegantText = ({ children, variant = "elegant", as = "span", ...props }) => {
+export const ElegantText = ({
+  children,
+  variant = 'elegant',
+  as: Tag = 'span',
+  ...props
+}: React.ComponentProps<typeof Text> & { variant?: string }) => {
   return (
     <Text
-      as={as}
+      as={Tag}
       textStyle={variant}
       fontWeight="600"
       letterSpacing="-0.02em"
@@ -276,7 +293,7 @@ export const ElegantBackground = ({ children, ...props }) => {
 const timelineEmojis = ['🌸', '✨', '💫', '🎀', '💖', '⭐', '🌟', '💝']
 
 // Timeline Component - Cute Version
-export const ElegantTimeline = ({ items = [] }) => {
+export const ElegantTimeline = ({ items = [] }: ElegantTimelineProps) => {
   return (
     <VStack spacing={8} align="stretch" position="relative" py={4}>
       {/* Cute gradient timeline line with dashes */}
@@ -316,7 +333,14 @@ export const ElegantTimeline = ({ items = [] }) => {
 }
 
 // Timeline Item Component - Cute Version
-export const ElegantTimelineItem = ({ year, title, description, delay = 0, emoji = '✨', isLast = false }) => {
+export const ElegantTimelineItem = ({
+  year,
+  title,
+  description,
+  delay = 0,
+  emoji = '✨',
+  isLast = false,
+}: ElegantTimelineItemProps) => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
 
@@ -466,7 +490,7 @@ export const ElegantTimelineItem = ({ year, title, description, delay = 0, emoji
 }
 
 // Social Links Component
-export const ElegantSocialLinks = ({ links = [] }) => {
+export const ElegantSocialLinks = ({ links = [] }: { links?: ElegantSocialLink[] }) => {
   return (
     <HStack spacing={4} justify="center">
       {links.map((link, index) => (

@@ -1,6 +1,15 @@
-import { motion, useAnimation, useInView, useScroll, useTransform } from 'framer-motion';
-import { useEffect, useRef } from 'react';
-import { Box } from '@chakra-ui/react';
+import { motion, useAnimation, useInView, useScroll, useTransform } from 'framer-motion'
+import { useEffect, useRef } from 'react'
+import { Box } from '@chakra-ui/react'
+import type {
+  ScrollAnimationWrapperProps,
+  StaggerAnimationWrapperProps,
+  ParallaxWrapperProps,
+  LoadingSpinnerProps,
+  FloatingElementProps,
+  PulseElementProps,
+  AnimatedTextProps,
+} from '@/types'
 
 // Enhanced Motion Components with pre-configured animations
 export const MotionBox = motion(Box);
@@ -136,16 +145,16 @@ export const staggerItem = {
       ease: [0.25, 0.46, 0.45, 0.94]
     }
   }
-};
+}
 
 // Advanced Scroll-Triggered Animation Hook
 export const useScrollAnimation = (threshold = 0.1) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null)
   const isInView = useInView(ref, {
-    threshold,
+    amount: threshold,
     once: true,
-    margin: "0px 0px -100px 0px"
-  });
+    margin: '0px 0px -100px 0px',
+  })
   const controls = useAnimation();
 
   useEffect(() => {
@@ -172,19 +181,19 @@ export const ScrollAnimationWrapper = ({
   delay = 0,
   threshold = 0.1,
   ...props
-}) => {
-  const { ref, controls } = useScrollAnimation(threshold);
+}: ScrollAnimationWrapperProps) => {
+  const { ref, controls } = useScrollAnimation(threshold)
 
   const animationVariant = {
     hidden: variant.hidden,
     visible: {
       ...variant.visible,
       transition: {
-        ...variant.visible.transition,
-        delay: delay
-      }
-    }
-  };
+        ...(variant.visible as { transition?: object }).transition,
+        delay,
+      },
+    },
+  }
 
   return (
     <MotionBox
@@ -206,7 +215,7 @@ export const StaggerAnimationWrapper = ({
   initialDelay = 0.3,
   threshold = 0.1,
   ...props
-}) => {
+}: StaggerAnimationWrapperProps) => {
   const { ref, controls } = useScrollAnimation(threshold);
 
   const containerVariant = {
@@ -239,7 +248,7 @@ export const ParallaxWrapper = ({
   offset = 50,
   reverse = false,
   ...props
-}) => {
+}: ParallaxWrapperProps) => {
   const y = useParallaxScroll(reverse ? -offset : offset);
 
   return (
@@ -317,7 +326,7 @@ export const pageTransition = {
 };
 
 // Loading Animation Component
-export const LoadingSpinner = ({ size = 40, color = "#ec4899" }) => {
+export const LoadingSpinner = ({ size = 40, color = '#ec4899' }: LoadingSpinnerProps) => {
   return (
     <MotionBox
       width={`${size}px`}
@@ -342,7 +351,7 @@ export const FloatingElement = ({
   duration = 3,
   y = [-10, 10],
   ...props
-}) => {
+}: FloatingElementProps) => {
   return (
     <MotionBox
       animate={{
@@ -367,7 +376,7 @@ export const PulseElement = ({
   scale = [1, 1.05],
   duration = 2,
   ...props
-}) => {
+}: PulseElementProps) => {
   return (
     <MotionBox
       animate={{
@@ -392,12 +401,12 @@ export const AnimatedText = ({
   delay = 0,
   duration = 0.5,
   ...props
-}) => {
+}: AnimatedTextProps) => {
   const letters = Array.from(text);
 
   const container = {
     hidden: { opacity: 0 },
-    visible: (i = 1) => ({
+    visible: (_i = 1) => ({
       opacity: 1,
       transition: {
         staggerChildren: 0.03,

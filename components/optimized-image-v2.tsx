@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type CSSProperties, type SyntheticEvent } from 'react';
 import { Box } from '@chakra-ui/react';
 import Image from 'next/image';
+import type { OptimizedImageProps } from '@/types';
 
 // Optimized Image Component using Next.js Image
 const OptimizedImage = ({
@@ -21,7 +22,7 @@ const OptimizedImage = ({
   sizes,
   fill = false,
   ...props
-}) => {
+}: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [currentSrc, setCurrentSrc] = useState(src);
@@ -33,7 +34,7 @@ const OptimizedImage = ({
     setIsLoaded(false);
   }, [src]);
 
-  const handleLoad = (event) => {
+  const handleLoad = (event: SyntheticEvent<HTMLImageElement>) => {
     setIsLoaded(true);
     onLoad?.(event);
   };
@@ -86,7 +87,7 @@ const OptimizedImage = ({
           onError={handleError}
           className={className}
           style={{
-            objectFit,
+            objectFit: objectFit as CSSProperties['objectFit'],
             objectPosition,
             opacity: isLoaded ? 1 : 0,
             transition: 'opacity 0.4s ease, transform 0.4s ease',
@@ -102,13 +103,13 @@ const OptimizedImage = ({
           alt={alt || ''}
           width="100%"
           height="100%"
-          objectFit={objectFit}
-          objectPosition={objectPosition}
           onLoad={handleLoad}
           onError={handleError}
           className={className}
           loading={priority ? 'eager' : 'lazy'}
           style={{
+            objectFit: objectFit as CSSProperties['objectFit'],
+            objectPosition,
             opacity: isLoaded ? 1 : 0,
             transition: 'opacity 0.4s ease, transform 0.4s ease',
             transform: isLoaded ? 'scale(1)' : 'scale(1.05)',
@@ -172,7 +173,7 @@ export const ImageGallery = ({
             alt={image.alt || `Gallery image ${index + 1}`}
             fill
             objectFit="cover"
-            borderRadius="xl"
+            borderRadius={0}
             priority={index < 6}
           />
         </Box>

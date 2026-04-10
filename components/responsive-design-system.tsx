@@ -1,5 +1,6 @@
 import { Container, Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import type { ResponsiveContainerProps } from '@/types';
 
 const MotionBox = motion(Box);
 
@@ -10,9 +11,9 @@ export const ResponsiveContainer = ({
   padding,
   paddingTop,
   paddingBottom,
-  margin,
+  margin: _margin,
   ...props
-}) => {
+}: ResponsiveContainerProps) => {
   // Use Container with proper defaults for better spacing
   const containerMaxW = maxWidth || {
     base: '100%',

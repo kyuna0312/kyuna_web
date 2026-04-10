@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hattanzorg-portfolio-v1';
+const CACHE_NAME = 'shimoka-portfolio-v1';
 const urlsToCache = [
   '/',
   '/en',
@@ -97,6 +97,6 @@ self.addEventListener('push', (event) => {
   };
 
   event.waitUntil(
-    self.registration.showNotification('Hattanzorg Portfolio', options)
+    self.registration.showNotification('Kyuna Portfolio', options)
   );
 });

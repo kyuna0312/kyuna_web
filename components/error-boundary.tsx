@@ -1,31 +1,40 @@
-import React from 'react'
+import React, { type ErrorInfo } from 'react'
 import { Box, VStack, Heading, Text, Button } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import type {
+  ErrorBoundaryState,
+  ErrorBoundaryProps,
+  ErrorFallbackProps,
+} from '@/types'
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props)
     this.state = { hasError: false, error: null }
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
     return { hasError: true, error }
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('ErrorBoundary caught an error:', error, errorInfo)
   }
 
   render() {
     if (this.state.hasError) {
-      return <ErrorFallback onReset={() => this.setState({ hasError: false, error: null })} />
+      return (
+        <ErrorFallback
+          onReset={() => this.setState({ hasError: false, error: null })}
+        />
+      )
     }
 
     return this.props.children
   }
 }
 
-const ErrorFallback = () => {
+const ErrorFallback = ({ onReset }: ErrorFallbackProps) => {
   const router = useRouter()
 
   return (
@@ -54,12 +63,16 @@ const ErrorFallback = () => {
             Oops! Something went wrong
           </Heading>
           <Text color="gray.300" textAlign="center">
-            We&apos;re sorry for the inconvenience. Please try refreshing the page or go back to the homepage.
+            We&apos;re sorry for the inconvenience. Please try refreshing the page or go back to the
+            homepage.
           </Text>
         </VStack>
         <VStack spacing={3}>
           <Button
-            onClick={() => window.location.reload()}
+            onClick={() => {
+              onReset?.()
+              window.location.reload()
+            }}
             colorScheme="purple"
             variant="solid"
             size="lg"
@@ -80,15 +93,14 @@ const ErrorFallback = () => {
   )
 }
 
-// Hook for error handling
 export const useErrorHandler = () => {
-  const [error, setError] = React.useState(null)
+  const [error, setError] = React.useState<Error | null>(null)
 
   const resetError = () => setError(null)
 
-  const throwError = (error) => {
-    setError(error)
-    throw error
+  const throwError = (err: Error) => {
+    setError(err)
+    throw err
   }
 
   return { error, resetError, throwError }

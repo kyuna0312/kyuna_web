@@ -1,7 +1,7 @@
 {
-  "name": "Hattanzorg Portfolio",
-  "short_name": "Hattanzorg",
-  "description": "Full-stack developer portfolio showcasing modern web development skills",
+  "name": "Kyuna — Portfolio",
+  "short_name": "Kyuna",
+  "description": "Engineer, OSS, AI comic pipelines, YouTube — kyuna-web.vercel.app",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",

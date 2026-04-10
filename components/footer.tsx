@@ -5,13 +5,13 @@ import {
   HStack,
   Text,
   Link,
-  Divider,
   SimpleGrid,
   Heading,
   keyframes
 } from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
-import { IoLogoGithub, IoLogoTwitter, IoLogoInstagram, IoMail, IoHeart } from 'react-icons/io5';
+import { IoLogoGithub, IoLogoTwitter, IoLogoInstagram, IoLogoYoutube, IoMail, IoHeart } from 'react-icons/io5';
+import { SiDiscord } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
 const MotionBox = motion(Box);
@@ -50,10 +50,12 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: IoLogoGithub, href: 'https://github.com/kyuna312', label: 'GitHub' },
-    { icon: IoLogoTwitter, href: 'https://twitter.com/m1or3n', label: 'Twitter' },
-    { icon: IoLogoInstagram, href: 'https://instagram.com/m1or3n', label: 'Instagram' },
-    { icon: IoMail, href: 'mailto:your.email@example.com', label: 'Email' },
+    { icon: IoLogoGithub, href: 'https://github.com/kyuna0312', label: 'GitHub' },
+    { icon: IoLogoYoutube, href: 'https://www.youtube.com/@amarihana', label: 'YouTube' },
+    { icon: IoLogoTwitter, href: 'https://x.com/kyuna0312', label: 'X' },
+    { icon: IoLogoInstagram, href: 'https://www.instagram.com/kyuna0312/', label: 'Instagram' },
+    { icon: SiDiscord, href: 'https://discord.gg/shiba', label: 'Discord' },
+    { icon: IoMail, href: '/contact', label: 'Contact' },
   ];
 
   const quickLinks = [
@@ -191,7 +193,7 @@ const Footer = () => {
                   bgGradient="linear(to-r, pink.400, purple.400)"
                   bgClip="text"
                 >
-                  霜花 (Shimoka) ✨
+                  Kyuna / 霜花 ✨
                 </Heading>
                 <Text
                   fontSize="sm"
@@ -257,12 +259,13 @@ const Footer = () => {
                 <Text fontSize="xs" color="pink.300">Connect ♡</Text>
               </Box>
               <HStack spacing={3}>
-                {socialLinks.map((social, index) => (
+                {socialLinks.map((social) => (
                   <Box
-                    key={index}
+                    key={social.label}
                     as={Link}
                     href={social.href}
-                    target="_blank"
+                    target={social.href.startsWith('http') ? '_blank' : undefined}
+                    rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     p={3}
                     borderRadius="full"
                     bg="rgba(255, 255, 255, 0.05)"
@@ -313,7 +316,7 @@ const Footer = () => {
           <Box textAlign="center">
             <HStack justify="center" spacing={2}>
               <Text fontSize="sm" color="gray.500">
-                © 2024 霜花 (Shimoka)
+                © 2026 Kyuna / 霜花
               </Text>
               <Text fontSize="sm" color="gray.500">•</Text>
               <Text fontSize="sm" color="gray.500">

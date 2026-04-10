@@ -4,9 +4,10 @@ import Footer from '../footer';
 import KeyboardNavigation from '../keyboard-navigation';
 import SEOHead from '../seo-head';
 import { ScrollToTop } from '../scroll-to-top';
+import type { MainLayoutProps } from '@/types';
 
 // Cute Main Layout Component 💖
-const Main = ({ children, router }) => {
+const Main = ({ children, router }: MainLayoutProps) => {
   return (
     <KeyboardNavigation>
       <Box

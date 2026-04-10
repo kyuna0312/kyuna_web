@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import SEOHead from '../seo-head';
 import { Box } from '@chakra-ui/react';
+import type { ArticleLayoutProps } from '@/types';
 
 // Cute page transition animations 💖
 const variants = {
@@ -30,7 +31,7 @@ const variants = {
 };
 
 // Article Layout Component with smooth animations ✨
-const Layout = ({ children, title, description, image }) => {
+const Layout = ({ children, title, description, image }: ArticleLayoutProps) => {
   return (
     <motion.article
       initial="hidden"
