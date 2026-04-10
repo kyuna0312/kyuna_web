@@ -7,8 +7,6 @@ import {
   Textarea,
   VStack,
   HStack,
-  Alert,
-  AlertIcon,
   useToast,
   Heading,
   Text,
@@ -16,9 +14,11 @@ import {
   Link,
   useColorModeValue,
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useState, type FormEvent, type ChangeEvent } from 'react'
+import type { FormErrors } from '@/types'
 import { motion } from 'framer-motion'
-import { FiMail, FiGithub, FiTwitter, FiInstagram, FiLinkedin } from 'react-icons/fi'
+import { FiMail, FiGithub, FiTwitter, FiInstagram, FiLinkedin, FiYoutube } from 'react-icons/fi'
+import { SiDiscord } from 'react-icons/si'
 import { useTranslation } from 'next-i18next'
 import { RippleEffect, MagneticButton } from './interactive-effects-v2'
 
@@ -35,7 +35,7 @@ const ContactForm = () => {
     message: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState<FormErrors>({})
 
   const bg = useColorModeValue('rgba(255, 255, 255, 0.9)', 'rgba(26, 32, 44, 0.9)')
   const borderColor = useColorModeValue('rgba(236, 72, 153, 0.2)', 'rgba(254, 128, 160, 0.3)')
@@ -43,7 +43,7 @@ const ContactForm = () => {
   const shadowColor = useColorModeValue('lg', 'dark-lg')
 
   const validateForm = () => {
-    const newErrors = {}
+    const newErrors: FormErrors = {}
 
     if (!formData.name.trim()) {
       newErrors.name = t('contact.errors.nameRequired') || 'Name is required'
@@ -69,7 +69,7 @@ const ContactForm = () => {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
@@ -77,15 +77,15 @@ const ContactForm = () => {
     }))
 
     // Clear error for this field when user starts typing
-    if (errors[name]) {
+    if (errors[name as keyof FormErrors]) {
       setErrors(prev => ({
         ...prev,
-        [name]: ''
+        [name]: '',
       }))
     }
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
     if (!validateForm()) {
@@ -98,10 +98,14 @@ const ContactForm = () => {
       // Simulate API call - replace with actual email service
       await new Promise(resolve => setTimeout(resolve, 2000))
 
-      // Create mailto link as fallback
-      const mailtoLink = `mailto:hello@hattanzorg.dev?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL
+      const body = encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )}`
+      )
+      const subject = encodeURIComponent(formData.subject)
+      const mailtoLink = contactEmail
+        ? `mailto:${contactEmail}?subject=${subject}&body=${body}`
+        : `mailto:?subject=${subject}&body=${body}`
 
       window.open(mailtoLink, '_blank')
 
@@ -121,7 +125,7 @@ const ContactForm = () => {
         message: ''
       })
 
-    } catch (error) {
+    } catch (_error) {
       toast({
         title: t('contact.error.title') || 'Error sending message',
         description: t('contact.error.description') || 'Something went wrong. Please try again.',
@@ -180,7 +184,7 @@ const ContactForm = () => {
 
         <VStack spacing={6} as="form" onSubmit={handleSubmit}>
           <HStack spacing={4} width="100%">
-            <FormControl isInvalid={errors.name}>
+            <FormControl isInvalid={Boolean(errors.name)}>
               <FormLabel fontWeight="semibold" color="gray.600">
                 {t('contact.form.name') || 'Name'}
               </FormLabel>
@@ -212,7 +216,7 @@ const ContactForm = () => {
               )}
             </FormControl>
 
-            <FormControl isInvalid={errors.email}>
+            <FormControl isInvalid={Boolean(errors.email)}>
               <FormLabel fontWeight="semibold" color="gray.600">
                 {t('contact.form.email') || 'Email'}
               </FormLabel>
@@ -246,7 +250,7 @@ const ContactForm = () => {
             </FormControl>
           </HStack>
 
-          <FormControl isInvalid={errors.subject}>
+          <FormControl isInvalid={Boolean(errors.subject)}>
             <FormLabel fontWeight="semibold" color="gray.600">
               {t('contact.form.subject') || 'Subject'}
             </FormLabel>
@@ -278,7 +282,7 @@ const ContactForm = () => {
             )}
           </FormControl>
 
-          <FormControl isInvalid={errors.message}>
+          <FormControl isInvalid={Boolean(errors.message)}>
             <FormLabel fontWeight="semibold" color="gray.600">
               {t('contact.form.message') || 'Message'}
             </FormLabel>
@@ -348,11 +352,21 @@ const ContactForm = () => {
           </Text>
           <HStack spacing={4} justify="center">
             {[
-              { icon: FiGithub, href: 'https://github.com/kyuna312', label: 'GitHub' },
-              { icon: FiTwitter, href: 'https://twitter.com/m1or3n', label: 'Twitter' },
-              { icon: FiLinkedin, href: 'https://linkedin.com/in/hattanzorg', label: 'LinkedIn' },
-              { icon: FiInstagram, href: 'https://instagram.com/m1or3n', label: 'Instagram' }
-            ].map((social, index) => (
+              { icon: FiGithub, href: 'https://github.com/kyuna0312', label: 'GitHub' },
+              { icon: FiYoutube, href: 'https://www.youtube.com/@amarihana', label: 'YouTube' },
+              { icon: FiTwitter, href: 'https://x.com/kyuna0312', label: 'X' },
+              { icon: FiInstagram, href: 'https://www.instagram.com/kyuna0312/', label: 'Instagram' },
+              { icon: SiDiscord, href: 'https://discord.gg/shiba', label: 'Discord' },
+              ...(process.env.NEXT_PUBLIC_LINKEDIN_URL
+                ? [
+                    {
+                      icon: FiLinkedin,
+                      href: process.env.NEXT_PUBLIC_LINKEDIN_URL,
+                      label: 'LinkedIn',
+                    },
+                  ]
+                : []),
+            ].map((social) => (
               <MagneticButton key={social.label}>
                 <Link
                   href={social.href}

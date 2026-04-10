@@ -9,13 +9,25 @@
   "footer": {
     "contact": "Холбоо барих",
     "about": "Миний тухай",
-    "copyright": "© 2024 霜花 (Shimoka). ❤️ болон ☕-ээр хийсэн"
+    "copyright": "© 2026 Kyuna / 霜花. ❤️ болон ☕-ээр хийсэн"
   },
   "projects": {
     "title": "Төслүүд ✨",
-    "description": "Миний бүтээлч төслүүдийг үзээрэй~",
+    "description": "GitHub профайлтай ижил түлхүүр репозиториуд.",
+    "heroBadge": "$ gh repo list --featured",
+    "heroTitle": "Бүтээлтийн тэмдэглэл",
+    "heroDescription": "Бүтээгдэхүүн, backend, систем, бүтээлч багаж — pin-үүд нь github.com/kyuna0312/kyuna0312-тай таарна.",
+    "recruiterLine": "Ажилд авагчид: эхлээд эндээс, дараа нь албан тушаалд тохох репо руу орно уу.",
     "viewSource": "Эх кодыг үзэх 💻",
     "viewDemo": "Демо үзэх ✨",
+    "kyunaWeb": "kyuna_web",
+    "kyunaWebDescription": "Энэ сайт — Next.js, Chakra UI, next-i18next (EN/JA/MN), Vercel.",
+    "dotfiles": "dotfiles",
+    "dotfilesDescription": "zsh, shell, хөгжүүлэлтийн тохиргоо — терминалын доод инженерчлэл.",
+    "inariWrite": "InariWrite",
+    "inariWriteDescription": "Бичих, засварлах хэрэгслүүд — санаанаас текст хурдан.",
+    "amaneSite": "amane312.vercel.app",
+    "amaneSiteDescription": "Нөгөө нэг фронт / туршилтын сайт — GitHub README дээрх холбоос.",
     "NomadX": "NomadX",
     "NomadXDescription": "Хайраар бүтээсэн Монголын NFT зах 💖",
     "mongolnet": "Mongol.net",
@@ -28,21 +40,108 @@
     "nyanvimDescription": "Миний захиалгат NeoVim тохиргоо - кодчилол ч хөөрхөн байх ёстой! 🎀"
   },
   "home": {
-    "title": "霜花 (Shimoka)",
-    "subtitle": "Хөгжүүлэгч 💻 • Дизайнер 🎨 • Косплэйер 🎭",
-    "description": "Миний бүтээлч ертөнцөд тавтай морил! Би үзэсгэлэнтэй код, дизайнаар санаануудыг амилуулдаг фулл стак хөгжүүлэгч юм ✨",
+    "title": "Kyuna / 霜花",
+    "subtitle": "Инженер · Нээлттэй эх · AI комик урсгал · YouTube",
+    "description": "Ганцаар UI, API, сонирхолд автсан доод түвшний туршилт. Косплэй, нийгэмлэг = илэрхийлэл; код + дүр + өгүүлэл = нэг стек — анимэ маяг ба «уйтгартай» дэд бүтэц зэрэгцэн ✨",
+    "seoTitle": "Kyuna (霜花) — инженер, OSS, AI комик, YouTube",
+    "seoDescription": "Kyuna: TS/JS апп, Go/Rust, AI комик багаж, YouTube @amarihana. kyuna-web.vercel.app.",
+    "welcomeBadge": "kyuna0312@github:~$ ./welcome --tty",
+    "imageAlt": "Kyuna — инженер, OSS, AI комик, бүтээгч",
+    "buildSectionTitle": "$ tree -L 1 ./build",
+    "buildSectionAria": "Ажлын бүлэглэл: бүтээгдэхүүн, backend, систем, бүтээлч",
+    "buildTree": "./build\n├── product/      # TS/JS апп → kyuna-web.vercel.app · amane312.vercel.app\n├── backend/      # Go үйлчилгээ, API, автоматжуулалт, dotfiles\n├── systems/      # Rust/C — OS-ийн ойролцоо, bootloader, engine\n└── creative/     # засварлагч, AI комик багаж, санаа → хуудас хурдан",
+    "liveSites": "Сайтууд",
     "viewProjects": "Төслүүдийг үзэх 💻",
-    "getInTouch": "Сайн уу! 💌",
+    "getInTouch": "Сайн уу 💌",
+    "hireMe": "Хамтран ажиллая 💼",
     "workExperience": "Ажлын туршлага",
-    "bio": "Сайн уу! Би Монгол улсын Улаанбаатар хотод амьдардаг фулл стак хөгжүүлэгч Shimoka 🇲🇳 Код болон косплэйгээр бүтээлч байдлаа илэрхийлэх дуртай! Кодчилол хийхгүй үедээ косплэй төсөл хийх эсвэл анимэ үзэж байдаг~ ✨",
+    "bio": "Сайн уу — Kyuna (霜花), Улаанбаатар 🇲🇳 Би продукт код, OSS, AI комик урсгал хийдэг; YouTube @amarihana. Чөлөөт цагтаа косплэй, анимэ~ ✨",
     "projectsButton": "Төслүүд 💻",
     "history": "Миний аялал 🌸",
+    "pillars": {
+      "oss": {
+        "title": "Нээлттэй эх",
+        "body": "Багаж, тохиргоо, нийгэмлэгт хувь нэмэр оруулах төслүүд."
+      },
+      "comics": {
+        "title": "AI комик урсгал",
+        "body": "Санаанаас хуудас хүртэл — үүсгэх workflow, бүтээлч багаж."
+      },
+      "youtube": {
+        "title": "YouTube",
+        "body": "Бүтээл, tech, нийгэмлэг — @amarihana."
+      }
+    },
+    "skillsSection": {
+      "badge": "✦ Юу хийдэг вэ ✦",
+      "heading": "✨ Техникийн чадвар ✨",
+      "subheading": "Бүтээгдэхүүн гаргах стек, арга барил 💖"
+    },
+    "skills": {
+      "items": [
+        {
+          "icon": "💻",
+          "title": "Бүтээгдэхүүн (TS / JS)",
+          "description": "Апп, интерфэйс — React, Next.js, TypeScript, дизайн систем.",
+          "techs": ["TypeScript", "JavaScript", "React", "Next.js"]
+        },
+        {
+          "icon": "🟢",
+          "title": "Backend & автоматжуулалт",
+          "description": "Үйлчилгээ, API, холбох код — Go, Node тохиолдлоор.",
+          "techs": ["Go", "Node.js", "APIs", "Automation"]
+        },
+        {
+          "icon": "🦀",
+          "title": "Систем & доод түвшин",
+          "description": "Rust, C, OS-ийн ойролцоо туршилт — bootloader, engine.",
+          "techs": ["Rust", "C", "Linux", "Tooling"]
+        },
+        {
+          "icon": "🧩",
+          "title": "Нээлттэй эх",
+          "description": "Жижиг diff, тод үндэслэл — good first issue, dotfiles.",
+          "techs": ["GitHub", "CLI", "Docs", "Community"]
+        },
+        {
+          "icon": "🎨",
+          "title": "Бүтээлч стек",
+          "description": "AI комик урсгал, засварлагч, хөдөлгөөн — өгүүлэл + код.",
+          "techs": ["Generative AI", "Lua", "Python", "Design"]
+        },
+        {
+          "icon": "▶️",
+          "title": "YouTube & илэрхийлэл",
+          "description": "Урт бичлэг, илэрхийлэл — терминал × анимэ уур амьсгал.",
+          "techs": ["YouTube", "X", "Discord", "Instagram"]
+        }
+      ]
+    },
+    "timelineSection": {
+      "badge": "🌸 Миний түүх 🌸",
+      "heading": "✨ Мэргэжлийн зам ✨",
+      "subheading": "Код, бүтээгдэхүүн, бүтээлч ажил 💫"
+    },
     "timeline": {
       "2000": "Монгол улсын Улаанбаатар хотод төрсөн 🇲🇳 - Адал явдлын эхлэл!",
       "2019": "Able Soft-д хөгжүүлэгчийн аялалаа эхлүүлсэн - Кодчилолын ертөнц рүү эхний алхам! ✨",
       "2021": "МУСТ төгсөж, Sod Mongol ХХК-д элссэн - Өдөр бүр хүчирхэгжиж байна! 💪",
       "2023-01": "Sod Mongol ХХК дахь аялалаа дуусгасан - Шинэ адал явдал руу!",
       "2023-02": "Одоо Next Social Platform ХХК-д ид шид бүтээж байна 🌟"
+    },
+    "timelineDesc": {
+      "2000": "Улаанбаатарт эхэлсэн аялал.",
+      "2019": "Анхны мэргэжлийн алхам — багийн хамт бүтээгдэхүүн гаргах.",
+      "2021": "Вэб, гар утасны фулл стак ур чадвар гүнзгийрсэн.",
+      "2023-01": "Нэг үе шат дуусаж, шинэ бүтээгдэхүүний сорилтууд.",
+      "2023-02": "Нийгмийн платформ дээр UX болон хэрэгжүүлэлт."
+    },
+    "ctaSection": {
+      "badge": "💌 Холбогдоё 💌",
+      "heading": "Fork хийсэн үү? Хэлээрэй ✨",
+      "body": "Ажил, хамтын ажиллагаа, OSS. Шалтгаан тод жижиг PR илүү дуртай. Олзолсон fork-оо хуваалцаарай.",
+      "startProject": "Төсөл эхлүүлэх",
+      "socialHint": "Эсвэл нийгмийн сүлжээгээр ♡"
     },
     "socialNetwork": "Холбогдоё! 💖",
     "resumeButton": "Анкет үзэх 📄"
@@ -54,7 +153,7 @@
   },
   "about": {
     "hello": "Сайн уу! Миний интернетийн жижиг буланд тавтай морил~ ✨",
-    "description": "Би үзэсгэлэнтэй, ажиллагаатай програм бүтээх хүсэл тэмүүлэлтэй фулл стак хөгжүүлэгч. Техникийн ур чадвар болон бүтээлч дизайныг хослуулж хэрэглэгчдэд баяр баясгалан өгөх туршлага бүтээх дуртай! 💖"
+    "description": "Ганцаар: OSS, AI комик урсгал, YouTube @amarihana. EN · 日本語 · MN. UI, API, доод түвшний туршилт. 💖"
   },
   "bio": {
     "title": "Миний тухай 🌸",
@@ -85,6 +184,7 @@
     "title": "Дуртай зүйлс 💖",
     "items": [
       "Косплэй 🎭",
+      "YouTube @amarihana ▶️",
       "Анимэ & Манга 📚",
       "Дижитал урлаг 🎨",
       "Хөгжим 🎵",
@@ -105,7 +205,8 @@
       "message": "Мессеж 💌",
       "messagePlaceholder": "Санаагаа хэлээрэй~",
       "send": "Илгээх ✨",
-      "sending": "Илгээж байна... 💫"
+      "sending": "Илгээж байна... 💫",
+      "orConnect": "Эсвэл эндээс холбогдоорой"
     },
     "errors": {
       "nameRequired": "Нэрээ хэлээч~ 💭",
@@ -127,7 +228,7 @@
       "title": "Эсвэл эндээс олоорой 🌐"
     },
     "seo": {
-      "description": "Дараагийн төслийнхөө талаар Shimoka-тай холбогдоорой. Хамтдаа гайхалтай зүйл бүтээцгээе! 💖"
+      "description": "Дараагийн төсөл, хамтын ажиллагаа, OSS санаа — Kyuna-тай холбогдоорой. 💖"
     }
   }
 }

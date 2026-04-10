@@ -9,13 +9,25 @@
   "footer": {
     "contact": "Contact",
     "about": "About",
-    "copyright": "© 2024 霜花 (Shimoka). Made with ❤️ and lots of ☕"
+    "copyright": "© 2026 Kyuna / 霜花. Made with ❤️ and lots of ☕"
   },
   "projects": {
     "title": "Projects ✨",
-    "description": "Here are some of my creative projects~",
+    "description": "Featured repos and builds—same story as my GitHub profile.",
+    "heroBadge": "$ gh repo list --featured",
+    "heroTitle": "Build log",
+    "heroDescription": "Product, backend, systems, and creative tooling. Pins mirror github.com/kyuna0312/kyuna0312.",
+    "recruiterLine": "Recruiters: explore here first, then dive into the repos that fit the role.",
     "viewSource": "View Source 💻",
     "viewDemo": "View Demo ✨",
+    "kyunaWeb": "kyuna_web",
+    "kyunaWebDescription": "This site—Next.js, Chakra UI, next-i18next (EN / JA / MN), Vercel.",
+    "dotfiles": "dotfiles",
+    "dotfilesDescription": "Shell, zsh, and productive dev configs—the infra behind the terminal aesthetic.",
+    "inariWrite": "InariWrite",
+    "inariWriteDescription": "Writing / editorial side of my stack—tools to get from idea to text faster.",
+    "amaneSite": "amane312.vercel.app",
+    "amaneSiteDescription": "Alternate front / experiment site—the other link on my GitHub profile README.",
     "NomadX": "NomadX",
     "NomadXDescription": "A beautiful Mongolian NFT Marketplace - Web & Mobile Application crafted with love 💖",
     "mongolnet": "Mongol.net",
@@ -28,15 +40,88 @@
     "nyanvimDescription": "My custom NeoVim configuration - because even coding should be cute! 🎀"
   },
   "home": {
-    "title": "霜花 (Shimoka)",
-    "subtitle": "Developer 💻 • Designer 🎨 • Cosplayer 🎭",
-    "description": "Welcome to my creative universe! I'm a full-stack developer who loves bringing ideas to life through beautiful code and design ✨",
-    "viewProjects": "View My Projects 💻",
-    "getInTouch": "Say Hello! 💌",
+    "title": "Kyuna / 霜花",
+    "subtitle": "Engineer · OSS · AI comic pipelines · YouTube",
+    "description": "Solo dev shipping UIs, APIs, and low-level toys when curiosity wins. Cosplay + community on one layer; code + visuals + story on another—anime-coded aesthetics next to boring infrastructure ✨",
+    "seoTitle": "Kyuna (霜花) — engineer, OSS, AI comics, YouTube",
+    "seoDescription": "Kyuna: TypeScript/JavaScript apps, Go/Rust backends, AI comic tooling, YouTube @amarihana. Portfolio at kyuna-web.vercel.app.",
+    "welcomeBadge": "kyuna0312@github:~$ ./welcome --tty",
+    "imageAlt": "Kyuna — engineer, OSS, AI comics, creator",
+    "buildSectionTitle": "$ tree -L 1 ./build",
+    "buildSectionAria": "How I group my work: product, backend, systems, creative",
+    "buildTree": "./build\n├── product/      # TS/JS apps → kyuna-web.vercel.app · amane312.vercel.app\n├── backend/      # Go services, APIs, automation, dotfiles\n├── systems/      # Rust/C — OS-adjacent toys, bootloaders, engines\n└── creative/     # editors, AI comic tooling, idea → panel faster",
+    "liveSites": "Live sites",
+    "viewProjects": "View my projects 💻",
+    "getInTouch": "Say hello 💌",
+    "hireMe": "Work with me 💼",
     "workExperience": "Work Experience",
-    "bio": "Hi there! I'm Shimoka, a passionate full-stack developer based in Ulaanbaatar, Mongolia 🇲🇳 I love creating beautiful digital experiences and expressing creativity through both code and cosplay! When I'm not coding, you can find me working on cosplay projects or enjoying anime~ ✨",
-    "projectsButton": "My Projects 💻",
-    "history": "My Journey 🌸",
+    "bio": "Hi—I'm Kyuna (霜花), based in Ulaanbaatar 🇲🇳 I ship product code, OSS, and AI comic pipelines; you’ll also find me on YouTube @amarihana and in cosplay communities when I’m not in the terminal~ ✨",
+    "projectsButton": "My projects 💻",
+    "history": "My journey 🌸",
+    "pillars": {
+      "oss": {
+        "title": "Open source",
+        "body": "Tools, dotfiles, and community projects I maintain or contribute to."
+      },
+      "comics": {
+        "title": "AI comic pipelines",
+        "body": "From idea to panel—generative workflows and creative tooling."
+      },
+      "youtube": {
+        "title": "YouTube",
+        "body": "Builds, creative tech, and community—@amarihana."
+      }
+    },
+    "skillsSection": {
+      "badge": "✦ What I do ✦",
+      "heading": "✨ Technical expertise ✨",
+      "subheading": "Stacks and practices I use to ship products 💖"
+    },
+    "skills": {
+      "items": [
+        {
+          "icon": "💻",
+          "title": "Product (TS / JS)",
+          "description": "Apps and interfaces—React, Next.js, TypeScript, and design systems.",
+          "techs": ["TypeScript", "JavaScript", "React", "Next.js"]
+        },
+        {
+          "icon": "🟢",
+          "title": "Backend & automation",
+          "description": "Services, APIs, and glue code—Go and Node when the problem fits.",
+          "techs": ["Go", "Node.js", "APIs", "Automation"]
+        },
+        {
+          "icon": "🦀",
+          "title": "Systems & low-level",
+          "description": "Rust, C, and OS-adjacent experiments—bootloaders, engines, curiosity builds.",
+          "techs": ["Rust", "C", "Linux", "Tooling"]
+        },
+        {
+          "icon": "🧩",
+          "title": "Open source",
+          "description": "Small diffs, clear why—good first issues, dotfiles, and community shoutouts.",
+          "techs": ["GitHub", "CLI", "Docs", "Community"]
+        },
+        {
+          "icon": "🎨",
+          "title": "Creative stack",
+          "description": "AI comic pipelines, editors, motion—story meets implementation.",
+          "techs": ["Generative AI", "Lua", "Python", "Design"]
+        },
+        {
+          "icon": "▶️",
+          "title": "YouTube & presence",
+          "description": "Long-form builds and personality layer—terminal-meets-anime energy.",
+          "techs": ["YouTube", "X", "Discord", "Instagram"]
+        }
+      ]
+    },
+    "timelineSection": {
+      "badge": "🌸 My story 🌸",
+      "heading": "✨ Professional journey ✨",
+      "subheading": "Code, products, and creative work 💫"
+    },
     "timeline": {
       "2000": "Born in Ulaanbaatar, Mongolia 🇲🇳 - The beginning of my adventure!",
       "2019": "Started my developer journey at Able Soft - First steps into the coding world! ✨",
@@ -44,8 +129,22 @@
       "2023-01": "Completed my journey at Sod Mongol LLC - Time for new adventures!",
       "2023-02": "Currently creating magic at Next Social Platform LLC 🌟"
     },
-    "socialNetwork": "Let's Connect! 💖",
-    "resumeButton": "View Resume 📄"
+    "timelineDesc": {
+      "2000": "Beginning of my journey in Ulaanbaatar.",
+      "2019": "First professional role; learned how teams ship real software.",
+      "2021": "Deepened full-stack skills across web and mobile platforms.",
+      "2023-01": "Wrapped a long chapter; ready for new product challenges.",
+      "2023-02": "Building social and platform products with a strong UX focus."
+    },
+    "ctaSection": {
+      "badge": "💌 Let's connect 💌",
+      "heading": "Fork something cool? Tell me ✨",
+      "body": "Hiring, collabs, or OSS—small PRs with a clear why beat drive-by refactors. I like seeing forks in the wild.",
+      "startProject": "Start a project",
+      "socialHint": "Or find me on social media ♡"
+    },
+    "socialNetwork": "Let's connect! 💖",
+    "resumeButton": "View resume 📄"
   },
   "navigation": {
     "home": "Home 🏠",
@@ -54,7 +153,7 @@
   },
   "about": {
     "hello": "Hello! Welcome to my little corner of the internet~ ✨",
-    "description": "I'm a full-stack developer with a passion for creating beautiful, functional applications. I love combining technical skills with creative design to build experiences that bring joy to users! 💖"
+    "description": "Solo dev: OSS, AI comic pipelines, YouTube @amarihana—UIs, APIs, and low-level toys. EN · 日本語 · MN when it matters. 💖"
   },
   "bio": {
     "title": "About Me 🌸",
@@ -85,6 +184,7 @@
     "title": "Things I Love 💖",
     "items": [
       "Cosplay 🎭",
+      "YouTube @amarihana ▶️",
       "Anime & Manga 📚",
       "Digital Art 🎨",
       "Music 🎵",
@@ -105,7 +205,8 @@
       "message": "Message 💌",
       "messagePlaceholder": "Tell me about your ideas~",
       "send": "Send Message ✨",
-      "sending": "Sending... 💫"
+      "sending": "Sending... 💫",
+      "orConnect": "Or connect with me on"
     },
     "errors": {
       "nameRequired": "Please tell me your name~ 💭",
@@ -127,7 +228,7 @@
       "title": "Or find me on 🌐"
     },
     "seo": {
-      "description": "Get in touch with Shimoka for your next project. Let's create something beautiful together! 💖"
+      "description": "Get in touch with Kyuna for your next project, collab, or OSS idea. 💖"
     }
   }
 }

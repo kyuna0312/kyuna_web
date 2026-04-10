@@ -1,15 +1,21 @@
-import { Container, Box, Text, Heading, VStack, HStack, Link, keyframes } from '@chakra-ui/react'
+import { Container, Box, Text, Heading, HStack, Link, keyframes } from '@chakra-ui/react'
 import Layout from '../components/layouts/article'
 import ContactForm from '../components/contact-form'
 import SEOHead from '../components/seo-head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import nextI18NextConfig from '../next-i18next.config'
 import { useTranslation } from 'next-i18next'
 import { ConstellationBackground } from '../components/projects-background-effects'
-import { SectionHeader, GlassCard } from '../components/advanced-theme-elements'
-import { TiltCard } from '../components/interactive-effects-v2'
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { IoLogoGithub, IoLogoTwitter, IoLogoInstagram, IoMail, IoHeart } from 'react-icons/io5'
+import {
+  IoLogoGithub,
+  IoLogoTwitter,
+  IoLogoInstagram,
+  IoLogoYoutube,
+  IoHeart,
+} from 'react-icons/io5'
+import { SiDiscord } from 'react-icons/si'
 
 const MotionBox = motion(Box)
 
@@ -47,10 +53,11 @@ const Contact = () => {
   }, [])
 
   const socialLinks = [
-    { icon: IoLogoGithub, href: 'https://github.com/kyuna312', label: 'GitHub', color: 'gray.400' },
-    { icon: IoLogoTwitter, href: 'https://twitter.com/m1or3n', label: 'Twitter', color: 'blue.400' },
-    { icon: IoLogoInstagram, href: 'https://instagram.com/m1or3n', label: 'Instagram', color: 'pink.400' },
-    { icon: IoMail, href: 'mailto:your.email@example.com', label: 'Email', color: 'purple.400' },
+    { icon: IoLogoGithub, href: 'https://github.com/kyuna0312', label: 'GitHub', color: 'gray.400' },
+    { icon: IoLogoYoutube, href: 'https://www.youtube.com/@amarihana', label: 'YouTube', color: 'red.400' },
+    { icon: IoLogoTwitter, href: 'https://x.com/kyuna0312', label: 'X', color: 'blue.400' },
+    { icon: IoLogoInstagram, href: 'https://www.instagram.com/kyuna0312/', label: 'Instagram', color: 'pink.400' },
+    { icon: SiDiscord, href: 'https://discord.gg/shiba', label: 'Discord', color: 'purple.300' },
   ]
 
   return (
@@ -361,7 +368,7 @@ const Contact = () => {
               <IoHeart color="#ec4899" />
             </HStack>
             <Text color="pink.400" fontSize="sm">
-              — 霜花 (Shimoka) ✨
+              — Kyuna / 霜花 ✨
             </Text>
           </Box>
         </MotionBox>
@@ -373,7 +380,7 @@ const Contact = () => {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale, ['common'], nextI18NextConfig)),
     },
   }
 }

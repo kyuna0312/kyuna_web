@@ -1,6 +1,7 @@
 import { forwardRef, useState, useEffect } from 'react';
 import Logo from './logo';
 import NextLink from 'next/link';
+import type { LinkItemProps, MenuLinkProps, NavbarProps } from '@/types';
 import LanguageSwitcher from './language-switcher';
 import ColorModeToggle from './color-mode-toggle';
 import {
@@ -37,7 +38,7 @@ const sparkleAnimation = keyframes`
   50% { opacity: 0.5; transform: scale(0.8); }
 `;
 
-const LinkItem = ({ href, path, target, children, icon, ...props }) => {
+const LinkItem = ({ href, path, target, children, icon, ...props }: LinkItemProps) => {
 	const active = path === href;
 
 	return (
@@ -87,17 +88,18 @@ const LinkItem = ({ href, path, target, children, icon, ...props }) => {
 	);
 };
 
-const MenuLink = forwardRef((props, ref) => {
+const MenuLink = forwardRef<HTMLAnchorElement, MenuLinkProps>((props, ref) => {
+	const { href, ...rest } = props;
 	return (
-		<NextLink href={props.href} passHref legacyBehavior>
-			<Link ref={ref} {...props} />
+		<NextLink href={href} passHref legacyBehavior>
+			<Link ref={ref} {...rest} />
 		</NextLink>
 	);
 });
 
 MenuLink.displayName = 'MenuLink';
 
-const Navbar = (props) => {
+const Navbar = (props: NavbarProps) => {
 	const { path } = props;
 	const { t } = useTranslation('common');
 	const [mounted, setMounted] = useState(false);
@@ -107,9 +109,7 @@ const Navbar = (props) => {
 	}, []);
 
 	// Call all hooks at top level
-	const bgColorLight = 'rgba(255, 255, 255, 0.85)';
 	const bgColorDark = 'rgba(26, 32, 44, 0.85)';
-	const borderColorLight = 'rgba(236, 72, 153, 0.15)';
 	const borderColorDark = 'rgba(254, 128, 160, 0.2)';
 	const shadowDark = '0 8px 32px rgba(0, 0, 0, 0.3)';
 
@@ -203,7 +203,7 @@ const Navbar = (props) => {
 						{t('navbar.contact')}
 					</LinkItem>
 					<MotionLink
-						href="https://github.com/kyuna312"
+						href="https://github.com/kyuna0312"
 						target="_blank"
 						px={4}
 						py={2}
@@ -358,7 +358,7 @@ const Navbar = (props) => {
 								</MenuItem>
 								<MenuItem
 									as={Link}
-									href="https://github.com/kyuna312"
+									href="https://github.com/kyuna0312"
 									target="_blank"
 									bg="transparent"
 									color={menuItemTextColor}

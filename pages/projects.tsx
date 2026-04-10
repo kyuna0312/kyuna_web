@@ -2,10 +2,12 @@ import { Container, SimpleGrid, Text, VStack, Badge, HStack, Box, Heading, Image
 import Layout from '../components/layouts/article';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import nextI18NextConfig from '../next-i18next.config';
 import { useState, useEffect } from 'react';
 import { ElegantBackground } from '../components/elegant-elements';
 import { ConstellationBackground } from '../components/projects-background-effects';
 import { motion } from 'framer-motion';
+import type { CuteProjectCardProps } from '@/types';
 import { IoLogoGithub, IoEyeOutline } from 'react-icons/io5';
 
 const MotionBox = motion(Box);
@@ -23,7 +25,15 @@ const gradientShift = keyframes`
 `;
 
 // Cute Project Card Component
-const CuteProjectCard = ({ title, description, thumbnail, url, github, tech = [], featured = false }) => {
+const CuteProjectCard = ({
+  title,
+  description,
+  thumbnail,
+  url,
+  github,
+  tech = [],
+  featured = false,
+}: CuteProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -166,41 +176,76 @@ const Projects = () => {
     setMounted(true);
   }, []);
 
-  // Project data with cute emojis
+  // Featured order aligned with github.com/kyuna0312/kyuna0312 profile README
   const projects = [
+    {
+      title: t('projects.kyunaWeb'),
+      description: t('projects.kyunaWebDescription'),
+      thumbnail: '/images/霜花.png',
+      url: 'https://kyuna-web.vercel.app',
+      github: 'https://github.com/kyuna0312/kyuna_web',
+      tech: ['▲ Next.js', '⚛️ React', '🌍 i18n', '💜 Chakra UI'],
+      featured: true,
+    },
+    {
+      title: t('projects.amaneSite'),
+      description: t('projects.amaneSiteDescription'),
+      thumbnail: '/images/amane.jpg',
+      url: 'https://amane312.vercel.app',
+      tech: ['▲ Vercel', '🌐 Web', '✨ Alt front', '💜 Personal'],
+      featured: true,
+    },
+    {
+      title: t('projects.dotfiles'),
+      description: t('projects.dotfilesDescription'),
+      thumbnail: '/images/works/nyanvim.png',
+      url: 'https://github.com/kyuna0312/dotfiles',
+      github: 'https://github.com/kyuna0312/dotfiles',
+      tech: ['🐚 Shell', '💜 zsh', '🐧 Linux', '⚙️ Dev env'],
+      featured: true,
+    },
+    {
+      title: t('projects.inariWrite'),
+      description: t('projects.inariWriteDescription'),
+      thumbnail: '/images/works/nyanmarkdown.png',
+      url: 'https://github.com/kyuna0312/InariWrite',
+      github: 'https://github.com/kyuna0312/InariWrite',
+      tech: ['✍️ Writing', '🦊 Creative', '💝 OSS'],
+      featured: true,
+    },
     {
       title: t('projects.NomadX'),
       description: t('projects.NomadXDescription'),
       thumbnail: '/images/works/nomadx.png',
       url: 'https://nomadx.world',
-      github: 'https://github.com/kyuna312/nomadx',
+      github: 'https://github.com/kyuna0312/nomadx',
       tech: ['⚛️ React', '▲ Next.js', '💙 TypeScript', '🎨 Chakra UI'],
-      featured: true
-    },
-    {
-      title: t('projects.madoka_react'),
-      description: t('projects.madoka_reactDescription'),
-      thumbnail: '/images/works/madoka_react.png',
-      url: 'https://madoka-kappa.vercel.app',
-      github: 'https://github.com/kyuna312/madoka-react',
-      tech: ['⚛️ React', '💫 CSS3', '✨ Animation', '🎬 GSAP']
+      featured: true,
     },
     {
       title: t('projects.mongolnet'),
       description: t('projects.mongolnetDescription'),
       thumbnail: '/images/works/mongolnet.png',
       url: 'https://mongol.net',
-      github: 'https://github.com/kyuna312/mongolnet',
-      tech: ['🌐 Full Stack', '🟢 Node.js', '🍃 MongoDB']
+      github: 'https://github.com/kyuna0312/mongolnet',
+      tech: ['🌐 Full Stack', '🟢 Node.js', '🍃 MongoDB'],
     },
     {
-      title: t('projects.NyanMarkDown'),
-      description: t('projects.NyanMarkDownDescription'),
-      thumbnail: '/images/works/nyanmarkdown.png',
-      url: 'https://github.com/kyuna312/NyanVim',
-      github: 'https://github.com/kyuna312/NyanVim',
-      tech: ['📝 Vim', '🌙 Lua', '💝 Open Source']
-    }
+      title: t('projects.madoka_react'),
+      description: t('projects.madoka_reactDescription'),
+      thumbnail: '/images/works/madoka_react.png',
+      url: 'https://madoka-kappa.vercel.app',
+      github: 'https://github.com/kyuna0312/madoka-react',
+      tech: ['⚛️ React', '💫 CSS3', '✨ Animation', '🎬 GSAP'],
+    },
+    {
+      title: t('projects.nyanvim'),
+      description: t('projects.nyanvimDescription'),
+      thumbnail: '/images/works/nyanvim.png',
+      url: 'https://github.com/kyuna0312/NyanVim',
+      github: 'https://github.com/kyuna0312/NyanVim',
+      tech: ['📝 NeoVim', '🌙 Lua', '💝 Open Source'],
+    },
   ];
 
   // Cute project statistics
@@ -261,7 +306,9 @@ const Projects = () => {
               borderColor="pink.400"
               mb={6}
             >
-              <Text fontSize="sm" color="pink.300">🎨 My Creative Space 🎨</Text>
+              <Text fontSize="sm" color="pink.300" fontFamily="mono">
+                {t('projects.heroBadge')}
+              </Text>
             </Box>
 
             <Heading
@@ -277,13 +324,15 @@ const Projects = () => {
                 bgClip="text"
                 animation={`${gradientShift} 4s ease infinite`}
               >
-                Creative Universe ✨
+                {t('projects.heroTitle')}
               </Box>
             </Heading>
 
             <Text fontSize={{ base: "md", md: "lg" }} color="gray.400" maxW="700px" mx="auto">
-              Welcome to my portfolio! Here you&apos;ll find projects that showcase my journey
-              as a developer and creative soul 💖
+              {t('projects.heroDescription')}
+            </Text>
+            <Text fontSize="sm" color="teal.300" maxW="640px" mx="auto" mt={4} fontStyle="italic">
+              {t('projects.recruiterLine')}
             </Text>
 
             {/* Cute divider */}
@@ -452,7 +501,7 @@ const Projects = () => {
 
               <Box
                 as="a"
-                href="https://instagram.com/m1or3n"
+                href="https://www.instagram.com/kyuna0312/"
                 target="_blank"
                 display="inline-block"
                 px={6}
@@ -499,7 +548,7 @@ const Projects = () => {
                 opportunities and ideas transform into digital reality~ ✨&quot;
               </Text>
               <Text color="pink.400" mt={4} fontSize="sm">
-                — 霜花 (Shimoka) 💖
+                — Kyuna / 霜花 💖
               </Text>
             </Box>
           </MotionBox>
@@ -512,7 +561,7 @@ const Projects = () => {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale, ['common'], nextI18NextConfig)),
     },
   };
 }

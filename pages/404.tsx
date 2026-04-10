@@ -13,6 +13,7 @@ import { useState, useEffect } from 'react';
 import Layout from '../components/layouts/article';
 import { motion } from 'framer-motion';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import nextI18NextConfig from '../next-i18next.config';
 
 const MotionBox = motion(Box);
 
@@ -265,7 +266,7 @@ const NotFound = () => {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale || 'en', ['common'])),
+      ...(await serverSideTranslations(locale || 'en', ['common'], nextI18NextConfig)),
     },
   };
 }

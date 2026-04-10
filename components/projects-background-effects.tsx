@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, useColorModeValue } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import type { CodeDrop } from '@/types';
 
 const MotionBox = motion(Box);
 
@@ -197,7 +198,7 @@ export const ConstellationBackground = () => {
 
 // Code Rain Effect (Matrix-style) - Client-side only
 export const CodeRainBackground = () => {
-  const [drops, setDrops] = useState([]);
+  const [drops, setDrops] = useState<CodeDrop[]>([]);
   const dropColor = useColorModeValue('rgba(236, 72, 153, 0.6)', 'rgba(254, 128, 160, 0.8)');
 
   useEffect(() => {

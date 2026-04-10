@@ -3,21 +3,21 @@ import { useRouter } from 'next/router';
 
 // Cute SEO Head component 💖
 export const SEOHead = ({
-  title = 'Kyuna | Creative Developer & Designer',
-  description = 'Portfolio of Kyuna - Creative developer specializing in elegant web experiences with modern technologies.',
-  keywords = 'web developer, designer, portfolio, react, next.js, creative coding',
+  title = 'Kyuna — engineer, OSS, AI comics',
+  description = 'Engineer, OSS, AI comic pipelines, YouTube @amarihana — kyuna-web.vercel.app',
+  keywords = 'full-stack engineer, open source, react, next.js, game development, AI comics, portfolio',
   image = '/images/og-image.jpg',
   url,
   type = 'website',
   author = 'Kyuna',
   locale = 'en_US',
   siteName = 'Kyuna Portfolio',
-  twitterHandle = '@m1or3n',
+  twitterHandle = '@kyuna0312',
   ...props
 }) => {
   const router = useRouter();
-  const canonicalUrl = url || `${process.env.NEXT_PUBLIC_SITE_URL || 'https://kyuna.dev'}${router.asPath}`;
-  const imageUrl = image.startsWith('http') ? image : `${process.env.NEXT_PUBLIC_SITE_URL || 'https://kyuna.dev'}${image}`;
+  const canonicalUrl = url || `${process.env.NEXT_PUBLIC_SITE_URL || 'https://kyuna-web.vercel.app'}${router.asPath}`;
+  const imageUrl = image.startsWith('http') ? image : `${process.env.NEXT_PUBLIC_SITE_URL || 'https://kyuna-web.vercel.app'}${image}`;
 
   return (
     <Head>
@@ -70,26 +70,31 @@ export const SEOHead = ({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": author,
+            "name": "Kyuna",
             "url": canonicalUrl,
             "image": imageUrl,
-            "jobTitle": "Creative Developer & Designer",
+            "jobTitle": "Software Engineer",
             "worksFor": {
               "@type": "Organization",
-              "name": "Freelance"
+              "name": "Amari Hana Inc."
             },
             "sameAs": [
-              "https://github.com/kyuna312",
-              "https://twitter.com/m1or3n",
-              "https://instagram.com/m1or3n"
+              "https://github.com/kyuna0312",
+              "https://kyuna-web.vercel.app",
+              "https://amane312.vercel.app",
+              "https://www.youtube.com/@amarihana",
+              "https://x.com/kyuna0312",
+              "https://www.instagram.com/kyuna0312/",
+              "https://discord.gg/shiba"
             ],
             "knowsAbout": [
               "Web Development",
-              "Frontend Development",
+              "Open Source Software",
               "React.js",
               "Next.js",
-              "UI/UX Design",
-              "Creative Coding"
+              "Game Development",
+              "Generative AI",
+              "Full Stack Development"
             ]
           })
         }}

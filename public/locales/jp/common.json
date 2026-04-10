@@ -9,13 +9,25 @@
   "footer": {
     "contact": "お問い合わせ",
     "about": "私について",
-    "copyright": "© 2024 霜花. ❤️とたくさんの☕で作りました"
+    "copyright": "© 2026 Kyuna / 霜花. ❤️とたくさんの☕で作りました"
   },
   "projects": {
     "title": "プロジェクト ✨",
-    "description": "私のクリエイティブなプロジェクトをご覧ください~",
+    "description": "GitHubプロフィールと同じ軸のフィーチャーリポジトリです。",
+    "heroBadge": "$ gh repo list --featured",
+    "heroTitle": "ビルドログ",
+    "heroDescription": "プロダクト・バックエンド・システム・クリエイティブ系。ピンは github.com/kyuna0312/kyuna0312 と同期。",
+    "recruiterLine": "採用ご担当の方：まずここを見て、職種に合うリポを開いてください。",
     "viewSource": "ソースを見る 💻",
     "viewDemo": "デモを見る ✨",
+    "kyunaWeb": "kyuna_web",
+    "kyunaWebDescription": "このサイト本体—Next.js、Chakra UI、next-i18next（EN/JA/MN）、Vercel。",
+    "dotfiles": "dotfiles",
+    "dotfilesDescription": "zsh やシェル、生産性のための開発設定—ターミナル美学の下敷き。",
+    "inariWrite": "InariWrite",
+    "inariWriteDescription": "執筆・編集まわりのツール—アイデアからテキストまで速く。",
+    "amaneSite": "amane312.vercel.app",
+    "amaneSiteDescription": "もう一つのフロント／実験サイト—GitHubプロフィールREADMEのリンク先。",
     "NomadX": "NomadX",
     "NomadXDescription": "愛情を込めて作ったモンゴルのNFTマーケットプレイス 💖",
     "mongolnet": "Mongol.net",
@@ -28,21 +40,108 @@
     "nyanvimDescription": "私のカスタムNeoVim設定 - コーディングも可愛く！🎀"
   },
   "home": {
-    "title": "霜花 (Shimoka)",
-    "subtitle": "開発者 💻 • デザイナー 🎨 • コスプレイヤー 🎭",
-    "description": "私のクリエイティブな世界へようこそ！美しいコードとデザインでアイデアを形にするフルスタック開発者です ✨",
+    "title": "Kyuna / 霜花",
+    "subtitle": "エンジニア · OSS · AI漫画パイプライン · YouTube",
+    "description": "ソロでUIやAPI、好奇心が勝ったら低レイヤも触る。コスプレとコミュニティは表現レイヤー、コード・ビジュアル・物語はひとつのスタック—アニメ寄りの美学と地味なインフラが同居 ✨",
+    "seoTitle": "Kyuna（霜花）— エンジニア / OSS / AI漫画 / YouTube",
+    "seoDescription": "Kyuna：TS/JSアプリ、Go/Rust、AI漫画ツール、YouTube @amarihana。ポートフォリオ kyuna-web.vercel.app。",
+    "welcomeBadge": "kyuna0312@github:~$ ./welcome --tty",
+    "imageAlt": "Kyuna — エンジニア、OSS、AI漫画、クリエイター",
+    "buildSectionTitle": "$ tree -L 1 ./build",
+    "buildSectionAria": "仕事の分け方：プロダクト、バックエンド、システム、クリエイティブ",
+    "buildTree": "./build\n├── product/      # TS/JSアプリ → kyuna-web.vercel.app · amane312.vercel.app\n├── backend/      # Go、API、自動化、dotfiles\n├── systems/      # Rust/C — OS周り、ブートローダ、エンジン\n└── creative/     # エディタ、AI漫画ツール、アイデア→コマを速く",
+    "liveSites": "公開サイト",
     "viewProjects": "プロジェクトを見る 💻",
-    "getInTouch": "連絡する！💌",
+    "getInTouch": "連絡する 💌",
+    "hireMe": "一緒に働く 💼",
     "workExperience": "職務経歴",
-    "bio": "こんにちは！モンゴル・ウランバートル在住のフルスタック開発者、霜花です 🇲🇳 コードとコスプレを通じて創造性を表現することが大好きです！コーディングをしていない時は、コスプレ制作やアニメを楽しんでいます~ ✨",
+    "bio": "Kyuna（霜花）です。ウランバートル在住 🇲🇳 プロダクトコード、OSS、AI漫画パイプラインをやっています。YouTubeは @amarihana、オフはコスプレやアニメで充電~ ✨",
     "projectsButton": "プロジェクト 💻",
     "history": "私の旅 🌸",
+    "pillars": {
+      "oss": {
+        "title": "オープンソース",
+        "body": "ツールやドットファイル、コミュニティ向けの貢献・メンテナンス。"
+      },
+      "comics": {
+        "title": "AI漫画パイプライン",
+        "body": "アイデアからコマまで—生成ワークフローと制作ツール。"
+      },
+      "youtube": {
+        "title": "YouTube",
+        "body": "制作・クリエイティブTech・コミュニティ—@amarihana。"
+      }
+    },
+    "skillsSection": {
+      "badge": "✦ できること ✦",
+      "heading": "✨ テクニカルスキル ✨",
+      "subheading": "プロダクトを届けるためのスタックと実践 💖"
+    },
+    "skills": {
+      "items": [
+        {
+          "icon": "💻",
+          "title": "プロダクト（TS / JS）",
+          "description": "アプリとUI—React、Next.js、TypeScript、デザインシステム。",
+          "techs": ["TypeScript", "JavaScript", "React", "Next.js"]
+        },
+        {
+          "icon": "🟢",
+          "title": "バックエンド・自動化",
+          "description": "サービス、API、つなぎ—Go と Node を用途で使い分け。",
+          "techs": ["Go", "Node.js", "APIs", "Automation"]
+        },
+        {
+          "icon": "🦀",
+          "title": "システム・低レイヤ",
+          "description": "Rust、C、OS周りの実験—ブートローダ、エンジン、好奇心。",
+          "techs": ["Rust", "C", "Linux", "Tooling"]
+        },
+        {
+          "icon": "🧩",
+          "title": "OSS",
+          "description": "小さな差分、明確な理由—good first issue、dotfiles、コミュニティ。",
+          "techs": ["GitHub", "CLI", "Docs", "Community"]
+        },
+        {
+          "icon": "🎨",
+          "title": "クリエイティブ",
+          "description": "AI漫画パイプライン、エディタ、モーション—物語と実装。",
+          "techs": ["Generative AI", "Lua", "Python", "Design"]
+        },
+        {
+          "icon": "▶️",
+          "title": "YouTube・発信",
+          "description": "長尺の制作系とキャラ層—ターミナル×アニメの空気感。",
+          "techs": ["YouTube", "X", "Discord", "Instagram"]
+        }
+      ]
+    },
+    "timelineSection": {
+      "badge": "🌸 ストーリー 🌸",
+      "heading": "✨ キャリアの歩み ✨",
+      "subheading": "コード、プロダクト、クリエイティブ 💫"
+    },
     "timeline": {
       "2000": "モンゴル・ウランバートルに生まれる 🇲🇳 - 冒険の始まり！",
       "2019": "Able Softで開発者としてのキャリアをスタート - コーディングの世界への第一歩！✨",
       "2021": "MUST卒業 & Sod Mongol LLC入社 - 日々成長中！💪",
       "2023-01": "Sod Mongol LLCでの旅を終える - 新しい冒険へ！",
       "2023-02": "現在Next Social Platform LLCで魔法を創造中 🌟"
+    },
+    "timelineDesc": {
+      "2000": "ウランバートルで旅立ち。",
+      "2019": "初の本番開発。チームでソフトを届ける基礎を学ぶ。",
+      "2021": "Webとモバイルを横断するフルスタックを強化。",
+      "2023-01": "一区切りつき、次のプロダクト課題へ。",
+      "2023-02": "ソーシャル系プロダクトでUXと実装の両面に注力。"
+    },
+    "ctaSection": {
+      "badge": "💌 つながろう 💌",
+      "heading": "フォークした？教えて ✨",
+      "body": "採用・コラボ・OSS。理由のわかる小さなPRが嬉しい。野良フォークも見つけたら @ してね。",
+      "startProject": "プロジェクトを始める",
+      "socialHint": "SNSでもどうぞ ♡"
     },
     "socialNetwork": "つながろう！💖",
     "resumeButton": "履歴書を見る 📄"
@@ -54,7 +153,7 @@
   },
   "about": {
     "hello": "こんにちは！私の小さなインターネットの隅へようこそ~ ✨",
-    "description": "美しく機能的なアプリケーションを作ることに情熱を持つフルスタック開発者です。技術とクリエイティブなデザインを組み合わせて、ユーザーに喜びを届ける体験を作ることが大好きです！💖"
+    "description": "ソロ開発：OSS、AI漫画パイプライン、YouTube @amarihana。EN・日本語・MN。UIs、APIs、低レイヤのおもちゃ。💖"
   },
   "bio": {
     "title": "私について 🌸",
@@ -85,6 +184,7 @@
     "title": "好きなこと 💖",
     "items": [
       "コスプレ 🎭",
+      "YouTube @amarihana ▶️",
       "アニメ & 漫画 📚",
       "デジタルアート 🎨",
       "音楽 🎵",
@@ -105,7 +205,8 @@
       "message": "メッセージ 💌",
       "messagePlaceholder": "あなたのアイデアを教えてください~",
       "send": "送信する ✨",
-      "sending": "送信中... 💫"
+      "sending": "送信中... 💫",
+      "orConnect": "またはこちらから"
     },
     "errors": {
       "nameRequired": "お名前を教えてください~ 💭",
@@ -127,7 +228,7 @@
       "title": "または、こちらで見つけてください 🌐"
     },
     "seo": {
-      "description": "霜花に連絡して、次のプロジェクトについて話しましょう。一緒に美しいものを作りましょう！💖"
+      "description": "Kyuna（霜花）に連絡 — プロジェクト、コラボ、OSSの相談。💖"
     }
   }
 }

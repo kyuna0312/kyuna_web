@@ -1,6 +1,19 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import type { MouseEvent } from 'react';
 import { Box, useColorModeValue } from '@chakra-ui/react';
-import { motion, useMotionValue, useSpring, useTransform, useAnimation } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import type {
+  TiltCardProps,
+  RippleParticle,
+  RippleEffectProps,
+  MagneticButtonProps,
+  ParallaxElementProps,
+  FloatingActionButtonProps,
+  HoverCardProps,
+  TextRevealProps,
+  LiquidButtonProps,
+  MorphingShapeProps,
+} from '@/types';
 
 const MotionBox = motion(Box);
 
@@ -25,9 +38,9 @@ export const TiltCard = ({
   shadow = true,
   className,
   ...props
-}) => {
+}: TiltCardProps) => {
   const isClient = useClientSide();
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const [isHovered, setIsHovered] = useState(false);
 
   // Motion values for smooth animations
@@ -43,20 +56,25 @@ export const TiltCard = ({
   });
 
   // Optimized mouse move handler with requestAnimationFrame
-  const handleMouseMove = useCallback((event) => {
-    if (!isClient || !ref.current) return;
+  const handleMouseMove = useCallback(
+    (event: MouseEvent<HTMLDivElement>) => {
+      if (!isClient || !ref.current) return;
 
-    if (typeof window !== 'undefined') {
-      requestAnimationFrame(() => {
-        const rect = ref.current.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
+      if (typeof window !== 'undefined') {
+        requestAnimationFrame(() => {
+          const el = ref.current;
+          if (!el) return;
+          const rect = el.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
 
-        x.set((event.clientX - centerX) / rect.width);
-        y.set((event.clientY - centerY) / rect.height);
-      });
-    }
-  }, [isClient, x, y]);
+          x.set((event.clientX - centerX) / rect.width);
+          y.set((event.clientY - centerY) / rect.height);
+        });
+      }
+    },
+    [isClient, x, y]
+  );
 
   const handleMouseEnter = useCallback(() => {
     setIsHovered(true);
@@ -147,9 +165,9 @@ export const MagneticButton = ({
   magnetStrength = 0.3,
   maxDistance = 100,
   ...props
-}) => {
+}: MagneticButtonProps) => {
   const isClient = useClientSide();
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = useCallback((e) => {
@@ -179,13 +197,10 @@ export const MagneticButton = ({
     setPosition({ x: 0, y: 0 });
   }, []);
 
-  // Filter out custom props to prevent DOM warnings
-  const { magnetStrength: _, maxDistance: __, ...domProps } = props;
-
   // During SSR, render without motion
   if (!isClient) {
     return (
-      <Box ref={ref} {...domProps}>
+      <Box ref={ref} {...props}>
         {children}
       </Box>
     );
@@ -200,7 +215,7 @@ export const MagneticButton = ({
       onMouseLeave={handleMouseLeave}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      {...domProps}
+      {...props}
     >
       {children}
     </MotionBox>
@@ -213,10 +228,10 @@ export const RippleEffect = ({
   duration = 0.6,
   size = 100,
   ...props
-}) => {
-  const [ripples, setRipples] = useState([]);
+}: RippleEffectProps) => {
+  const [ripples, setRipples] = useState<RippleParticle[]>([])
 
-  const createRipple = useCallback((event) => {
+  const createRipple = useCallback((event: React.MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
@@ -270,12 +285,12 @@ export const RippleEffect = ({
 // Enhanced Parallax Element with intersection observer
 export const ParallaxElement = ({
   children,
-  offset = 50,
+  offset: _offset = 50,
   speed = 0.5,
   className,
   ...props
-}) => {
-  const ref = useRef(null);
+}: ParallaxElementProps) => {
+  const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const y = useMotionValue(0);
 
@@ -301,7 +316,6 @@ export const ParallaxElement = ({
     const handleScroll = () => {
       requestAnimationFrame(() => {
         if (ref.current) {
-          const rect = ref.current.getBoundingClientRect();
           const scrolled = window.pageYOffset;
           const rate = scrolled * speed;
           y.set(rate);
@@ -333,7 +347,7 @@ export const FloatingActionButton = ({
   delay = 0,
   className,
   ...props
-}) => {
+}: FloatingActionButtonProps) => {
   return (
     <MotionBox
       animate={{
@@ -363,7 +377,7 @@ export const HoverCard = ({
   shadowEffect = true,
   className,
   ...props
-}) => {
+}: HoverCardProps) => {
   const glowColor = useColorModeValue(
     'rgba(236, 72, 153, 0.4)',
     'rgba(254, 128, 160, 0.4)'
@@ -447,7 +461,7 @@ export const MorphingShape = ({
   size = 100,
   color = 'brand.500',
   ...props
-}) => {
+}: MorphingShapeProps) => {
   const [currentShape, setCurrentShape] = useState(0);
 
   const pathVariants = {
@@ -496,7 +510,7 @@ export const TextReveal = ({
   staggerChildren = 0.05,
   className,
   ...props
-}) => {
+}: TextRevealProps) => {
   const text = typeof children === 'string' ? children : '';
   const words = text.split(' ');
 
@@ -561,10 +575,10 @@ export const TextReveal = ({
 export const LiquidButton = ({
   children,
   liquidColor = '#ff6b9d',
-  intensity = 0.8,
+  intensity: _intensity = 0.8,
   className,
   ...props
-}) => {
+}: LiquidButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -578,12 +592,14 @@ export const LiquidButton = ({
     >
       {/* Liquid Effect SVG */}
       <motion.svg
-        position="absolute"
-        top={0}
-        left={0}
         width="100%"
         height="100%"
-        style={{ pointerEvents: 'none' }}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          pointerEvents: 'none',
+        }}
       >
         <motion.circle
           cx="50%"
