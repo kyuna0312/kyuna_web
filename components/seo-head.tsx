@@ -77,16 +77,8 @@ const SEOHead = ({
       <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png" />
       <link rel="mask-icon" href="/images/icon.png" color="#9f7aea" />
 
-      {/* Preconnect to external domains */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
       {/* Theme color */}
       <meta name="theme-color" content="#9f7aea" />
-
-      {/* Performance hints */}
-      <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-      <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
       {/* Structured data */}
       <script

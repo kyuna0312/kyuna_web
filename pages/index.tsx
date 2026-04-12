@@ -399,7 +399,7 @@ const Home = () => {
                       <Heading
                         as="h1"
                         fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }}
-                        fontFamily="'Playfair Display', serif"
+                        fontFamily="heading"
                         fontWeight="bold"
                         lineHeight="shorter"
                         mb={2}
@@ -500,7 +500,7 @@ const Home = () => {
                       bg="rgba(0, 0, 0, 0.35)"
                       border="1px solid"
                       borderColor="rgba(129, 230, 217, 0.35)"
-                      fontFamily="'JetBrains Mono', 'Fira Code', ui-monospace, monospace"
+                      fontFamily="mono"
                       fontSize={{ base: '10px', sm: 'xs' }}
                       color="teal.200"
                       textAlign="left"
@@ -682,7 +682,7 @@ const Home = () => {
                   </Box>
                   <Heading
                     fontSize={{ base: "2xl", md: "4xl" }}
-                    fontFamily="'Playfair Display', serif"
+                    fontFamily="heading"
                     bgGradient="linear(to-r, pink.400, purple.400)"
                     bgClip="text"
                     mb={3}
@@ -792,7 +792,7 @@ const Home = () => {
                             <Heading
                               size="md"
                               color="white"
-                              fontFamily="'Playfair Display', serif"
+                              fontFamily="heading"
                               position="relative"
                             >
                               {skill.title}
@@ -867,7 +867,7 @@ const Home = () => {
                 </Box>
                 <Heading
                   fontSize={{ base: "2xl", md: "4xl" }}
-                  fontFamily="'Playfair Display', serif"
+                  fontFamily="heading"
                   bgGradient="linear(to-r, purple.400, pink.400)"
                   bgClip="text"
                   mb={3}
@@ -1005,7 +1005,7 @@ const Home = () => {
 
                   <Heading
                     fontSize={{ base: "2xl", md: "4xl" }}
-                    fontFamily="'Playfair Display', serif"
+                    fontFamily="heading"
                     color="white"
                     position="relative"
                   >

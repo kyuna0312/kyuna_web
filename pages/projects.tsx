@@ -135,7 +135,7 @@ const CuteProjectCard = ({
       <Box p={6}>
         <Heading
           fontSize="xl"
-          fontFamily="'Playfair Display', serif"
+          fontFamily="heading"
           color="white"
           mb={2}
         >
@@ -314,7 +314,7 @@ const Projects = () => {
             <Heading
               as="h1"
               fontSize={{ base: "4xl", md: "6xl" }}
-              fontFamily="'Playfair Display', serif"
+              fontFamily="heading"
               mb={6}
             >
               <Box
@@ -419,7 +419,7 @@ const Projects = () => {
             <Heading
               as="h2"
               fontSize={{ base: "2xl", md: "4xl" }}
-              fontFamily="'Playfair Display', serif"
+              fontFamily="heading"
               bgGradient="linear(to-r, purple.400, pink.400)"
               bgClip="text"
               mb={3}
@@ -486,7 +486,7 @@ const Projects = () => {
 
               <Heading
                 fontSize={{ base: "xl", md: "2xl" }}
-                fontFamily="'Playfair Display', serif"
+                fontFamily="heading"
                 bgGradient="linear(to-r, pink.400, purple.400)"
                 bgClip="text"
                 mb={4}

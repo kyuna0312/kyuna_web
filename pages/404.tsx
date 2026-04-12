@@ -180,7 +180,7 @@ const NotFound = () => {
                 {/* 404 Number */}
                 <Heading
                   fontSize={{ base: "6xl", md: "8xl" }}
-                  fontFamily="'Playfair Display', serif"
+                  fontFamily="heading"
                   fontWeight="bold"
                 >
                   <Box

@@ -79,7 +79,7 @@ export const ElegantButton = ({
         variant={variant}
         isLoading={isLoading}
         loadingText="Loading..."
-        fontFamily="'Inter', sans-serif"
+        fontFamily="body"
         fontSize="md"
         px={8}
         py={6}
@@ -172,7 +172,7 @@ export const ElegantCard = ({ children, icon, title, ...props }) => {
           fontWeight="600"
           mb={2}
           color="elegant.800"
-          fontFamily="'Playfair Display', serif"
+          fontFamily="heading"
         >
           {title}
         </Text>
@@ -455,7 +455,7 @@ export const ElegantTimelineItem = ({
             fontWeight="700"
             color="white"
             mb={2}
-            fontFamily="'Playfair Display', serif"
+            fontFamily="heading"
             lineHeight="short"
           >
             {title}

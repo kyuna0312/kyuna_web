@@ -57,12 +57,6 @@ export const SEOHead = ({
       <meta name="theme-color" content="#ec4899" />
       <meta name="msapplication-TileColor" content="#ec4899" />
 
-      {/* Performance Optimization */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-      <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-
       {/* Structured Data for Portfolio ✨ */}
       <script
         type="application/ld+json"
