@@ -181,7 +181,7 @@ const Contact = () => {
 
           <Heading
             fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }}
-            fontFamily="'Playfair Display', serif"
+            fontFamily="heading"
             mb={4}
           >
             <Box

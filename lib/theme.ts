@@ -1,5 +1,18 @@
 import { extendTheme } from '@chakra-ui/react';
 
+const sakuraPalette = {
+  50: '#fdf2f8',
+  100: '#fce7f3',
+  200: '#fbcfe8',
+  300: '#f9a8d4',
+  400: '#f472b6',
+  500: '#ec4899',
+  600: '#db2777',
+  700: '#be185d',
+  800: '#9d174d',
+  900: '#831843',
+};
+
 const theme = extendTheme({
   config: {
     initialColorMode: 'dark',
@@ -39,19 +52,7 @@ const theme = extendTheme({
       800: '#6b21a8',
       900: '#581c87',
     },
-    // Sakura Palette
-    sakura: {
-      50: '#fdf2f8',
-      100: '#fce7f3',
-      200: '#fbcfe8',
-      300: '#f9a8d4',
-      400: '#f472b6',
-      500: '#ec4899',
-      600: '#db2777',
-      700: '#be185d',
-      800: '#9d174d',
-      900: '#831843',
-    },
+    sakura: sakuraPalette,
     // Mint Palette (for accents)
     mint: {
       50: '#f0fdfa',
@@ -78,18 +79,7 @@ const theme = extendTheme({
       800: '#9a3412',
       900: '#7c2d12',
     },
-    feminine: {
-      50: '#fdf2f8',
-      100: '#fce7f3',
-      200: '#fbcfe8',
-      300: '#f9a8d4',
-      400: '#f472b6',
-      500: '#ec4899',
-      600: '#db2777',
-      700: '#be185d',
-      800: '#9d174d',
-      900: '#831843',
-    },
+    feminine: sakuraPalette,
     elegant: {
       50: '#f8fafc',
       100: '#f1f5f9',
@@ -135,10 +125,10 @@ const theme = extendTheme({
     }
   },
   fonts: {
-    heading: `'Playfair Display', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`,
-    body: `'Inter', 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`,
-    mono: `'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace`,
-    cute: `'Quicksand', 'Nunito', 'Inter', sans-serif`,
+    heading: `var(--font-playfair), 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`,
+    body: `var(--font-inter), 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`,
+    mono: `var(--font-mono), 'Fira Code', ui-monospace, monospace`,
+    cute: `'Quicksand', 'Nunito', var(--font-inter), sans-serif`,
   },
   fontSizes: {
     xs: '0.75rem',

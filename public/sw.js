@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shimoka-portfolio-v1';
+const CACHE_NAME = 'kyuna-portfolio-v2';
 const urlsToCache = [
   '/',
   '/en',
@@ -9,7 +9,6 @@ const urlsToCache = [
   '/images/霜花.png',
   '/images/maya.png',
   '/images/icon.png',
-  'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
 ];
 
 // Install event

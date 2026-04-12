@@ -42,7 +42,14 @@ const nextConfig = {
 
   // Performance optimizations
   experimental: {
-    optimizePackageImports: ['@chakra-ui/react', '@chakra-ui/icons', 'framer-motion', 'next-i18next', 'react-icons'],
+    optimizePackageImports: [
+      '@chakra-ui/react',
+      '@chakra-ui/icons',
+      'framer-motion',
+      'next-i18next',
+      'react-icons',
+      '@vercel/analytics',
+    ],
   },
 
   // Dev uses Turbopack by default; empty config opts in explicitly alongside `webpack` (used for `next build --webpack`).
@@ -50,11 +57,6 @@ const nextConfig = {
 
   // Single unified webpack configuration
   webpack: (config, { dev, isServer }) => {
-    // Enable source maps in development
-    if (dev && !isServer) {
-      config.devtool = 'eval-source-map';
-    }
-
     // Optimize bundle size for production
     if (!dev && !isServer) {
       config.optimization.splitChunks = {

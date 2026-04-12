@@ -48,7 +48,7 @@ export const SectionHeader = ({
       <MotionBox
         as="h2"
         fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
-        fontFamily="'Playfair Display', serif"
+        fontFamily="heading"
         fontWeight="bold"
         bgGradient={gradient}
         bgClip="text"

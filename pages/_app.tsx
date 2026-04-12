@@ -1,36 +1,35 @@
 import { appWithTranslation } from 'next-i18next';
+import type { AppProps } from 'next/app';
+import dynamic from 'next/dynamic';
 import nextI18NextConfig from '../next-i18next.config';
 import Chakra from '../components/chakra';
-import Fonts from '../components/fonts';
 import ErrorBoundary from '../components/error-boundary';
 import { AnimatePresence } from 'framer-motion';
 import Layout from '../components/layouts/main';
-import { Analytics } from '@vercel/analytics/react';
 import { LoadingBar } from '../components/page-loading';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { fontVariableClassName } from '../lib/fonts';
+
+const Analytics = dynamic(
+  () => import('@vercel/analytics/react').then((m) => m.Analytics),
+  { ssr: false }
+);
 
 if (typeof window !== 'undefined') {
   window.history.scrollRestoration = 'manual';
 }
 
-// Cute Website Component with loading states 💖
-function Website({ Component, pageProps, router }) {
+function Website({ Component, pageProps, router }: AppProps) {
   const nextRouter = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Register service worker for PWA functionality
     if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-      navigator.serviceWorker
-        .register('/sw.js')
-        .catch(() => {
-          // Silent fail in production
-        });
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
     }
   }, []);
 
-  // Handle page loading states ✨
   useEffect(() => {
     const handleStart = () => setIsLoading(true);
     const handleComplete = () => setIsLoading(false);
@@ -48,27 +47,27 @@ function Website({ Component, pageProps, router }) {
 
   return (
     <ErrorBoundary>
-      <Chakra cookies={pageProps.cookies}>
-        <Fonts />
-        {/* Cute loading bar on route change 💖 */}
-        <AnimatePresence>
-          {isLoading && <LoadingBar key="loading-bar" />}
-        </AnimatePresence>
-        <Layout router={router}>
-          <AnimatePresence
-            mode="wait"
-            initial={true}
-            onExitComplete={() => {
-              if (typeof window !== 'undefined') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }
-            }}
-          >
-            <Component {...pageProps} key={router.route} />
+      <div className={fontVariableClassName}>
+        <Chakra cookies={pageProps.cookies}>
+          <AnimatePresence>
+            {isLoading && <LoadingBar key="loading-bar" />}
           </AnimatePresence>
-          <Analytics />
-        </Layout>
-      </Chakra>
+          <Layout router={router}>
+            <AnimatePresence
+              mode="wait"
+              initial={true}
+              onExitComplete={() => {
+                if (typeof window !== 'undefined') {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
+            >
+              <Component {...pageProps} key={router.route} />
+            </AnimatePresence>
+            <Analytics />
+          </Layout>
+        </Chakra>
+      </div>
     </ErrorBoundary>
   );
 }

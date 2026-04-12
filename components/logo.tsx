@@ -51,7 +51,7 @@ const Logo = () => {
           )}
 
           <MotionText
-            fontFamily="'Playfair Display', serif"
+            fontFamily="heading"
             fontWeight="bold"
             fontSize="xl"
             bgGradient="linear(to-r, pink.400, purple.400, pink.500)"

@@ -189,7 +189,7 @@ const Footer = () => {
               <VStack spacing={2} textAlign={{ base: "center", md: "left" }}>
                 <Heading
                   size="md"
-                  fontFamily="'Playfair Display', serif"
+                  fontFamily="heading"
                   bgGradient="linear(to-r, pink.400, purple.400)"
                   bgClip="text"
                 >
