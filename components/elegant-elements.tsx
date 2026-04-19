@@ -1,541 +1,356 @@
-import React from 'react'
-import NextLink from 'next/link'
-import {
-  Box,
-  Button,
-  Text,
-  VStack,
-  HStack,
-  Flex,
-} from '@chakra-ui/react'
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-import type {
-  ElegantTimelineProps,
-  ElegantTimelineItemProps,
-  ElegantSocialLink,
-} from '@/types'
+import React from 'react';
+import { Box, Heading, Text, VStack, HStack, Link } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+import { IoLogoGithub, IoLogoTwitter, IoLogoInstagram, IoLogoYoutube, IoMail } from 'react-icons/io5';
+import { SiDiscord } from 'react-icons/si';
 
-export type { TimelineItem } from '@/types'
+const MotionBox = motion(Box);
 
-const MotionBox = motion(Box)
-const MotionFlex = motion(Flex)
+const crystalline = { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const };
 
-// Elegant Section Component - using static dark mode colors
-export const ElegantSection = ({ children, delay = 0, bg, ...props }) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-  // Static dark mode colors to prevent hydration issues
-  const defaultBg = "rgba(26, 32, 44, 0.8)"
-  const borderColor = "rgba(254, 128, 160, 0.2)"
+// ─── Background ────────────────────────────────────────────────────────────
 
-  return (
-    <MotionBox
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.8, delay, ease: "easeOut" }}
-      bg={bg || defaultBg}
-      backdropFilter="blur(20px)"
-      borderRadius="20px"
-      p={8}
-      mb={8}
-      border="1px solid"
-      borderColor={borderColor}
-      boxShadow="elegant"
-      position="relative"
-      overflow="hidden"
-      _before={{
-        content: '""',
-        position: "absolute",
-        top: 0,
-        left: "-100%",
-        width: "100%",
-        height: "1px",
-        background: "linear-gradient(90deg, transparent, rgba(254, 128, 160, 0.6), transparent)",
-        animation: "shimmer 3s ease-in-out infinite",
-      }}
-      {...props}
-    >
-      {children}
-    </MotionBox>
-  )
+export const ElegantBackground: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <Box position="relative" overflow="hidden">
+    <Box
+      position="absolute"
+      top="-120px"
+      right="-120px"
+      width="300px"
+      height="300px"
+      borderRadius="full"
+      bg="radial-gradient(circle, rgba(77,184,212,0.04) 0%, transparent 70%)"
+      pointerEvents="none"
+    />
+    <Box
+      position="absolute"
+      bottom="-80px"
+      left="-80px"
+      width="200px"
+      height="200px"
+      borderRadius="full"
+      bg="radial-gradient(circle, rgba(196,165,90,0.04) 0%, transparent 70%)"
+      pointerEvents="none"
+    />
+    {children}
+  </Box>
+);
+
+// ─── Button ────────────────────────────────────────────────────────────────
+
+interface ElegantButtonProps {
+  children: React.ReactNode;
+  href?: string;
+  onClick?: () => void;
+  variant?: 'ice' | 'gold' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  [key: string]: unknown;
 }
 
-// Sophisticated Button Component
-export const ElegantButton = ({
+export const ElegantButton: React.FC<ElegantButtonProps> = ({
   children,
-  variant = 'elegant',
-  isLoading = false,
+  href,
+  onClick,
+  variant = 'ice',
+  size = 'md',
   ...props
 }) => {
-  return (
-    <MotionBox
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      transition={{ type: "spring", stiffness: 400, damping: 17 }}
-    >
-      <Button
-        variant={variant}
-        isLoading={isLoading}
-        loadingText="Loading..."
-        fontFamily="body"
-        fontSize="md"
-        px={8}
-        py={6}
-        h="auto"
-        position="relative"
-        overflow="hidden"
-        _before={{
-          content: '""',
-          position: "absolute",
-          top: 0,
-          left: "-100%",
-          width: "100%",
-          height: "100%",
-          background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)",
-          transition: "left 0.5s",
-        }}
-        _hover={{
-          _before: {
-            left: "100%",
-          }
-        }}
-        {...props}
-      >
-        {children}
-      </Button>
-    </MotionBox>
-  )
-}
+  const styles = {
+    ice: {
+      border: '1px solid #4db8d4',
+      color: '#4db8d4',
+      bg: 'transparent',
+      hoverBg: 'rgba(77, 184, 212, 0.08)',
+      hoverShadow: '0 4px 20px rgba(77, 184, 212, 0.2)',
+    },
+    gold: {
+      border: '1px solid #c4a55a',
+      color: '#c4a55a',
+      bg: 'transparent',
+      hoverBg: 'rgba(196, 165, 90, 0.08)',
+      hoverShadow: '0 4px 20px rgba(196, 165, 90, 0.2)',
+    },
+    ghost: {
+      border: '1px solid #1e2d42',
+      color: '#7899b0',
+      bg: 'transparent',
+      hoverBg: 'rgba(77, 184, 212, 0.04)',
+      hoverShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+    },
+  };
 
-// Elegant Card Component - using static dark mode colors
-export const ElegantCard = ({ children, icon, title, ...props }) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-  // Static dark mode colors to prevent hydration issues
-  const cardBg = "rgba(26, 32, 44, 0.8)"
-  const borderColor = "rgba(254, 128, 160, 0.2)"
+  const sizeMap = {
+    sm: { px: '14px', py: '7px', fontSize: '11px' },
+    md: { px: '20px', py: '10px', fontSize: '12px' },
+    lg: { px: '28px', py: '14px', fontSize: '13px' },
+  };
+
+  const s = styles[variant];
+  const sz = sizeMap[size];
+  const tag = href ? 'a' : 'button';
 
   return (
     <MotionBox
-      ref={ref}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      whileHover={{
-        y: -5,
-        boxShadow: "elegant-lg",
-        transition: { duration: 0.3 }
-      }}
-      bg={cardBg}
-      backdropFilter="blur(15px)"
-      borderRadius="16px"
-      p={6}
-      border="1px solid"
-      borderColor={borderColor}
-      boxShadow="elegant"
-      position="relative"
+      as={tag}
+      href={href}
+      onClick={onClick}
+      display="inline-flex"
+      alignItems="center"
+      gap={2}
+      border={s.border}
+      color={s.color}
+      bg={s.bg}
+      px={sz.px}
+      py={sz.py}
+      fontSize={sz.fontSize}
+      fontFamily="mono"
+      letterSpacing="0.08em"
+      textTransform="uppercase"
       cursor="pointer"
-      overflow="hidden"
-      _before={{
-        content: '""',
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        height: "2px",
-        background: "linear-gradient(90deg, #ec4899, #f43f5e)",
-        transform: "scaleX(0)",
-        transformOrigin: "left",
-        transition: "transform 0.3s ease",
-      }}
-      _hover={{
-        _before: {
-          transform: "scaleX(1)",
-        }
-      }}
+      position="relative"
+      textDecoration="none"
+      whileHover={{ y: -2, boxShadow: s.hoverShadow, backgroundColor: s.hoverBg }}
+      whileTap={{ scale: 0.97 }}
+      transition={crystalline}
       {...props}
     >
-      {icon && (
-        <Box
-          fontSize="2xl"
-          mb={3}
-          color="feminine.500"
-        >
-          {icon}
-        </Box>
-      )}
-      {title && (
-        <Text
-          fontSize="lg"
-          fontWeight="600"
-          mb={2}
-          color="elegant.800"
-          fontFamily="heading"
-        >
-          {title}
-        </Text>
-      )}
       {children}
     </MotionBox>
-  )
+  );
+};
+
+// ─── Card ──────────────────────────────────────────────────────────────────
+
+interface ElegantCardProps {
+  children: React.ReactNode;
+  delay?: number;
+  [key: string]: unknown;
 }
 
-// Sophisticated Text Component
-export const ElegantText = ({
-  children,
-  variant = 'elegant',
-  as: Tag = 'span',
-  ...props
-}: React.ComponentProps<typeof Text> & { variant?: string }) => {
-  return (
-    <Text
-      as={Tag}
-      textStyle={variant}
-      fontWeight="600"
-      letterSpacing="-0.02em"
-      {...props}
-    >
-      {children}
-    </Text>
-  )
-}
-
-// Floating Elements Component
-export const FloatingElements = () => {
-  return (
-    <>
-      <MotionBox
-        position="absolute"
-        top="10%"
-        right="10%"
-        w="20px"
-        h="20px"
-        borderRadius="full"
-        bg="linear-gradient(135deg, #ec4899, #f43f5e)"
-        opacity={0.6}
-        animate={{
-          y: [-20, 20, -20],
-          x: [-10, 10, -10],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        zIndex={0}
-      />
-      <MotionBox
-        position="absolute"
-        top="60%"
-        left="5%"
-        w="15px"
-        h="15px"
-        borderRadius="full"
-        bg="linear-gradient(135deg, #f43f5e, #ec4899)"
-        opacity={0.4}
-        animate={{
-          y: [20, -20, 20],
-          x: [10, -10, 10],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2,
-        }}
-        zIndex={0}
-      />
-      <MotionBox
-        position="absolute"
-        bottom="20%"
-        right="20%"
-        w="12px"
-        h="12px"
-        borderRadius="full"
-        bg="linear-gradient(135deg, #ec4899, #be185d)"
-        opacity={0.5}
-        animate={{
-          y: [-15, 15, -15],
-          rotate: [0, 360, 0],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 4,
-        }}
-        zIndex={0}
-      />
-    </>
-  )
-}
-
-// Sophisticated Background Component
-export const ElegantBackground = ({ children, ...props }) => {
-  return (
+export const ElegantCard: React.FC<ElegantCardProps> = ({ children, delay = 0, ...props }) => (
+  <MotionBox
+    bg="#0d1525"
+    border="1px solid #1e2d42"
+    position="relative"
+    overflow="hidden"
+    initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
+    whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+    viewport={{ once: true }}
+    transition={{ ...crystalline, delay }}
+    whileHover={{
+      borderColor: 'rgba(77, 184, 212, 0.35)',
+      boxShadow: '0 8px 32px rgba(77, 184, 212, 0.1)',
+      y: -3,
+    }}
+    {...props}
+  >
     <Box
-      position="relative"
-      minH="100vh"
-      overflow="hidden"
-      {...props}
-    >
-      <FloatingElements />
-      <Box position="relative" zIndex={1}>
-        {children}
-      </Box>
-    </Box>
-  )
+      position="absolute"
+      top={0}
+      left={0}
+      right={0}
+      h="1px"
+      bgGradient="linear(to-r, transparent, #4db8d4, transparent)"
+      opacity={0.4}
+    />
+    {children}
+  </MotionBox>
+);
+
+// ─── Text ──────────────────────────────────────────────────────────────────
+
+export const ElegantText: React.FC<{ children: React.ReactNode; [key: string]: unknown }> = ({
+  children,
+  ...props
+}) => (
+  <Text color="#e8eef4" lineHeight="tall" {...props}>
+    {children}
+  </Text>
+);
+
+// ─── Section ──────────────────────────────────────────────────────────────
+
+export const ElegantSection: React.FC<{ children: React.ReactNode; [key: string]: unknown }> = ({
+  children,
+  ...props
+}) => (
+  <MotionBox
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={crystalline}
+    py={{ base: 12, md: 16 }}
+    {...props}
+  >
+    {children}
+  </MotionBox>
+);
+
+// ─── Timeline ──────────────────────────────────────────────────────────────
+
+interface TimelineItemProps {
+  year: string;
+  title: string;
+  description: string;
+  icon?: string;
+  delay?: number;
 }
 
-// Cute emoji icons for timeline items
-const timelineEmojis = ['🌸', '✨', '💫', '🎀', '💖', '⭐', '🌟', '💝']
-
-// Timeline Component - Cute Version
-export const ElegantTimeline = ({ items = [] }: ElegantTimelineProps) => {
-  return (
-    <VStack spacing={8} align="stretch" position="relative" py={4}>
-      {/* Cute gradient timeline line with dashes */}
-      <Box
-        position="absolute"
-        left={{ base: "24px", md: "28px" }}
-        top="0"
-        bottom="0"
-        w="3px"
-        bgGradient="linear(to-b, pink.400, purple.400, pink.300)"
-        borderRadius="full"
-        zIndex={0}
-        sx={{
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'repeating-linear-gradient(to bottom, transparent, transparent 8px, rgba(255,255,255,0.3) 8px, rgba(255,255,255,0.3) 16px)',
-          }
-        }}
-      />
-
-      {items.map((item, index) => (
-        <ElegantTimelineItem
-          key={index}
-          {...item}
-          delay={index * 0.15}
-          emoji={timelineEmojis[index % timelineEmojis.length]}
-          isLast={index === items.length - 1}
-        />
-      ))}
+export const ElegantTimeline: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <Box position="relative">
+    <Box
+      position="absolute"
+      left={{ base: '14px', md: '50%' }}
+      top={0}
+      bottom={0}
+      w="1px"
+      bg="linear-gradient(to bottom, transparent, #1e2d42 15%, #1e2d42 85%, transparent)"
+      transform={{ md: 'translateX(-50%)' }}
+    />
+    <VStack spacing={8} align="stretch">
+      {children}
     </VStack>
-  )
-}
+  </Box>
+);
 
-// Timeline Item Component - Cute Version
-export const ElegantTimelineItem = ({
+export const ElegantTimelineItem: React.FC<TimelineItemProps> = ({
   year,
   title,
   description,
   delay = 0,
-  emoji = '✨',
-  isLast = false,
-}: ElegantTimelineItemProps) => {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
-
-  return (
-    <MotionFlex
-      ref={ref}
-      initial={{ opacity: 0, x: -30, y: 20 }}
-      animate={isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -30, y: 20 }}
-      transition={{ duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
-      align="flex-start"
+}) => (
+  <MotionBox
+    display="flex"
+    alignItems="flex-start"
+    gap={6}
+    initial={{ opacity: 0, x: -20 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true }}
+    transition={{ ...crystalline, delay }}
+  >
+    <Box
       position="relative"
-      zIndex={1}
+      flexShrink={0}
+      w="28px"
+      h="28px"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      mt={1}
     >
-      {/* Cute timeline dot with emoji */}
+      <Box
+        w="8px"
+        h="8px"
+        border="1px solid #4db8d4"
+        transform="rotate(45deg)"
+        bg="#4db8d4"
+        opacity={0.8}
+      />
+    </Box>
+
+    <Box flex={1}>
+      <HStack spacing={3} mb={1} align="baseline">
+        <Text
+          fontSize="xs"
+          color="#c4a55a"
+          fontFamily="mono"
+          letterSpacing="0.1em"
+          fontWeight="500"
+        >
+          {year}
+        </Text>
+        <Text fontSize="xs" color="#1e2d42">◆</Text>
+        <Text
+          fontSize="sm"
+          fontWeight="600"
+          color="#e8eef4"
+          letterSpacing="0.04em"
+        >
+          {title}
+        </Text>
+      </HStack>
+      <Text fontSize="sm" color="#4a6580" lineHeight="tall">
+        {description}
+      </Text>
+    </Box>
+  </MotionBox>
+);
+
+// ─── Social Links ──────────────────────────────────────────────────────────
+
+interface SocialLink {
+  href: string;
+  label: string;
+  icon: React.ElementType;
+}
+
+const DEFAULT_SOCIALS: SocialLink[] = [
+  { icon: IoLogoGithub, href: 'https://github.com/kyuna0312', label: 'GitHub' },
+  { icon: IoLogoYoutube, href: 'https://www.youtube.com/@amarihana', label: 'YouTube' },
+  { icon: IoLogoTwitter, href: 'https://x.com/kyuna0312', label: 'X' },
+  { icon: IoLogoInstagram, href: 'https://www.instagram.com/kyuna0312/', label: 'Instagram' },
+  { icon: SiDiscord, href: 'https://discord.gg/shiba', label: 'Discord' },
+  { icon: IoMail, href: '/contact', label: 'Contact' },
+];
+
+export const ElegantSocialLinks: React.FC<{ links?: SocialLink[] }> = ({
+  links = DEFAULT_SOCIALS,
+}) => (
+  <HStack spacing={2} flexWrap="wrap">
+    {links.map((social) => (
       <MotionBox
-        w={{ base: "50px", md: "58px" }}
-        h={{ base: "50px", md: "58px" }}
-        borderRadius="full"
-        bgGradient="linear(135deg, pink.400, purple.500)"
+        key={social.label}
+        as={Link}
+        href={social.href}
+        target={social.href.startsWith('http') ? '_blank' : undefined}
+        rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+        p={2}
+        border="1px solid #1e2d42"
+        color="#4a6580"
         display="flex"
         alignItems="center"
         justifyContent="center"
-        flexShrink={0}
-        border="4px solid"
-        borderColor="gray.800"
-        boxShadow="0 4px 20px rgba(236, 72, 153, 0.4)"
-        position="relative"
-        whileHover={{ scale: 1.1, rotate: 10 }}
-        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        aria-label={social.label}
+        whileHover={{
+          color: '#4db8d4',
+          borderColor: '#4db8d4',
+          backgroundColor: 'rgba(77, 184, 212, 0.06)',
+          y: -2,
+        }}
+        transition={crystalline}
       >
-        <Text fontSize={{ base: "lg", md: "xl" }}>{emoji}</Text>
-
-        {/* Year badge */}
-        <Box
-          position="absolute"
-          bottom="-8px"
-          bg="gray.900"
-          px={2}
-          py={0.5}
-          borderRadius="full"
-          border="2px solid"
-          borderColor="pink.400"
-          fontSize="xs"
-          fontWeight="bold"
-          color="pink.300"
-        >
-          {year}
-        </Box>
+        <social.icon size={16} />
       </MotionBox>
+    ))}
+  </HStack>
+);
 
-      {/* Content card */}
-      <Box ml={{ base: 4, md: 6 }} flex={1} mt={1}>
-        <MotionBox
-          bg="rgba(26, 32, 44, 0.6)"
-          backdropFilter="blur(10px)"
-          borderRadius="20px"
-          p={{ base: 4, md: 6 }}
-          border="1px solid"
-          borderColor="rgba(254, 128, 160, 0.2)"
-          position="relative"
-          whileHover={{
-            y: -3,
-            boxShadow: "0 10px 30px rgba(236, 72, 153, 0.2)",
-            borderColor: "rgba(254, 128, 160, 0.4)"
-          }}
-          transition={{ duration: 0.3 }}
-          _before={{
-            content: '""',
-            position: "absolute",
-            top: "20px",
-            left: "-8px",
-            w: "0",
-            h: "0",
-            borderTop: "8px solid transparent",
-            borderBottom: "8px solid transparent",
-            borderRight: "8px solid rgba(254, 128, 160, 0.2)",
-          }}
-        >
-          {/* Cute sparkle decoration */}
-          <Box
-            position="absolute"
-            top="-6px"
-            right="12px"
-            fontSize="sm"
-            opacity={0.8}
-          >
-            ✦
-          </Box>
+// ─── Floating Elements (subtle background) ─────────────────────────────────
 
-          <HStack mb={2} spacing={2}>
-            <Box
-              px={3}
-              py={1}
-              bg="rgba(236, 72, 153, 0.15)"
-              borderRadius="full"
-              border="1px solid"
-              borderColor="pink.400"
-            >
-              <Text
-                fontSize="xs"
-                color="pink.300"
-                fontWeight="700"
-                letterSpacing="wider"
-              >
-                {year}
-              </Text>
-            </Box>
-          </HStack>
+export const FloatingElements: React.FC = () => (
+  <>
+    {[
+      { top: '15%', left: '5%', size: 120, dur: 20, delay: 0, color: 'rgba(77,184,212,0.03)' },
+      { top: '60%', right: '8%', size: 80, dur: 28, delay: 5, color: 'rgba(196,165,90,0.03)' },
+      { top: '35%', left: '88%', size: 60, dur: 35, delay: 10, color: 'rgba(77,184,212,0.02)' },
+    ].map((el, i) => (
+      <Box
+        key={i}
+        position="fixed"
+        top={el.top}
+        left={el.left}
+        right={el.right}
+        width={`${el.size}px`}
+        height={`${el.size}px`}
+        borderRadius="full"
+        bg={el.color}
+        pointerEvents="none"
+        zIndex={0}
+        style={{ animation: `float ${el.dur}s ease-in-out ${el.delay}s infinite` }}
+      />
+    ))}
+  </>
+);
 
-          <Text
-            fontSize={{ base: "md", md: "lg" }}
-            fontWeight="700"
-            color="white"
-            mb={2}
-            fontFamily="heading"
-            lineHeight="short"
-          >
-            {title}
-          </Text>
-
-          <Text
-            color="gray.400"
-            lineHeight="tall"
-            fontSize={{ base: "sm", md: "md" }}
-          >
-            {description}
-          </Text>
-
-          {/* Cute bottom decoration */}
-          {!isLast && (
-            <Box
-              position="absolute"
-              bottom="-20px"
-              left="50%"
-              transform="translateX(-50%)"
-              fontSize="xs"
-              color="pink.400"
-              opacity={0.6}
-            >
-              ♡
-            </Box>
-          )}
-        </MotionBox>
-      </Box>
-    </MotionFlex>
-  )
-}
-
-// Social Links Component
-export const ElegantSocialLinks = ({ links = [] }: { links?: ElegantSocialLink[] }) => {
-  return (
-    <HStack spacing={4} justify="center">
-      {links.map((link, index) => (
-        <MotionBox
-          key={index}
-          whileHover={{ scale: 1.1, rotate: 5 }}
-          whileTap={{ scale: 0.9 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-        >
-          <NextLink
-            href={link.href}
-            passHref
-            legacyBehavior
-          >
-            <Box
-              as="a"
-              target="_blank"
-              rel="noopener noreferrer"
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              w="50px"
-              h="50px"
-              borderRadius="full"
-            bg="rgba(255, 255, 255, 0.8)"
-            backdropFilter="blur(10px)"
-            border="1px solid"
-            borderColor="rgba(236, 72, 153, 0.2)"
-            color="feminine.600"
-            transition="all 0.3s ease"
-            boxShadow="elegant"
-            _hover={{
-              bg: "feminine.500",
-              color: "white",
-              borderColor: "feminine.500",
-              boxShadow: "elegant-lg",
-            }}
-          >
-            <Box as={link.icon} size="20px" />
-          </Box>
-          </NextLink>
-        </MotionBox>
-      ))}
-    </HStack>
-  )
-}
+// Keep Heading re-export for any callers that imported it from here
+export { Heading };

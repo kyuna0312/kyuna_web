@@ -1,0 +1,11 @@
+{
+  "autoMemoryEnabled": false,
+  "autoCompactWindow": 100000,
+  "alwaysThinkingEnabled": false,
+  "skillListingBudgetFraction": 0.0001,
+  "spinnerTipsEnabled": false,
+  "showThinkingSummaries": false,
+  "permissions": {
+    "additionalDirectories": []
+  }
+}

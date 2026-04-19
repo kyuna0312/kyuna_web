@@ -5,384 +5,269 @@ import type { LinkItemProps, MenuLinkProps, NavbarProps } from '@/types';
 import LanguageSwitcher from './language-switcher';
 import ColorModeToggle from './color-mode-toggle';
 import {
-	Container,
-	Box,
-	Link,
-	Stack,
-	Menu,
-	MenuItem,
-	MenuList,
-	MenuButton,
-	IconButton,
-	HStack,
-	Text,
-	keyframes,
+  Container,
+  Box,
+  Link,
+  Stack,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuButton,
+  IconButton,
+  HStack,
+  Text,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
-import { IoLogoGithub, IoSparkles, IoHeart } from 'react-icons/io5';
+import { IoLogoGithub } from 'react-icons/io5';
 import { useTranslation } from 'next-i18next';
 import { motion } from 'framer-motion';
 
 const MotionBox = motion(Box);
 const MotionLink = motion(Link);
 
-// Cute floating animation
-const floatAnimation = keyframes`
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-3px); }
-`;
+const LinkItem = ({ href, path, target, children, ...props }: LinkItemProps) => {
+  const active = path === href;
 
-// Sparkle animation
-const sparkleAnimation = keyframes`
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
-`;
-
-const LinkItem = ({ href, path, target, children, icon, ...props }: LinkItemProps) => {
-	const active = path === href;
-
-	return (
-		<NextLink href={href} scroll={false} passHref legacyBehavior>
-			<MotionLink
-				px={4}
-				py={2}
-				borderRadius="full"
-				bg={active ? 'rgba(236, 72, 153, 0.1)' : 'transparent'}
-				color={active ? 'pink.500' : 'inherit'}
-				target={target}
-				fontWeight="600"
-				fontSize="sm"
-				display="inline-flex"
-				alignItems="center"
-				gap={2}
-				position="relative"
-				border="2px solid"
-				borderColor={active ? 'pink.300' : 'transparent'}
-				whileHover={{ scale: 1.05, y: -2 }}
-				whileTap={{ scale: 0.95 }}
-				transition={{ duration: 0.2 }}
-				_hover={{
-					bg: 'rgba(236, 72, 153, 0.1)',
-					color: 'pink.500',
-					borderColor: 'pink.200',
-					textDecoration: 'none',
-				}}
-				{...props}
-			>
-				{icon && <Box as={icon} size={14} />}
-				{children}
-				{active && (
-					<Box
-						as="span"
-						position="absolute"
-						top="-2px"
-						right="-2px"
-						fontSize="xs"
-						animation={`${sparkleAnimation} 1.5s ease-in-out infinite`}
-					>
-						✨
-					</Box>
-				)}
-			</MotionLink>
-		</NextLink>
-	);
+  return (
+    <NextLink href={href} scroll={false} passHref legacyBehavior>
+      <MotionLink
+        px={4}
+        py={2}
+        borderRadius="none"
+        bg="transparent"
+        color={active ? '#4db8d4' : '#7899b0'}
+        target={target}
+        fontWeight="500"
+        fontSize="sm"
+        letterSpacing="0.06em"
+        textTransform="uppercase"
+        display="inline-flex"
+        alignItems="center"
+        gap={2}
+        position="relative"
+        borderBottom="1px solid"
+        borderColor={active ? '#4db8d4' : 'transparent'}
+        whileHover={{ y: -1 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ duration: 0.15 }}
+        _hover={{
+          color: '#4db8d4',
+          borderColor: 'rgba(77, 184, 212, 0.4)',
+          textDecoration: 'none',
+        }}
+        {...props}
+      >
+        {children}
+      </MotionLink>
+    </NextLink>
+  );
 };
 
 const MenuLink = forwardRef<HTMLAnchorElement, MenuLinkProps>((props, ref) => {
-	const { href, ...rest } = props;
-	return (
-		<NextLink href={href} passHref legacyBehavior>
-			<Link ref={ref} {...rest} />
-		</NextLink>
-	);
+  const { href, ...rest } = props;
+  return (
+    <NextLink href={href} passHref legacyBehavior>
+      <Link ref={ref} {...rest} />
+    </NextLink>
+  );
 });
 
 MenuLink.displayName = 'MenuLink';
 
 const Navbar = (props: NavbarProps) => {
-	const { path } = props;
-	const { t } = useTranslation('common');
-	const [mounted, setMounted] = useState(false);
+  const { path } = props;
+  const { t } = useTranslation('common');
+  const [mounted, setMounted] = useState(false);
 
-	useEffect(() => {
-		setMounted(true);
-	}, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-	// Call all hooks at top level
-	const bgColorDark = 'rgba(26, 32, 44, 0.85)';
-	const borderColorDark = 'rgba(254, 128, 160, 0.2)';
-	const shadowDark = '0 8px 32px rgba(0, 0, 0, 0.3)';
+  const initialBg = mounted ? 'rgba(8, 12, 20, 0.92)' : 'transparent';
+  const initialBorder = mounted ? '#1e2d42' : 'transparent';
 
-	// Static values to prevent hydration mismatch
-	const navPillBg = 'rgba(255, 255, 255, 0.05)';
-	const navPillBorder = 'rgba(255, 255, 255, 0.1)';
-	const menuListBg = 'gray.800';
-	const menuItemTextColor = 'gray.100';
+  return (
+    <MotionBox
+      position="fixed"
+      as="nav"
+      w="100%"
+      bg={initialBg}
+      css={{
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+      }}
+      borderBottom="1px solid"
+      borderColor={initialBorder}
+      zIndex={1000}
+      initial={{ y: -60, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+      {...props}
+    >
+      <Container
+        display="flex"
+        maxW="container.lg"
+        alignItems="center"
+        py={3}
+        px={{ base: 4, md: 6 }}
+      >
+        {/* Logo */}
+        <MotionBox display="flex" alignItems="center" whileHover={{ scale: 1.02 }}>
+          <Logo />
+        </MotionBox>
 
-	// Use transparent background on first render to avoid flash
-	// The backdrop-filter will still provide visual separation
-	const initialBg = mounted ? bgColorDark : 'transparent';
-	const initialBorder = mounted ? borderColorDark : 'transparent';
-	const initialShadow = mounted ? shadowDark : 'none';
+        {/* Desktop Navigation */}
+        <Stack
+          direction="row"
+          display={{ base: 'none', md: 'flex' }}
+          alignItems="center"
+          spacing={1}
+          ml={8}
+        >
+          <LinkItem href="/projects" path={path}>
+            {t('navigation.projects')}
+          </LinkItem>
+          <LinkItem href="/contact" path={path}>
+            {t('navbar.contact')}
+          </LinkItem>
+          <MotionLink
+            href="https://github.com/kyuna0312"
+            target="_blank"
+            px={4}
+            py={2}
+            color="#7899b0"
+            fontWeight="500"
+            fontSize="sm"
+            letterSpacing="0.06em"
+            textTransform="uppercase"
+            display="inline-flex"
+            alignItems="center"
+            gap={2}
+            borderBottom="1px solid transparent"
+            whileHover={{ y: -1 }}
+            whileTap={{ scale: 0.97 }}
+            _hover={{
+              color: '#4db8d4',
+              borderColor: 'rgba(77, 184, 212, 0.4)',
+              textDecoration: 'none',
+            }}
+          >
+            <IoLogoGithub size={15} />
+            <Text fontSize="sm">GitHub</Text>
+          </MotionLink>
+        </Stack>
 
-	return (
-		<MotionBox
-			position="fixed"
-			as="nav"
-			w="100%"
-			bg={initialBg}
-			css={{
-				backdropFilter: 'blur(20px)',
-				WebkitBackdropFilter: 'blur(20px)',
-			}}
-			borderBottom="1px solid"
-			borderColor={initialBorder}
-			boxShadow={initialShadow}
-			zIndex={1000}
-			initial={{ y: -100, opacity: 0 }}
-			animate={{ y: 0, opacity: 1 }}
-			transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-			sx={{
-				transition: 'background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease',
-			}}
-			{...props}
-		>
-			{/* Cute decorative top border gradient */}
-			<Box
-				position="absolute"
-				top={0}
-				left={0}
-				right={0}
-				h="2px"
-				bgGradient="linear(to-r, pink.300, purple.300, pink.400, purple.400, pink.300)"
-				backgroundSize="200% 100%"
-				animation="gradient 3s ease infinite"
-				sx={{
-					'@keyframes gradient': {
-						'0%': { backgroundPosition: '0% 50%' },
-						'50%': { backgroundPosition: '100% 50%' },
-						'100%': { backgroundPosition: '0% 50%' },
-					},
-				}}
-			/>
+        <Box flex={1} />
 
-			<Container
-				display="flex"
-				maxW="container.lg"
-				alignItems="center"
-				py={3}
-				px={{ base: 4, md: 6 }}
-			>
-				{/* Logo Section */}
-				<MotionBox
-					display="flex"
-					alignItems="center"
-					gap={2}
-					whileHover={{ scale: 1.02 }}
-				>
-					<Logo />
-				</MotionBox>
+        {/* Right Section */}
+        <HStack spacing={2}>
+          <ColorModeToggle />
+          <LanguageSwitcher />
 
-				{/* Desktop Navigation */}
-				<Stack
-					direction="row"
-					display={{ base: 'none', md: 'flex' }}
-					alignItems="center"
-					spacing={2}
-					ml={8}
-					p={1}
-					bg={navPillBg}
-					borderRadius="full"
-					border="1px solid"
-					borderColor={navPillBorder}
-				>
-					<LinkItem href="/projects" path={path} icon={IoSparkles}>
-						{t('navigation.projects')}
-					</LinkItem>
-					<LinkItem href="/contact" path={path} icon={IoHeart}>
-						{t('navbar.contact')}
-					</LinkItem>
-					<MotionLink
-						href="https://github.com/kyuna0312"
-						target="_blank"
-						px={4}
-						py={2}
-						borderRadius="full"
-						bg="transparent"
-						fontWeight="600"
-						fontSize="sm"
-						display="inline-flex"
-						alignItems="center"
-						gap={2}
-						border="2px solid transparent"
-						whileHover={{ scale: 1.05, y: -2 }}
-						whileTap={{ scale: 0.95 }}
-						_hover={{
-							color: 'pink.500',
-							bg: 'rgba(236, 72, 153, 0.1)',
-							borderColor: 'pink.200',
-							textDecoration: 'none',
-						}}
-					>
-						<IoLogoGithub size={16} />
-						<Text fontSize="sm">GitHub</Text>
-					</MotionLink>
-				</Stack>
-
-				<Box flex={1} />
-
-				{/* Right Section */}
-				<HStack spacing={2}>
-					{/* Cute decoration - only show on desktop after mount */}
-					{mounted && (
-						<Box
-							display={{ base: 'none', lg: 'flex' }}
-							alignItems="center"
-							gap={1}
-							mr={2}
-							animation={`${floatAnimation} 3s ease-in-out infinite`}
-						>
-							<Text fontSize="sm" color="pink.400">♪</Text>
-							<Text fontSize="xs" color="purple.400">♫</Text>
-						</Box>
-					)}
-
-					<ColorModeToggle />
-					<LanguageSwitcher />
-
-					{/* Mobile Menu */}
-					<Box display={{ base: 'inline-block', md: 'none' }}>
-						<Menu isLazy>
-							<MenuButton
-								as={IconButton}
-								icon={<HamburgerIcon />}
-								variant="ghost"
-								aria-label="Navigation Menu"
-								size="md"
-								color="pink.500"
-								borderRadius="full"
-								border="2px solid"
-								borderColor="pink.200"
-								bg="rgba(236, 72, 153, 0.05)"
-								_hover={{
-									bg: 'rgba(236, 72, 153, 0.15)',
-									transform: 'scale(1.05)',
-								}}
-								_active={{
-									bg: 'rgba(236, 72, 153, 0.2)',
-									transform: 'scale(0.95)',
-								}}
-								transition="all 0.2s ease"
-							/>
-							<MenuList
-								bg={menuListBg}
-								borderColor="pink.200"
-								borderRadius="2xl"
-								border="2px solid"
-								boxShadow="0 20px 60px rgba(236, 72, 153, 0.15)"
-								p={3}
-								overflow="hidden"
-							>
-								{/* Cute header in menu */}
-								<Box
-									textAlign="center"
-									pb={3}
-									mb={3}
-									borderBottom="1px dashed"
-									borderColor="pink.200"
-								>
-									<Text fontSize="sm" color="pink.500" fontWeight="600">
-										✨ Navigation ✨
-									</Text>
-								</Box>
-
-								<MenuItem
-									as={MenuLink}
-									href="/"
-									bg="transparent"
-									color={menuItemTextColor}
-									_hover={{
-										bg: 'rgba(236, 72, 153, 0.1)',
-										color: 'pink.500',
-									}}
-									borderRadius="xl"
-									mb={2}
-									p={3}
-									fontWeight="600"
-									transition="all 0.2s ease"
-								>
-									<HStack spacing={2}>
-										<Text>🏠</Text>
-										<Text>{t('navigation.home')}</Text>
-									</HStack>
-								</MenuItem>
-								<MenuItem
-									as={MenuLink}
-									href="/projects"
-									bg="transparent"
-									color={menuItemTextColor}
-									_hover={{
-										bg: 'rgba(236, 72, 153, 0.1)',
-										color: 'pink.500',
-									}}
-									borderRadius="xl"
-									mb={2}
-									p={3}
-									fontWeight="600"
-									transition="all 0.2s ease"
-								>
-									<HStack spacing={2}>
-										<Text>✨</Text>
-										<Text>{t('navigation.projects')}</Text>
-									</HStack>
-								</MenuItem>
-								<MenuItem
-									as={MenuLink}
-									href="/contact"
-									bg="transparent"
-									color={menuItemTextColor}
-									_hover={{
-										bg: 'rgba(236, 72, 153, 0.1)',
-										color: 'pink.500',
-									}}
-									borderRadius="xl"
-									mb={2}
-									p={3}
-									fontWeight="600"
-									transition="all 0.2s ease"
-								>
-									<HStack spacing={2}>
-										<Text>💌</Text>
-										<Text>{t('navbar.contact')}</Text>
-									</HStack>
-								</MenuItem>
-								<MenuItem
-									as={Link}
-									href="https://github.com/kyuna0312"
-									target="_blank"
-									bg="transparent"
-									color={menuItemTextColor}
-									_hover={{
-										bg: 'rgba(236, 72, 153, 0.1)',
-										color: 'pink.500',
-									}}
-									borderRadius="xl"
-									p={3}
-									fontWeight="600"
-									transition="all 0.2s ease"
-								>
-									<HStack spacing={2}>
-										<IoLogoGithub size={18} />
-										<Text>GitHub</Text>
-									</HStack>
-								</MenuItem>
-							</MenuList>
-						</Menu>
-					</Box>
-				</HStack>
-			</Container>
-		</MotionBox>
-	);
+          {/* Mobile Menu */}
+          <Box display={{ base: 'inline-block', md: 'none' }}>
+            <Menu isLazy>
+              <MenuButton
+                as={IconButton}
+                icon={<HamburgerIcon />}
+                variant="ghost"
+                aria-label="Navigation Menu"
+                size="md"
+                color="#7899b0"
+                borderRadius="none"
+                border="1px solid #1e2d42"
+                bg="transparent"
+                _hover={{
+                  bg: 'rgba(77, 184, 212, 0.06)',
+                  color: '#4db8d4',
+                  borderColor: '#4db8d4',
+                }}
+                _active={{ bg: 'rgba(77, 184, 212, 0.1)' }}
+                transition="all 0.2s ease"
+              />
+              <MenuList
+                bg="#0d1525"
+                borderColor="#1e2d42"
+                borderRadius="none"
+                border="1px solid"
+                boxShadow="0 20px 60px rgba(0, 0, 0, 0.5)"
+                p={2}
+                minW="200px"
+              >
+                <MenuItem
+                  as={MenuLink}
+                  href="/"
+                  bg="transparent"
+                  color="#7899b0"
+                  _hover={{ bg: 'rgba(77, 184, 212, 0.06)', color: '#4db8d4' }}
+                  borderRadius="none"
+                  mb={1}
+                  p={3}
+                  fontSize="xs"
+                  letterSpacing="0.08em"
+                  textTransform="uppercase"
+                  fontWeight="500"
+                >
+                  {t('navigation.home')}
+                </MenuItem>
+                <MenuItem
+                  as={MenuLink}
+                  href="/projects"
+                  bg="transparent"
+                  color="#7899b0"
+                  _hover={{ bg: 'rgba(77, 184, 212, 0.06)', color: '#4db8d4' }}
+                  borderRadius="none"
+                  mb={1}
+                  p={3}
+                  fontSize="xs"
+                  letterSpacing="0.08em"
+                  textTransform="uppercase"
+                  fontWeight="500"
+                >
+                  {t('navigation.projects')}
+                </MenuItem>
+                <MenuItem
+                  as={MenuLink}
+                  href="/contact"
+                  bg="transparent"
+                  color="#7899b0"
+                  _hover={{ bg: 'rgba(77, 184, 212, 0.06)', color: '#4db8d4' }}
+                  borderRadius="none"
+                  mb={1}
+                  p={3}
+                  fontSize="xs"
+                  letterSpacing="0.08em"
+                  textTransform="uppercase"
+                  fontWeight="500"
+                >
+                  {t('navbar.contact')}
+                </MenuItem>
+                <MenuItem
+                  as={Link}
+                  href="https://github.com/kyuna0312"
+                  target="_blank"
+                  bg="transparent"
+                  color="#7899b0"
+                  _hover={{ bg: 'rgba(77, 184, 212, 0.06)', color: '#4db8d4' }}
+                  borderRadius="none"
+                  p={3}
+                  fontSize="xs"
+                  letterSpacing="0.08em"
+                  textTransform="uppercase"
+                  fontWeight="500"
+                >
+                  <HStack spacing={2}>
+                    <IoLogoGithub size={14} />
+                    <Text>GitHub</Text>
+                  </HStack>
+                </MenuItem>
+              </MenuList>
+            </Menu>
+          </Box>
+        </HStack>
+      </Container>
+    </MotionBox>
+  );
 };
 
 export default Navbar;

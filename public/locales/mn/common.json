@@ -14,9 +14,9 @@
   "projects": {
     "title": "Төслүүд ✨",
     "description": "GitHub профайлтай ижил түлхүүр репозиториуд.",
-    "heroBadge": "$ gh repo list --featured",
+    "heroBadge": "$ gh repo list --client-work",
     "heroTitle": "Бүтээлтийн тэмдэглэл",
-    "heroDescription": "Бүтээгдэхүүн, backend, систем, бүтээлч багаж — pin-үүд нь github.com/kyuna0312/kyuna0312-тай таарна.",
+    "heroDescription": "Вэб апп, OSS хэрэгсэл, бүтээлч төслүүд. Фриланс нээлттэй.",
     "recruiterLine": "Ажилд авагчид: эхлээд эндээс, дараа нь албан тушаалд тохох репо руу орно уу.",
     "viewSource": "Эх кодыг үзэх 💻",
     "viewDemo": "Демо үзэх ✨",
@@ -41,31 +41,31 @@
   },
   "home": {
     "title": "Kyuna / 霜花",
-    "subtitle": "Инженер · Нээлттэй эх · AI комик урсгал · YouTube",
-    "description": "Ганцаар UI, API, сонирхолд автсан доод түвшний туршилт. Косплэй, нийгэмлэг = илэрхийлэл; код + дүр + өгүүлэл = нэг стек — анимэ маяг ба «уйтгартай» дэд бүтэц зэрэгцэн ✨",
-    "seoTitle": "Kyuna (霜花) — инженер, OSS, AI комик, YouTube",
-    "seoDescription": "Kyuna: TS/JS апп, Go/Rust, AI комик багаж, YouTube @amarihana. kyuna-web.vercel.app.",
-    "welcomeBadge": "kyuna0312@github:~$ ./welcome --tty",
+    "subtitle": "Фрилансер · OSS · Косплэй · AI бүтээлч",
+    "description": "Фриланс нээлттэй: Вэб апп, OSS зөвлөгөө, косплэй хамтын ажиллагаа, AI бүтээлч хэрэгсэл. Анимэ маягийн хөгжүүлэгч хийдэг, косплэй хийдэг. ✨",
+    "seoTitle": "Kyuna (霜花) — фриланс хөгжүүлэгч, OSS, косплэй, AI хэрэгсэл",
+    "seoDescription": "Kyuna: фриланс вэб хөгжүүлэгч (React/Next.js/Go), косплэй захиалга, OSS зөвлөгөө, AI бүтээлч хэрэгсэл. Захиалга авч байна — kyuna-web.vercel.app.",
+    "welcomeBadge": "kyuna0312@github:~$ ./hire-me --open",
     "imageAlt": "Kyuna — инженер, OSS, AI комик, бүтээгч",
     "buildSectionTitle": "$ tree -L 1 ./build",
     "buildSectionAria": "Ажлын бүлэглэл: бүтээгдэхүүн, backend, систем, бүтээлч",
-    "buildTree": "./build\n├── product/      # TS/JS апп → kyuna-web.vercel.app · amane312.vercel.app\n├── backend/      # Go үйлчилгээ, API, автоматжуулалт, dotfiles\n├── systems/      # Rust/C — OS-ийн ойролцоо, bootloader, engine\n└── creative/     # засварлагч, AI комик багаж, санаа → хуудас хурдан",
+    "buildTree": "./build\n├── product/      # TS/JS апп → kyuna-web.vercel.app · amane312.vercel.app\n├── backend/      # Go үйлчилгээ, API, автоматжуулалт, dotfiles\n├── systems/      # Rust/C — OS-ийн ойролцоо, bootloader, engine\n├── creative/     # засварлагч, AI комик багаж, санаа → хуудас хурдан\n└── hire/         # фриланс · захиалга · зөвлөгөө",
     "liveSites": "Сайтууд",
     "viewProjects": "Төслүүдийг үзэх 💻",
     "getInTouch": "Сайн уу 💌",
-    "hireMe": "Хамтран ажиллая 💼",
+    "hireMe": "Захиалга өгөх 💼",
     "workExperience": "Ажлын туршлага",
     "bio": "Сайн уу — Kyuna (霜花), Улаанбаатар 🇲🇳 Би продукт код, OSS, AI комик урсгал хийдэг; YouTube @amarihana. Чөлөөт цагтаа косплэй, анимэ~ ✨",
     "projectsButton": "Төслүүд 💻",
     "history": "Миний аялал 🌸",
     "pillars": {
       "oss": {
-        "title": "Нээлттэй эх",
-        "body": "Багаж, тохиргоо, нийгэмлэгт хувь нэмэр оруулах төслүүд."
+        "title": "Захиалга авч байна",
+        "body": "Фриланс, косплэй, OSS зөвлөгөө, AI хэрэгсэл — одоо нээлттэй."
       },
       "comics": {
-        "title": "AI комик урсгал",
-        "body": "Санаанаас хуудас хүртэл — үүсгэх workflow, бүтээлч багаж."
+        "title": "AI хэрэгсэл",
+        "body": "Комик урсгал, үүсгэх урлаг, бүтээлч автоматжуулалт — санаа → хуудас."
       },
       "youtube": {
         "title": "YouTube",
@@ -81,38 +81,38 @@
       "items": [
         {
           "icon": "💻",
-          "title": "Бүтээгдэхүүн (TS / JS)",
-          "description": "Апп, интерфэйс — React, Next.js, TypeScript, дизайн систем.",
-          "techs": ["TypeScript", "JavaScript", "React", "Next.js"]
+          "title": "Фриланс вэб хөгжүүлэлт",
+          "description": "React, Next.js, TypeScript — фулл стак апп, захиалга авч байна.",
+          "techs": ["TypeScript", "React", "Next.js", "APIs"]
         },
         {
-          "icon": "🟢",
-          "title": "Backend & автоматжуулалт",
-          "description": "Үйлчилгээ, API, холбох код — Go, Node тохиолдлоор.",
-          "techs": ["Go", "Node.js", "APIs", "Automation"]
-        },
-        {
-          "icon": "🦀",
-          "title": "Систем & доод түвшин",
-          "description": "Rust, C, OS-ийн ойролцоо туршилт — bootloader, engine.",
-          "techs": ["Rust", "C", "Linux", "Tooling"]
+          "icon": "🎭",
+          "title": "Косплэй захиалга",
+          "description": "Гэрэл зураг, загвар, брэнд хамтын ажиллагаа — захиалга нээлттэй.",
+          "techs": ["Гэрэл зураг", "Загвар", "Хамтын ажиллагаа", "Бүтээлч"]
         },
         {
           "icon": "🧩",
-          "title": "Нээлттэй эх",
-          "description": "Жижиг diff, тод үндэслэл — good first issue, dotfiles.",
-          "techs": ["GitHub", "CLI", "Docs", "Community"]
+          "title": "OSS зөвлөгөө",
+          "description": "Код хянах, архитектур, хувь нэмэр, dotfiles — тод diff, тод үндэслэл.",
+          "techs": ["GitHub", "CLI", "Архитектур", "Нийгэмлэг"]
         },
         {
           "icon": "🎨",
-          "title": "Бүтээлч стек",
-          "description": "AI комик урсгал, засварлагч, хөдөлгөөн — өгүүлэл + код.",
+          "title": "AI бүтээлч хэрэгсэл",
+          "description": "Комик урсгал, үүсгэх урлаг, автоматжуулалт — санаанаас хуудас хурдан.",
           "techs": ["Generative AI", "Lua", "Python", "Design"]
         },
         {
+          "icon": "🟢",
+          "title": "Систем & backend",
+          "description": "Go үйлчилгээ, Rust/C туршилт — API, автоматжуулалт, OS ойролцоо.",
+          "techs": ["Go", "Rust", "C", "Linux"]
+        },
+        {
           "icon": "▶️",
-          "title": "YouTube & илэрхийлэл",
-          "description": "Урт бичлэг, илэрхийлэл — терминал × анимэ уур амьсгал.",
+          "title": "YouTube & нийгэмлэг",
+          "description": "Бүтээл, tech, нийгэмлэг — терминал × анимэ @amarihana.",
           "techs": ["YouTube", "X", "Discord", "Instagram"]
         }
       ]
@@ -137,9 +137,9 @@
       "2023-02": "Нийгмийн платформ дээр UX болон хэрэгжүүлэлт."
     },
     "ctaSection": {
-      "badge": "💌 Холбогдоё 💌",
-      "heading": "Fork хийсэн үү? Хэлээрэй ✨",
-      "body": "Ажил, хамтын ажиллагаа, OSS. Шалтгаан тод жижиг PR илүү дуртай. Олзолсон fork-оо хуваалцаарай.",
+      "badge": "💼 Захиалга авч байна 💼",
+      "heading": "Захиалга авч байна ✨",
+      "body": "Фриланс, косплэй, OSS, AI хэрэгсэл — төслөө хэлээрэй.",
       "startProject": "Төсөл эхлүүлэх",
       "socialHint": "Эсвэл нийгмийн сүлжээгээр ♡"
     },
@@ -193,15 +193,15 @@
     ]
   },
   "contact": {
-    "title": "Холбогдоё! 💌",
-    "description": "Төслийн санаа байна уу? Хамтран ажиллахыг хүсэж байна уу? Эсвэл зүгээр л мэндлэхийг хүсэж байна уу? Таныг сонсохдоо баяртай байна! 💖",
+    "title": "Надтай хамтарч ажиллах ✨",
+    "description": "Фриланс, косплэй, OSS зөвлөгөө, AI бүтээлч хэрэгсэл — юу бүтээхийг хэлээрэй. 💖",
     "form": {
       "name": "Таны нэр ✨",
       "namePlaceholder": "Би танд юу гэж хандах вэ?",
       "email": "Имэйл 📧",
       "emailPlaceholder": "таны.имэйл@example.com",
       "subject": "Гарчиг 💭",
-      "subjectPlaceholder": "Юуны талаар ярилцмаар байна?",
+      "subjectPlaceholder": "Фриланс / Косплэй / OSS / AI хэрэгсэл",
       "message": "Мессеж 💌",
       "messagePlaceholder": "Санаагаа хэлээрэй~",
       "send": "Илгээх ✨",
