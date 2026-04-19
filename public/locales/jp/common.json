@@ -14,9 +14,9 @@
   "projects": {
     "title": "プロジェクト ✨",
     "description": "GitHubプロフィールと同じ軸のフィーチャーリポジトリです。",
-    "heroBadge": "$ gh repo list --featured",
+    "heroBadge": "$ gh repo list --client-work",
     "heroTitle": "ビルドログ",
-    "heroDescription": "プロダクト・バックエンド・システム・クリエイティブ系。ピンは github.com/kyuna0312/kyuna0312 と同期。",
+    "heroDescription": "Webアプリ、OSSツール、クリエイティブ系プロジェクト。フリーランス受付中。",
     "recruiterLine": "採用ご担当の方：まずここを見て、職種に合うリポを開いてください。",
     "viewSource": "ソースを見る 💻",
     "viewDemo": "デモを見る ✨",
@@ -41,31 +41,31 @@
   },
   "home": {
     "title": "Kyuna / 霜花",
-    "subtitle": "エンジニア · OSS · AI漫画パイプライン · YouTube",
-    "description": "ソロでUIやAPI、好奇心が勝ったら低レイヤも触る。コスプレとコミュニティは表現レイヤー、コード・ビジュアル・物語はひとつのスタック—アニメ寄りの美学と地味なインフラが同居 ✨",
-    "seoTitle": "Kyuna（霜花）— エンジニア / OSS / AI漫画 / YouTube",
-    "seoDescription": "Kyuna：TS/JSアプリ、Go/Rust、AI漫画ツール、YouTube @amarihana。ポートフォリオ kyuna-web.vercel.app。",
-    "welcomeBadge": "kyuna0312@github:~$ ./welcome --tty",
+    "subtitle": "フリーランス開発 · OSS · コスプレ · AIクリエイティブ",
+    "description": "フリーランス受付中：Webアプリ、OSS相談、コスプレコラボ、AIクリエイティブツール。アニメ寄りの開発者が作って、コスプレする。✨",
+    "seoTitle": "Kyuna（霜花）— フリーランス開発 / OSS / コスプレ / AIツール",
+    "seoDescription": "Kyuna：フリーランスWeb開発（React/Next.js/Go）、コスプレ依頼、OSS相談、AIクリエイティブツール。受付中 — kyuna-web.vercel.app。",
+    "welcomeBadge": "kyuna0312@github:~$ ./hire-me --open",
     "imageAlt": "Kyuna — エンジニア、OSS、AI漫画、クリエイター",
     "buildSectionTitle": "$ tree -L 1 ./build",
     "buildSectionAria": "仕事の分け方：プロダクト、バックエンド、システム、クリエイティブ",
-    "buildTree": "./build\n├── product/      # TS/JSアプリ → kyuna-web.vercel.app · amane312.vercel.app\n├── backend/      # Go、API、自動化、dotfiles\n├── systems/      # Rust/C — OS周り、ブートローダ、エンジン\n└── creative/     # エディタ、AI漫画ツール、アイデア→コマを速く",
+    "buildTree": "./build\n├── product/      # TS/JSアプリ → kyuna-web.vercel.app · amane312.vercel.app\n├── backend/      # Go、API、自動化、dotfiles\n├── systems/      # Rust/C — OS周り、ブートローダ、エンジン\n├── creative/     # エディタ、AI漫画ツール、アイデア→コマを速く\n└── hire/         # フリーランス · 依頼 · 相談",
     "liveSites": "公開サイト",
     "viewProjects": "プロジェクトを見る 💻",
     "getInTouch": "連絡する 💌",
-    "hireMe": "一緒に働く 💼",
+    "hireMe": "依頼する 💼",
     "workExperience": "職務経歴",
     "bio": "Kyuna（霜花）です。ウランバートル在住 🇲🇳 プロダクトコード、OSS、AI漫画パイプラインをやっています。YouTubeは @amarihana、オフはコスプレやアニメで充電~ ✨",
     "projectsButton": "プロジェクト 💻",
     "history": "私の旅 🌸",
     "pillars": {
       "oss": {
-        "title": "オープンソース",
-        "body": "ツールやドットファイル、コミュニティ向けの貢献・メンテナンス。"
+        "title": "受付中",
+        "body": "フリーランス開発・コスプレ依頼・OSS相談・AIツール — 今受付中。"
       },
       "comics": {
-        "title": "AI漫画パイプライン",
-        "body": "アイデアからコマまで—生成ワークフローと制作ツール。"
+        "title": "AIツール",
+        "body": "漫画パイプライン、生成アート、クリエイティブ自動化 — アイデア→コマを速く。"
       },
       "youtube": {
         "title": "YouTube",
@@ -81,38 +81,38 @@
       "items": [
         {
           "icon": "💻",
-          "title": "プロダクト（TS / JS）",
-          "description": "アプリとUI—React、Next.js、TypeScript、デザインシステム。",
-          "techs": ["TypeScript", "JavaScript", "React", "Next.js"]
+          "title": "フリーランスWeb開発",
+          "description": "React、Next.js、TypeScript — フルスタック、受付中。",
+          "techs": ["TypeScript", "React", "Next.js", "APIs"]
         },
         {
-          "icon": "🟢",
-          "title": "バックエンド・自動化",
-          "description": "サービス、API、つなぎ—Go と Node を用途で使い分け。",
-          "techs": ["Go", "Node.js", "APIs", "Automation"]
-        },
-        {
-          "icon": "🦀",
-          "title": "システム・低レイヤ",
-          "description": "Rust、C、OS周りの実験—ブートローダ、エンジン、好奇心。",
-          "techs": ["Rust", "C", "Linux", "Tooling"]
+          "icon": "🎭",
+          "title": "コスプレ依頼",
+          "description": "写真、スタイリング、ブランドコラボ、クリエイティブ方向 — 依頼受付中。",
+          "techs": ["写真", "スタイリング", "コラボ", "クリエイティブ"]
         },
         {
           "icon": "🧩",
-          "title": "OSS",
-          "description": "小さな差分、明確な理由—good first issue、dotfiles、コミュニティ。",
-          "techs": ["GitHub", "CLI", "Docs", "Community"]
+          "title": "OSS相談",
+          "description": "コードレビュー、設計、貢献、dotfiles — 明確な差分、明確な理由。",
+          "techs": ["GitHub", "CLI", "アーキテクチャ", "コミュニティ"]
         },
         {
           "icon": "🎨",
-          "title": "クリエイティブ",
-          "description": "AI漫画パイプライン、エディタ、モーション—物語と実装。",
+          "title": "AIクリエイティブツール",
+          "description": "漫画パイプライン、生成アート、クリエイティブ自動化 — アイデア→コマ。",
           "techs": ["Generative AI", "Lua", "Python", "Design"]
         },
         {
+          "icon": "🟢",
+          "title": "システム・バックエンド",
+          "description": "Goサービス、Rust/C実験 — API、自動化、OS周り。",
+          "techs": ["Go", "Rust", "C", "Linux"]
+        },
+        {
           "icon": "▶️",
-          "title": "YouTube・発信",
-          "description": "長尺の制作系とキャラ層—ターミナル×アニメの空気感。",
+          "title": "YouTube・コミュニティ",
+          "description": "制作、クリエイティブtech、コミュニティ — ターミナル×アニメ @amarihana。",
           "techs": ["YouTube", "X", "Discord", "Instagram"]
         }
       ]
@@ -137,9 +137,9 @@
       "2023-02": "ソーシャル系プロダクトでUXと実装の両面に注力。"
     },
     "ctaSection": {
-      "badge": "💌 つながろう 💌",
-      "heading": "フォークした？教えて ✨",
-      "body": "採用・コラボ・OSS。理由のわかる小さなPRが嬉しい。野良フォークも見つけたら @ してね。",
+      "badge": "💼 受付中 💼",
+      "heading": "受付中 ✨",
+      "body": "フリーランス開発・コスプレコラボ・OSS・AIツール — プロジェクトを教えてください。",
       "startProject": "プロジェクトを始める",
       "socialHint": "SNSでもどうぞ ♡"
     },
@@ -193,15 +193,15 @@
     ]
   },
   "contact": {
-    "title": "連絡しよう！💌",
-    "description": "プロジェクトのアイデアがありますか？コラボしたいですか？それとも挨拶したいだけ？ぜひ連絡してください！💖",
+    "title": "ご依頼はこちら ✨",
+    "description": "フリーランス開発、コスプレコラボ、OSS相談、AIクリエイティブツール — 何を作りたいか教えてください。💖",
     "form": {
       "name": "お名前 ✨",
       "namePlaceholder": "何とお呼びしましょうか？",
       "email": "メール 📧",
       "emailPlaceholder": "your.email@example.com",
       "subject": "件名 💭",
-      "subjectPlaceholder": "何についてお話ししましょうか？",
+      "subjectPlaceholder": "フリーランス / コスプレ / OSS / AIツール",
       "message": "メッセージ 💌",
       "messagePlaceholder": "あなたのアイデアを教えてください~",
       "send": "送信する ✨",

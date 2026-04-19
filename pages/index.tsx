@@ -9,18 +9,13 @@ import {
   SimpleGrid,
   Heading,
   HStack,
-  keyframes,
 } from '@chakra-ui/react'
-import { ChevronRightIcon } from '@chakra-ui/icons'
 import Layout from '../components/layouts/article'
-import OptimizedImage from '../components/optimized-image-v2'
 import {
   IoLogoTwitter,
   IoLogoInstagram,
   IoLogoGithub,
   IoLogoYoutube,
-  IoSparkles,
-  IoHeart,
 } from 'react-icons/io5'
 import { SiDiscord } from 'react-icons/si'
 import { useTranslation } from 'next-i18next'
@@ -28,8 +23,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from '../next-i18next.config'
 import {
   ElegantBackground,
-  ElegantButton,
   ElegantTimeline,
+  ElegantTimelineItem,
 } from '../components/elegant-elements'
 import {
   ResponsiveContainer,
@@ -37,36 +32,8 @@ import {
 import SEOHead from '../components/seo-head'
 import { CriticalCSS } from '../components/performance-optimization'
 import { motion } from 'framer-motion'
-import type { DecoPositionProps } from '@/types'
-
-// Cute animations
-const floatAnimation = keyframes`
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-10px) rotate(5deg); }
-  75% { transform: translateY(5px) rotate(-5deg); }
-`
-
-const sparkleAnimation = keyframes`
-  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
-  50% { opacity: 1; transform: scale(1) rotate(180deg); }
-`
-
-const pulseGlow = keyframes`
-  0%, 100% { box-shadow: 0 0 20px rgba(236, 72, 153, 0.3), 0 0 40px rgba(236, 72, 153, 0.1); }
-  50% { box-shadow: 0 0 40px rgba(236, 72, 153, 0.5), 0 0 80px rgba(236, 72, 153, 0.2); }
-`
-
-const gradientShift = keyframes`
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-`
-
-// Dynamic imports for heavy interactive components (client-side only)
-const ConstellationBackground = dynamic(
-  () => import('../components/projects-background-effects').then(mod => mod.ConstellationBackground),
-  { ssr: false }
-)
+import { MagicArrayDouble, MagicArray } from '../components/magic-array'
+import { SectionHeader } from '../components/advanced-theme-elements'
 
 const TiltCard = dynamic(
   () => import('../components/interactive-effects-v2').then(mod => mod.TiltCard),
@@ -83,17 +50,14 @@ const ParallaxElement = dynamic(
   { ssr: false }
 )
 
-const FloatingActionButton = dynamic(
-  () => import('../components/interactive-effects-v2').then(mod => mod.FloatingActionButton),
-  { ssr: false }
-)
-
 const ScrollAnimationWrapper = dynamic(
   () => import('../components/advanced-animations').then(mod => mod.ScrollAnimationWrapper),
   { ssr: false }
 )
 
 const MotionBox = motion(Box)
+
+const crystalline = { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const }
 
 const Home = () => {
   const { t } = useTranslation('common')
@@ -148,58 +112,6 @@ const Home = () => {
     .map((key) => (pillarsRaw && typeof pillarsRaw === 'object' ? pillarsRaw[key] : null))
     .filter(Boolean)
 
-  // Static colors for consistent rendering
-  const textColor = "gray.300"
-  const socialBg = "rgba(26, 32, 44, 0.8)"
-
-  // Cute decorative elements that only render on client
-  const CuteSparkle = ({
-    delay = 0,
-    size = '12px',
-    top,
-    left,
-    right,
-    bottom,
-  }: DecoPositionProps) => (
-    <Box
-      position="absolute"
-      top={top}
-      left={left}
-      right={right}
-      bottom={bottom}
-      color="pink.300"
-      fontSize={size}
-      animation={`${sparkleAnimation} 2s ease-in-out ${delay}s infinite`}
-      pointerEvents="none"
-    >
-      ✦
-    </Box>
-  )
-
-  const FloatingHeart = ({
-    delay = 0,
-    size = '16px',
-    top,
-    left,
-    right,
-    bottom,
-  }: DecoPositionProps) => (
-    <Box
-      position="absolute"
-      top={top}
-      left={left}
-      right={right}
-      bottom={bottom}
-      color="pink.400"
-      fontSize={size}
-      animation={`${floatAnimation} 3s ease-in-out ${delay}s infinite`}
-      opacity={0.6}
-      pointerEvents="none"
-    >
-      ♡
-    </Box>
-  )
-
   return (
     <>
       <SEOHead title={t('home.seoTitle')} description={t('home.seoDescription')} />
@@ -207,599 +119,594 @@ const Home = () => {
 
       <Layout>
         <ElegantBackground>
-          <ConstellationBackground />
           <ResponsiveContainer maxWidth={{ base: '100%', xl: '1400px' }} paddingTop={20}>
 
-            {/* ✨ Enhanced Cute Hero Section ✨ */}
+            {/* ── Hero ─────────────────────────────────────────── */}
             <ScrollAnimationWrapper>
               <MotionBox
-                initial={{ opacity: 0, y: 100 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
-                mb={20}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                mb={24}
               >
                 <Box
                   display={{ base: 'block', lg: 'flex' }}
-                  alignItems="center"
-                  gap={{ base: 8, lg: 16 }}
-                  minH={{ base: "auto", lg: "70vh" }}
+                  alignItems="stretch"
+                  minH={{ base: 'auto', lg: '85vh' }}
                   position="relative"
-                  py={{ base: 8, lg: 0 }}
+                  gap={0}
                 >
-                  {/* Cute floating decorations - only on client */}
-                  {mounted && (
-                    <>
-                      <CuteSparkle delay={0} top="10%" left="5%" size="16px" />
-                      <CuteSparkle delay={0.5} top="20%" right="10%" size="12px" />
-                      <CuteSparkle delay={1} bottom="30%" left="15%" size="14px" />
-                      <CuteSparkle delay={0.7} top="50%" left="3%" size="10px" />
-                      <CuteSparkle delay={1.2} bottom="15%" right="8%" size="14px" />
-                      <FloatingHeart delay={0.3} top="15%" right="20%" size="18px" />
-                      <FloatingHeart delay={0.8} bottom="20%" left="8%" size="14px" />
-                      <FloatingHeart delay={1.5} top="60%" right="5%" size="16px" />
-                      <Box
-                        position="absolute"
-                        top="35%"
-                        left="2%"
-                        fontSize="20px"
-                        color="pink.300"
-                        animation={`${floatAnimation} 3.5s ease-in-out 0.4s infinite`}
-                        opacity={0.4}
-                        pointerEvents="none"
-                      >
-                        🌸
-                      </Box>
-                      <Box
-                        position="absolute"
-                        bottom="35%"
-                        right="3%"
-                        fontSize="18px"
-                        color="purple.300"
-                        animation={`${floatAnimation} 3.2s ease-in-out 1s infinite`}
-                        opacity={0.4}
-                        pointerEvents="none"
-                      >
-                        🎀
-                      </Box>
-                    </>
-                  )}
-
-                  {/* Profile Image with Cute Styling */}
-                  <TiltCard
-                    tiltStrength={12}
-                    glareEffect={true}
-                    shadow={true}
-                    scale={1.05}
+                  {/* Left: Text Content */}
+                  <VStack
+                    align="start"
+                    spacing={6}
+                    flex="1"
+                    justify="center"
+                    py={{ base: 12, lg: 0 }}
+                    pr={{ base: 0, lg: 10 }}
+                    position="relative"
+                    zIndex={2}
                   >
-                    <FloatingActionButton amplitude={8} duration={4}>
-                      <MotionBox
-                        initial={{ scale: 0, rotate: -180 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        transition={{ duration: 1.5, delay: 0.5, type: "spring" }}
-                        position="relative"
+                    {/* Background magic array */}
+                    {mounted && (
+                      <Box
+                        position="absolute"
+                        top="50%"
+                        left="-60px"
+                        transform="translateY(-50%)"
+                        pointerEvents="none"
+                        zIndex={0}
                       >
-                        <Box
-                          width={{ base: "220px", md: "300px" }}
-                          height={{ base: "220px", md: "300px" }}
-                          position="relative"
-                          mx="auto"
-                          mb={{ base: 10, lg: 0 }}
-                        >
-                          {/* Cute glowing ring */}
-                          <Box
-                            position="absolute"
-                            top="-15px"
-                            left="-15px"
-                            right="-15px"
-                            bottom="-15px"
-                            borderRadius="full"
-                            bg="transparent"
-                            border="3px dashed"
-                            borderColor="pink.300"
-                            opacity={0.5}
-                            animation={`${floatAnimation} 6s ease-in-out infinite`}
-                          />
+                        <MagicArrayDouble size="xl" opacity={0.12} />
+                      </Box>
+                    )}
 
-                          {/* Pulsing glow effect */}
-                          <Box
-                            position="absolute"
-                            top="-5px"
-                            left="-5px"
-                            right="-5px"
-                            bottom="-5px"
-                            borderRadius="full"
-                            animation={`${pulseGlow} 3s ease-in-out infinite`}
-                          />
-
-                          <OptimizedImage
-                            src="/images/霜花.png"
-                            width={300}
-                            height={300}
-                            alt={t('home.imageAlt')}
-                            priority={true}
-                            style={{
-                              borderRadius: '50%',
-                              border: '4px solid rgba(236, 72, 153, 0.3)',
-                              width: '100%',
-                              height: '100%',
-                              objectFit: 'cover'
-                            }}
-                          />
-
-                          {/* Cute corner decorations */}
-                          {mounted && (
-                            <>
-                              <Box
-                                position="absolute"
-                                top="-8px"
-                                right="-8px"
-                                fontSize="24px"
-                                animation={`${floatAnimation} 2s ease-in-out infinite`}
-                              >
-                                ✨
-                              </Box>
-                              <Box
-                                position="absolute"
-                                bottom="-5px"
-                                left="-5px"
-                                fontSize="20px"
-                                animation={`${floatAnimation} 2.5s ease-in-out 0.5s infinite`}
-                              >
-                                💖
-                              </Box>
-                              <Box
-                                position="absolute"
-                                top="50%"
-                                right="-20px"
-                                fontSize="16px"
-                                animation={`${sparkleAnimation} 2s ease-in-out 0.3s infinite`}
-                              >
-                                ⭐
-                              </Box>
-                            </>
-                          )}
-                        </Box>
-                      </MotionBox>
-                    </FloatingActionButton>
-                  </TiltCard>
-
-                  {/* Hero Content */}
-                  <VStack align={{ base: "center", lg: "start" }} spacing={6} flex={1} textAlign={{ base: "center", lg: "left" }}>
-                    {/* Cute greeting badge */}
+                    {/* Terminal badge */}
                     <MotionBox
-                      initial={{ opacity: 0, y: -20 }}
+                      initial={{ opacity: 0, y: -16 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.6 }}
+                      transition={{ ...crystalline, delay: 0.3 }}
+                      position="relative"
+                      zIndex={1}
                     >
                       <Box
                         display="inline-flex"
                         alignItems="center"
                         gap={2}
-                        px={4}
-                        py={2}
-                        bg="rgba(236, 72, 153, 0.15)"
-                        borderRadius="full"
-                        border="1px solid"
-                        borderColor="pink.300"
-                        fontSize="sm"
-                        color="pink.300"
-                        fontWeight="medium"
+                        px={3}
+                        py={1}
+                        bg="rgba(13, 21, 37, 0.8)"
+                        border="1px solid #1e2d42"
+                        fontSize="xs"
+                        color="#4db8d4"
+                        fontFamily="mono"
+                        letterSpacing="0.04em"
                       >
-                        <IoSparkles />
-                        <span>{t('home.welcomeBadge')}</span>
-                        <IoHeart />
+                        <Box as="span" color="#c4a55a">%</Box>
+                        <Box as="span">{t('home.welcomeBadge')}</Box>
+                        <Box
+                          as="span"
+                          display="inline-block"
+                          w="1px"
+                          h="12px"
+                          bg="#4db8d4"
+                          style={{ animation: 'pulse 1.2s ease-in-out infinite' }}
+                        />
                       </Box>
                     </MotionBox>
 
+                    {/* Main title */}
                     <MotionBox
-                      initial={{ opacity: 0, x: -100 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 1, delay: 0.8 }}
+                      initial={{ opacity: 0, x: -40, filter: 'blur(8px)' }}
+                      animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                      transition={{ ...crystalline, delay: 0.5 }}
+                      position="relative"
+                      zIndex={1}
                     >
                       <Heading
                         as="h1"
-                        fontSize={{ base: "3xl", md: "5xl", lg: "6xl" }}
+                        fontSize={{ base: '4xl', md: '6xl', lg: '7xl' }}
                         fontFamily="heading"
-                        fontWeight="bold"
-                        lineHeight="shorter"
-                        mb={2}
-                        position="relative"
+                        fontWeight="700"
+                        letterSpacing="0.04em"
+                        lineHeight="1"
+                        mb={0}
                       >
                         <Box
                           as="span"
-                          bgGradient="linear(135deg, #ff6b9d 0%, #c44569 25%, #f8a5c2 50%, #ff6b9d 75%, #c44569 100%)"
+                          bgGradient="linear(135deg, #e8eef4 0%, #4db8d4 40%, #e8eef4 70%, #c4a55a 100%)"
                           bgSize="200% 200%"
                           bgClip="text"
-                          animation={`${gradientShift} 4s ease infinite`}
-                          display="inline"
+                          style={{ animation: 'gradient 6s ease infinite' }}
+                          display="block"
                         >
                           {t('home.title')}
                         </Box>
-                        {mounted && (
-                          <Box
-                            as="span"
-                            position="absolute"
-                            top="-10px"
-                            right={{ base: "-5px", lg: "-20px" }}
-                            fontSize={{ base: "xl", lg: "2xl" }}
-                            animation={`${floatAnimation} 2s ease-in-out infinite`}
-                          >
-                            ♪
-                          </Box>
-                        )}
                       </Heading>
                     </MotionBox>
 
+                    {/* Subtitle */}
                     <MotionBox
-                      initial={{ opacity: 0, x: -100 }}
+                      initial={{ opacity: 0, x: -30 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 1, delay: 0.9 }}
+                      transition={{ ...crystalline, delay: 0.65 }}
+                      position="relative"
+                      zIndex={1}
                     >
                       <Text
-                        fontSize={{ base: "md", md: "lg" }}
-                        color="pink.200"
-                        fontWeight="600"
-                        maxW="600px"
-                        mb={3}
+                        fontSize={{ base: 'sm', md: 'md' }}
+                        color="#7899b0"
+                        letterSpacing="0.1em"
+                        textTransform="uppercase"
+                        fontWeight="400"
                       >
                         {t('home.subtitle')}
                       </Text>
                     </MotionBox>
 
+                    {/* Description */}
                     <MotionBox
-                      initial={{ opacity: 0, x: -100 }}
+                      initial={{ opacity: 0, x: -30 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 1, delay: 1 }}
+                      transition={{ ...crystalline, delay: 0.75 }}
+                      position="relative"
+                      zIndex={1}
                     >
                       <Text
-                        fontSize={{ base: "md", md: "lg", lg: "xl" }}
-                        color={textColor}
+                        fontSize={{ base: 'md', md: 'lg' }}
+                        color="#4a6580"
                         lineHeight="tall"
-                        maxW="550px"
+                        maxW="480px"
                       >
                         {t('home.description')}
                       </Text>
                     </MotionBox>
 
+                    {/* Pillar stats */}
                     {pillars.length > 0 && (
-                      <SimpleGrid
-                        columns={{ base: 1, md: 3 }}
-                        spacing={4}
+                      <MotionBox
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ ...crystalline, delay: 0.85 }}
                         w="100%"
-                        maxW="720px"
-                        mt={4}
+                        maxW="500px"
+                        position="relative"
+                        zIndex={1}
                       >
-                        {pillars.map((pillar, idx) => (
-                          <Box
-                            key={idx}
-                            px={4}
-                            py={3}
-                            borderRadius="xl"
-                            bg="rgba(236, 72, 153, 0.08)"
-                            border="1px solid"
-                            borderColor="rgba(236, 72, 153, 0.25)"
-                          >
-                            <Text fontWeight="bold" color="pink.300" fontSize="sm" mb={1}>
-                              {pillar.title}
-                            </Text>
-                            <Text fontSize="sm" color={textColor} lineHeight="short">
-                              {pillar.body}
-                            </Text>
-                          </Box>
-                        ))}
-                      </SimpleGrid>
+                        <SimpleGrid columns={3} spacing={0}>
+                          {pillars.map((pillar, idx) => (
+                            <Box
+                              key={idx}
+                              px={4}
+                              py={3}
+                              borderRight={idx < pillars.length - 1 ? '1px solid #1e2d42' : undefined}
+                              borderBottom="1px solid #1e2d42"
+                              borderTop="1px solid #1e2d42"
+                              borderLeft={idx === 0 ? '1px solid #1e2d42' : undefined}
+                            >
+                              <Text
+                                fontWeight="600"
+                                color="#4db8d4"
+                                fontSize="xs"
+                                mb={1}
+                                letterSpacing="0.06em"
+                                textTransform="uppercase"
+                              >
+                                {pillar.title}
+                              </Text>
+                              <Text fontSize="xs" color="#4a6580" lineHeight="short">
+                                {pillar.body}
+                              </Text>
+                            </Box>
+                          ))}
+                        </SimpleGrid>
+                      </MotionBox>
                     )}
 
-                    <Box
-                      w="100%"
-                      maxW="720px"
-                      mt={5}
-                      px={4}
-                      py={3}
-                      borderRadius="lg"
-                      bg="rgba(0, 0, 0, 0.35)"
-                      border="1px solid"
-                      borderColor="rgba(129, 230, 217, 0.35)"
-                      fontFamily="mono"
-                      fontSize={{ base: '10px', sm: 'xs' }}
-                      color="teal.200"
-                      textAlign="left"
-                      lineHeight="tall"
-                      whiteSpace="pre-wrap"
-                      aria-label={t('home.buildSectionAria')}
-                    >
-                      <Text as="span" color="gray.500" display="block" mb={1}>
-                        {t('home.buildSectionTitle')}
-                      </Text>
-                      {t('home.buildTree')}
-                    </Box>
-
-                    <HStack
-                      mt={3}
-                      spacing={2}
-                      flexWrap="wrap"
-                      rowGap={2}
-                      justify={{ base: 'center', lg: 'flex-start' }}
-                      align="center"
-                      fontSize="sm"
-                      maxW="720px"
-                      w="100%"
-                    >
-                      <Text color="gray.500">{t('home.liveSites')}</Text>
-                      <Link
-                        href="https://kyuna-web.vercel.app"
-                        color="teal.300"
-                        fontWeight="600"
-                        _hover={{ color: 'pink.300', textDecoration: 'underline' }}
-                        isExternal
-                      >
-                        kyuna-web.vercel.app
-                      </Link>
-                      <Text color="gray.600" aria-hidden>
-                        ·
-                      </Text>
-                      <Link
-                        href="https://amane312.vercel.app"
-                        color="teal.300"
-                        fontWeight="600"
-                        _hover={{ color: 'pink.300', textDecoration: 'underline' }}
-                        isExternal
-                      >
-                        amane312.vercel.app
-                      </Link>
-                    </HStack>
-
-                    {/* Cute Call-to-Action Buttons */}
-                    <HStack
-                      spacing={{ base: 3, md: 5 }}
-                      mt={6}
-                      flexWrap="wrap"
-                      justify={{ base: "center", lg: "flex-start" }}
-                    >
-                      <MagneticButton magnetStrength={0.2}>
-                        <ElegantButton
-                          as={NextLink}
-                          href="/projects"
-                          variant="elegant"
-                          size="lg"
-                          rightIcon={<ChevronRightIcon />}
-                          _hover={{
-                            transform: "translateY(-2px)",
-                            boxShadow: "0 10px 30px rgba(236, 72, 153, 0.4)"
-                          }}
-                        >
-                          ✨ {t('home.viewProjects')}
-                        </ElegantButton>
-                      </MagneticButton>
-
-                      <MagneticButton magnetStrength={0.15}>
-                        <ElegantButton
-                          as={NextLink}
-                          href="/contact"
-                          variant="outline"
-                          size="lg"
-                          _hover={{
-                            bg: "rgba(236, 72, 153, 0.1)",
-                            borderColor: "pink.400"
-                          }}
-                        >
-                          {t('home.hireMe')}
-                        </ElegantButton>
-                      </MagneticButton>
-
-                      <MagneticButton magnetStrength={0.15}>
-                        <ElegantButton
-                          as="a"
-                          href="https://github.com/kyuna0312"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          variant="outline"
-                          size="lg"
-                          leftIcon={<IoLogoGithub />}
-                          _hover={{
-                            bg: "rgba(236, 72, 153, 0.1)",
-                            borderColor: "pink.400"
-                          }}
-                        >
-                          {t('navigation.github')}
-                        </ElegantButton>
-                      </MagneticButton>
-                    </HStack>
-
-                    {/* Cute Social Links */}
+                    {/* Build tree */}
                     <MotionBox
-                      initial={{ opacity: 0, y: 50 }}
+                      initial={{ opacity: 0, y: 16 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 1, delay: 1.2 }}
-                      mt={6}
+                      transition={{ ...crystalline, delay: 0.95 }}
+                      w="100%"
+                      maxW="500px"
+                      position="relative"
+                      zIndex={1}
                     >
-                      <HStack spacing={4}>
+                      <Box
+                        px={4}
+                        py={3}
+                        bg="rgba(8, 12, 20, 0.8)"
+                        border="1px solid #1e2d42"
+                        fontFamily="mono"
+                        fontSize="xs"
+                        color="#4db8d4"
+                        lineHeight="tall"
+                        whiteSpace="pre-wrap"
+                        aria-label={t('home.buildSectionAria')}
+                      >
+                        <Text as="span" color="#4a6580" display="block" mb={1}>
+                          {t('home.buildSectionTitle')}
+                        </Text>
+                        {t('home.buildTree')}
+                      </Box>
+                    </MotionBox>
+
+                    {/* CTA buttons */}
+                    <MotionBox
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ ...crystalline, delay: 1.05 }}
+                      position="relative"
+                      zIndex={1}
+                    >
+                      <HStack spacing={3} flexWrap="wrap">
+                        <MagneticButton magnetStrength={0.15}>
+                          <Box
+                            as={NextLink}
+                            href="/projects"
+                            display="inline-flex"
+                            alignItems="center"
+                            gap={2}
+                            px={5}
+                            py={2}
+                            border="1px solid #4db8d4"
+                            color="#4db8d4"
+                            fontSize="xs"
+                            fontFamily="mono"
+                            letterSpacing="0.08em"
+                            textTransform="uppercase"
+                            textDecoration="none"
+                            bg="transparent"
+                            transition="all 0.2s ease"
+                            _hover={{
+                              bg: 'rgba(77, 184, 212, 0.08)',
+                              boxShadow: '0 4px 20px rgba(77, 184, 212, 0.2)',
+                              transform: 'translateY(-2px)',
+                            }}
+                          >
+                            {t('home.viewProjects')}
+                          </Box>
+                        </MagneticButton>
+
+                        <MagneticButton magnetStrength={0.12}>
+                          <Box
+                            as={NextLink}
+                            href="/contact"
+                            display="inline-flex"
+                            alignItems="center"
+                            gap={2}
+                            px={5}
+                            py={2}
+                            border="1px solid #1e2d42"
+                            color="#7899b0"
+                            fontSize="xs"
+                            fontFamily="mono"
+                            letterSpacing="0.08em"
+                            textTransform="uppercase"
+                            textDecoration="none"
+                            bg="transparent"
+                            transition="all 0.2s ease"
+                            _hover={{
+                              borderColor: '#4db8d4',
+                              color: '#4db8d4',
+                              bg: 'rgba(77, 184, 212, 0.04)',
+                              transform: 'translateY(-2px)',
+                            }}
+                          >
+                            {t('home.hireMe')}
+                          </Box>
+                        </MagneticButton>
+
+                        <MagneticButton magnetStrength={0.12}>
+                          <Box
+                            as="a"
+                            href="https://github.com/kyuna0312"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            display="inline-flex"
+                            alignItems="center"
+                            gap={2}
+                            px={5}
+                            py={2}
+                            border="1px solid #c4a55a"
+                            color="#c4a55a"
+                            fontSize="xs"
+                            fontFamily="mono"
+                            letterSpacing="0.08em"
+                            textTransform="uppercase"
+                            textDecoration="none"
+                            bg="transparent"
+                            transition="all 0.2s ease"
+                            _hover={{
+                              bg: 'rgba(196, 165, 90, 0.08)',
+                              boxShadow: '0 4px 20px rgba(196, 165, 90, 0.2)',
+                              transform: 'translateY(-2px)',
+                            }}
+                          >
+                            <IoLogoGithub size={13} />
+                            {t('navigation.github')}
+                          </Box>
+                        </MagneticButton>
+                      </HStack>
+                    </MotionBox>
+
+                    {/* Social icons */}
+                    <MotionBox
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ ...crystalline, delay: 1.15 }}
+                      position="relative"
+                      zIndex={1}
+                    >
+                      <HStack spacing={2}>
                         {socialLinks.map((social) => (
-                          <MagneticButton key={social.label} magnetStrength={0.3}>
-                            <Box
-                              as={Link}
-                              href={social.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={social.label}
-                              p={3}
-                              borderRadius="full"
-                              bg={socialBg}
-                              border="1px solid"
-                              borderColor="rgba(236, 72, 153, 0.3)"
-                              color="pink.400"
-                              _hover={{
-                                transform: "scale(1.15) rotate(5deg)",
-                                bg: "rgba(236, 72, 153, 0.2)",
-                                borderColor: "pink.400",
-                                color: "pink.300"
-                              }}
-                              transition="all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)"
-                            >
-                              <social.icon size={22} aria-hidden />
-                            </Box>
-                          </MagneticButton>
+                          <Box
+                            key={social.label}
+                            as={Link}
+                            href={social.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={social.label}
+                            p={2}
+                            border="1px solid #1e2d42"
+                            color="#4a6580"
+                            display="flex"
+                            alignItems="center"
+                            justifyContent="center"
+                            transition="all 0.2s ease"
+                            _hover={{
+                              color: '#4db8d4',
+                              borderColor: '#4db8d4',
+                              bg: 'rgba(77, 184, 212, 0.06)',
+                              transform: 'translateY(-2px)',
+                            }}
+                          >
+                            <social.icon size={16} aria-hidden />
+                          </Box>
                         ))}
                       </HStack>
                     </MotionBox>
                   </VStack>
+
+                  {/* Right: Layered Photo Composition */}
+                  <MotionBox
+                    flex="0 0 42%"
+                    position="relative"
+                    display={{ base: 'none', lg: 'block' }}
+                    initial={{ opacity: 0, x: 40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ ...crystalline, delay: 0.4 }}
+                    overflow="hidden"
+                    minH="85vh"
+                  >
+                    {/* Background photo — blurred/dimmed */}
+                    <Box
+                      position="absolute"
+                      inset={0}
+                      overflow="hidden"
+                      _before={{
+                        content: '""',
+                        position: 'absolute',
+                        inset: 0,
+                        bg: 'linear-gradient(to right, #080c14 0%, transparent 30%)',
+                        zIndex: 1,
+                        pointerEvents: 'none',
+                      }}
+                    >
+                      <Box
+                        as="img"
+                        src="/images/ig-photo-2.jpg"
+                        alt=""
+                        aria-hidden="true"
+                        position="absolute"
+                        inset={0}
+                        w="100%"
+                        h="100%"
+                        objectFit="cover"
+                        objectPosition="center top"
+                        style={{ filter: 'blur(3px) brightness(0.35) saturate(0.7)' }}
+                        onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                          e.currentTarget.style.display = 'none'
+                        }}
+                      />
+                    </Box>
+
+                    {/* Foreground photo — sharp, centered */}
+                    <Box
+                      position="absolute"
+                      bottom={0}
+                      left="50%"
+                      transform="translateX(-50%)"
+                      w="78%"
+                      zIndex={2}
+                      overflow="hidden"
+                      border="1px solid rgba(77, 184, 212, 0.2)"
+                      boxShadow="0 0 40px rgba(77, 184, 212, 0.12), 0 40px 80px rgba(0, 0, 0, 0.6)"
+                      style={{ clipPath: 'polygon(0 8%, 100% 0%, 100% 100%, 0% 100%)' }}
+                    >
+                      <Box
+                        as="img"
+                        src="/images/ig-photo-1.jpg"
+                        alt={t('home.imageAlt')}
+                        w="100%"
+                        style={{ display: 'block' }}
+                        onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                          e.currentTarget.src = '/images/霜花.png'
+                        }}
+                      />
+                    </Box>
+
+                    {/* Third photo — small floating card top-right */}
+                    {mounted && (
+                      <Box
+                        position="absolute"
+                        top="8%"
+                        right="5%"
+                        w="30%"
+                        zIndex={3}
+                        border="1px solid #1e2d42"
+                        boxShadow="0 8px 32px rgba(0, 0, 0, 0.5)"
+                        overflow="hidden"
+                        style={{ animation: 'float 8s ease-in-out infinite' }}
+                      >
+                        <Box
+                          as="img"
+                          src="/images/ig-photo-3.jpg"
+                          alt=""
+                          aria-hidden="true"
+                          w="100%"
+                          style={{ display: 'block' }}
+                          onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                            e.currentTarget.src = '/images/maya.png'
+                          }}
+                        />
+                      </Box>
+                    )}
+
+                    {/* Array decoration overlay */}
+                    {mounted && (
+                      <Box
+                        position="absolute"
+                        top="8%"
+                        left="5%"
+                        zIndex={2}
+                        pointerEvents="none"
+                      >
+                        <MagicArray size="md" opacity={0.2} color="#4db8d4" animate />
+                      </Box>
+                    )}
+
+                    {/* Left gradient fade to page bg */}
+                    <Box
+                      position="absolute"
+                      inset={0}
+                      zIndex={3}
+                      pointerEvents="none"
+                      bg="linear-gradient(to right, #080c14 0%, transparent 25%)"
+                    />
+                    {/* Bottom fade */}
+                    <Box
+                      position="absolute"
+                      bottom={0}
+                      left={0}
+                      right={0}
+                      h="120px"
+                      zIndex={4}
+                      pointerEvents="none"
+                      bg="linear-gradient(to top, #080c14 0%, transparent 100%)"
+                    />
+                  </MotionBox>
+
+                  {/* Mobile: profile image fallback */}
+                  <MotionBox
+                    display={{ base: 'flex', lg: 'none' }}
+                    justifyContent="center"
+                    mb={8}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ ...crystalline, delay: 0.4 }}
+                  >
+                    <Box
+                      w="200px"
+                      h="200px"
+                      overflow="hidden"
+                      border="1px solid #1e2d42"
+                      boxShadow="0 0 30px rgba(77, 184, 212, 0.1)"
+                      position="relative"
+                    >
+                      <Box
+                        as="img"
+                        src="/images/ig-photo-1.jpg"
+                        alt={t('home.imageAlt')}
+                        w="100%"
+                        h="100%"
+                        objectFit="cover"
+                        onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                          e.currentTarget.src = '/images/霜花.png'
+                        }}
+                      />
+                    </Box>
+                  </MotionBox>
                 </Box>
               </MotionBox>
             </ScrollAnimationWrapper>
 
-            {/* ✨ Cute Skills Section ✨ */}
-            <ParallaxElement speed={0.3}>
-              <Box
-                position="relative"
-                mb={16}
-                w="100%"
-              >
-                {/* Section Header with cute decorations */}
-                <MotionBox
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                  textAlign="center"
-                  mb={12}
-                  w="100%"
+            {/* ── Skills ───────────────────────────────────────── */}
+            <ParallaxElement speed={0.2}>
+              <Box position="relative" mb={20} w="100%">
+                <SectionHeader
+                  subtitle={t('home.skillsSection.subheading')}
+                  delay={0}
                 >
-                  <Box
-                    display="inline-flex"
-                    alignItems="center"
-                    gap={2}
-                    px={4}
-                    py={2}
-                    bg="rgba(236, 72, 153, 0.1)"
-                    borderRadius="full"
-                    border="1px solid"
-                    borderColor="pink.400"
-                    mb={4}
-                  >
-                    <Text fontSize="sm" color="pink.300" whiteSpace="nowrap">
-                      {t('home.skillsSection.badge')}
-                    </Text>
-                  </Box>
-                  <Heading
-                    fontSize={{ base: "2xl", md: "4xl" }}
-                    fontFamily="heading"
-                    bgGradient="linear(to-r, pink.400, purple.400)"
-                    bgClip="text"
-                    mb={3}
-                  >
-                    {t('home.skillsSection.heading')}
-                  </Heading>
-                  <Text
-                    color="gray.400"
-                    fontSize="lg"
-                    maxW="800px"
-                    mx="auto"
-                  >
-                    {t('home.skillsSection.subheading')}
-                  </Text>
-                </MotionBox>
+                  {t('home.skillsSection.heading')}
+                </SectionHeader>
 
                 <SimpleGrid
                   columns={{ base: 1, md: 2, lg: 3 }}
-                  spacing={{ base: 4, md: 6, lg: 8 }}
+                  spacing={{ base: 4, md: 5 }}
                   w="100%"
                 >
                   {skills.map((skill, index) => (
-                    <TiltCard key={index} tiltStrength={6}>
+                    <TiltCard key={index} tiltStrength={5}>
                       <MotionBox
-                        initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        initial={{ opacity: 0, y: 30, filter: 'blur(4px)' }}
+                        whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                        transition={{ ...crystalline, delay: index * 0.07 }}
                         viewport={{ once: true }}
-                        whileHover={{ y: -8 }}
+                        whileHover={{ y: -4 }}
+                        height="100%"
                       >
                         <Box
-                          bg="rgba(26, 32, 44, 0.7)"
-                          backdropFilter="blur(10px)"
-                          borderRadius="24px"
+                          bg="#0d1525"
+                          border="1px solid #1e2d42"
                           p={6}
                           height="100%"
-                          border="1px solid"
-                          borderColor="rgba(254, 128, 160, 0.2)"
                           position="relative"
                           overflow="hidden"
+                          transition="all 0.25s ease"
                           _hover={{
-                            borderColor: "pink.400",
-                            boxShadow: "0 20px 40px rgba(236, 72, 153, 0.2)",
+                            borderColor: 'rgba(77, 184, 212, 0.3)',
+                            boxShadow: '0 8px 32px rgba(77, 184, 212, 0.08)',
                           }}
-                          transition="all 0.3s ease"
                         >
-                          {/* Cute gradient top border */}
+                          {/* Ice accent top line */}
                           <Box
                             position="absolute"
                             top={0}
                             left={0}
                             right={0}
-                            h="3px"
-                            bgGradient="linear(to-r, pink.400, purple.400, pink.300)"
-                            borderTopRadius="24px"
+                            h="1px"
+                            bgGradient="linear(to-r, transparent, #4db8d4, transparent)"
+                            opacity={0.5}
                           />
 
-                          {/* Corner sparkle */}
-                          {mounted && (
-                            <Box
-                              position="absolute"
-                              top={3}
-                              right={3}
-                              fontSize="sm"
-                              opacity={0.5}
-                              animation={`${sparkleAnimation} 2s ease-in-out ${index * 0.2}s infinite`}
-                            >
-                              ✦
-                            </Box>
-                          )}
-
                           <VStack spacing={4} align="start" height="100%">
-                            {/* Cute icon container */}
+                            {/* Icon */}
                             <Box
-                              w="60px"
-                              h="60px"
-                              borderRadius="16px"
-                              bg="rgba(236, 72, 153, 0.15)"
-                              border="2px solid"
-                              borderColor="rgba(236, 72, 153, 0.3)"
+                              w="48px"
+                              h="48px"
+                              border="1px solid #1e2d42"
                               display="flex"
                               alignItems="center"
                               justifyContent="center"
-                              fontSize="2xl"
-                              position="relative"
+                              fontSize="xl"
+                              bg="rgba(13, 21, 37, 0.8)"
                             >
                               {skill.icon}
-                              {/* Floating ring */}
-                              <Box
-                                position="absolute"
-                                top="-4px"
-                                right="-4px"
-                                w="16px"
-                                h="16px"
-                                borderRadius="full"
-                                bg="pink.400"
-                                display="flex"
-                                alignItems="center"
-                                justifyContent="center"
-                                fontSize="8px"
-                                color="white"
-                              >
-                                ♡
-                              </Box>
                             </Box>
 
                             <Heading
-                              size="md"
-                              color="white"
+                              size="sm"
+                              color="#e8eef4"
                               fontFamily="heading"
-                              position="relative"
+                              letterSpacing="0.06em"
                             >
                               {skill.title}
                             </Heading>
 
                             <Text
-                              color="gray.400"
+                              color="#4a6580"
                               lineHeight="tall"
                               fontSize="sm"
                               flex={1}
@@ -807,25 +714,21 @@ const Home = () => {
                               {skill.description}
                             </Text>
 
-                            {/* Cute tech tags */}
-                            <HStack spacing={2} wrap="wrap" pt={2}>
+                            {/* Tech tags */}
+                            <HStack spacing={2} wrap="wrap" pt={1}>
                               {(Array.isArray(skill.techs) ? skill.techs : []).map((tech, i) => (
                                 <Box
                                   key={i}
-                                  px={3}
-                                  py={1}
-                                  bg="rgba(236, 72, 153, 0.1)"
-                                  color="pink.300"
+                                  px={2}
+                                  py={0.5}
+                                  bg="rgba(13, 21, 37, 0.9)"
+                                  color="#4db8d4"
                                   fontSize="xs"
-                                  borderRadius="full"
-                                  fontWeight="600"
-                                  border="1px solid"
-                                  borderColor="rgba(236, 72, 153, 0.3)"
-                                  _hover={{
-                                    bg: "rgba(236, 72, 153, 0.2)",
-                                    borderColor: "pink.400",
-                                  }}
+                                  border="1px solid #1e2d42"
+                                  fontFamily="mono"
+                                  letterSpacing="0.04em"
                                   transition="all 0.2s ease"
+                                  _hover={{ borderColor: '#4db8d4' }}
                                 >
                                   {tech}
                                 </Box>
@@ -840,237 +743,208 @@ const Home = () => {
               </Box>
             </ParallaxElement>
 
-            {/* ✨ Cute Timeline Section ✨ */}
-            <Box position="relative" mb={20} mt= {50} >
-              {/* Cute Section Header */}
-              <MotionBox
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
-                textAlign="center"
-                mb={10}
+            {/* ── Timeline ─────────────────────────────────────── */}
+            <Box position="relative" mb={20} mt={8}>
+              <SectionHeader
+                subtitle={t('home.timelineSection.subheading')}
+                delay={0}
+                gradient="linear(to-r, #c4a55a, #4db8d4)"
               >
-                <Box
-                  display="inline-flex"
-                  alignItems="center"
-                  gap={2}
-                  px={4}
-                  py={2}
-                  bg="rgba(167, 139, 250, 0.1)"
-                  borderRadius="full"
-                  border="1px solid"
-                  borderColor="purple.400"
-                  mb={4}
-                >
-                  <Text fontSize="sm" color="purple.300">{t('home.timelineSection.badge')}</Text>
-                </Box>
-                <Heading
-                  fontSize={{ base: "2xl", md: "4xl" }}
-                  fontFamily="heading"
-                  bgGradient="linear(to-r, purple.400, pink.400)"
-                  bgClip="text"
-                  mb={3}
-                >
-                  {t('home.timelineSection.heading')}
-                </Heading>
-                <Text color="gray.400" fontSize="lg">
-                  {t('home.timelineSection.subheading')}
-                </Text>
-              </MotionBox>
+                {t('home.timelineSection.heading')}
+              </SectionHeader>
 
-              {/* Timeline with clean wrapper */}
               <Box
-                bg="rgba(26, 32, 44, 0.5)"
-                backdropFilter="blur(10px)"
-                borderRadius="32px"
-                p={{ base: 4, md: 8 }}
-                border="1px solid"
-                borderColor="rgba(167, 139, 250, 0.2)"
+                bg="rgba(8, 12, 20, 0.6)"
+                border="1px solid #1e2d42"
+                p={{ base: 6, md: 10 }}
                 position="relative"
                 overflow="hidden"
               >
-                <ElegantTimeline items={timelineItems} />
+                {/* Corner array decoration */}
+                {mounted && (
+                  <Box
+                    position="absolute"
+                    bottom="-30px"
+                    right="-30px"
+                    pointerEvents="none"
+                    opacity={0.08}
+                  >
+                    <MagicArray size="lg" opacity={1} animate />
+                  </Box>
+                )}
+                <ElegantTimeline>
+                  {timelineItems.map((item, i) => (
+                    <ElegantTimelineItem
+                      key={i}
+                      year={item.year}
+                      title={item.title}
+                      description={item.description}
+                      delay={i * 0.1}
+                    />
+                  ))}
+                </ElegantTimeline>
               </Box>
             </Box>
 
-            {/* ✨ Cute Call to Action Section ✨ */}
+            {/* ── CTA ──────────────────────────────────────────── */}
             <MotionBox
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ ...crystalline, delay: 0.2 }}
               viewport={{ once: true }}
               textAlign="center"
               py={16}
-              position="relative"
+              mb={8}
             >
-              {/* Floating decorations */}
-              {mounted && (
-                <>
-                  <Box
-                    position="absolute"
-                    top="10%"
-                    left="5%"
-                    fontSize="2xl"
-                    animation={`${floatAnimation} 4s ease-in-out infinite`}
-                    opacity={0.3}
-                  >
-                    💖
-                  </Box>
-                  <Box
-                    position="absolute"
-                    top="20%"
-                    right="8%"
-                    fontSize="xl"
-                    animation={`${sparkleAnimation} 3s ease-in-out 0.5s infinite`}
-                    opacity={0.4}
-                  >
-                    ✨
-                  </Box>
-                  <Box
-                    position="absolute"
-                    bottom="15%"
-                    left="10%"
-                    fontSize="lg"
-                    animation={`${floatAnimation} 3.5s ease-in-out 1s infinite`}
-                    opacity={0.3}
-                  >
-                    🌸
-                  </Box>
-                  <Box
-                    position="absolute"
-                    bottom="25%"
-                    right="5%"
-                    fontSize="xl"
-                    animation={`${sparkleAnimation} 2.5s ease-in-out 0.3s infinite`}
-                    opacity={0.4}
-                  >
-                    ⭐
-                  </Box>
-                </>
-              )}
-
               <Box
-                bg="rgba(26, 32, 44, 0.6)"
-                backdropFilter="blur(20px)"
-                borderRadius="40px"
+                bg="rgba(8, 12, 20, 0.8)"
+                border="1px solid #1e2d42"
                 p={{ base: 8, md: 16 }}
-                border="2px solid"
-                borderColor="rgba(236, 72, 153, 0.3)"
                 position="relative"
                 overflow="hidden"
+                transition="all 0.3s ease"
                 _hover={{
-                  borderColor: "pink.400",
-                  boxShadow: "0 30px 60px rgba(236, 72, 153, 0.2)",
+                  borderColor: 'rgba(77, 184, 212, 0.25)',
+                  boxShadow: '0 20px 60px rgba(77, 184, 212, 0.06)',
                 }}
-                transition="all 0.4s ease"
               >
-                {/* Cute gradient top border */}
+                {/* Top accent line */}
                 <Box
                   position="absolute"
                   top={0}
-                  left="10%"
-                  right="10%"
-                  h="4px"
-                  bgGradient="linear(to-r, transparent, pink.400, purple.400, pink.400, transparent)"
-                  borderTopRadius="40px"
+                  left="15%"
+                  right="15%"
+                  h="1px"
+                  bgGradient="linear(to-r, transparent, #4db8d4, #c4a55a, transparent)"
                 />
-
-                {/* Cute bottom decoration */}
+                {/* Bottom accent line */}
                 <Box
                   position="absolute"
                   bottom={0}
-                  left="20%"
-                  right="20%"
-                  h="4px"
-                  bgGradient="linear(to-r, transparent, purple.400, pink.400, purple.400, transparent)"
-                  borderBottomRadius="40px"
+                  left="15%"
+                  right="15%"
+                  h="1px"
+                  bgGradient="linear(to-r, transparent, #c4a55a, #4db8d4, transparent)"
                 />
 
+                {/* Corner bracket marks */}
+                {mounted && (
+                  <>
+                    <Text position="absolute" top={3} left={4} color="#1e2d42" fontSize="lg" fontFamily="mono">⌐</Text>
+                    <Text position="absolute" top={3} right={4} color="#1e2d42" fontSize="lg" fontFamily="mono" transform="scaleX(-1)">⌐</Text>
+                    <Text position="absolute" bottom={3} left={4} color="#1e2d42" fontSize="lg" fontFamily="mono" transform="scaleY(-1)">⌐</Text>
+                    <Text position="absolute" bottom={3} right={4} color="#1e2d42" fontSize="lg" fontFamily="mono" transform="scale(-1)">⌐</Text>
+                  </>
+                )}
+
                 <VStack spacing={8}>
-                  {/* Cute badge */}
+                  {/* Badge */}
                   <Box
                     display="inline-flex"
                     alignItems="center"
-                    gap={2}
-                    px={4}
-                    py={2}
-                    bg="rgba(236, 72, 153, 0.1)"
-                    borderRadius="full"
-                    border="1px solid"
-                    borderColor="pink.400"
+                    px={3}
+                    py={1}
+                    border="1px solid #1e2d42"
+                    fontSize="xs"
+                    color="#4db8d4"
+                    fontFamily="mono"
+                    letterSpacing="0.1em"
+                    textTransform="uppercase"
                   >
-                    <Text fontSize="sm" color="pink.300">{t('home.ctaSection.badge')}</Text>
+                    {t('home.ctaSection.badge')}
                   </Box>
 
                   <Heading
-                    fontSize={{ base: "2xl", md: "4xl" }}
+                    fontSize={{ base: '2xl', md: '4xl' }}
                     fontFamily="heading"
-                    color="white"
-                    position="relative"
+                    letterSpacing="0.04em"
                   >
                     <Box
                       as="span"
-                      bgGradient="linear(135deg, #ff6b9d 0%, #c44569 25%, #f8a5c2 50%, #a855f7 75%, #ff6b9d 100%)"
+                      bgGradient="linear(135deg, #e8eef4 0%, #4db8d4 40%, #c4a55a 70%, #e8eef4 100%)"
                       bgSize="200% 200%"
                       bgClip="text"
-                      animation={`${gradientShift} 4s ease infinite`}
+                      style={{ animation: 'gradient 6s ease infinite' }}
                     >
                       {t('home.ctaSection.heading')}
                     </Box>
                   </Heading>
 
                   <Text
-                    fontSize={{ base: "md", md: "lg" }}
-                    color="gray.300"
-                    maxW="550px"
+                    fontSize={{ base: 'md', md: 'lg' }}
+                    color="#4a6580"
+                    maxW="500px"
                     lineHeight="tall"
                   >
                     {t('home.ctaSection.body')}
                   </Text>
 
-                  <HStack spacing={{ base: 3, md: 6 }} flexWrap="wrap" justify="center" pt={4}>
-                    <MagneticButton magnetStrength={0.2}>
-                      <ElegantButton
+                  <HStack spacing={4} flexWrap="wrap" justify="center" pt={2}>
+                    <MagneticButton magnetStrength={0.15}>
+                      <Box
                         as={NextLink}
                         href="/contact"
-                        variant="elegant"
-                        size="lg"
-                        px={{ base: 6, md: 10 }}
+                        display="inline-flex"
+                        alignItems="center"
+                        gap={2}
+                        px={6}
+                        py={3}
+                        border="1px solid #4db8d4"
+                        color="#4db8d4"
+                        fontSize="xs"
+                        fontFamily="mono"
+                        letterSpacing="0.1em"
+                        textTransform="uppercase"
+                        textDecoration="none"
+                        bg="transparent"
+                        transition="all 0.2s ease"
                         _hover={{
-                          transform: "translateY(-3px)",
-                          boxShadow: "0 15px 35px rgba(236, 72, 153, 0.4)"
+                          bg: 'rgba(77, 184, 212, 0.08)',
+                          boxShadow: '0 4px 24px rgba(77, 184, 212, 0.2)',
+                          transform: 'translateY(-2px)',
                         }}
                       >
                         {t('home.ctaSection.startProject')}
-                      </ElegantButton>
+                      </Box>
                     </MagneticButton>
 
-                    <MagneticButton magnetStrength={0.15}>
-                      <ElegantButton
+                    <MagneticButton magnetStrength={0.12}>
+                      <Box
                         as="a"
                         href="https://drive.google.com/file/d/1oWOw_YBpAOkuspCKvnnyOlLTcXwI-dmG/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
-                        variant="outline"
-                        size="lg"
-                        px={{ base: 6, md: 10 }}
+                        display="inline-flex"
+                        alignItems="center"
+                        gap={2}
+                        px={6}
+                        py={3}
+                        border="1px solid #c4a55a"
+                        color="#c4a55a"
+                        fontSize="xs"
+                        fontFamily="mono"
+                        letterSpacing="0.1em"
+                        textTransform="uppercase"
+                        textDecoration="none"
+                        bg="transparent"
+                        transition="all 0.2s ease"
                         _hover={{
-                          bg: "rgba(167, 139, 250, 0.1)",
-                          borderColor: "purple.400"
+                          bg: 'rgba(196, 165, 90, 0.08)',
+                          boxShadow: '0 4px 24px rgba(196, 165, 90, 0.2)',
+                          transform: 'translateY(-2px)',
                         }}
                       >
                         {t('home.resumeButton')}
-                      </ElegantButton>
+                      </Box>
                     </MagneticButton>
                   </HStack>
 
-                  {/* Cute social reminder */}
-                  <Box pt={4}>
-                    <Text fontSize="sm" color="gray.500">
+                  {/* Social icons row */}
+                  <Box pt={2}>
+                    <Text fontSize="xs" color="#2a3a4e" letterSpacing="0.1em" mb={4}>
                       {t('home.ctaSection.socialHint')}
                     </Text>
-                    <HStack spacing={3} justify="center" mt={3}>
+                    <HStack spacing={2} justify="center">
                       {socialLinks.map((social) => (
                         <Box
                           key={social.label}
@@ -1080,15 +954,20 @@ const Home = () => {
                           rel="noopener noreferrer"
                           aria-label={social.label}
                           p={2}
-                          borderRadius="full"
-                          color="gray.400"
+                          border="1px solid #1e2d42"
+                          color="#4a6580"
+                          display="flex"
+                          alignItems="center"
+                          justifyContent="center"
+                          transition="all 0.2s ease"
                           _hover={{
-                            color: "pink.400",
-                            transform: "scale(1.2)",
+                            color: '#4db8d4',
+                            borderColor: '#4db8d4',
+                            bg: 'rgba(77, 184, 212, 0.04)',
+                            transform: 'translateY(-2px)',
                           }}
-                          transition="all 0.3s ease"
                         >
-                          <social.icon size={18} aria-hidden />
+                          <social.icon size={15} aria-hidden />
                         </Box>
                       ))}
                     </HStack>

@@ -1,16 +1,19 @@
 import { extendTheme } from '@chakra-ui/react';
 
-const sakuraPalette = {
-  50: '#fdf2f8',
-  100: '#fce7f3',
-  200: '#fbcfe8',
-  300: '#f9a8d4',
-  400: '#f472b6',
-  500: '#ec4899',
-  600: '#db2777',
-  700: '#be185d',
-  800: '#9d174d',
-  900: '#831843',
+// Yotsuba Maya — Mahouka-inspired palette
+// Violet primary + crimson accent + purple-black backgrounds
+// "feminine" key kept to avoid breaking existing JSX refs
+const icePalette = {
+  50: '#f5f0ff',
+  100: '#ede0ff',
+  200: '#d9bfff',
+  300: '#b890f5',
+  400: '#7c3aed',  // primary violet
+  500: '#6d28d9',
+  600: '#5b21b6',
+  700: '#4c1d95',
+  800: '#3b1678',
+  900: '#2e1065',
 };
 
 const theme = extendTheme({
@@ -26,60 +29,72 @@ const theme = extendTheme({
     '2xl': '96em',
   },
   colors: {
-    // Kawaii Pink Palette
-    kawaii: {
-      50: '#fff5f7',
-      100: '#ffebef',
-      200: '#ffd6de',
-      300: '#ffb3c1',
-      400: '#ff8fa3',
-      500: '#ff6b8a',
-      600: '#ff4d6d',
-      700: '#c9184a',
-      800: '#a4133c',
-      900: '#800f2f',
+    // Primary accent — electric ice blue (replaces kawaii pink)
+    ice: icePalette,
+    // Keep "feminine" alias so existing JSX (navbar active states, etc.) still compiles
+    feminine: icePalette,
+    // Steel — lavender-grey secondary
+    steel: {
+      50: '#f7f4fc',
+      100: '#ede6f8',
+      200: '#d8cdf0',
+      300: '#bfaee4',
+      400: '#a088c0',
+      500: '#846aa0',
+      600: '#6a5280',
+      700: '#523d64',
+      800: '#3a2a48',
+      900: '#241a30',
     },
-    // Soft Lavender Palette
+    // Gold — crimson accent (Yotsuba clan danger)
+    gold: {
+      50: '#fff0f3',
+      100: '#ffd6dd',
+      200: '#ffa8b5',
+      300: '#f06880',
+      400: '#c41e3a',  // primary crimson
+      500: '#a01830',
+      600: '#861026',
+      700: '#6e0c1e',
+      800: '#580a18',
+      900: '#3d0710',
+    },
+    // Midnight — purple-black background shades
+    midnight: {
+      50: '#1e0a30',
+      100: '#120a1e',
+      200: '#0d0818',
+      300: '#0a0010',
+      400: '#070008',
+      500: '#040005',
+    },
+    // Keep lavender pointing to steel so any lavender.X refs don't break
     lavender: {
-      50: '#faf5ff',
-      100: '#f3e8ff',
-      200: '#e9d5ff',
-      300: '#d8b4fe',
-      400: '#c084fc',
-      500: '#a855f7',
-      600: '#9333ea',
-      700: '#7e22ce',
-      800: '#6b21a8',
-      900: '#581c87',
+      50: '#f7f4fc',
+      100: '#ede6f8',
+      200: '#d8cdf0',
+      300: '#bfaee4',
+      400: '#a088c0',
+      500: '#846aa0',
+      600: '#6a5280',
+      700: '#523d64',
+      800: '#3a2a48',
+      900: '#241a30',
     },
-    sakura: sakuraPalette,
-    // Mint Palette (for accents)
-    mint: {
-      50: '#f0fdfa',
-      100: '#ccfbf1',
-      200: '#99f6e4',
-      300: '#5eead4',
-      400: '#2dd4bf',
-      500: '#14b8a6',
-      600: '#0d9488',
-      700: '#0f766e',
-      800: '#115e59',
-      900: '#134e4a',
+    // Kept for any remaining refs — mapped to purple neutral
+    kawaii: {
+      50: '#f7f4fc',
+      100: '#ede6f8',
+      200: '#d8cdf0',
+      300: '#bfaee4',
+      400: '#a088c0',
+      500: '#846aa0',
+      600: '#6a5280',
+      700: '#523d64',
+      800: '#3a2a48',
+      900: '#241a30',
     },
-    // Peach Palette
-    peach: {
-      50: '#fff7ed',
-      100: '#ffedd5',
-      200: '#fed7aa',
-      300: '#fdba74',
-      400: '#fb923c',
-      500: '#f97316',
-      600: '#ea580c',
-      700: '#c2410c',
-      800: '#9a3412',
-      900: '#7c2d12',
-    },
-    feminine: sakuraPalette,
+    sakura: icePalette,
     elegant: {
       50: '#f8fafc',
       100: '#f1f5f9',
@@ -93,42 +108,37 @@ const theme = extendTheme({
       900: '#0f172a',
     },
     rose: {
-      50: '#fff1f2',
-      100: '#ffe4e6',
-      200: '#fecdd3',
-      300: '#fda4af',
-      400: '#fb7185',
-      500: '#f43f5e',
-      600: '#e11d48',
-      700: '#be123c',
-      800: '#9f1239',
-      900: '#881337',
+      50: '#f0f9fc',
+      100: '#d0eef5',
+      200: '#a1dceb',
+      300: '#6cc6de',
+      400: '#4db8d4',
+      500: '#2a9dba',
+      600: '#1e7d96',
+      700: '#165e72',
+      800: '#0f4050',
+      900: '#082330',
     },
-    brand: {
-      50: '#fdf4ff',
-      100: '#fae8ff',
-      200: '#f5d0fe',
-      300: '#f0abfc',
-      400: '#e879f9',
-      500: '#d946ef',
-      600: '#c026d3',
-      700: '#a21caf',
-      800: '#86198f',
-      900: '#701a75',
-    },
-    // Glass effect colors
+    brand: icePalette,
     glass: {
-      light: 'rgba(255, 255, 255, 0.1)',
-      dark: 'rgba(26, 32, 44, 0.8)',
-      pink: 'rgba(236, 72, 153, 0.1)',
-      purple: 'rgba(168, 85, 247, 0.1)',
-    }
+      light: 'rgba(255, 255, 255, 0.05)',
+      dark: 'rgba(10, 0, 16, 0.85)',
+      ice: 'rgba(124, 58, 237, 0.08)',
+      steel: 'rgba(160, 136, 192, 0.08)',
+    },
+    // Explicit design tokens
+    bg: {
+      page: '#0a0010',
+      card: '#0d0818',
+      surface: '#120a1e',
+      border: '#1e0a30',
+    },
   },
   fonts: {
-    heading: `var(--font-playfair), 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`,
-    body: `var(--font-inter), 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif`,
+    heading: `var(--font-cinzel), 'Noto Serif JP', Georgia, serif`,
+    body: `var(--font-raleway), 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`,
     mono: `var(--font-mono), 'Fira Code', ui-monospace, monospace`,
-    cute: `'Quicksand', 'Nunito', var(--font-inter), sans-serif`,
+    cute: `var(--font-raleway), sans-serif`,
   },
   fontSizes: {
     xs: '0.75rem',
@@ -150,19 +160,20 @@ const theme = extendTheme({
     sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
     base: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
     md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-    lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-    '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-    outline: '0 0 0 3px rgba(66, 153, 225, 0.6)',
-    inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+    lg: '0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.08)',
+    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)',
+    '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.4)',
+    outline: '0 0 0 3px rgba(124, 58, 237, 0.5)',
+    inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.15)',
     none: 'none',
-    glass: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-    glow: '0 0 20px rgba(236, 72, 153, 0.4)',
-    'glow-lg': '0 0 40px rgba(236, 72, 153, 0.6)',
-    'glow-pink': '0 0 30px rgba(236, 72, 153, 0.5)',
-    'glow-purple': '0 0 30px rgba(168, 85, 247, 0.5)',
-    'kawaii': '0 10px 40px rgba(255, 107, 138, 0.3)',
-    'soft': '0 4px 20px rgba(0, 0, 0, 0.08)',
+    glass: '0 8px 32px 0 rgba(10, 0, 16, 0.6)',
+    glow: '0 0 20px rgba(124, 58, 237, 0.35)',
+    'glow-lg': '0 0 40px rgba(124, 58, 237, 0.5)',
+    'glow-pink': '0 0 30px rgba(124, 58, 237, 0.4)',
+    'glow-purple': '0 0 30px rgba(124, 58, 237, 0.4)',
+    'glow-gold': '0 0 20px rgba(196, 30, 58, 0.4)',
+    kawaii: '0 10px 40px rgba(124, 58, 237, 0.25)',
+    soft: '0 4px 20px rgba(0, 0, 0, 0.2)',
   },
   radii: {
     none: '0',
@@ -177,15 +188,13 @@ const theme = extendTheme({
     full: '9999px',
   },
   styles: {
-    global: (props) => ({
+    global: () => ({
       html: {
         scrollBehavior: 'smooth',
       },
       body: {
-        bg: props.colorMode === 'dark'
-          ? 'radial-gradient(ellipse at top, rgba(17, 24, 39, 1) 0%, rgba(0, 0, 0, 1) 100%)'
-          : 'radial-gradient(ellipse at top, rgba(253, 242, 248, 1) 0%, rgba(248, 250, 252, 1) 50%, rgba(255, 241, 242, 1) 100%)',
-        color: props.colorMode === 'dark' ? 'whiteAlpha.900' : 'elegant.800',
+        bg: '#0a0010',
+        color: '#e8e0f5',
         fontFamily: 'body',
         minHeight: '100vh',
         lineHeight: 'base',
@@ -199,27 +208,25 @@ const theme = extendTheme({
       '*::before, *::after': {
         boxSizing: 'border-box',
       },
-      // Custom scrollbar
       '::-webkit-scrollbar': {
-        width: '8px',
-        height: '8px',
+        width: '6px',
+        height: '6px',
       },
       '::-webkit-scrollbar-track': {
-        background: props.colorMode === 'dark' ? 'rgba(0,0,0,0.2)' : 'rgba(0,0,0,0.05)',
+        background: '#0a0010',
       },
       '::-webkit-scrollbar-thumb': {
-        background: 'linear-gradient(180deg, #ff6b8a, #a855f7)',
-        borderRadius: '10px',
+        background: 'linear-gradient(180deg, #7c3aed, #c41e3a)',
+        borderRadius: '3px',
       },
       '::-webkit-scrollbar-thumb:hover': {
-        background: 'linear-gradient(180deg, #ff4d6d, #9333ea)',
+        background: 'linear-gradient(180deg, #6d28d9, #a01830)',
       },
-      // Selection color
       '::selection': {
-        background: 'rgba(236, 72, 153, 0.3)',
-        color: props.colorMode === 'dark' ? 'white' : 'elegant.900',
+        background: 'rgba(124, 58, 237, 0.25)',
+        color: '#e8e0f5',
       },
-      // Advanced Animations
+      // Keyframes
       '@keyframes fadeInUp': {
         '0%': { opacity: 0, transform: 'translateY(40px)' },
         '100%': { opacity: 1, transform: 'translateY(0)' }
@@ -238,11 +245,11 @@ const theme = extendTheme({
       },
       '@keyframes float': {
         '0%, 100%': { transform: 'translateY(0px)' },
-        '50%': { transform: 'translateY(-15px)' }
+        '50%': { transform: 'translateY(-12px)' }
       },
       '@keyframes floatSlow': {
         '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-        '50%': { transform: 'translateY(-10px) rotate(5deg)' }
+        '50%': { transform: 'translateY(-8px) rotate(3deg)' }
       },
       '@keyframes shimmer': {
         '0%': { backgroundPosition: '-1000px 0' },
@@ -250,13 +257,7 @@ const theme = extendTheme({
       },
       '@keyframes pulse': {
         '0%, 100%': { opacity: 1 },
-        '50%': { opacity: 0.5 }
-      },
-      '@keyframes bounce': {
-        '0%, 20%, 53%, 80%, 100%': { transform: 'translateY(0)' },
-        '40%, 43%': { transform: 'translateY(-30px)' },
-        '70%': { transform: 'translateY(-15px)' },
-        '90%': { transform: 'translateY(-4px)' }
+        '50%': { opacity: 0.4 }
       },
       '@keyframes spin': {
         '0%': { transform: 'rotate(0deg)' },
@@ -266,46 +267,66 @@ const theme = extendTheme({
         '0%, 100%': { backgroundPosition: '0% 50%' },
         '50%': { backgroundPosition: '100% 50%' }
       },
+      // Ice glow — replaces pink glow
       '@keyframes glow': {
-        '0%, 100%': { boxShadow: '0 0 20px rgba(236, 72, 153, 0.4)' },
-        '50%': { boxShadow: '0 0 40px rgba(236, 72, 153, 0.8)' }
+        '0%, 100%': { boxShadow: '0 0 15px rgba(124, 58, 237, 0.3)' },
+        '50%': { boxShadow: '0 0 35px rgba(124, 58, 237, 0.6)' }
+      },
+      // Magic array slow rotation
+      '@keyframes arrayRotate': {
+        '0%': { transform: 'rotate(0deg)' },
+        '100%': { transform: 'rotate(360deg)' }
+      },
+      // Crystalline reveal — blur clearance
+      '@keyframes iceFade': {
+        '0%': { opacity: 0, filter: 'blur(8px)', transform: 'translateY(16px)' },
+        '100%': { opacity: 1, filter: 'blur(0px)', transform: 'translateY(0)' }
+      },
+      // Circuit pulse for array decorations
+      '@keyframes arrayPulse': {
+        '0%, 100%': { opacity: 0.15, transform: 'scale(1)' },
+        '50%': { opacity: 0.35, transform: 'scale(1.03)' }
+      },
+      // Keep for any remaining usage
+      '@keyframes heartbeat': {
+        '0%, 100%': { transform: 'scale(1)' },
+        '50%': { transform: 'scale(1.05)' }
+      },
+      '@keyframes bounce': {
+        '0%, 100%': { transform: 'translateY(0)' },
+        '50%': { transform: 'translateY(-8px)' }
+      },
+      '@keyframes wiggle': {
+        '0%, 100%': { transform: 'rotate(-2deg)' },
+        '50%': { transform: 'rotate(2deg)' }
+      },
+      '@keyframes twinkle': {
+        '0%, 100%': { opacity: 0.2 },
+        '50%': { opacity: 0.6 }
       },
       '@keyframes sparkle': {
         '0%, 100%': { opacity: 0, transform: 'scale(0)' },
-        '50%': { opacity: 1, transform: 'scale(1)' }
+        '50%': { opacity: 0.8, transform: 'scale(1)' }
       },
-      '@keyframes heartbeat': {
-        '0%, 100%': { transform: 'scale(1)' },
-        '14%': { transform: 'scale(1.1)' },
-        '28%': { transform: 'scale(1)' },
-        '42%': { transform: 'scale(1.1)' },
-        '70%': { transform: 'scale(1)' }
+      '@keyframes gradientShift': {
+        '0%': { backgroundPosition: '0% 50%' },
+        '50%': { backgroundPosition: '100% 50%' },
+        '100%': { backgroundPosition: '0% 50%' }
       },
-      '@keyframes wiggle': {
-        '0%, 100%': { transform: 'rotate(-3deg)' },
-        '50%': { transform: 'rotate(3deg)' }
-      },
-      '@keyframes twinkle': {
-        '0%, 100%': { opacity: 0.3, transform: 'scale(0.8)' },
-        '50%': { opacity: 1, transform: 'scale(1.2)' }
-      }
     }),
   },
   components: {
     Link: {
-      baseStyle: (props) => ({
-        color: props.colorMode === 'dark' ? 'feminine.300' : 'feminine.600',
+      baseStyle: {
+        color: 'ice.400',
         textDecoration: 'none',
         fontWeight: 'medium',
-        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        transition: 'all 0.25s ease',
         position: 'relative',
         _hover: {
-          color: props.colorMode === 'dark' ? 'feminine.200' : 'feminine.700',
+          color: 'ice.300',
           textDecoration: 'none',
-          transform: 'translateY(-1px)',
-          _after: {
-            width: '100%',
-          }
+          _after: { width: '100%' },
         },
         _after: {
           content: '""',
@@ -313,76 +334,71 @@ const theme = extendTheme({
           bottom: '-2px',
           left: 0,
           width: 0,
-          height: '2px',
-          background: 'linear-gradient(90deg, #ec4899, #a855f7)',
-          transition: 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          height: '1px',
+          background: 'linear-gradient(90deg, #7c3aed, #c41e3a)',
+          transition: 'width 0.25s ease',
         }
-      }),
+      },
     },
     Button: {
       baseStyle: {
-        fontWeight: 'semibold',
-        borderRadius: 'xl',
-        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        _focus: {
-          boxShadow: 'outline',
-        },
-        _active: {
-          transform: 'scale(0.98)',
-        }
+        fontWeight: '500',
+        borderRadius: 'sm',
+        transition: 'all 0.25s ease',
+        letterSpacing: '0.04em',
+        _focus: { boxShadow: 'outline' },
+        _active: { transform: 'scale(0.97)' }
       },
       variants: {
-        glass: (props) => ({
-          bg: props.colorMode === 'dark'
-            ? 'rgba(255, 255, 255, 0.1)'
-            : 'rgba(255, 255, 255, 0.8)',
-          backdropFilter: 'blur(20px)',
+        glass: {
+          bg: 'rgba(13, 21, 37, 0.7)',
+          backdropFilter: 'blur(12px)',
           border: '1px solid',
-          borderColor: props.colorMode === 'dark'
-            ? 'rgba(255, 255, 255, 0.2)'
-            : 'rgba(236, 72, 153, 0.2)',
-          color: props.colorMode === 'dark' ? 'white' : 'elegant.800',
+          borderColor: '#1e2d42',
+          color: '#e8eef4',
           _hover: {
-            bg: props.colorMode === 'dark'
-              ? 'rgba(255, 255, 255, 0.2)'
-              : 'rgba(255, 255, 255, 0.9)',
-            borderColor: 'feminine.400',
+            bg: 'rgba(19, 30, 48, 0.9)',
+            borderColor: '#4db8d4',
+            color: '#4db8d4',
             transform: 'translateY(-2px)',
-            boxShadow: 'lg',
+            boxShadow: 'glow',
           }
-        }),
+        },
         gradient: {
-          bgGradient: 'linear(to-r, feminine.500, lavender.500)',
-          color: 'white',
+          bg: 'transparent',
+          border: '1px solid #4db8d4',
+          color: '#4db8d4',
           _hover: {
-            bgGradient: 'linear(to-r, feminine.600, lavender.600)',
+            bg: 'rgba(77, 184, 212, 0.1)',
             transform: 'translateY(-2px)',
             boxShadow: 'glow',
           }
         },
         kawaii: {
-          bg: 'kawaii.500',
+          bg: 'ice.500',
           color: 'white',
-          borderRadius: 'full',
+          borderRadius: 'sm',
           px: 8,
           _hover: {
-            bg: 'kawaii.600',
-            transform: 'translateY(-3px) scale(1.02)',
-            boxShadow: 'kawaii',
+            bg: 'ice.600',
+            transform: 'translateY(-2px)',
+            boxShadow: 'glow',
           },
-          _active: {
-            transform: 'scale(0.98)',
-          }
         },
         cute: {
-          bgGradient: 'linear(135deg, #ff6b8a, #a855f7)',
-          color: 'white',
-          borderRadius: 'full',
-          fontWeight: 'bold',
+          bg: 'transparent',
+          border: '1px solid',
+          borderColor: '#c4a55a',
+          color: '#c4a55a',
+          borderRadius: 'sm',
+          fontWeight: '500',
+          letterSpacing: '0.08em',
+          textTransform: 'uppercase',
+          fontSize: 'xs',
           _hover: {
-            bgGradient: 'linear(135deg, #ff4d6d, #9333ea)',
-            transform: 'translateY(-3px)',
-            boxShadow: '0 15px 35px rgba(236, 72, 153, 0.4)',
+            bg: 'rgba(196, 165, 90, 0.08)',
+            transform: 'translateY(-2px)',
+            boxShadow: 'glow-gold',
           }
         }
       }
@@ -390,52 +406,56 @@ const theme = extendTheme({
     Input: {
       baseStyle: {
         field: {
-          borderRadius: 'xl',
-          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          borderRadius: 'sm',
+          transition: 'all 0.25s ease',
           _focus: {
-            transform: 'translateY(-1px)',
-            boxShadow: 'lg',
-            borderColor: 'feminine.400',
+            borderColor: 'ice.400',
+            boxShadow: 'glow',
           }
         }
       }
     },
     Textarea: {
       baseStyle: {
-        borderRadius: 'xl',
-        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        borderRadius: 'sm',
+        transition: 'all 0.25s ease',
         _focus: {
-          transform: 'translateY(-1px)',
-          boxShadow: 'lg',
-          borderColor: 'feminine.400',
+          borderColor: 'ice.400',
+          boxShadow: 'glow',
         }
       }
     },
     Heading: {
       baseStyle: {
         fontFamily: 'heading',
-        fontWeight: 'bold',
+        fontWeight: '700',
         lineHeight: 'shorter',
+        letterSpacing: '0.02em',
       }
     },
     Badge: {
       variants: {
         kawaii: {
-          bg: 'rgba(236, 72, 153, 0.15)',
-          color: 'feminine.400',
-          borderRadius: 'full',
+          bg: 'rgba(77, 184, 212, 0.1)',
+          color: 'ice.400',
+          borderRadius: 'sm',
           px: 3,
           py: 1,
-          fontWeight: 'semibold',
+          fontWeight: '500',
           border: '1px solid',
-          borderColor: 'rgba(236, 72, 153, 0.3)',
+          borderColor: 'rgba(77, 184, 212, 0.25)',
+          letterSpacing: '0.06em',
+          textTransform: 'uppercase',
+          fontSize: 'xs',
         },
         cute: {
-          bgGradient: 'linear(to-r, kawaii.100, lavender.100)',
-          color: 'kawaii.700',
-          borderRadius: 'full',
-          px: 4,
+          bg: 'rgba(196, 165, 90, 0.1)',
+          color: 'gold.400',
+          borderRadius: 'sm',
+          px: 3,
           py: 1,
+          border: '1px solid',
+          borderColor: 'rgba(196, 165, 90, 0.25)',
         }
       }
     }
@@ -443,56 +463,58 @@ const theme = extendTheme({
   textStyles: {
     h1: {
       fontSize: ['48px', '72px'],
-      fontWeight: 'bold',
+      fontWeight: '700',
       lineHeight: '110%',
-      letterSpacing: '-2%',
+      letterSpacing: '0.02em',
     },
     h2: {
       fontSize: ['36px', '48px'],
-      fontWeight: 'semibold',
+      fontWeight: '600',
       lineHeight: '110%',
-      letterSpacing: '-1%',
+      letterSpacing: '0.02em',
     },
     subtitle: {
       fontSize: ['18px', '24px'],
-      fontWeight: 'medium',
+      fontWeight: '400',
       lineHeight: '130%',
+      letterSpacing: '0.04em',
     },
     body: {
       fontSize: ['16px', '18px'],
       lineHeight: '160%',
     },
     cute: {
-      fontFamily: 'cute',
-      fontWeight: '500',
-      letterSpacing: '0.5px',
+      fontFamily: 'body',
+      fontWeight: '400',
+      letterSpacing: '0.04em',
     }
   },
   layerStyles: {
     glass: {
-      bg: 'rgba(255, 255, 255, 0.1)',
-      backdropFilter: 'blur(20px)',
-      border: '1px solid rgba(255, 255, 255, 0.2)',
+      bg: 'rgba(13, 21, 37, 0.6)',
+      backdropFilter: 'blur(16px)',
+      border: '1px solid #1e2d42',
     },
     glassPink: {
-      bg: 'rgba(236, 72, 153, 0.1)',
-      backdropFilter: 'blur(20px)',
-      border: '1px solid rgba(236, 72, 153, 0.2)',
+      bg: 'rgba(77, 184, 212, 0.06)',
+      backdropFilter: 'blur(16px)',
+      border: '1px solid rgba(77, 184, 212, 0.15)',
     },
     gradient: {
-      bgGradient: 'linear(to-r, feminine.500, lavender.500)',
+      bgGradient: 'linear(to-r, ice.500, steel.500)',
     },
     card: {
-      bg: 'white',
+      bg: '#0d1525',
       shadow: 'xl',
-      rounded: '2xl',
+      rounded: 'sm',
       overflow: 'hidden',
+      border: '1px solid #1e2d42',
     },
     kawaii: {
-      bg: 'rgba(255, 107, 138, 0.1)',
-      backdropFilter: 'blur(20px)',
-      border: '1px solid rgba(255, 107, 138, 0.2)',
-      borderRadius: '2xl',
+      bg: 'rgba(13, 21, 37, 0.7)',
+      backdropFilter: 'blur(16px)',
+      border: '1px solid #1e2d42',
+      borderRadius: 'sm',
     }
   }
 });

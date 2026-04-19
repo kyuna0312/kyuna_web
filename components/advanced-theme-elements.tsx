@@ -4,58 +4,52 @@ import { motion } from 'framer-motion';
 
 const MotionBox = motion(Box);
 
-// Interactive Section Headers - with static colors to avoid hydration issues
+const crystalline = { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] as const };
+
+// Interactive section headers with ice/gold gradient
 export const SectionHeader = ({
   children,
   subtitle,
   delay = 0,
-  gradient = "linear(to-r, pink.400, rose.400)",
+  gradient = 'linear(to-r, #4db8d4, #c4a55a)',
   ...props
 }) => {
   const ref = React.useRef(null);
   const [isInView, setIsInView] = React.useState(false);
 
-  // Static color for subtitle to prevent hydration mismatch
-  const subtitleColor = "gray.400";
-
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-        }
+        if (entry.isIntersecting) setIsInView(true);
       },
       { threshold: 0.3 }
     );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
+    if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
   return (
     <MotionBox
       ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 0.8, delay }}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{ ...crystalline, delay }}
       textAlign="center"
       mb={12}
       {...props}
     >
       <MotionBox
         as="h2"
-        fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+        fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}
         fontFamily="heading"
-        fontWeight="bold"
+        fontWeight="700"
+        letterSpacing="0.04em"
         bgGradient={gradient}
         bgClip="text"
         mb={4}
-        initial={{ scale: 0.9 }}
-        animate={isInView ? { scale: 1 } : { scale: 0.9 }}
-        transition={{ duration: 0.6, delay: delay + 0.2 }}
+        initial={{ scale: 0.95 }}
+        animate={isInView ? { scale: 1 } : { scale: 0.95 }}
+        transition={{ ...crystalline, delay: delay + 0.15 }}
       >
         {children}
       </MotionBox>
@@ -64,41 +58,49 @@ export const SectionHeader = ({
         <MotionBox
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6, delay: delay + 0.4 }}
-          fontSize="lg"
-          color={subtitleColor}
-          maxW="600px"
+          transition={{ ...crystalline, delay: delay + 0.3 }}
+          fontSize="sm"
+          color="#4a6580"
+          letterSpacing="0.06em"
+          textTransform="uppercase"
+          maxW="500px"
           mx="auto"
         >
           {subtitle}
         </MotionBox>
       )}
+
+      {/* Thin decorative rule */}
+      <MotionBox
+        initial={{ scaleX: 0, opacity: 0 }}
+        animate={isInView ? { scaleX: 1, opacity: 1 } : { scaleX: 0, opacity: 0 }}
+        transition={{ ...crystalline, delay: delay + 0.4 }}
+        h="1px"
+        maxW="80px"
+        mx="auto"
+        mt={5}
+        bg="linear-gradient(to right, #4db8d4, #c4a55a)"
+        style={{ transformOrigin: 'center' }}
+      />
     </MotionBox>
   );
 };
 
-// Glass Card Effect - Cute glassmorphism card component 💖
+// Glassmorphism card — dark navy variant
 export const GlassCard = ({
   children,
-  blur = "20px",
-  opacity = 0.1,
-  borderColor = "rgba(255, 255, 255, 0.2)",
+  blur = '16px',
+  borderColor = '#1e2d42',
   ...props
-}) => {
-  // Static dark mode glass effect
-  const glassBg = `rgba(255, 255, 255, ${opacity * 0.1})`;
-
-  return (
-    <Box
-      bg={glassBg}
-      backdropFilter={`blur(${blur})`}
-      border="1px solid"
-      borderColor={borderColor}
-      borderRadius="20px"
-      boxShadow="0 25px 45px -10px rgba(0, 0, 0, 0.1)"
-      {...props}
-    >
-      {children}
-    </Box>
-  );
-};
+}) => (
+  <Box
+    bg="rgba(13, 21, 37, 0.7)"
+    backdropFilter={`blur(${blur})`}
+    border="1px solid"
+    borderColor={borderColor}
+    boxShadow="0 20px 40px rgba(0, 0, 0, 0.3)"
+    {...props}
+  >
+    {children}
+  </Box>
+);

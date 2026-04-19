@@ -14,9 +14,9 @@
   "projects": {
     "title": "Projects ✨",
     "description": "Featured repos and builds—same story as my GitHub profile.",
-    "heroBadge": "$ gh repo list --featured",
+    "heroBadge": "$ gh repo list --client-work",
     "heroTitle": "Build log",
-    "heroDescription": "Product, backend, systems, and creative tooling. Pins mirror github.com/kyuna0312/kyuna0312.",
+    "heroDescription": "Web apps, OSS tools, and creative projects. Available for freelance.",
     "recruiterLine": "Recruiters: explore here first, then dive into the repos that fit the role.",
     "viewSource": "View Source 💻",
     "viewDemo": "View Demo ✨",
@@ -41,31 +41,31 @@
   },
   "home": {
     "title": "Kyuna / 霜花",
-    "subtitle": "Engineer · OSS · AI comic pipelines · YouTube",
-    "description": "Solo dev shipping UIs, APIs, and low-level toys when curiosity wins. Cosplay + community on one layer; code + visuals + story on another—anime-coded aesthetics next to boring infrastructure ✨",
-    "seoTitle": "Kyuna (霜花) — engineer, OSS, AI comics, YouTube",
-    "seoDescription": "Kyuna: TypeScript/JavaScript apps, Go/Rust backends, AI comic tooling, YouTube @amarihana. Portfolio at kyuna-web.vercel.app.",
-    "welcomeBadge": "kyuna0312@github:~$ ./welcome --tty",
+    "subtitle": "Freelance Dev · OSS · Cosplayer · AI creative tools",
+    "description": "Open for freelance: web apps, OSS consulting, cosplay collabs, and AI creative tooling. Anime-coded dev who ships and cosplays. ✨",
+    "seoTitle": "Kyuna (霜花) — freelance dev, OSS, cosplayer, AI tooling",
+    "seoDescription": "Kyuna: freelance web dev (React/Next.js/Go), cosplay commissions, OSS consulting, AI creative tooling. Available for hire — kyuna-web.vercel.app.",
+    "welcomeBadge": "kyuna0312@github:~$ ./hire-me --open",
     "imageAlt": "Kyuna — engineer, OSS, AI comics, creator",
     "buildSectionTitle": "$ tree -L 1 ./build",
     "buildSectionAria": "How I group my work: product, backend, systems, creative",
-    "buildTree": "./build\n├── product/      # TS/JS apps → kyuna-web.vercel.app · amane312.vercel.app\n├── backend/      # Go services, APIs, automation, dotfiles\n├── systems/      # Rust/C — OS-adjacent toys, bootloaders, engines\n└── creative/     # editors, AI comic tooling, idea → panel faster",
+    "buildTree": "./build\n├── product/      # TS/JS apps → kyuna-web.vercel.app · amane312.vercel.app\n├── backend/      # Go services, APIs, automation, dotfiles\n├── systems/      # Rust/C — OS-adjacent toys, bootloaders, engines\n├── creative/     # editors, AI comic tooling, idea → panel faster\n└── hire/         # freelance · commissions · consulting",
     "liveSites": "Live sites",
     "viewProjects": "View my projects 💻",
     "getInTouch": "Say hello 💌",
-    "hireMe": "Work with me 💼",
+    "hireMe": "Hire me 💼",
     "workExperience": "Work Experience",
     "bio": "Hi—I'm Kyuna (霜花), based in Ulaanbaatar 🇲🇳 I ship product code, OSS, and AI comic pipelines; you’ll also find me on YouTube @amarihana and in cosplay communities when I’m not in the terminal~ ✨",
     "projectsButton": "My projects 💻",
     "history": "My journey 🌸",
     "pillars": {
       "oss": {
-        "title": "Open source",
-        "body": "Tools, dotfiles, and community projects I maintain or contribute to."
+        "title": "For hire",
+        "body": "Freelance web dev, cosplay collabs, OSS consulting, AI tooling — open now."
       },
       "comics": {
-        "title": "AI comic pipelines",
-        "body": "From idea to panel—generative workflows and creative tooling."
+        "title": "AI tooling",
+        "body": "Comic pipelines, generative art, creative automation — idea to panel faster."
       },
       "youtube": {
         "title": "YouTube",
@@ -81,38 +81,38 @@
       "items": [
         {
           "icon": "💻",
-          "title": "Product (TS / JS)",
-          "description": "Apps and interfaces—React, Next.js, TypeScript, and design systems.",
-          "techs": ["TypeScript", "JavaScript", "React", "Next.js"]
+          "title": "Freelance Web Dev",
+          "description": "React, Next.js, TypeScript — full-stack apps and interfaces, available for hire.",
+          "techs": ["TypeScript", "React", "Next.js", "APIs"]
         },
         {
-          "icon": "🟢",
-          "title": "Backend & automation",
-          "description": "Services, APIs, and glue code—Go and Node when the problem fits.",
-          "techs": ["Go", "Node.js", "APIs", "Automation"]
-        },
-        {
-          "icon": "🦀",
-          "title": "Systems & low-level",
-          "description": "Rust, C, and OS-adjacent experiments—bootloaders, engines, curiosity builds.",
-          "techs": ["Rust", "C", "Linux", "Tooling"]
+          "icon": "🎭",
+          "title": "Cosplay Commissions",
+          "description": "Photography, styling, brand collabs, and creative direction — open for commissions.",
+          "techs": ["Photography", "Styling", "Collab", "Creative direction"]
         },
         {
           "icon": "🧩",
-          "title": "Open source",
-          "description": "Small diffs, clear why—good first issues, dotfiles, and community shoutouts.",
-          "techs": ["GitHub", "CLI", "Docs", "Community"]
+          "title": "OSS Consulting",
+          "description": "Code review, architecture, contributions, and dotfiles — clear diffs, strong why.",
+          "techs": ["GitHub", "CLI", "Architecture", "Community"]
         },
         {
           "icon": "🎨",
-          "title": "Creative stack",
-          "description": "AI comic pipelines, editors, motion—story meets implementation.",
+          "title": "AI Creative Tooling",
+          "description": "Comic pipelines, generative art workflows, creative automation — idea to panel faster.",
           "techs": ["Generative AI", "Lua", "Python", "Design"]
         },
         {
+          "icon": "🟢",
+          "title": "Systems & backend",
+          "description": "Go services, Rust/C experiments — APIs, automation, and OS-adjacent work.",
+          "techs": ["Go", "Rust", "C", "Linux"]
+        },
+        {
           "icon": "▶️",
-          "title": "YouTube & presence",
-          "description": "Long-form builds and personality layer—terminal-meets-anime energy.",
+          "title": "YouTube & community",
+          "description": "Builds, creative tech, and community — terminal-meets-anime energy @amarihana.",
           "techs": ["YouTube", "X", "Discord", "Instagram"]
         }
       ]
@@ -137,9 +137,9 @@
       "2023-02": "Building social and platform products with a strong UX focus."
     },
     "ctaSection": {
-      "badge": "💌 Let's connect 💌",
-      "heading": "Fork something cool? Tell me ✨",
-      "body": "Hiring, collabs, or OSS—small PRs with a clear why beat drive-by refactors. I like seeing forks in the wild.",
+      "badge": "💼 Available for hire 💼",
+      "heading": "Available for hire ✨",
+      "body": "Freelance web dev, cosplay collabs, OSS work, or AI tooling — reach out with your project.",
       "startProject": "Start a project",
       "socialHint": "Or find me on social media ♡"
     },
@@ -193,15 +193,15 @@
     ]
   },
   "contact": {
-    "title": "Let's Connect! 💌",
-    "description": "Have a project in mind? Want to collaborate? Or just want to say hi? I'd love to hear from you! 💖",
+    "title": "Work With Me ✨",
+    "description": "Freelance dev, cosplay collab, OSS consulting, or AI creative tooling — tell me what you're building. 💖",
     "form": {
       "name": "Your Name ✨",
       "namePlaceholder": "What should I call you?",
       "email": "Email 📧",
       "emailPlaceholder": "your.email@example.com",
       "subject": "Subject 💭",
-      "subjectPlaceholder": "What would you like to chat about?",
+      "subjectPlaceholder": "Freelance / Cosplay / OSS / AI tooling",
       "message": "Message 💌",
       "messagePlaceholder": "Tell me about your ideas~",
       "send": "Send Message ✨",
