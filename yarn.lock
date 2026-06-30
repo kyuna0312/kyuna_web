@@ -2932,9 +2932,9 @@ html-parse-stringify@^3.0.1:
     void-elements "3.1.0"
 
 i18next-fs-backend@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.npmjs.org/i18next-fs-backend/-/i18next-fs-backend-2.3.2.tgz"
-  integrity sha512-LIwUlkqDZnUI8lnUxBnEj8K/FrHQTT/Sc+1rvDm9E8YvvY5YxzoEAASNx+W5M9DfD5s77lI5vSAFWeTp26B/3Q==
+  version "2.6.6"
+  resolved "https://registry.yarnpkg.com/i18next-fs-backend/-/i18next-fs-backend-2.6.6.tgz#d7a0b4595cc3d504c9d0b267e527d2b4926d9418"
+  integrity sha512-mYGu6Nt8RIp3X/U8Y+Gej1wo5xmYWmGKLqBGMCC2OCAou5rW5epeHgHmVcw20mJs9Z9+DAPHIxQPNCgFyPRMeg==
 
 i18next@^23.14.0:
   version "23.14.0"
