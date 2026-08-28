@@ -10,7 +10,7 @@ const Logo = () => (
           <Box as="span" color="bloom">花</Box>
         </Text>
         <Text fontFamily="mono" fontSize="xs" color="rime" letterSpacing="0.12em" display={{ base: 'none', sm: 'block' }}>
-          shimoka
+          kyuna0312
         </Text>
       </HStack>
     </Box>

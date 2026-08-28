@@ -97,7 +97,7 @@ const Navbar = (props) => {
 						{t('navbar.contact')}
 					</LinkItem>
 					<Link
-						href="https://github.com/kyuna312"
+						href="https://github.com/kyuna0312"
 						target="_blank"
 						px={3}
 						py={2}
@@ -148,7 +148,7 @@ const Navbar = (props) => {
 								<MenuItem as={MenuLink} href="/contact" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" _hover={{ bg: 'iceDim', color: 'frost' }}>
 									{t('navbar.contact')}
 								</MenuItem>
-								<MenuItem as={Link} href="https://github.com/kyuna312" target="_blank" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" _hover={{ bg: 'iceDim', color: 'frost' }}>
+								<MenuItem as={Link} href="https://github.com/kyuna0312" target="_blank" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" _hover={{ bg: 'iceDim', color: 'frost' }}>
 									GitHub
 								</MenuItem>
 							</MenuList>

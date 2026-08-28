@@ -61,9 +61,9 @@ const craft = [
 ]
 
 const socialLinks = [
-  { icon: IoLogoGithub, href: 'https://github.com/kyuna312', label: 'GitHub' },
+  { icon: IoLogoGithub, href: 'https://github.com/kyuna0312', label: 'GitHub' },
   { icon: IoLogoTwitter, href: 'https://twitter.com/m1or3n', label: 'Twitter' },
-  { icon: IoLogoInstagram, href: 'https://instagram.com/m1or3n', label: 'Instagram' },
+  { icon: IoLogoInstagram, href: 'https://instagram.com/kyuna0312', label: 'Instagram' },
 ]
 
 const Home = () => {
@@ -134,7 +134,7 @@ const Home = () => {
                 textTransform="uppercase"
                 mt={4}
               >
-                shimoka — frost flower
+                kyuna0312 — frost flower
               </Text>
             </MotionBox>
 

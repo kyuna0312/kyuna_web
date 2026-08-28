@@ -87,9 +87,9 @@ const SEOHead = ({
             "name": "Shimoka (霜花)",
             "url": siteUrl,
             "sameAs": [
-              "https://github.com/kyuna312",
+              "https://github.com/kyuna0312",
               "https://twitter.com/m1or3n",
-              "https://instagram.com/m1or3n"
+              "https://instagram.com/kyuna0312"
             ],
             "jobTitle": "Full-stack Developer",
             "worksFor": {

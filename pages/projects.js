@@ -93,7 +93,7 @@ const Projects = () => {
       description: t('projects.NomadXDescription'),
       thumbnail: '/images/works/nomadx.png',
       url: 'https://nomadx.world',
-      github: 'https://github.com/kyuna312/nomadx',
+      github: 'https://github.com/kyuna0312/nomadx',
       tech: 'React · Next.js · TypeScript · Chakra UI',
       featured: true,
     },
@@ -102,7 +102,7 @@ const Projects = () => {
       description: t('projects.madoka_reactDescription'),
       thumbnail: '/images/works/madoka_react.png',
       url: 'https://madoka-kappa.vercel.app',
-      github: 'https://github.com/kyuna312/madoka-react',
+      github: 'https://github.com/kyuna0312/madoka-react',
       tech: 'React · CSS · GSAP',
     },
     {
@@ -110,15 +110,15 @@ const Projects = () => {
       description: t('projects.mongolnetDescription'),
       thumbnail: '/images/works/mongolnet.png',
       url: 'https://mongol.net',
-      github: 'https://github.com/kyuna312/mongolnet',
+      github: 'https://github.com/kyuna0312/mongolnet',
       tech: 'React · NestJS · GraphQL · Flutter',
     },
     {
       title: t('projects.NyanMarkDown'),
       description: t('projects.NyanMarkDownDescription'),
       thumbnail: '/images/works/nyanmarkdown.png',
-      url: 'https://github.com/kyuna312/NyanVim',
-      github: 'https://github.com/kyuna312/NyanVim',
+      url: 'https://github.com/kyuna0312/NyanVim',
+      github: 'https://github.com/kyuna0312/NyanVim',
       tech: 'Vim · Lua · open source',
     },
   ];
@@ -158,7 +158,7 @@ const Projects = () => {
             photography. Work in progress and finished builds live on Instagram.
           </Text>
           <Link
-            href="https://instagram.com/m1or3n"
+            href="https://instagram.com/kyuna0312"
             target="_blank"
             fontFamily="mono"
             fontSize="sm"
@@ -168,7 +168,7 @@ const Projects = () => {
             pb="2px"
             _hover={{ color: 'bloom', borderColor: 'bloom' }}
           >
-            instagram.com/m1or3n
+            instagram.com/kyuna0312
           </Link>
         </MotionBox>
       </Container>

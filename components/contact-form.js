@@ -66,7 +66,7 @@ const ContactForm = () => {
 
     setIsSubmitting(true)
     try {
-      const mailtoLink = `mailto:hello@hattanzorg.dev?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      const mailtoLink = `mailto:khatanzorigb@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )}`
       window.open(mailtoLink, '_blank')
