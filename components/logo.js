@@ -1,5 +1,6 @@
 import NextLink from 'next/link';
 import { Box, Text, HStack } from '@chakra-ui/react';
+import { site } from '../lib/site';
 
 const Logo = () => (
   <Box as={NextLink} href="/" display="inline-flex" alignItems="center" _hover={{ textDecoration: 'none' }}>
@@ -9,7 +10,7 @@ const Logo = () => (
         <Box as="span" color="bloom">花</Box>
       </Text>
       <Text fontFamily="mono" fontSize="xs" color="rime" letterSpacing="0.12em" display={{ base: 'none', sm: 'block' }}>
-        kyuna0312
+        {site.handle}
       </Text>
     </HStack>
   </Box>

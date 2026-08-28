@@ -7,7 +7,7 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
-import { IoLogoGithub, IoLogoTwitter, IoLogoInstagram } from 'react-icons/io5';
+import { site, socialLinks } from '../lib/site';
 import { CrystalMark } from './frost';
 
 const footerQuotes = {
@@ -15,12 +15,6 @@ const footerQuotes = {
   jp: '一歩、二歩…「未来」への道は足元にある。',
   mn: 'Нэг алхам, хоёр алхам — ирээдүй рүү чиглэх зам хөл дор байна.',
 };
-
-const socialLinks = [
-  { icon: IoLogoGithub, href: 'https://github.com/kyuna0312', label: 'GitHub' },
-  { icon: IoLogoTwitter, href: 'https://twitter.com/kyuna0312', label: 'Twitter' },
-  { icon: IoLogoInstagram, href: 'https://instagram.com/kyuna0312', label: 'Instagram' },
-];
 
 const Footer = () => {
   const { t } = useTranslation('common');
@@ -43,7 +37,7 @@ const Footer = () => {
                 霜花
               </Text>
               <Text fontFamily="mono" fontSize="xs" color="rime" letterSpacing="0.12em">
-                kyuna0312 · ulaanbaatar
+                {site.handle} · ulaanbaatar
               </Text>
             </HStack>
             <Text fontSize="sm" color="rime" fontStyle="italic" maxW="420px">

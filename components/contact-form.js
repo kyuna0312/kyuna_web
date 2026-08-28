@@ -11,6 +11,7 @@ import {
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useTranslation } from 'next-i18next'
+import { site } from '../lib/site'
 
 const ContactForm = () => {
   const { t } = useTranslation('common')
@@ -66,7 +67,7 @@ const ContactForm = () => {
 
     setIsSubmitting(true)
     try {
-      const mailtoLink = `mailto:khatanzorigb@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      const mailtoLink = `mailto:${site.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )}`
       window.open(mailtoLink, '_blank')

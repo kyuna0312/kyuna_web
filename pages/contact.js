@@ -6,16 +6,10 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from '../next-i18next.config'
 import { useTranslation } from 'next-i18next'
 import { motion } from 'framer-motion'
-import { IoLogoGithub, IoLogoTwitter, IoLogoInstagram } from 'react-icons/io5'
+import { socialLinks } from '../lib/site'
 import { Eyebrow } from '../components/frost'
 
 const MotionBox = motion(Box)
-
-const socialLinks = [
-  { icon: IoLogoGithub, href: 'https://github.com/kyuna0312', label: 'GitHub' },
-  { icon: IoLogoTwitter, href: 'https://twitter.com/kyuna0312', label: 'Twitter' },
-  { icon: IoLogoInstagram, href: 'https://instagram.com/kyuna0312', label: 'Instagram' },
-]
 
 const Contact = () => {
   const { t } = useTranslation('common')

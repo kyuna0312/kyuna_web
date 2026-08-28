@@ -6,6 +6,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from '../next-i18next.config';
 import { motion } from 'framer-motion';
 import { IoLogoGithub, IoArrowForward } from 'react-icons/io5';
+import { site } from '../lib/site';
 import { Eyebrow, CrystalDivider } from '../components/frost';
 
 const MotionBox = motion(Box);
@@ -172,7 +173,7 @@ const Projects = () => {
             photography. Work in progress and finished builds live on Instagram.
           </Text>
           <Link
-            href="https://instagram.com/kyuna0312"
+            href={site.instagram}
             target="_blank"
             fontFamily="mono"
             fontSize="sm"
@@ -182,7 +183,7 @@ const Projects = () => {
             pb="2px"
             _hover={{ color: 'bloom', borderColor: 'bloom' }}
           >
-            instagram.com/kyuna0312
+            instagram.com/{site.handle}
           </Link>
         </MotionBox>
       </Container>

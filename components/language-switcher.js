@@ -31,27 +31,17 @@ const LanguageSwitcher = () => {
         rightIcon={<ChevronDownIcon />}
         variant="ghost"
         size="sm"
-        borderRadius="2px"
         fontFamily="mono"
         fontWeight="400"
         fontSize="sm"
-        color="rime"
-        _hover={{ bg: 'iceDim', color: 'frost' }}
-        _active={{ bg: 'iceDim' }}
       >
         {currentLanguage.name}
       </MenuButton>
-      <MenuList bg="pane" borderColor="hairline" borderRadius="2px" minW="140px" py={2}>
+      <MenuList minW="140px">
         {languages.map(language => (
           <MenuItem
             key={language.code}
             onClick={() => changeLanguage(language.code)}
-            bg="transparent"
-            color="rime"
-            fontFamily="mono"
-            fontSize="sm"
-            _hover={{ bg: 'iceDim', color: 'frost' }}
-            _focus={{ bg: 'iceDim' }}
             isDisabled={language.code === router.locale}
           >
             {language.name}

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { site } from '../lib/site'
 
 const SEOHead = ({
   title,
@@ -12,7 +13,7 @@ const SEOHead = ({
 
   const siteTitle = '霜花 (Shimoka)'
   const pageTitle = title ? `${title} | ${siteTitle}` : siteTitle
-  const siteUrl = 'https://kyuna-web.vercel.app' // Update with your actual domain
+  const siteUrl = site.url
   const currentUrl = `${siteUrl}${router.asPath}`
 
   const defaultDescription = {
@@ -48,7 +49,7 @@ const SEOHead = ({
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
       <meta name="twitter:image" content={`${siteUrl}${image}`} />
-      <meta name="twitter:creator" content="@kyuna0312" />
+      <meta name="twitter:creator" content={`@${site.handle}`} />
 
       {/* Language alternates */}
       <link rel="alternate" hrefLang="en" href={`${siteUrl}/en${router.asPath}`} />
@@ -86,11 +87,7 @@ const SEOHead = ({
             "@type": "Person",
             "name": "Shimoka (霜花)",
             "url": siteUrl,
-            "sameAs": [
-              "https://github.com/kyuna0312",
-              "https://twitter.com/kyuna0312",
-              "https://instagram.com/kyuna0312"
-            ],
+            "sameAs": [site.github, site.twitter, site.instagram],
             "jobTitle": "Systems & Developer Tooling Engineer",
             "worksFor": {
               "@type": "Organization",

@@ -20,9 +20,6 @@ const ColorModeToggle = () => {
       onClick={toggleColorMode}
       variant="ghost"
       size="md"
-      color="rime"
-      borderRadius="2px"
-      _hover={{ bg: 'iceDim', color: 'frost' }}
     />
   );
 };

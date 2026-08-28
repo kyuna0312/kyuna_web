@@ -12,7 +12,7 @@ import {
   Container,
 } from '@chakra-ui/react'
 import Layout from '../components/layouts/article'
-import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
+import { site, socialLinks } from '../lib/site'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from '../next-i18next.config'
@@ -59,12 +59,6 @@ const craft = [
     tech: 'Figma · design systems',
     color: 'ice',
   },
-]
-
-const socialLinks = [
-  { icon: IoLogoGithub, href: 'https://github.com/kyuna0312', label: 'GitHub' },
-  { icon: IoLogoTwitter, href: 'https://twitter.com/kyuna0312', label: 'Twitter' },
-  { icon: IoLogoInstagram, href: 'https://instagram.com/kyuna0312', label: 'Instagram' },
 ]
 
 const Home = () => {
@@ -135,7 +129,7 @@ const Home = () => {
                 textTransform="uppercase"
                 mt={4}
               >
-                kyuna0312 — frost flower
+                {site.handle} — frost flower
               </Text>
             </MotionBox>
 
