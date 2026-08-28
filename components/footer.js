@@ -10,12 +10,6 @@ import { useTranslation } from 'next-i18next';
 import { site, socialLinks } from '../lib/site';
 import { CrystalMark } from './frost';
 
-const footerQuotes = {
-  en: 'One step, two steps — the road to the future is under your feet.',
-  jp: '一歩、二歩…「未来」への道は足元にある。',
-  mn: 'Нэг алхам, хоёр алхам — ирээдүй рүү чиглэх зам хөл дор байна.',
-};
-
 const Footer = () => {
   const { t } = useTranslation('common');
 
@@ -41,7 +35,7 @@ const Footer = () => {
               </Text>
             </HStack>
             <Text fontSize="sm" color="rime" fontStyle="italic" maxW="420px">
-              {footerQuotes[t('locale')] || footerQuotes.en}
+              {t('footer.quote')}
             </Text>
           </Box>
 

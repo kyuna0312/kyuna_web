@@ -7,17 +7,12 @@ import {
   Button,
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
-
-const languages = [
-  { code: 'en', name: 'English' },
-  { code: 'jp', name: '日本語' },
-  { code: 'mn', name: 'Монгол' },
-]
+import { locales } from '../lib/site'
 
 const LanguageSwitcher = () => {
   const router = useRouter()
 
-  const currentLanguage = languages.find(lang => lang.code === router.locale) || languages[0]
+  const currentLanguage = locales.find(lang => lang.code === router.locale) || locales[0]
 
   const changeLanguage = (locale) => {
     const { pathname, asPath, query } = router
@@ -38,7 +33,7 @@ const LanguageSwitcher = () => {
         {currentLanguage.name}
       </MenuButton>
       <MenuList minW="140px">
-        {languages.map(language => (
+        {locales.map(language => (
           <MenuItem
             key={language.code}
             onClick={() => changeLanguage(language.code)}

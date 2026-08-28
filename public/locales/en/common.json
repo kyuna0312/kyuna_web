@@ -1,5 +1,9 @@
 {
   "locale": "en",
+  "skipToContent": "Skip to main content",
+  "seo": {
+    "defaultDescription": "Systems and developer-tooling engineer in Ulaanbaatar — developer environments, editors, and low-level experiments in Rust, C/C++, Lua, and TypeScript."
+  },
   "navbar": {
     "projects": "Projects",
     "contact": "Contact"
@@ -7,6 +11,10 @@
   "projects": {
     "title": "Projects",
     "description": "Developer environments, low-level experiments, and shipped products — the work I keep coming back to.",
+    "selectedWork": "Selected work",
+    "featured": "featured",
+    "visit": "visit",
+    "source": "source",
     "dotfiles": "dotfiles",
     "dotfilesDescription": "A development environment with multi-OS support, an install system, and one design system unifying every tool.",
     "nyanvim": "NyanVim",
@@ -19,6 +27,11 @@
     "mongolnetDescription": "A national social network platform, built with React, NestJS, GraphQL, and Flutter.",
     "madoka_react": "Magia",
     "madoka_reactDescription": "A 魔法少女まどか☆マギカ CSS animation study — the design language this site is built on.",
+    "offKeyboard": {
+      "label": "Off the keyboard",
+      "heading": "Cosplay and costume craft",
+      "body": "The same making instinct, away from the screen — patterns, props, and photography. Work in progress and finished builds live on Instagram."
+    },
     "seo": {
       "description": "Selected work by Shimoka — developer environments, low-level experiments, and shipped products."
     }
@@ -27,8 +40,33 @@
     "title": "霜花",
     "subtitle": "Developer · Designer · Cosplayer",
     "description": "I'm a systems and developer-tooling engineer in the coldest capital on earth — building developer environments, editors, and low-level experiments in Rust, C/C++, Lua, and TypeScript.",
+    "location": "Ulaanbaatar, Mongolia · 47.92° N",
+    "frostFlower": "frost flower",
     "viewProjects": "View projects",
     "getInTouch": "Write to me",
+    "craftLabel": "Craft",
+    "craftHeading": "From kernel to interface",
+    "craft": {
+      "systems": {
+        "title": "Systems",
+        "description": "Low-level experiments built to understand the machine — an x86 kernel, a Git-inspired version-control system, a Rust game engine."
+      },
+      "tooling": {
+        "title": "Developer tooling",
+        "description": "Editors and environments: a NeoVim distribution and dotfiles that follow me across machines and operating systems."
+      },
+      "web": {
+        "title": "Web, end to end",
+        "description": "Shipped products when the project calls for it — marketplaces, social platforms, this site."
+      },
+      "design": {
+        "title": "Design",
+        "description": "Layout, type, and motion decided on purpose. I design what I build, and build what I design."
+      }
+    },
+    "roadLabel": "The road",
+    "roadHeading": "From Ulaanbaatar, outward",
+    "now": "now",
     "timeline": {
       "2000": "Born in Ulaanbaatar, Mongolia.",
       "2019": "First developer role, at Able Soft.",
@@ -36,11 +74,27 @@
       "2023-01": "Finished my time at Sod Mongol LLC.",
       "2023-02": "Building products at Next Social Platform LLC."
     },
+    "cta": {
+      "pre": "Have something worth ",
+      "highlight": "building",
+      "post": "?",
+      "body": "I take on systems, tooling, and web projects — from a first sketch to a shipped product. Tell me what you have in mind."
+    },
     "resumeButton": "View résumé"
   },
   "navigation": {
     "home": "Home",
     "projects": "Projects"
+  },
+  "footer": {
+    "quote": "One step, two steps — the road to the future is under your feet."
+  },
+  "notFound": {
+    "title": "404 — Page not found",
+    "label": "404 · page not found",
+    "heading": "This path iced over",
+    "body": "The page you were looking for isn't here. The way home is clear, though.",
+    "back": "Back to the start"
   },
   "contact": {
     "title": "Let's talk",

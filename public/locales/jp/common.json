@@ -1,5 +1,9 @@
 {
   "locale": "jp",
+  "skipToContent": "本文へスキップ",
+  "seo": {
+    "defaultDescription": "ウランバートルを拠点とするシステム＆ツーリングエンジニア。開発環境、エディタ、低レイヤの実験をRust、C/C++、Lua、TypeScriptで作っています。"
+  },
   "navbar": {
     "projects": "プロジェクト",
     "contact": "お問い合わせ"
@@ -7,6 +11,10 @@
   "projects": {
     "title": "プロジェクト",
     "description": "開発環境、低レイヤの実験、そして世に出したプロダクト — 私が繰り返し戻ってくる仕事。",
+    "selectedWork": "制作実績",
+    "featured": "注目",
+    "visit": "見る",
+    "source": "ソース",
     "dotfiles": "dotfiles",
     "dotfilesDescription": "マルチOS対応、インストールシステム、全ツールを貫くひとつのデザインシステムを持つ開発環境。",
     "nyanvim": "NyanVim",
@@ -19,6 +27,11 @@
     "mongolnetDescription": "React、NestJS、GraphQL、Flutterで構築した国民的ソーシャルネットワークプラットフォーム。",
     "madoka_react": "Magia",
     "madoka_reactDescription": "魔法少女まどか☆マギカのCSSアニメーション習作 — このサイトのデザイン言語の原点。",
+    "offKeyboard": {
+      "label": "キーボードを離れて",
+      "heading": "コスプレと衣装づくり",
+      "body": "画面を離れても、同じ「作る」本能 — 型紙、小道具、写真。制作中のものも完成品もInstagramにあります。"
+    },
     "seo": {
       "description": "霜花の制作実績 — 開発環境、低レイヤの実験、世に出したプロダクト。"
     }
@@ -27,8 +40,33 @@
     "title": "霜花",
     "subtitle": "開発者 · デザイナー · コスプレイヤー",
     "description": "地球でいちばん寒い首都で、開発環境・エディタ・低レイヤの実験を作るシステム＆ツーリングエンジニアです。Rust、C/C++、Lua、TypeScriptを使っています。",
+    "location": "ウランバートル、モンゴル · 北緯47.92°",
+    "frostFlower": "霜の花",
     "viewProjects": "プロジェクトを見る",
     "getInTouch": "連絡する",
+    "craftLabel": "クラフト",
+    "craftHeading": "カーネルからインターフェイスまで",
+    "craft": {
+      "systems": {
+        "title": "システム",
+        "description": "マシンを理解するための低レイヤ実験 — x86カーネル、Git風バージョン管理システム、Rust製ゲームエンジン。"
+      },
+      "tooling": {
+        "title": "開発ツール",
+        "description": "エディタと環境 — マシンやOSをまたいで私についてくるNeoVimディストリビューションとdotfiles。"
+      },
+      "web": {
+        "title": "ウェブ、端から端まで",
+        "description": "必要とあらば世に出すプロダクト — マーケットプレイス、ソーシャルプラットフォーム、そしてこのサイト。"
+      },
+      "design": {
+        "title": "デザイン",
+        "description": "レイアウト、タイポグラフィ、モーションを意図して決める。作るものを自分でデザインし、デザインしたものを自分で作る。"
+      }
+    },
+    "roadLabel": "道のり",
+    "roadHeading": "ウランバートルから、外へ",
+    "now": "現在",
     "timeline": {
       "2000": "モンゴル・ウランバートルに生まれる。",
       "2019": "Able Softで開発者としてのキャリアを始める。",
@@ -36,11 +74,27 @@
       "2023-01": "Sod Mongol LLCでの仕事を終える。",
       "2023-02": "現在はNext Social Platform LLCでプロダクトを作っている。"
     },
+    "cta": {
+      "pre": "",
+      "highlight": "作る価値のあるもの",
+      "post": "、ありますか？",
+      "body": "システム、ツール、ウェブのプロジェクトを、最初のスケッチから完成まで引き受けます。考えていることを聞かせてください。"
+    },
     "resumeButton": "履歴書を見る"
   },
   "navigation": {
     "home": "ホーム",
     "projects": "プロジェクト"
+  },
+  "footer": {
+    "quote": "一歩、二歩…「未来」への道は足元にある。"
+  },
+  "notFound": {
+    "title": "404 — ページが見つかりません",
+    "label": "404 · ページが見つかりません",
+    "heading": "この道は凍りついた",
+    "body": "探していたページはここにありません。でも、帰り道は開いています。",
+    "back": "はじめに戻る"
   },
   "contact": {
     "title": "話しましょう",

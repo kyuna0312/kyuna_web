@@ -1,7 +1,6 @@
 import { Container, Box, Text, Heading, HStack, Link } from '@chakra-ui/react'
 import Layout from '../components/layouts/article'
 import ContactForm from '../components/contact-form'
-import SEOHead from '../components/seo-head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from '../next-i18next.config'
 import { useTranslation } from 'next-i18next'
@@ -15,12 +14,7 @@ const Contact = () => {
   const { t } = useTranslation('common')
 
   return (
-    <Layout title={t('contact.title') || 'Contact'}>
-      <SEOHead
-        title={t('contact.title') || 'Contact'}
-        description={t('contact.seo.description')}
-      />
-
+    <Layout title={t('contact.title')} description={t('contact.seo.description')}>
       <Container maxW="container.md" px={{ base: 4, md: 6 }} pt={{ base: 6, md: 14 }} pb={10}>
         <MotionBox
           initial={{ opacity: 0, y: 24 }}

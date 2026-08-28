@@ -1,11 +1,13 @@
 import NavBar from '../navbar';
 import { Box } from '@chakra-ui/react';
+import { useTranslation } from 'next-i18next';
 import Footer from '../footer';
 import SEOHead from '../seo-head';
 import { ScrollToTop } from '../scroll-to-top';
 import { PageFrame } from '../frost';
 
 const Main = ({ children, router }) => {
+  const { t } = useTranslation('common');
   return (
     <>
       {/* Skip link for keyboard users */}
@@ -22,7 +24,7 @@ const Main = ({ children, router }) => {
         zIndex={2000}
         _focus={{ top: '6px' }}
       >
-        Skip to main content
+        {t('skipToContent')}
       </Box>
       <Box
         as="main"

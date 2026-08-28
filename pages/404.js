@@ -2,6 +2,7 @@ import NextLink from 'next/link';
 import { Box, Container, Button, Text, Heading } from '@chakra-ui/react';
 import Layout from '../components/layouts/article';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from '../next-i18next.config';
 import { FrostCrystal } from '../components/frost';
@@ -9,8 +10,9 @@ import { FrostCrystal } from '../components/frost';
 const MotionBox = motion(Box);
 
 const NotFound = () => {
+  const { t } = useTranslation('common');
   return (
-    <Layout title="404 — Page not found">
+    <Layout title={t('notFound.title')}>
       <Container maxW="container.lg" px={{ base: 4, md: 6 }}>
         <Box
           minH="60vh"
@@ -43,16 +45,16 @@ const NotFound = () => {
               textTransform="uppercase"
               mb={4}
             >
-              404 · page not found
+              {t('notFound.label')}
             </Text>
             <Heading as="h1" fontSize={{ base: '4xl', md: '5xl' }} mb={4}>
-              This path iced over
+              {t('notFound.heading')}
             </Heading>
             <Text maxW="42ch" mx="auto" mb={8}>
-              The page you were looking for isn&apos;t here. The way home is clear, though.
+              {t('notFound.body')}
             </Text>
             <Button as={NextLink} href="/" variant="frost">
-              Back to the start
+              {t('notFound.back')}
             </Button>
           </MotionBox>
         </Box>

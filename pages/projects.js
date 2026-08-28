@@ -7,6 +7,7 @@ import nextI18NextConfig from '../next-i18next.config';
 import { motion } from 'framer-motion';
 import { IoLogoGithub, IoArrowForward } from 'react-icons/io5';
 import { site } from '../lib/site';
+import { projectLineup } from '../lib/projects';
 import { Eyebrow, CrystalDivider } from '../components/frost';
 
 const MotionBox = motion(Box);
@@ -14,7 +15,7 @@ const MotionBox = motion(Box);
 // Cards render statically — the page-load fade is the only animated moment.
 const riseInView = {};
 
-const ProjectCard = ({ title, description, thumbnail, url, github, tech, featured }) => (
+const ProjectCard = ({ title, description, thumbnail, url, github, tech, featured, t }) => (
   <MotionBox
     {...riseInView}
     as="article"
@@ -44,7 +45,7 @@ const ProjectCard = ({ title, description, thumbnail, url, github, tech, feature
         </Heading>
         {featured && (
           <Text fontFamily="mono" fontSize="xs" color="bloom" letterSpacing="0.14em" textTransform="uppercase">
-            featured
+            {t('projects.featured')}
           </Text>
         )}
       </HStack>
@@ -66,7 +67,7 @@ const ProjectCard = ({ title, description, thumbnail, url, github, tech, feature
             gap={2}
             _hover={{ color: 'bloom' }}
           >
-            visit <IoArrowForward size={13} />
+            {t('projects.visit')} <IoArrowForward size={13} />
           </Link>
         )}
         {github && (
@@ -80,7 +81,7 @@ const ProjectCard = ({ title, description, thumbnail, url, github, tech, feature
             gap={2}
             _hover={{ color: 'bloom' }}
           >
-            <IoLogoGithub size={14} /> source
+            <IoLogoGithub size={14} /> {t('projects.source')}
           </Link>
         )}
       </HStack>
@@ -91,55 +92,14 @@ const ProjectCard = ({ title, description, thumbnail, url, github, tech, feature
 const Projects = () => {
   const { t } = useTranslation('common');
 
-  // Ordered per the portfolio audit: environments and tooling first,
-  // then a low-level experiment, then shipped products.
-  const projects = [
-    {
-      title: t('projects.dotfiles'),
-      description: t('projects.dotfilesDescription'),
-      github: 'https://github.com/kyuna0312/dotfiles',
-      tech: 'Shell · Nushell · Linux · macOS',
-      featured: true,
-    },
-    {
-      title: t('projects.nyanvim'),
-      description: t('projects.nyanvimDescription'),
-      thumbnail: '/images/works/nyanmarkdown.png',
-      github: 'https://github.com/kyuna0312/NyanVim',
-      tech: 'Lua · Neovim · CI',
-    },
-    {
-      title: t('projects.kitvcs'),
-      description: t('projects.kitvcsDescription'),
-      github: 'https://github.com/kyuna0312/kit-vcs',
-      tech: 'C++ · object storage · CLI',
-    },
-    {
-      title: t('projects.madoka_react'),
-      description: t('projects.madoka_reactDescription'),
-      thumbnail: '/images/works/madoka_react.png',
-      url: 'https://madoka-kappa.vercel.app',
-      github: 'https://github.com/kyuna0312/madoka',
-      tech: 'CSS · SCSS · animation',
-    },
-    {
-      title: t('projects.NomadX'),
-      description: t('projects.NomadXDescription'),
-      thumbnail: '/images/works/nomadx.png',
-      url: 'https://nomadx.world',
-      tech: 'React · Next.js · TypeScript · Chakra UI',
-    },
-    {
-      title: t('projects.mongolnet'),
-      description: t('projects.mongolnetDescription'),
-      thumbnail: '/images/works/mongolnet.png',
-      url: 'https://mongol.net',
-      tech: 'React · NestJS · GraphQL · Flutter',
-    },
-  ];
+  const projects = projectLineup.map(p => ({
+    ...p,
+    title: t(`projects.${p.key}`),
+    description: t(`projects.${p.key}Description`),
+  }));
 
   return (
-    <Layout title={t('projects.title')}>
+    <Layout title={t('projects.title')} description={t('projects.seo.description')}>
       <Container maxW="container.lg" px={{ base: 4, md: 6 }} pt={{ base: 6, md: 14 }} pb={10}>
         <MotionBox
           initial={{ opacity: 0, y: 24 }}
@@ -147,7 +107,7 @@ const Projects = () => {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           mb={12}
         >
-          <Eyebrow kanji="作" color="ice">Selected work</Eyebrow>
+          <Eyebrow kanji="作" color="ice">{t('projects.selectedWork')}</Eyebrow>
           <Heading as="h1" fontSize={{ base: '4xl', md: '5xl' }} mb={4}>
             {t('projects.title')}
           </Heading>
@@ -156,7 +116,7 @@ const Projects = () => {
 
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
           {projects.map(project => (
-            <ProjectCard key={project.title} {...project} />
+            <ProjectCard key={project.key} {...project} t={t} />
           ))}
         </SimpleGrid>
 
@@ -164,13 +124,12 @@ const Projects = () => {
 
         {/* Off the keyboard */}
         <MotionBox {...riseInView}>
-          <Eyebrow kanji="芸" color="gold">Off the keyboard</Eyebrow>
+          <Eyebrow kanji="芸" color="gold">{t('projects.offKeyboard.label')}</Eyebrow>
           <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }} mb={4} maxW="24ch">
-            Cosplay and costume craft
+            {t('projects.offKeyboard.heading')}
           </Heading>
           <Text maxW="52ch" mb={6}>
-            The same making instinct, away from the screen — patterns, props, and
-            photography. Work in progress and finished builds live on Instagram.
+            {t('projects.offKeyboard.body')}
           </Text>
           <Link
             href={site.instagram}
