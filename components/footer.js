@@ -59,6 +59,11 @@ const Footer = () => {
                 target="_blank"
                 color="rime"
                 aria-label={social.label}
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                w="44px"
+                h="44px"
                 _hover={{ color: 'bloom' }}
                 transition="color 0.2s ease"
               >

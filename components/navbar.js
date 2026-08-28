@@ -129,16 +129,16 @@ const Navbar = (props) => {
 								borderRadius="2px"
 								py={2}
 							>
-								<MenuItem as={NextLink} href="/" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" _hover={{ bg: 'iceDim', color: 'frost' }}>
+								<MenuItem as={NextLink} href="/" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" py={2.5} _hover={{ bg: 'iceDim', color: 'frost' }}>
 									{t('navigation.home')}
 								</MenuItem>
-								<MenuItem as={NextLink} href="/projects" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" _hover={{ bg: 'iceDim', color: 'frost' }}>
+								<MenuItem as={NextLink} href="/projects" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" py={2.5} _hover={{ bg: 'iceDim', color: 'frost' }}>
 									{t('navigation.projects')}
 								</MenuItem>
-								<MenuItem as={NextLink} href="/contact" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" _hover={{ bg: 'iceDim', color: 'frost' }}>
+								<MenuItem as={NextLink} href="/contact" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" py={2.5} _hover={{ bg: 'iceDim', color: 'frost' }}>
 									{t('navbar.contact')}
 								</MenuItem>
-								<MenuItem as={Link} href="https://github.com/kyuna0312" target="_blank" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" _hover={{ bg: 'iceDim', color: 'frost' }}>
+								<MenuItem as={Link} href="https://github.com/kyuna0312" target="_blank" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" py={2.5} _hover={{ bg: 'iceDim', color: 'frost' }}>
 									GitHub
 								</MenuItem>
 							</MenuList>
