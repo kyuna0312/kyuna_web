@@ -10,7 +10,7 @@ const ColorModeToggle = () => {
     setMounted(true);
   }, []);
 
-  // Use static colors to avoid hydration mismatch
+  // Static icon before mount to avoid hydration mismatch
   const isDark = mounted ? colorMode === 'dark' : false;
 
   return (
@@ -20,18 +20,9 @@ const ColorModeToggle = () => {
       onClick={toggleColorMode}
       variant="ghost"
       size="md"
-      color="gray.600"
-      bg="transparent"
-      borderRadius="full"
-      _hover={{
-        bg: 'rgba(236, 72, 153, 0.1)',
-        color: 'pink.500',
-        transform: 'scale(1.1)',
-      }}
-      _active={{
-        transform: 'scale(0.95)',
-      }}
-      transition="all 0.3s ease"
+      color="rime"
+      borderRadius="2px"
+      _hover={{ bg: 'iceDim', color: 'frost' }}
     />
   );
 };

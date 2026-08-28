@@ -1,6 +1,7 @@
 import { appWithTranslation } from 'next-i18next';
 import nextI18NextConfig from '../next-i18next.config';
-import Chakra from '../components/chakra';
+import { ChakraProvider } from '@chakra-ui/react';
+import theme from '../lib/theme';
 import Fonts from '../components/fonts';
 import ErrorBoundary from '../components/error-boundary';
 import { AnimatePresence } from 'framer-motion';
@@ -14,23 +15,21 @@ if (typeof window !== 'undefined') {
   window.history.scrollRestoration = 'manual';
 }
 
-// Cute Website Component with loading states 💖
 function Website({ Component, pageProps, router }) {
   const nextRouter = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Register service worker for PWA functionality
-    if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+    // Unregister the old service worker so returning visitors don't get the
+    // pre-redesign site from its cache.
+    if ('serviceWorker' in navigator) {
       navigator.serviceWorker
-        .register('/sw.js')
-        .catch(() => {
-          // Silent fail in production
-        });
+        .getRegistrations()
+        .then(registrations => registrations.forEach(r => r.unregister()))
+        .catch(() => {});
     }
   }, []);
 
-  // Handle page loading states ✨
   useEffect(() => {
     const handleStart = () => setIsLoading(true);
     const handleComplete = () => setIsLoading(false);
@@ -48,9 +47,8 @@ function Website({ Component, pageProps, router }) {
 
   return (
     <ErrorBoundary>
-      <Chakra cookies={pageProps.cookies}>
+      <ChakraProvider theme={theme}>
         <Fonts />
-        {/* Cute loading bar on route change 💖 */}
         <AnimatePresence>
           {isLoading && <LoadingBar key="loading-bar" />}
         </AnimatePresence>
@@ -68,7 +66,7 @@ function Website({ Component, pageProps, router }) {
           </AnimatePresence>
           <Analytics />
         </Layout>
-      </Chakra>
+      </ChakraProvider>
     </ErrorBoundary>
   );
 }

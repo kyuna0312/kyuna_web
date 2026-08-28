@@ -1,133 +1,79 @@
 {
   "locale": "en",
   "navbar": {
-    "about": "About",
     "projects": "Projects",
-    "contact": "Contact",
-    "posts": "Posts"
-  },
-  "footer": {
-    "contact": "Contact",
-    "about": "About",
-    "copyright": "© 2024 霜花 (Shimoka). Made with ❤️ and lots of ☕"
+    "contact": "Contact"
   },
   "projects": {
-    "title": "Projects ✨",
-    "description": "Here are some of my creative projects~",
-    "viewSource": "View Source 💻",
-    "viewDemo": "View Demo ✨",
+    "title": "Projects",
+    "description": "Things I've shipped — a marketplace, a social platform, and tools I built because I wanted them to exist.",
     "NomadX": "NomadX",
-    "NomadXDescription": "A beautiful Mongolian NFT Marketplace - Web & Mobile Application crafted with love 💖",
+    "NomadXDescription": "An NFT marketplace for Mongolian artists — web and mobile.",
     "mongolnet": "Mongol.net",
-    "mongolnetDescription": "A National Social Network Platform built with React, Vite, Tailwind CSS, NestJS, Flutter, and GraphQL. A project close to my heart~ 🌸",
+    "mongolnetDescription": "A national social network platform, built with React, NestJS, GraphQL, and Flutter.",
     "NyanMarkDown": "NyanMarkDown",
-    "NyanMarkDownDescription": "A cute custom Markdown Editor with a kawaii twist~ 🐱",
+    "NyanMarkDownDescription": "A custom Markdown editor with a personality of its own.",
     "madoka_react": "Madoka React",
-    "madoka_reactDescription": "An animated web experience inspired by magical girl aesthetics ✨",
-    "nyanvim": "NyanVim",
-    "nyanvimDescription": "My custom NeoVim configuration - because even coding should be cute! 🎀"
+    "madoka_reactDescription": "An animated web experience inspired by magical-girl aesthetics.",
+    "seo": {
+      "description": "Selected work by Shimoka — marketplaces, social platforms, and handmade tools."
+    }
   },
   "home": {
-    "title": "霜花 (Shimoka)",
-    "subtitle": "Developer 💻 • Designer 🎨 • Cosplayer 🎭",
-    "description": "Welcome to my creative universe! I'm a full-stack developer who loves bringing ideas to life through beautiful code and design ✨",
-    "viewProjects": "View My Projects 💻",
-    "getInTouch": "Say Hello! 💌",
-    "workExperience": "Work Experience",
-    "bio": "Hi there! I'm Shimoka, a passionate full-stack developer based in Ulaanbaatar, Mongolia 🇲🇳 I love creating beautiful digital experiences and expressing creativity through both code and cosplay! When I'm not coding, you can find me working on cosplay projects or enjoying anime~ ✨",
-    "projectsButton": "My Projects 💻",
-    "history": "My Journey 🌸",
+    "title": "霜花",
+    "subtitle": "Developer · Designer · Cosplayer",
+    "description": "I'm a full-stack developer in the coldest capital on earth, building warm, careful software — marketplaces, social platforms, and small tools that make daily work nicer.",
+    "viewProjects": "View projects",
+    "getInTouch": "Write to me",
     "timeline": {
-      "2000": "Born in Ulaanbaatar, Mongolia 🇲🇳 - The beginning of my adventure!",
-      "2019": "Started my developer journey at Able Soft - First steps into the coding world! ✨",
-      "2021": "Graduated from MUST & joined Sod Mongol LLC - Growing stronger every day! 💪",
-      "2023-01": "Completed my journey at Sod Mongol LLC - Time for new adventures!",
-      "2023-02": "Currently creating magic at Next Social Platform LLC 🌟"
+      "2000": "Born in Ulaanbaatar, Mongolia.",
+      "2019": "First developer role, at Able Soft.",
+      "2021": "Graduated from MUST; joined Sod Mongol LLC as a full-stack developer.",
+      "2023-01": "Finished my time at Sod Mongol LLC.",
+      "2023-02": "Building products at Next Social Platform LLC."
     },
-    "socialNetwork": "Let's Connect! 💖",
-    "resumeButton": "View Resume 📄"
+    "resumeButton": "View résumé"
   },
   "navigation": {
-    "home": "Home 🏠",
-    "projects": "Projects 💻",
-    "github": "GitHub"
-  },
-  "about": {
-    "hello": "Hello! Welcome to my little corner of the internet~ ✨",
-    "description": "I'm a full-stack developer with a passion for creating beautiful, functional applications. I love combining technical skills with creative design to build experiences that bring joy to users! 💖"
-  },
-  "bio": {
-    "title": "About Me 🌸",
-    "items": [
-      {
-        "year": "2000",
-        "text": "Born in Ulaanbaatar, Mongolia 🇲🇳"
-      },
-      {
-        "year": "2015-2019",
-        "text": "Studied Computer Science at MUST - Where my coding journey began! 💻"
-      },
-      {
-        "year": "2019-2021",
-        "text": "Frontend Developer adventures at various startups ✨"
-      },
-      {
-        "year": "2021-2023",
-        "text": "Full-stack Developer at Sod Mongol LLC - Growing my skills! 🌱"
-      },
-      {
-        "year": "2023-Present",
-        "text": "Creating magic at Next Social Platform LLC 🌟"
-      }
-    ]
-  },
-  "hobbies": {
-    "title": "Things I Love 💖",
-    "items": [
-      "Cosplay 🎭",
-      "Anime & Manga 📚",
-      "Digital Art 🎨",
-      "Music 🎵",
-      "Photography 📸",
-      "Gaming 🎮"
-    ]
+    "home": "Home",
+    "projects": "Projects"
   },
   "contact": {
-    "title": "Let's Connect! 💌",
-    "description": "Have a project in mind? Want to collaborate? Or just want to say hi? I'd love to hear from you! 💖",
+    "title": "Let's talk",
+    "description": "A project, a collaboration, or just a hello — tell me what's on your mind and I'll write back.",
     "form": {
-      "name": "Your Name ✨",
+      "name": "Name",
       "namePlaceholder": "What should I call you?",
-      "email": "Email 📧",
+      "email": "Email",
       "emailPlaceholder": "your.email@example.com",
-      "subject": "Subject 💭",
-      "subjectPlaceholder": "What would you like to chat about?",
-      "message": "Message 💌",
-      "messagePlaceholder": "Tell me about your ideas~",
-      "send": "Send Message ✨",
-      "sending": "Sending... 💫"
+      "subject": "Subject",
+      "subjectPlaceholder": "What is this about?",
+      "message": "Message",
+      "messagePlaceholder": "Tell me about your idea",
+      "send": "Send message",
+      "sending": "Sending…"
     },
     "errors": {
-      "nameRequired": "Please tell me your name~ 💭",
-      "emailRequired": "I need your email to reply! 📧",
-      "emailInvalid": "Hmm, that email doesn't look right 🤔",
-      "subjectRequired": "What's this about? 💭",
-      "messageRequired": "Don't be shy, say something! 💖",
-      "messageMinLength": "Tell me a bit more~ (at least 10 characters)"
+      "nameRequired": "Enter your name.",
+      "emailRequired": "Enter your email so I can reply.",
+      "emailInvalid": "That email address doesn't look valid.",
+      "subjectRequired": "Add a subject.",
+      "messageRequired": "Write a message.",
+      "messageMinLength": "A little more, please — at least 10 characters."
     },
     "success": {
-      "title": "Message sent! 🎉",
-      "description": "Thank you so much! I'll get back to you soon~ 💖"
+      "title": "Message sent",
+      "description": "Thank you — I'll reply soon."
     },
     "error": {
-      "title": "Oops! Something went wrong 😿",
-      "description": "Please try again, or reach out through social media!"
+      "title": "The message didn't send",
+      "description": "Try again, or reach me on social media."
     },
     "social": {
-      "title": "Or find me on 🌐"
+      "title": "Elsewhere"
     },
     "seo": {
-      "description": "Get in touch with Shimoka for your next project. Let's create something beautiful together! 💖"
+      "description": "Get in touch with Shimoka about a project or collaboration."
     }
   }
 }

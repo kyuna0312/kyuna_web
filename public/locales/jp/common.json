@@ -1,133 +1,79 @@
 {
   "locale": "jp",
   "navbar": {
-    "about": "私について",
     "projects": "プロジェクト",
-    "contact": "お問い合わせ",
-    "posts": "投稿"
-  },
-  "footer": {
-    "contact": "お問い合わせ",
-    "about": "私について",
-    "copyright": "© 2024 霜花. ❤️とたくさんの☕で作りました"
+    "contact": "お問い合わせ"
   },
   "projects": {
-    "title": "プロジェクト ✨",
-    "description": "私のクリエイティブなプロジェクトをご覧ください~",
-    "viewSource": "ソースを見る 💻",
-    "viewDemo": "デモを見る ✨",
+    "title": "プロジェクト",
+    "description": "これまでに作ったもの — マーケットプレイス、ソーシャルプラットフォーム、そして欲しかったから作ったツールたち。",
     "NomadX": "NomadX",
-    "NomadXDescription": "愛情を込めて作ったモンゴルのNFTマーケットプレイス 💖",
+    "NomadXDescription": "モンゴルのアーティストのためのNFTマーケットプレイス。ウェブとモバイル対応。",
     "mongolnet": "Mongol.net",
-    "mongolnetDescription": "React、Vite、Tailwind CSS、NestJS、Flutter、GraphQLで構築した国立ソーシャルネットワークプラットフォーム 🌸",
+    "mongolnetDescription": "React、NestJS、GraphQL、Flutterで構築した国民的ソーシャルネットワークプラットフォーム。",
     "NyanMarkDown": "NyanMarkDown",
-    "NyanMarkDownDescription": "可愛いカスタムMarkdownエディタ 🐱",
+    "NyanMarkDownDescription": "個性のあるカスタムMarkdownエディタ。",
     "madoka_react": "Madoka React",
-    "madoka_reactDescription": "魔法少女の美学にインスパイアされたアニメーションウェブ体験 ✨",
-    "nyanvim": "NyanVim",
-    "nyanvimDescription": "私のカスタムNeoVim設定 - コーディングも可愛く！🎀"
+    "madoka_reactDescription": "魔法少女の美学にインスパイアされたアニメーションウェブ体験。",
+    "seo": {
+      "description": "霜花の制作実績 — マーケットプレイス、ソーシャルプラットフォーム、手作りのツール。"
+    }
   },
   "home": {
-    "title": "霜花 (Shimoka)",
-    "subtitle": "開発者 💻 • デザイナー 🎨 • コスプレイヤー 🎭",
-    "description": "私のクリエイティブな世界へようこそ！美しいコードとデザインでアイデアを形にするフルスタック開発者です ✨",
-    "viewProjects": "プロジェクトを見る 💻",
-    "getInTouch": "連絡する！💌",
-    "workExperience": "職務経歴",
-    "bio": "こんにちは！モンゴル・ウランバートル在住のフルスタック開発者、霜花です 🇲🇳 コードとコスプレを通じて創造性を表現することが大好きです！コーディングをしていない時は、コスプレ制作やアニメを楽しんでいます~ ✨",
-    "projectsButton": "プロジェクト 💻",
-    "history": "私の旅 🌸",
+    "title": "霜花",
+    "subtitle": "開発者 · デザイナー · コスプレイヤー",
+    "description": "地球でいちばん寒い首都で、あたたかく丁寧なソフトウェアを作るフルスタック開発者です。マーケットプレイスからソーシャルプラットフォーム、日々の仕事を心地よくする小さなツールまで。",
+    "viewProjects": "プロジェクトを見る",
+    "getInTouch": "連絡する",
     "timeline": {
-      "2000": "モンゴル・ウランバートルに生まれる 🇲🇳 - 冒険の始まり！",
-      "2019": "Able Softで開発者としてのキャリアをスタート - コーディングの世界への第一歩！✨",
-      "2021": "MUST卒業 & Sod Mongol LLC入社 - 日々成長中！💪",
-      "2023-01": "Sod Mongol LLCでの旅を終える - 新しい冒険へ！",
-      "2023-02": "現在Next Social Platform LLCで魔法を創造中 🌟"
+      "2000": "モンゴル・ウランバートルに生まれる。",
+      "2019": "Able Softで開発者としてのキャリアを始める。",
+      "2021": "MUSTを卒業し、Sod Mongol LLCにフルスタック開発者として入社。",
+      "2023-01": "Sod Mongol LLCでの仕事を終える。",
+      "2023-02": "現在はNext Social Platform LLCでプロダクトを作っている。"
     },
-    "socialNetwork": "つながろう！💖",
-    "resumeButton": "履歴書を見る 📄"
+    "resumeButton": "履歴書を見る"
   },
   "navigation": {
-    "home": "ホーム 🏠",
-    "projects": "プロジェクト 💻",
-    "github": "GitHub"
-  },
-  "about": {
-    "hello": "こんにちは！私の小さなインターネットの隅へようこそ~ ✨",
-    "description": "美しく機能的なアプリケーションを作ることに情熱を持つフルスタック開発者です。技術とクリエイティブなデザインを組み合わせて、ユーザーに喜びを届ける体験を作ることが大好きです！💖"
-  },
-  "bio": {
-    "title": "私について 🌸",
-    "items": [
-      {
-        "year": "2000",
-        "text": "モンゴル・ウランバートルに生まれる 🇲🇳"
-      },
-      {
-        "year": "2015-2019",
-        "text": "MUSTでコンピュータサイエンスを学ぶ - コーディングの旅が始まった場所！💻"
-      },
-      {
-        "year": "2019-2021",
-        "text": "様々なスタートアップでフロントエンド開発者として冒険 ✨"
-      },
-      {
-        "year": "2021-2023",
-        "text": "Sod Mongol LLCでフルスタック開発者 - スキルを磨く！🌱"
-      },
-      {
-        "year": "2023-現在",
-        "text": "Next Social Platform LLCで魔法を創造中 🌟"
-      }
-    ]
-  },
-  "hobbies": {
-    "title": "好きなこと 💖",
-    "items": [
-      "コスプレ 🎭",
-      "アニメ & 漫画 📚",
-      "デジタルアート 🎨",
-      "音楽 🎵",
-      "写真 📸",
-      "ゲーム 🎮"
-    ]
+    "home": "ホーム",
+    "projects": "プロジェクト"
   },
   "contact": {
-    "title": "連絡しよう！💌",
-    "description": "プロジェクトのアイデアがありますか？コラボしたいですか？それとも挨拶したいだけ？ぜひ連絡してください！💖",
+    "title": "話しましょう",
+    "description": "プロジェクトの相談も、コラボの誘いも、ただの挨拶も。思っていることを書いてください。必ず返信します。",
     "form": {
-      "name": "お名前 ✨",
+      "name": "お名前",
       "namePlaceholder": "何とお呼びしましょうか？",
-      "email": "メール 📧",
+      "email": "メール",
       "emailPlaceholder": "your.email@example.com",
-      "subject": "件名 💭",
-      "subjectPlaceholder": "何についてお話ししましょうか？",
-      "message": "メッセージ 💌",
-      "messagePlaceholder": "あなたのアイデアを教えてください~",
-      "send": "送信する ✨",
-      "sending": "送信中... 💫"
+      "subject": "件名",
+      "subjectPlaceholder": "どんなご用件ですか？",
+      "message": "メッセージ",
+      "messagePlaceholder": "アイデアを聞かせてください",
+      "send": "送信する",
+      "sending": "送信中…"
     },
     "errors": {
-      "nameRequired": "お名前を教えてください~ 💭",
-      "emailRequired": "返信するためにメールが必要です！📧",
-      "emailInvalid": "うーん、そのメールは正しくないようです 🤔",
-      "subjectRequired": "何についてですか？💭",
-      "messageRequired": "恥ずかしがらずに、何か言ってください！💖",
-      "messageMinLength": "もう少し教えてください~（10文字以上）"
+      "nameRequired": "お名前を入力してください。",
+      "emailRequired": "返信のためにメールアドレスが必要です。",
+      "emailInvalid": "メールアドレスの形式が正しくないようです。",
+      "subjectRequired": "件名を入力してください。",
+      "messageRequired": "メッセージを入力してください。",
+      "messageMinLength": "もう少し詳しく — 10文字以上でお願いします。"
     },
     "success": {
-      "title": "メッセージ送信完了！🎉",
-      "description": "ありがとうございます！すぐに返信しますね~ 💖"
+      "title": "メッセージを送信しました",
+      "description": "ありがとうございます。すぐに返信します。"
     },
     "error": {
-      "title": "おっと！何かがうまくいきませんでした 😿",
-      "description": "もう一度お試しいただくか、SNSでご連絡ください！"
+      "title": "送信できませんでした",
+      "description": "もう一度お試しいただくか、SNSでご連絡ください。"
     },
     "social": {
-      "title": "または、こちらで見つけてください 🌐"
+      "title": "その他の場所"
     },
     "seo": {
-      "description": "霜花に連絡して、次のプロジェクトについて話しましょう。一緒に美しいものを作りましょう！💖"
+      "description": "プロジェクトやコラボレーションについて霜花に連絡する。"
     }
   }
 }

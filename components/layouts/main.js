@@ -4,8 +4,8 @@ import Footer from '../footer';
 import KeyboardNavigation from '../keyboard-navigation';
 import SEOHead from '../seo-head';
 import { ScrollToTop } from '../scroll-to-top';
+import { PageFrame } from '../frost';
 
-// Cute Main Layout Component 💖
 const Main = ({ children, router }) => {
   return (
     <KeyboardNavigation>
@@ -16,17 +16,14 @@ const Main = ({ children, router }) => {
         display="flex"
         flexDirection="column"
       >
-        {/* Default SEO Head */}
         <SEOHead />
+        <PageFrame />
 
-        {/* Sticky Navigation Bar */}
         <NavBar path={router.asPath} id="navigation" />
 
-        {/* Main Content Area with cute spacing ✨ */}
         <Box
           id="main-content"
           tabIndex={-1}
-          pt={{ base: '80px', md: '100px' }}
           pb={{ base: 8, md: 12 }}
           role="main"
           aria-label="Main content"
@@ -39,10 +36,8 @@ const Main = ({ children, router }) => {
           {children}
         </Box>
 
-        {/* Footer at bottom */}
         <Footer />
 
-        {/* Cute scroll to top button 💖 */}
         <ScrollToTop />
       </Box>
     </KeyboardNavigation>

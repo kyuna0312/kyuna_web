@@ -10,7 +10,7 @@ const SEOHead = ({
 }) => {
   const router = useRouter()
 
-  const siteTitle = 'Amari Hana - Portfolio'
+  const siteTitle = '霜花 (Shimoka)'
   const pageTitle = title ? `${title} | ${siteTitle}` : siteTitle
   const siteUrl = 'https://kyuna-web.vercel.app' // Update with your actual domain
   const currentUrl = `${siteUrl}${router.asPath}`
@@ -30,16 +30,9 @@ const SEOHead = ({
       <meta name="author" content={author} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      {/* PWA Meta Tags */}
-      <meta name="application-name" content="Hattanzorg Portfolio" />
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-      <meta name="apple-mobile-web-app-title" content="Hattanzorg" />
+      <meta name="application-name" content="霜花 (Shimoka)" />
+      <meta name="apple-mobile-web-app-title" content="Shimoka" />
       <meta name="format-detection" content="telephone=no" />
-      <meta name="mobile-web-app-capable" content="yes" />
-      <meta name="msapplication-config" content="/browserconfig.xml" />
-      <meta name="msapplication-TileColor" content="#9f7aea" />
-      <meta name="msapplication-tap-highlight" content="no" />
 
       {/* Open Graph */}
       <meta property="og:title" content={pageTitle} />
@@ -72,14 +65,13 @@ const SEOHead = ({
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png" />
       <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png" />
-      <link rel="mask-icon" href="/images/icon.png" color="#9f7aea" />
 
       {/* Preconnect to external domains */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
 
       {/* Theme color */}
-      <meta name="theme-color" content="#9f7aea" />
+      <meta name="theme-color" content="#0A111F" />
 
       {/* Performance hints */}
       <link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -92,7 +84,7 @@ const SEOHead = ({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": "Hattanzorg",
+            "name": "Shimoka (霜花)",
             "url": siteUrl,
             "sameAs": [
               "https://github.com/kyuna312",
