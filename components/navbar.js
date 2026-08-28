@@ -16,6 +16,7 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { IoLogoGithub } from 'react-icons/io5';
+import { site } from '../lib/site';
 import { useTranslation } from 'next-i18next';
 
 const LinkItem = ({ href, path, target, children, ...props }) => {
@@ -83,11 +84,14 @@ const Navbar = (props) => {
 					<LinkItem href="/projects" path={path}>
 						{t('navigation.projects')}
 					</LinkItem>
+					<LinkItem href="/posts" path={path}>
+						{t('navigation.posts')}
+					</LinkItem>
 					<LinkItem href="/contact" path={path}>
 						{t('navbar.contact')}
 					</LinkItem>
 					<Link
-						href="https://github.com/kyuna0312"
+						href={site.github}
 						target="_blank"
 						px={3}
 						py={2}
@@ -120,25 +124,21 @@ const Navbar = (props) => {
 								aria-label="Navigation menu"
 								size="md"
 								color="frost"
-								borderRadius="2px"
-								_hover={{ bg: 'iceDim' }}
 							/>
-							<MenuList
-								bg="pane"
-								borderColor="hairline"
-								borderRadius="2px"
-								py={2}
-							>
-								<MenuItem as={NextLink} href="/" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" py={2.5} _hover={{ bg: 'iceDim', color: 'frost' }}>
+							<MenuList>
+								<MenuItem as={NextLink} href="/">
 									{t('navigation.home')}
 								</MenuItem>
-								<MenuItem as={NextLink} href="/projects" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" py={2.5} _hover={{ bg: 'iceDim', color: 'frost' }}>
+								<MenuItem as={NextLink} href="/projects">
 									{t('navigation.projects')}
 								</MenuItem>
-								<MenuItem as={NextLink} href="/contact" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" py={2.5} _hover={{ bg: 'iceDim', color: 'frost' }}>
+								<MenuItem as={NextLink} href="/posts">
+									{t('navigation.posts')}
+								</MenuItem>
+								<MenuItem as={NextLink} href="/contact">
 									{t('navbar.contact')}
 								</MenuItem>
-								<MenuItem as={Link} href="https://github.com/kyuna0312" target="_blank" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" py={2.5} _hover={{ bg: 'iceDim', color: 'frost' }}>
+								<MenuItem as={Link} href={site.github} target="_blank" color="rime">
 									GitHub
 								</MenuItem>
 							</MenuList>

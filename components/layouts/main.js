@@ -1,14 +1,31 @@
 import NavBar from '../navbar';
 import { Box } from '@chakra-ui/react';
+import { useTranslation } from 'next-i18next';
 import Footer from '../footer';
-import KeyboardNavigation from '../keyboard-navigation';
 import SEOHead from '../seo-head';
 import { ScrollToTop } from '../scroll-to-top';
 import { PageFrame } from '../frost';
 
 const Main = ({ children, router }) => {
+  const { t } = useTranslation('common');
   return (
-    <KeyboardNavigation>
+    <>
+      {/* Skip link for keyboard users */}
+      <Box
+        as="a"
+        href="#main-content"
+        position="absolute"
+        top="-40px"
+        left="6px"
+        bg="ink"
+        color="paper"
+        p={2}
+        borderRadius="2px"
+        zIndex={2000}
+        _focus={{ top: '6px' }}
+      >
+        {t('skipToContent')}
+      </Box>
       <Box
         as="main"
         position="relative"
@@ -40,7 +57,7 @@ const Main = ({ children, router }) => {
 
         <ScrollToTop />
       </Box>
-    </KeyboardNavigation>
+    </>
   );
 };
 

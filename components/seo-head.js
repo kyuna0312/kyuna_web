@@ -1,6 +1,11 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { site, locales } from '../lib/site'
 
+// The one SEO module. Every tag carries a key, so when a page-level mount
+// renders after the layout's default mount, its tags override instead of
+// stacking duplicates in the document head.
 const SEOHead = ({
   title,
   description,
@@ -9,76 +14,83 @@ const SEOHead = ({
   author = 'Amari Hana'
 }) => {
   const router = useRouter()
+  const { t } = useTranslation('common')
 
   const siteTitle = '霜花 (Shimoka)'
   const pageTitle = title ? `${title} | ${siteTitle}` : siteTitle
-  const siteUrl = 'https://kyuna-web.vercel.app' // Update with your actual domain
+  const siteUrl = site.url
   const currentUrl = `${siteUrl}${router.asPath}`
 
-  const defaultDescription = {
-    en: 'Systems and developer-tooling engineer in Ulaanbaatar — developer environments, editors, and low-level experiments in Rust, C/C++, Lua, and TypeScript.',
-    jp: 'ウランバートルを拠点とするシステム＆ツーリングエンジニア。開発環境、エディタ、低レイヤの実験をRust、C/C++、Lua、TypeScriptで作っています。',
-    mn: 'Улаанбаатарт төвтэй системс ба хэрэгслийн инженер. Хөгжүүлэлтийн орчин, эдитор, доод түвшний туршилтуудыг Rust, C/C++, Lua, TypeScript дээр бүтээдэг.'
-  }
-
-  const pageDescription = description || defaultDescription[router.locale] || defaultDescription.en
+  const pageDescription = description || t('seo.defaultDescription')
+  const locale = locales.find(l => l.code === router.locale) || locales[0]
 
   return (
     <Head>
       <title>{pageTitle}</title>
-      <meta name="description" content={pageDescription} />
-      <meta name="author" content={author} />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta key="description" name="description" content={pageDescription} />
+      <meta key="author" name="author" content={author} />
+      <meta key="viewport" name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <meta name="application-name" content="霜花 (Shimoka)" />
-      <meta name="apple-mobile-web-app-title" content="Shimoka" />
-      <meta name="format-detection" content="telephone=no" />
+      <meta key="application-name" name="application-name" content="霜花 (Shimoka)" />
+      <meta key="apple-title" name="apple-mobile-web-app-title" content="Shimoka" />
+      <meta key="format-detection" name="format-detection" content="telephone=no" />
 
       {/* Open Graph */}
-      <meta property="og:title" content={pageTitle} />
-      <meta property="og:description" content={pageDescription} />
-      <meta property="og:type" content={type} />
-      <meta property="og:url" content={currentUrl} />
-      <meta property="og:image" content={`${siteUrl}${image}`} />
-      <meta property="og:site_name" content={siteTitle} />
-      <meta property="og:locale" content={router.locale === 'jp' ? 'ja_JP' : router.locale === 'mn' ? 'mn_MN' : 'en_US'} />
+      <meta key="og:title" property="og:title" content={pageTitle} />
+      <meta key="og:description" property="og:description" content={pageDescription} />
+      <meta key="og:type" property="og:type" content={type} />
+      <meta key="og:url" property="og:url" content={currentUrl} />
+      <meta key="og:image" property="og:image" content={`${siteUrl}${image}`} />
+      <meta key="og:site_name" property="og:site_name" content={siteTitle} />
+      <meta key="og:locale" property="og:locale" content={locale.ogLocale} />
 
       {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={pageTitle} />
-      <meta name="twitter:description" content={pageDescription} />
-      <meta name="twitter:image" content={`${siteUrl}${image}`} />
-      <meta name="twitter:creator" content="@kyuna0312" />
+      <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
+      <meta key="twitter:title" name="twitter:title" content={pageTitle} />
+      <meta key="twitter:description" name="twitter:description" content={pageDescription} />
+      <meta key="twitter:image" name="twitter:image" content={`${siteUrl}${image}`} />
+      <meta key="twitter:creator" name="twitter:creator" content={`@${site.handle}`} />
 
       {/* Language alternates */}
-      <link rel="alternate" hrefLang="en" href={`${siteUrl}/en${router.asPath}`} />
-      <link rel="alternate" hrefLang="ja" href={`${siteUrl}/jp${router.asPath}`} />
-      <link rel="alternate" hrefLang="mn" href={`${siteUrl}/mn${router.asPath}`} />
-      <link rel="alternate" hrefLang="x-default" href={`${siteUrl}/en${router.asPath}`} />
+      {locales.map(l => (
+        <link
+          key={`alt-${l.code}`}
+          rel="alternate"
+          hrefLang={l.hreflang}
+          href={`${siteUrl}/${l.code}${router.asPath}`}
+        />
+      ))}
+      <link
+        key="alt-x-default"
+        rel="alternate"
+        hrefLang="x-default"
+        href={`${siteUrl}/${locales[0].code}${router.asPath}`}
+      />
 
       {/* Canonical URL */}
-      <link rel="canonical" href={currentUrl} />
+      <link key="canonical" rel="canonical" href={currentUrl} />
 
       {/* PWA Links */}
-      <link rel="manifest" href="/manifest.json" />
-      <link rel="icon" href="/favicon.ico" />
-      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/images/icon.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/images/icon.png" />
+      <link key="manifest" rel="manifest" href="/manifest.json" />
+      <link key="favicon" rel="icon" href="/favicon.ico" />
+      <link key="apple-icon" rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <link key="icon-32" rel="icon" type="image/png" sizes="32x32" href="/images/icon.png" />
+      <link key="icon-16" rel="icon" type="image/png" sizes="16x16" href="/images/icon.png" />
 
       {/* Preconnect to external domains */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+      <link key="preconnect-fonts" rel="preconnect" href="https://fonts.googleapis.com" />
+      <link key="preconnect-gstatic" rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
 
       {/* Theme color */}
-      <meta name="theme-color" content="#17131C" />
+      <meta key="theme-color" name="theme-color" content="#17131C" />
 
       {/* Performance hints */}
-      <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-      <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+      <link key="dns-fonts" rel="dns-prefetch" href="//fonts.googleapis.com" />
+      <link key="dns-gstatic" rel="dns-prefetch" href="//fonts.gstatic.com" />
 
       {/* Structured data */}
       <script
+        key="ld-json"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
@@ -86,11 +98,7 @@ const SEOHead = ({
             "@type": "Person",
             "name": "Shimoka (霜花)",
             "url": siteUrl,
-            "sameAs": [
-              "https://github.com/kyuna0312",
-              "https://twitter.com/kyuna0312",
-              "https://instagram.com/kyuna0312"
-            ],
+            "sameAs": [site.github, site.twitter, site.instagram],
             "jobTitle": "Systems & Developer Tooling Engineer",
             "worksFor": {
               "@type": "Organization",

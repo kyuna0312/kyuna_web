@@ -17,6 +17,7 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@vercel/analytics": "^2.0.1",
+    "@vercel/postgres": "^0.10.0",
     "framer-motion": "^12.43.0",
     "i18next": "^24.2.3",
     "next": "^15.5.24",

@@ -11,8 +11,8 @@ import {
   Button,
   Container,
 } from '@chakra-ui/react'
-import Layout from '../components/layouts/article'
-import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
+import Layout from '../components/layouts/page'
+import { site, socialLinks } from '../lib/site'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from '../next-i18next.config'
@@ -30,41 +30,12 @@ const rise = (delay = 0) => ({
 // Sections render statically — the hero entrance is the page's one animated moment.
 const riseInView = {}
 
+// Prose lives in the locale files under home.craft.<key>.
 const craft = [
-  {
-    title: 'Systems',
-    description:
-      'Low-level experiments built to understand the machine — an x86 kernel, a Git-inspired version-control system, a Rust game engine.',
-    tech: 'Rust · C/C++ · Linux',
-    color: 'ice',
-  },
-  {
-    title: 'Developer tooling',
-    description:
-      'Editors and environments: a NeoVim distribution and dotfiles that follow me across machines and operating systems.',
-    tech: 'Lua · Neovim · terminal workflows',
-    color: 'gold',
-  },
-  {
-    title: 'Web, end to end',
-    description:
-      'Shipped products when the project calls for it — marketplaces, social platforms, this site.',
-    tech: 'TypeScript · React · Next.js',
-    color: 'bloom',
-  },
-  {
-    title: 'Design',
-    description:
-      'Layout, type, and motion decided on purpose. I design what I build, and build what I design.',
-    tech: 'Figma · design systems',
-    color: 'ice',
-  },
-]
-
-const socialLinks = [
-  { icon: IoLogoGithub, href: 'https://github.com/kyuna0312', label: 'GitHub' },
-  { icon: IoLogoTwitter, href: 'https://twitter.com/kyuna0312', label: 'Twitter' },
-  { icon: IoLogoInstagram, href: 'https://instagram.com/kyuna0312', label: 'Instagram' },
+  { key: 'systems', tech: 'Rust · C/C++ · Linux', color: 'ice' },
+  { key: 'tooling', tech: 'Lua · Neovim · terminal workflows', color: 'gold' },
+  { key: 'web', tech: 'TypeScript · React · Next.js', color: 'bloom' },
+  { key: 'design', tech: 'Figma · design systems', color: 'ice' },
 ]
 
 const Home = () => {
@@ -79,10 +50,7 @@ const Home = () => {
   ]
 
   return (
-    <Layout
-      title="霜花 (Shimoka) — Systems & Developer Tooling"
-      description="Shimoka is a systems and developer-tooling engineer in Ulaanbaatar — developer environments, editors, and low-level experiments in Rust, C/C++, and Lua."
-    >
+    <Layout title="霜花 (Shimoka) — Systems & Developer Tooling">
       {/* ——— Hero: the Magia stage ——— */}
       <Box position="relative" minH={{ base: '78vh', md: '86vh' }} display="flex" alignItems="center" overflow="hidden">
         {/* Washed-out portrait behind the title, like the Homura line art */}
@@ -121,7 +89,7 @@ const Home = () => {
                 letterSpacing="0.28em"
                 textTransform="uppercase"
               >
-                Ulaanbaatar, Mongolia · 47.92° N
+                {t('home.location')}
               </Text>
             </MotionBox>
 
@@ -135,7 +103,7 @@ const Home = () => {
                 textTransform="uppercase"
                 mt={4}
               >
-                kyuna0312 — frost flower
+                {site.handle} — {t('home.frostFlower')}
               </Text>
             </MotionBox>
 
@@ -187,20 +155,20 @@ const Home = () => {
       <Container maxW="container.lg" px={{ base: 4, md: 6 }}>
         {/* ——— Craft ——— */}
         <MotionBox {...riseInView}>
-          <Eyebrow kanji="業" color="ice">Craft</Eyebrow>
+          <Eyebrow kanji="業" color="ice">{t('home.craftLabel')}</Eyebrow>
           <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }} mb={10} maxW="24ch">
-            From kernel to interface
+            {t('home.craftHeading')}
           </Heading>
         </MotionBox>
 
         <SimpleGrid columns={{ base: 1, md: 2 }} spacingX={12} spacingY={10}>
           {craft.map(item => (
-            <MotionBox key={item.title} {...riseInView} pt={5} borderTop="1px solid" borderColor="hairline">
+            <MotionBox key={item.key} {...riseInView} pt={5} borderTop="1px solid" borderColor="hairline">
               <Heading as="h3" fontSize="xl" mb={2}>
-                {item.title}
+                {t(`home.craft.${item.key}.title`)}
               </Heading>
               <Text fontSize="sm" mb={3} maxW="46ch">
-                {item.description}
+                {t(`home.craft.${item.key}.description`)}
               </Text>
               <Text fontFamily="mono" fontSize="xs" color={item.color} letterSpacing="0.08em">
                 {item.tech}
@@ -213,9 +181,9 @@ const Home = () => {
 
         {/* ——— The road ——— */}
         <MotionBox {...riseInView}>
-          <Eyebrow kanji="道" color="gold">The road</Eyebrow>
+          <Eyebrow kanji="道" color="gold">{t('home.roadLabel')}</Eyebrow>
           <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }} mb={10}>
-            From Ulaanbaatar, outward
+            {t('home.roadHeading')}
           </Heading>
         </MotionBox>
 
@@ -249,7 +217,7 @@ const Home = () => {
                 color={item.year === 'now' ? 'bloom' : 'ice'}
                 pt="1px"
               >
-                {item.year}
+                {item.year === 'now' ? t('home.now') : item.year}
               </Text>
               <Text fontSize="sm" pl={{ base: 4, md: 8 }}>
                 {item.text}
@@ -262,17 +230,16 @@ const Home = () => {
 
         {/* ——— Write to me ——— */}
         <MotionBox {...riseInView} pb={{ base: 4, md: 10 }}>
-          <Eyebrow kanji="便">Write to me</Eyebrow>
+          <Eyebrow kanji="便">{t('home.getInTouch')}</Eyebrow>
           <Heading as="h2" fontSize={{ base: '3xl', md: '4xl' }} maxW="20ch" mb={4}>
-            Have something worth{' '}
+            {t('home.cta.pre')}
             <Box as="span" color="bloom">
-              building
+              {t('home.cta.highlight')}
             </Box>
-            ?
+            {t('home.cta.post')}
           </Heading>
           <Text maxW="52ch" mb={8}>
-            I take on systems, tooling, and web projects — from a first sketch to a shipped
-            product. Tell me what you have in mind.
+            {t('home.cta.body')}
           </Text>
           <HStack spacing={4} flexWrap="wrap">
             <Button as={NextLink} href="/contact" variant="frost">

@@ -7,17 +7,12 @@ import {
   Button,
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
-
-const languages = [
-  { code: 'en', name: 'English' },
-  { code: 'jp', name: '日本語' },
-  { code: 'mn', name: 'Монгол' },
-]
+import { locales } from '../lib/site'
 
 const LanguageSwitcher = () => {
   const router = useRouter()
 
-  const currentLanguage = languages.find(lang => lang.code === router.locale) || languages[0]
+  const currentLanguage = locales.find(lang => lang.code === router.locale) || locales[0]
 
   const changeLanguage = (locale) => {
     const { pathname, asPath, query } = router
@@ -31,27 +26,17 @@ const LanguageSwitcher = () => {
         rightIcon={<ChevronDownIcon />}
         variant="ghost"
         size="sm"
-        borderRadius="2px"
         fontFamily="mono"
         fontWeight="400"
         fontSize="sm"
-        color="rime"
-        _hover={{ bg: 'iceDim', color: 'frost' }}
-        _active={{ bg: 'iceDim' }}
       >
         {currentLanguage.name}
       </MenuButton>
-      <MenuList bg="pane" borderColor="hairline" borderRadius="2px" minW="140px" py={2}>
-        {languages.map(language => (
+      <MenuList minW="140px">
+        {locales.map(language => (
           <MenuItem
             key={language.code}
             onClick={() => changeLanguage(language.code)}
-            bg="transparent"
-            color="rime"
-            fontFamily="mono"
-            fontSize="sm"
-            _hover={{ bg: 'iceDim', color: 'frost' }}
-            _focus={{ bg: 'iceDim' }}
             isDisabled={language.code === router.locale}
           >
             {language.name}
