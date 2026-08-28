@@ -4,8 +4,8 @@
   "description": "Portfolio of Shimoka — full-stack developer and designer in Ulaanbaatar",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F7F4F0",
-  "theme_color": "#3B3442",
+  "background_color": "#17131C",
+  "theme_color": "#17131C",
   "icons": [
     {
       "src": "/images/icon.png",

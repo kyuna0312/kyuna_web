@@ -71,7 +71,7 @@ const SEOHead = ({
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
 
       {/* Theme color */}
-      <meta name="theme-color" content="#0A111F" />
+      <meta name="theme-color" content="#17131C" />
 
       {/* Performance hints */}
       <link rel="dns-prefetch" href="//fonts.googleapis.com" />
