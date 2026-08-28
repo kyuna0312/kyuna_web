@@ -16,9 +16,9 @@ const SEOHead = ({
   const currentUrl = `${siteUrl}${router.asPath}`
 
   const defaultDescription = {
-    en: 'Full-stack developer based in Ulaanbaatar with passion for solving problems through product planning, design, and coding.',
-    jp: 'ウランバートルを拠点とするフルスタック開発者。プロダクトの企画、デザイン、コーディングを通じた問題解決に情熱を持っています。',
-    mn: 'Улаанбаатарт төвтэй фулл стак хөгжүүлэгч. Бүтээгдэхүүний төлөвлөлт, дизайн, кодчилолоор дамжуулан асуудал шийдвэрлэхэд хүсэл тэмүүлэлтэй.'
+    en: 'Systems and developer-tooling engineer in Ulaanbaatar — developer environments, editors, and low-level experiments in Rust, C/C++, Lua, and TypeScript.',
+    jp: 'ウランバートルを拠点とするシステム＆ツーリングエンジニア。開発環境、エディタ、低レイヤの実験をRust、C/C++、Lua、TypeScriptで作っています。',
+    mn: 'Улаанбаатарт төвтэй системс ба хэрэгслийн инженер. Хөгжүүлэлтийн орчин, эдитор, доод түвшний туршилтуудыг Rust, C/C++, Lua, TypeScript дээр бүтээдэг.'
   }
 
   const pageDescription = description || defaultDescription[router.locale] || defaultDescription.en
@@ -91,7 +91,7 @@ const SEOHead = ({
               "https://twitter.com/kyuna0312",
               "https://instagram.com/kyuna0312"
             ],
-            "jobTitle": "Full-stack Developer",
+            "jobTitle": "Systems & Developer Tooling Engineer",
             "worksFor": {
               "@type": "Organization",
               "name": "Next Social Platform LLC"
@@ -102,18 +102,17 @@ const SEOHead = ({
               "addressCountry": "Mongolia"
             },
             "knowsAbout": [
-              "JavaScript",
+              "Rust",
+              "C",
+              "C++",
+              "Lua",
+              "Linux",
+              "Neovim",
+              "Developer Tooling",
+              "TypeScript",
               "React",
               "Next.js",
-              "Node.js",
-              "MongoDB",
-              "PostgreSQL",
-              "TypeScript",
-              "Python",
-              "Flutter",
-              "Mobile Development",
-              "Web Development",
-              "Full Stack Development"
+              "Flutter"
             ]
           })
         }}

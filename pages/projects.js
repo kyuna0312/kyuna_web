@@ -25,15 +25,17 @@ const ProjectCard = ({ title, description, thumbnail, url, github, tech, feature
     transition="border-color 0.25s ease"
     _hover={{ borderColor: 'ice', '& img': { transform: 'scale(1.03)' } }}
   >
-    <Box position="relative" h="210px" overflow="hidden" borderBottom="1px solid" borderColor="hairline">
-      <Image
-        src={thumbnail}
-        alt={title}
-        fill
-        sizes="(max-width: 768px) 100vw, 50vw"
-        style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }}
-      />
-    </Box>
+    {thumbnail && (
+      <Box position="relative" h="210px" overflow="hidden" borderBottom="1px solid" borderColor="hairline">
+        <Image
+          src={thumbnail}
+          alt={title}
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }}
+        />
+      </Box>
+    )}
     <Box p={6}>
       <HStack justify="space-between" align="baseline" mb={2}>
         <Heading as="h3" fontSize="xl">
@@ -88,39 +90,50 @@ const ProjectCard = ({ title, description, thumbnail, url, github, tech, feature
 const Projects = () => {
   const { t } = useTranslation('common');
 
+  // Ordered per the portfolio audit: environments and tooling first,
+  // then a low-level experiment, then shipped products.
   const projects = [
     {
-      title: t('projects.NomadX'),
-      description: t('projects.NomadXDescription'),
-      thumbnail: '/images/works/nomadx.png',
-      url: 'https://nomadx.world',
-      github: 'https://github.com/kyuna0312/nomadx',
-      tech: 'React · Next.js · TypeScript · Chakra UI',
+      title: t('projects.dotfiles'),
+      description: t('projects.dotfilesDescription'),
+      github: 'https://github.com/kyuna0312/dotfiles',
+      tech: 'Shell · Nushell · Linux · macOS',
       featured: true,
+    },
+    {
+      title: t('projects.nyanvim'),
+      description: t('projects.nyanvimDescription'),
+      thumbnail: '/images/works/nyanmarkdown.png',
+      github: 'https://github.com/kyuna0312/NyanVim',
+      tech: 'Lua · Neovim · CI',
+    },
+    {
+      title: t('projects.kitvcs'),
+      description: t('projects.kitvcsDescription'),
+      github: 'https://github.com/kyuna0312/kit-vcs',
+      tech: 'C++ · object storage · CLI',
     },
     {
       title: t('projects.madoka_react'),
       description: t('projects.madoka_reactDescription'),
       thumbnail: '/images/works/madoka_react.png',
       url: 'https://madoka-kappa.vercel.app',
-      github: 'https://github.com/kyuna0312/madoka-react',
-      tech: 'React · CSS · GSAP',
+      github: 'https://github.com/kyuna0312/madoka',
+      tech: 'CSS · SCSS · animation',
+    },
+    {
+      title: t('projects.NomadX'),
+      description: t('projects.NomadXDescription'),
+      thumbnail: '/images/works/nomadx.png',
+      url: 'https://nomadx.world',
+      tech: 'React · Next.js · TypeScript · Chakra UI',
     },
     {
       title: t('projects.mongolnet'),
       description: t('projects.mongolnetDescription'),
       thumbnail: '/images/works/mongolnet.png',
       url: 'https://mongol.net',
-      github: 'https://github.com/kyuna0312/mongolnet',
       tech: 'React · NestJS · GraphQL · Flutter',
-    },
-    {
-      title: t('projects.NyanMarkDown'),
-      description: t('projects.NyanMarkDownDescription'),
-      thumbnail: '/images/works/nyanmarkdown.png',
-      url: 'https://github.com/kyuna0312/NyanVim',
-      github: 'https://github.com/kyuna0312/NyanVim',
-      tech: 'Vim · Lua · open source',
     },
   ];
 

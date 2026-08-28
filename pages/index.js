@@ -32,31 +32,31 @@ const riseInView = {}
 
 const craft = [
   {
-    title: 'Interfaces',
+    title: 'Systems',
     description:
-      'Front ends in React and Next.js that stay fast on slow connections and feel right on any screen.',
-    tech: 'React · Next.js · TypeScript',
+      'Low-level experiments built to understand the machine — an x86 kernel, a Git-inspired version-control system, a Rust game engine.',
+    tech: 'Rust · C/C++ · Linux',
     color: 'ice',
   },
   {
-    title: 'Systems',
+    title: 'Developer tooling',
     description:
-      'APIs, data models, and deployment — the whole path from database to browser.',
-    tech: 'Node.js · PostgreSQL · GraphQL',
+      'Editors and environments: a NeoVim distribution and dotfiles that follow me across machines and operating systems.',
+    tech: 'Lua · Neovim · terminal workflows',
     color: 'gold',
+  },
+  {
+    title: 'Web, end to end',
+    description:
+      'Shipped products when the project calls for it — marketplaces, social platforms, this site.',
+    tech: 'TypeScript · React · Next.js',
+    color: 'bloom',
   },
   {
     title: 'Design',
     description:
       'Layout, type, and motion decided on purpose. I design what I build, and build what I design.',
     tech: 'Figma · design systems',
-    color: 'bloom',
-  },
-  {
-    title: 'Mobile',
-    description:
-      'The same care at phone scale, native or web.',
-    tech: 'React Native · Flutter · PWA',
     color: 'ice',
   },
 ]
@@ -80,8 +80,8 @@ const Home = () => {
 
   return (
     <Layout
-      title="霜花 (Shimoka) — Developer & Designer"
-      description="Shimoka builds warm, careful software in Ulaanbaatar — full-stack development and interface design."
+      title="霜花 (Shimoka) — Systems & Developer Tooling"
+      description="Shimoka is a systems and developer-tooling engineer in Ulaanbaatar — developer environments, editors, and low-level experiments in Rust, C/C++, and Lua."
     >
       {/* ——— Hero: the Magia stage ——— */}
       <Box position="relative" minH={{ base: '78vh', md: '86vh' }} display="flex" alignItems="center" overflow="hidden">
@@ -189,7 +189,7 @@ const Home = () => {
         <MotionBox {...riseInView}>
           <Eyebrow kanji="業" color="ice">Craft</Eyebrow>
           <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }} mb={10} maxW="24ch">
-            Full-stack work, designed on purpose
+            From kernel to interface
           </Heading>
         </MotionBox>
 
@@ -271,8 +271,8 @@ const Home = () => {
             ?
           </Heading>
           <Text maxW="52ch" mb={8}>
-            I take on web and mobile projects — from a first sketch to a shipped product.
-            Tell me what you have in mind.
+            I take on systems, tooling, and web projects — from a first sketch to a shipped
+            product. Tell me what you have in mind.
           </Text>
           <HStack spacing={4} flexWrap="wrap">
             <Button as={NextLink} href="/contact" variant="frost">

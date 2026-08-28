@@ -6,23 +6,27 @@
   },
   "projects": {
     "title": "プロジェクト",
-    "description": "これまでに作ったもの — マーケットプレイス、ソーシャルプラットフォーム、そして欲しかったから作ったツールたち。",
+    "description": "開発環境、低レイヤの実験、そして世に出したプロダクト — 私が繰り返し戻ってくる仕事。",
+    "dotfiles": "dotfiles",
+    "dotfilesDescription": "マルチOS対応、インストールシステム、全ツールを貫くひとつのデザインシステムを持つ開発環境。",
+    "nyanvim": "NyanVim",
+    "nyanvimDescription": "CI、インストーラ、ベンチマーク、ヘルスチェックを備えた自作NeoVimディストリビューション。見た目は可愛く、中身は本気。",
+    "kitvcs": "kit-vcs",
+    "kitvcsDescription": "オブジェクトストレージ、コミット、ブランチを理解するためにC++で作ったGit風バージョン管理システム。",
     "NomadX": "NomadX",
     "NomadXDescription": "モンゴルのアーティストのためのNFTマーケットプレイス。ウェブとモバイル対応。",
     "mongolnet": "Mongol.net",
     "mongolnetDescription": "React、NestJS、GraphQL、Flutterで構築した国民的ソーシャルネットワークプラットフォーム。",
-    "NyanMarkDown": "NyanMarkDown",
-    "NyanMarkDownDescription": "個性のあるカスタムMarkdownエディタ。",
-    "madoka_react": "Madoka React",
-    "madoka_reactDescription": "魔法少女の美学にインスパイアされたアニメーションウェブ体験。",
+    "madoka_react": "Magia",
+    "madoka_reactDescription": "魔法少女まどか☆マギカのCSSアニメーション習作 — このサイトのデザイン言語の原点。",
     "seo": {
-      "description": "霜花の制作実績 — マーケットプレイス、ソーシャルプラットフォーム、手作りのツール。"
+      "description": "霜花の制作実績 — 開発環境、低レイヤの実験、世に出したプロダクト。"
     }
   },
   "home": {
     "title": "霜花",
     "subtitle": "開発者 · デザイナー · コスプレイヤー",
-    "description": "地球でいちばん寒い首都で、あたたかく丁寧なソフトウェアを作るフルスタック開発者です。マーケットプレイスからソーシャルプラットフォーム、日々の仕事を心地よくする小さなツールまで。",
+    "description": "地球でいちばん寒い首都で、開発環境・エディタ・低レイヤの実験を作るシステム＆ツーリングエンジニアです。Rust、C/C++、Lua、TypeScriptを使っています。",
     "viewProjects": "プロジェクトを見る",
     "getInTouch": "連絡する",
     "timeline": {

@@ -6,23 +6,27 @@
   },
   "projects": {
     "title": "Projects",
-    "description": "Things I've shipped — a marketplace, a social platform, and tools I built because I wanted them to exist.",
+    "description": "Developer environments, low-level experiments, and shipped products — the work I keep coming back to.",
+    "dotfiles": "dotfiles",
+    "dotfilesDescription": "A development environment with multi-OS support, an install system, and one design system unifying every tool.",
+    "nyanvim": "NyanVim",
+    "nyanvimDescription": "A personal NeoVim distribution with CI, an installer, benchmarks, and health checks — cute on the surface, serious underneath.",
+    "kitvcs": "kit-vcs",
+    "kitvcsDescription": "A Git-inspired version-control system in C++, built to understand object storage, commits, and branching.",
     "NomadX": "NomadX",
     "NomadXDescription": "An NFT marketplace for Mongolian artists — web and mobile.",
     "mongolnet": "Mongol.net",
     "mongolnetDescription": "A national social network platform, built with React, NestJS, GraphQL, and Flutter.",
-    "NyanMarkDown": "NyanMarkDown",
-    "NyanMarkDownDescription": "A custom Markdown editor with a personality of its own.",
-    "madoka_react": "Madoka React",
-    "madoka_reactDescription": "An animated web experience inspired by magical-girl aesthetics.",
+    "madoka_react": "Magia",
+    "madoka_reactDescription": "A 魔法少女まどか☆マギカ CSS animation study — the design language this site is built on.",
     "seo": {
-      "description": "Selected work by Shimoka — marketplaces, social platforms, and handmade tools."
+      "description": "Selected work by Shimoka — developer environments, low-level experiments, and shipped products."
     }
   },
   "home": {
     "title": "霜花",
     "subtitle": "Developer · Designer · Cosplayer",
-    "description": "I'm a full-stack developer in the coldest capital on earth, building warm, careful software — marketplaces, social platforms, and small tools that make daily work nicer.",
+    "description": "I'm a systems and developer-tooling engineer in the coldest capital on earth — building developer environments, editors, and low-level experiments in Rust, C/C++, Lua, and TypeScript.",
     "viewProjects": "View projects",
     "getInTouch": "Write to me",
     "timeline": {
