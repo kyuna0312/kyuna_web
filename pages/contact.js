@@ -3,6 +3,7 @@ import Layout from '../components/layouts/article'
 import ContactForm from '../components/contact-form'
 import SEOHead from '../components/seo-head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import nextI18NextConfig from '../next-i18next.config'
 import { useTranslation } from 'next-i18next'
 import { motion } from 'framer-motion'
 import { IoLogoGithub, IoLogoTwitter, IoLogoInstagram } from 'react-icons/io5'
@@ -91,7 +92,7 @@ const Contact = () => {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale, ['common'], nextI18NextConfig)),
     },
   }
 }

@@ -1,4 +1,3 @@
-import { forwardRef } from 'react';
 import Logo from './logo';
 import NextLink from 'next/link';
 import LanguageSwitcher from './language-switcher';
@@ -23,40 +22,31 @@ const LinkItem = ({ href, path, target, children, ...props }) => {
 	const active = path === href;
 
 	return (
-		<NextLink href={href} scroll={false} passHref legacyBehavior>
-			<Link
-				px={3}
-				py={2}
-				target={target}
-				fontFamily="mono"
-				fontSize="sm"
-				letterSpacing="0.06em"
-				color={active ? 'frost' : 'rime'}
-				borderBottom="1px solid"
-				borderColor={active ? 'ice' : 'transparent'}
-				_hover={{
-					color: 'frost',
-					borderColor: 'hairline',
-					textDecoration: 'none',
-				}}
-				transition="color 0.2s ease, border-color 0.2s ease"
-				{...props}
-			>
-				{children}
-			</Link>
-		</NextLink>
+		<Link
+			as={NextLink}
+			href={href}
+			scroll={false}
+			px={3}
+			py={2}
+			target={target}
+			fontFamily="mono"
+			fontSize="sm"
+			letterSpacing="0.06em"
+			color={active ? 'frost' : 'rime'}
+			borderBottom="1px solid"
+			borderColor={active ? 'ice' : 'transparent'}
+			_hover={{
+				color: 'frost',
+				borderColor: 'hairline',
+				textDecoration: 'none',
+			}}
+			transition="color 0.2s ease, border-color 0.2s ease"
+			{...props}
+		>
+			{children}
+		</Link>
 	);
 };
-
-const MenuLink = forwardRef((props, ref) => {
-	return (
-		<NextLink href={props.href} passHref legacyBehavior>
-			<Link ref={ref} {...props} />
-		</NextLink>
-	);
-});
-
-MenuLink.displayName = 'MenuLink';
 
 const Navbar = (props) => {
 	const { path } = props;
@@ -139,13 +129,13 @@ const Navbar = (props) => {
 								borderRadius="2px"
 								py={2}
 							>
-								<MenuItem as={MenuLink} href="/" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" _hover={{ bg: 'iceDim', color: 'frost' }}>
+								<MenuItem as={NextLink} href="/" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" _hover={{ bg: 'iceDim', color: 'frost' }}>
 									{t('navigation.home')}
 								</MenuItem>
-								<MenuItem as={MenuLink} href="/projects" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" _hover={{ bg: 'iceDim', color: 'frost' }}>
+								<MenuItem as={NextLink} href="/projects" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" _hover={{ bg: 'iceDim', color: 'frost' }}>
 									{t('navigation.projects')}
 								</MenuItem>
-								<MenuItem as={MenuLink} href="/contact" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" _hover={{ bg: 'iceDim', color: 'frost' }}>
+								<MenuItem as={NextLink} href="/contact" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" _hover={{ bg: 'iceDim', color: 'frost' }}>
 									{t('navbar.contact')}
 								</MenuItem>
 								<MenuItem as={Link} href="https://github.com/kyuna0312" target="_blank" bg="transparent" color="rime" fontFamily="mono" fontSize="sm" _hover={{ bg: 'iceDim', color: 'frost' }}>

@@ -15,6 +15,7 @@ import Layout from '../components/layouts/article'
 import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import nextI18NextConfig from '../next-i18next.config'
 import { motion } from 'framer-motion'
 import { ShimokaTitle, Eyebrow, CrystalDivider } from '../components/frost'
 
@@ -300,7 +301,7 @@ const Home = () => {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale, ['common'], nextI18NextConfig)),
     },
   }
 }

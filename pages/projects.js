@@ -2,7 +2,8 @@ import { Container, SimpleGrid, Text, HStack, Box, Heading, Link } from '@chakra
 import Image from 'next/image';
 import Layout from '../components/layouts/article';
 import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import nextI18NextConfig from '../next-i18next.config';
 import { motion } from 'framer-motion';
 import { IoLogoGithub, IoArrowForward } from 'react-icons/io5';
 import { Eyebrow, CrystalDivider } from '../components/frost';
@@ -179,7 +180,7 @@ const Projects = () => {
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale, ['common'], nextI18NextConfig)),
     },
   };
 }
