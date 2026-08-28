@@ -1,11 +1,9 @@
 {
-  "locale": "jp",
   "skipToContent": "本文へスキップ",
   "seo": {
     "defaultDescription": "ウランバートルを拠点とするシステム＆ツーリングエンジニア。開発環境、エディタ、低レイヤの実験をRust、C/C++、Lua、TypeScriptで作っています。"
   },
   "navbar": {
-    "projects": "プロジェクト",
     "contact": "お問い合わせ"
   },
   "projects": {
@@ -37,7 +35,6 @@
     }
   },
   "home": {
-    "title": "霜花",
     "subtitle": "開発者 · デザイナー · コスプレイヤー",
     "description": "地球でいちばん寒い首都で、開発環境・エディタ・低レイヤの実験を作るシステム＆ツーリングエンジニアです。Rust、C/C++、Lua、TypeScriptを使っています。",
     "location": "ウランバートル、モンゴル · 北緯47.92°",

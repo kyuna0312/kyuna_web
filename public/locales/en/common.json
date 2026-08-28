@@ -1,11 +1,9 @@
 {
-  "locale": "en",
   "skipToContent": "Skip to main content",
   "seo": {
     "defaultDescription": "Systems and developer-tooling engineer in Ulaanbaatar — developer environments, editors, and low-level experiments in Rust, C/C++, Lua, and TypeScript."
   },
   "navbar": {
-    "projects": "Projects",
     "contact": "Contact"
   },
   "projects": {
@@ -37,7 +35,6 @@
     }
   },
   "home": {
-    "title": "霜花",
     "subtitle": "Developer · Designer · Cosplayer",
     "description": "I'm a systems and developer-tooling engineer in the coldest capital on earth — building developer environments, editors, and low-level experiments in Rust, C/C++, Lua, and TypeScript.",
     "location": "Ulaanbaatar, Mongolia · 47.92° N",
