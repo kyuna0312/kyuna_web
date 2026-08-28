@@ -1,3 +1,23 @@
+# Dependencies
+node_modules
+
+# Build output
+.next
+out
+dist
+dist-ssr
+.turbo
+*.tsbuildinfo
+
+# Environment
+.env
+.env.*
+!.env.example
+*.local
+
+# Deployment
+.vercel
+
 # Logs
 logs
 *.log
@@ -7,22 +27,24 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-#turbo
-.turbo
-.next
+# Tests
+coverage
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude working docs (local only)
+CLAUDE.md
+CONTEXT.md
+wiki/
