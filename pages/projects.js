@@ -1,5 +1,6 @@
 import { Container, SimpleGrid, Text, HStack, Box, Heading, Link } from '@chakra-ui/react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import Layout from '../components/layouts/article';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -7,7 +8,8 @@ import nextI18NextConfig from '../next-i18next.config';
 import { motion } from 'framer-motion';
 import { IoLogoGithub, IoArrowForward } from 'react-icons/io5';
 import { site } from '../lib/site';
-import { projectLineup } from '../lib/projects';
+import { defaultProjects } from '../lib/projects';
+import { sql, ensureSchema } from '../lib/db';
 import { Eyebrow, CrystalDivider } from '../components/frost';
 
 const MotionBox = motion(Box);
@@ -89,13 +91,13 @@ const ProjectCard = ({ title, description, thumbnail, url, github, tech, feature
   </MotionBox>
 );
 
-const Projects = () => {
+const Projects = ({ rows }) => {
   const { t } = useTranslation('common');
+  const { locale } = useRouter();
 
-  const projects = projectLineup.map(p => ({
+  const projects = rows.map(p => ({
     ...p,
-    title: t(`projects.${p.key}`),
-    description: t(`projects.${p.key}Description`),
+    description: p.descriptions?.[locale] || p.descriptions?.en || '',
   }));
 
   return (
@@ -151,10 +153,26 @@ const Projects = () => {
 };
 
 export async function getStaticProps({ locale }) {
+  // Projects live in the database (edited from /admin); the lineup file is
+  // the fallback when the table is empty or no database is configured.
+  let rows = null;
+  try {
+    await ensureSchema();
+    const result = await sql`SELECT * FROM projects ORDER BY sort`;
+    if (result.rows.length) {
+      rows = result.rows.map(({ key, title, descriptions, tech, url, github, thumbnail, featured }) => ({
+        key, title, descriptions, tech, url, github, thumbnail, featured,
+      }));
+    }
+  } catch {
+    // fall through to defaults
+  }
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'], nextI18NextConfig)),
+      rows: rows || defaultProjects(),
     },
+    revalidate: 60,
   };
 }
 

@@ -84,6 +84,9 @@ const Navbar = (props) => {
 					<LinkItem href="/projects" path={path}>
 						{t('navigation.projects')}
 					</LinkItem>
+					<LinkItem href="/posts" path={path}>
+						{t('navigation.posts')}
+					</LinkItem>
 					<LinkItem href="/contact" path={path}>
 						{t('navbar.contact')}
 					</LinkItem>
@@ -128,6 +131,9 @@ const Navbar = (props) => {
 								</MenuItem>
 								<MenuItem as={NextLink} href="/projects">
 									{t('navigation.projects')}
+								</MenuItem>
+								<MenuItem as={NextLink} href="/posts">
+									{t('navigation.posts')}
 								</MenuItem>
 								<MenuItem as={NextLink} href="/contact">
 									{t('navbar.contact')}

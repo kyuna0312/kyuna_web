@@ -84,7 +84,8 @@
   },
   "navigation": {
     "home": "Home",
-    "projects": "Projects"
+    "projects": "Projects",
+    "posts": "Posts"
   },
   "footer": {
     "quote": "One step, two steps — the road to the future is under your feet."
@@ -133,5 +134,10 @@
     "seo": {
       "description": "Get in touch with Shimoka about a project or collaboration."
     }
+  },
+  "posts": {
+    "title": "Posts",
+    "description": "Small notes from the workshop — what I’m building, reading, and thinking about.",
+    "empty": "Nothing here yet."
   }
 }
