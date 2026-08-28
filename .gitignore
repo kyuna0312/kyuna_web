@@ -48,3 +48,4 @@ Thumbs.db
 CLAUDE.md
 CONTEXT.md
 docs/
+.env*

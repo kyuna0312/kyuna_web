@@ -6,7 +6,7 @@ import ErrorBoundary from '../components/error-boundary';
 import { AnimatePresence } from 'framer-motion';
 import Layout from '../components/layouts/main';
 import { Analytics } from '@vercel/analytics/react';
-import { RouteLoadingBar } from '../components/page-loading';
+import { RouteLoadingBar } from '../components/route-loading-bar';
 import { useEffect } from 'react';
 
 if (typeof window !== 'undefined') {

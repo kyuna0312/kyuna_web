@@ -1,6 +1,6 @@
 import NextLink from 'next/link';
 import { Box, Container, Button, Text, Heading } from '@chakra-ui/react';
-import Layout from '../components/layouts/article';
+import Layout from '../components/layouts/page';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'

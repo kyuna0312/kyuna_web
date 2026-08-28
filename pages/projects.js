@@ -1,14 +1,14 @@
 import { Container, SimpleGrid, Text, HStack, Box, Heading, Link } from '@chakra-ui/react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import Layout from '../components/layouts/article';
+import Layout from '../components/layouts/page';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from '../next-i18next.config';
 import { motion } from 'framer-motion';
 import { IoLogoGithub, IoArrowForward } from 'react-icons/io5';
 import { site } from '../lib/site';
-import { defaultProjects } from '../lib/projects';
+import { defaultProjects } from '../lib/project-defaults';
 import { sql, ensureSchema } from '../lib/db';
 import { Eyebrow, CrystalDivider } from '../components/frost';
 

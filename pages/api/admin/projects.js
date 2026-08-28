@@ -1,6 +1,6 @@
 import { sql, ensureSchema } from '../../../lib/db';
 import { requireAuth } from '../../../lib/admin-auth';
-import { defaultProjects } from '../../../lib/projects';
+import { defaultProjects } from '../../../lib/project-defaults';
 
 const revalidateProjects = async res => {
   for (const path of ['/projects', '/jp/projects', '/mn/projects']) {

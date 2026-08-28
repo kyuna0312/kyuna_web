@@ -11,7 +11,7 @@ import {
   Button,
   Container,
 } from '@chakra-ui/react'
-import Layout from '../components/layouts/article'
+import Layout from '../components/layouts/page'
 import { site, socialLinks } from '../lib/site'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'

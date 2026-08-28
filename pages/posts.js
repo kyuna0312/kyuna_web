@@ -1,5 +1,5 @@
 import { Container, Box, Text, Heading } from '@chakra-ui/react';
-import Layout from '../components/layouts/article';
+import Layout from '../components/layouts/page';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import nextI18NextConfig from '../next-i18next.config';
