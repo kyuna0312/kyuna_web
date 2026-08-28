@@ -12,7 +12,7 @@ const MotionBox = motion(Box)
 
 const socialLinks = [
   { icon: IoLogoGithub, href: 'https://github.com/kyuna0312', label: 'GitHub' },
-  { icon: IoLogoTwitter, href: 'https://twitter.com/m1or3n', label: 'Twitter' },
+  { icon: IoLogoTwitter, href: 'https://twitter.com/kyuna0312', label: 'Twitter' },
   { icon: IoLogoInstagram, href: 'https://instagram.com/kyuna0312', label: 'Instagram' },
 ]
 

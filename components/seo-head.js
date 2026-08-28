@@ -48,7 +48,7 @@ const SEOHead = ({
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
       <meta name="twitter:image" content={`${siteUrl}${image}`} />
-      <meta name="twitter:creator" content="@m1or3n" />
+      <meta name="twitter:creator" content="@kyuna0312" />
 
       {/* Language alternates */}
       <link rel="alternate" hrefLang="en" href={`${siteUrl}/en${router.asPath}`} />
@@ -88,7 +88,7 @@ const SEOHead = ({
             "url": siteUrl,
             "sameAs": [
               "https://github.com/kyuna0312",
-              "https://twitter.com/m1or3n",
+              "https://twitter.com/kyuna0312",
               "https://instagram.com/kyuna0312"
             ],
             "jobTitle": "Full-stack Developer",
