@@ -52,7 +52,7 @@ const Home = () => {
   return (
     <Layout title="霜花 (Shimoka) — Systems & Developer Tooling">
       {/* ——— Hero: the Magia stage ——— */}
-      <Box position="relative" minH={{ base: '78vh', md: '86vh' }} display="flex" alignItems="center" overflow="hidden">
+      <Box position="relative" minH={{ base: '76vh', md: '82vh' }} display="flex" alignItems="center" overflow="hidden">
         {/* Washed-out portrait behind the title, like the Homura line art */}
         <Box
           position="absolute"
@@ -81,6 +81,23 @@ const Home = () => {
 
         <Container maxW="container.lg" px={{ base: 4, md: 6 }} position="relative">
           <VStack spacing={6} textAlign="center">
+            <MotionBox {...rise(0)}>
+              <Box
+                display="inline-block"
+                bg="pane"
+                border="1px solid"
+                borderColor="hairline"
+                borderRadius="2px"
+                px={4}
+                py={2}
+                fontFamily="mono"
+                fontSize="xs"
+                color="rime"
+              >
+                {t('home.greeting')}
+              </Box>
+            </MotionBox>
+
             <MotionBox {...rise(0.1)}>
               <Text
                 fontFamily="mono"
@@ -125,25 +142,23 @@ const Home = () => {
                   {t('home.getInTouch')}
                 </Button>
               </HStack>
-              <HStack spacing={3} mt={8} justify="center">
+              <HStack spacing={7} mt={8} justify="center" flexWrap="wrap">
                 {socialLinks.map(social => (
                   <Link
                     key={social.label}
                     href={social.href}
                     target="_blank"
-                    display="flex"
+                    display="inline-flex"
                     alignItems="center"
-                    justifyContent="center"
-                    w="44px"
-                    h="44px"
-                    borderRadius="full"
-                    bg="ink"
-                    color="paper"
-                    aria-label={social.label}
-                    _hover={{ bg: 'bloom', color: 'paper' }}
-                    transition="background 0.2s ease"
+                    gap="8px"
+                    fontFamily="mono"
+                    fontSize="sm"
+                    color="ice"
+                    py={2}
+                    _hover={{ color: 'bloom' }}
                   >
                     <social.icon size={16} />
+                    {social.label}
                   </Link>
                 ))}
               </HStack>
@@ -195,7 +210,7 @@ const Home = () => {
               display="grid"
               gridTemplateColumns={{ base: '56px 1fr', md: '80px 1fr' }}
               gap={{ base: 4, md: 8 }}
-              pb={i === timelineItems.length - 1 ? 0 : 8}
+              pb={i === timelineItems.length - 1 ? 0 : 6}
               position="relative"
               _before={
                 i === timelineItems.length - 1

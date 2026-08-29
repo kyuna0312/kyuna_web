@@ -35,6 +35,7 @@
     }
   },
   "home": {
+    "greeting": "Hello! I'm kyuna — I build developer tools for fun.",
     "subtitle": "Developer · Designer · Cosplayer",
     "description": "I'm a systems and developer-tooling engineer in the coldest capital on earth — building developer environments, editors, and low-level experiments in Rust, C/C++, Lua, and TypeScript.",
     "location": "Ulaanbaatar, Mongolia · 47.92° N",
