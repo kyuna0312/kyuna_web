@@ -23,7 +23,6 @@ const ContactForm = () => {
     subject: '',
     message: ''
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [errors, setErrors] = useState({})
 
   const validateForm = () => {
@@ -61,36 +60,24 @@ const ContactForm = () => {
     }
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     if (!validateForm()) return
 
-    setIsSubmitting(true)
-    try {
-      const mailtoLink = `mailto:${site.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-      )}`
-      window.location.href = mailtoLink
+    // The form composes a mailto: draft in the visitor's own mail app — there
+    // is no send API, so the toast says what actually happened and the typed
+    // message is kept in case no mail app opened.
+    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`
 
-      toast({
-        title: t('contact.success.title'),
-        description: t('contact.success.description'),
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
-      })
-      setFormData({ name: '', email: '', subject: '', message: '' })
-    } catch (error) {
-      toast({
-        title: t('contact.error.title'),
-        description: t('contact.error.description'),
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-      })
-    } finally {
-      setIsSubmitting(false)
-    }
+    toast({
+      title: t('contact.success.title'),
+      description: t('contact.success.description', { email: site.email }),
+      status: 'info',
+      duration: 8000,
+      isClosable: true,
+    })
   }
 
   const labelProps = {
@@ -152,13 +139,7 @@ const ContactForm = () => {
         <FormErrorMessage>{errors.message}</FormErrorMessage>
       </FormControl>
 
-      <Button
-        type="submit"
-        variant="frost"
-        alignSelf="flex-start"
-        isLoading={isSubmitting}
-        loadingText={t('contact.form.sending')}
-      >
+      <Button type="submit" variant="frost" alignSelf="flex-start">
         {t('contact.form.send')}
       </Button>
     </VStack>

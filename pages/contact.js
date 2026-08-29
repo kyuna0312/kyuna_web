@@ -5,7 +5,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from '../next-i18next.config'
 import { useTranslation } from 'next-i18next'
 import { motion } from 'framer-motion'
-import { socialLinks } from '../lib/site'
+import { site, socialLinks } from '../lib/site'
+import { IoMailOutline } from 'react-icons/io5'
 import { Eyebrow } from '../components/frost'
 
 const MotionBox = motion.create(Box)
@@ -22,7 +23,7 @@ const Contact = () => {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           mb={10}
         >
-          <Eyebrow kanji="便">Write to me</Eyebrow>
+          <Eyebrow kanji="便">{t('navbar.contact')}</Eyebrow>
           <Heading as="h1" fontSize={{ base: '4xl', md: '5xl' }} mb={4}>
             {t('contact.title')}
           </Heading>
@@ -51,7 +52,21 @@ const Contact = () => {
           <Text fontFamily="mono" fontSize="xs" color="ice" letterSpacing="0.18em" textTransform="uppercase" mb={4}>
             {t('contact.social.title')}
           </Text>
-          <HStack spacing={6}>
+          <HStack spacing={6} flexWrap="wrap">
+            <Link
+              href={`mailto:${site.email}`}
+              display="inline-flex"
+              alignItems="center"
+              gap={2}
+              fontFamily="mono"
+              fontSize="sm"
+              color="rime"
+              _hover={{ color: 'bloom' }}
+              transition="color 0.2s ease"
+            >
+              <IoMailOutline size={16} />
+              {site.email}
+            </Link>
             {socialLinks.map(social => (
               <Link
                 key={social.label}

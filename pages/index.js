@@ -30,27 +30,35 @@ const rise = (delay = 0) => ({
 // Sections render statically — the hero entrance is the page's one animated moment.
 const riseInView = {}
 
+// The current English CV (Google Doc). Also linked from the CTA.
+const resumeUrl =
+  'https://docs.google.com/document/d/1B2Ivgc-ylD-D_m6cEIxxjJcdlO2YDHf6gsNL5v4YxQk/edit'
+
 // Prose lives in the locale files under home.craft.<key>.
 const craft = [
-  { key: 'systems', tech: 'Rust · C/C++ · Linux', color: 'ice' },
-  { key: 'tooling', tech: 'Lua · Neovim · terminal workflows', color: 'gold' },
-  { key: 'web', tech: 'TypeScript · React · Next.js', color: 'bloom' },
-  { key: 'design', tech: 'Figma · design systems', color: 'ice' },
+  { key: 'fullstack', tech: 'React · Next.js · TypeScript · Node.js · NestJS · Flutter', color: 'ice' },
+  { key: 'systems', tech: 'Rust · C/C++ · Lua · Neovim · Linux', color: 'gold' },
+  { key: 'backend', tech: 'Java Spring Boot · GraphQL · Elasticsearch · Docker · Kubernetes', color: 'bloom' },
+  { key: 'design', tech: 'Figma · Design systems · Responsive UI · Motion', color: 'ice' },
 ]
+
+// Freelance service areas; prose under home.services.<key>.
+const services = ['web', 'mobile', 'backend', 'tooling']
 
 const Home = () => {
   const { t } = useTranslation('common')
 
   const timelineItems = [
-    { year: '2000', text: t('home.timeline.2000') },
-    { year: '2019', text: t('home.timeline.2019') },
+    { year: '2018–2020', text: t('home.timeline.internships') },
     { year: '2021', text: t('home.timeline.2021') },
-    { year: '2023', text: t('home.timeline.2023-01') },
-    { year: 'now', text: t('home.timeline.2023-02') },
+    { year: '2021–2022', text: t('home.timeline.sodmongol') },
+    { year: '2023–2024', text: t('home.timeline.mongolnet') },
+    { year: '2025–2026', text: t('home.timeline.brexia') },
+    { year: 'now', text: t('home.timeline.now') },
   ]
 
   return (
-    <Layout title="霜花 (Shimoka) — Systems & Developer Tooling">
+    <Layout title={t('home.pageTitle')}>
       {/* ——— Hero: the Magia stage ——— */}
       <Box position="relative" minH={{ base: '76vh', md: '82vh' }} display="flex" alignItems="center" overflow="hidden">
         {/* Washed-out portrait behind the title, like the Homura line art */}
@@ -125,6 +133,9 @@ const Home = () => {
             </MotionBox>
 
             <MotionBox {...rise(0.4)}>
+              <Heading as="p" fontSize={{ base: 'xl', md: '2xl' }} fontWeight="500" maxW="30ch" mx="auto" mb={4}>
+                {t('home.title')}
+              </Heading>
               <Text fontSize={{ base: 'md', md: 'lg' }} maxW="56ch" mx="auto">
                 {t('home.description')}
               </Text>
@@ -139,9 +150,15 @@ const Home = () => {
                   {t('home.viewProjects')}
                 </Button>
                 <Button as={NextLink} href="/contact" variant="pane">
-                  {t('home.getInTouch')}
+                  {t('home.startProject')}
+                </Button>
+                <Button as="a" href={resumeUrl} target="_blank" variant="pane">
+                  {t('home.resumeButton')}
                 </Button>
               </HStack>
+              <Text mt={5} fontFamily="mono" fontSize="xs" color="ice" letterSpacing="0.08em">
+                {t('home.availability')}
+              </Text>
               <HStack spacing={7} mt={8} justify="center" flexWrap="wrap">
                 {socialLinks.map(social => (
                   <Link
@@ -208,7 +225,7 @@ const Home = () => {
               key={i}
               {...riseInView}
               display="grid"
-              gridTemplateColumns={{ base: '56px 1fr', md: '80px 1fr' }}
+              gridTemplateColumns={{ base: '84px 1fr', md: '100px 1fr' }}
               gap={{ base: 4, md: 8 }}
               pb={i === timelineItems.length - 1 ? 0 : 6}
               position="relative"
@@ -218,7 +235,7 @@ const Home = () => {
                   : {
                       content: '""',
                       position: 'absolute',
-                      left: { base: '55px', md: '79px' },
+                      left: { base: '83px', md: '99px' },
                       top: '10px',
                       bottom: 0,
                       width: '1px',
@@ -243,6 +260,29 @@ const Home = () => {
 
         <CrystalDivider my={{ base: 16, md: 24 }} />
 
+        {/* ——— Services ——— */}
+        <MotionBox {...riseInView}>
+          <Eyebrow kanji="助" color="ice">{t('home.servicesLabel')}</Eyebrow>
+          <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }} mb={10} maxW="24ch">
+            {t('home.servicesHeading')}
+          </Heading>
+        </MotionBox>
+
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacingX={12} spacingY={10}>
+          {services.map(key => (
+            <MotionBox key={key} {...riseInView} pt={5} borderTop="1px solid" borderColor="hairline">
+              <Heading as="h3" fontSize="xl" mb={2}>
+                {t(`home.services.${key}.title`)}
+              </Heading>
+              <Text fontSize="sm" maxW="46ch">
+                {t(`home.services.${key}.description`)}
+              </Text>
+            </MotionBox>
+          ))}
+        </SimpleGrid>
+
+        <CrystalDivider my={{ base: 16, md: 24 }} />
+
         {/* ——— Write to me ——— */}
         <MotionBox {...riseInView} pb={{ base: 4, md: 10 }}>
           <Eyebrow kanji="便">{t('home.getInTouch')}</Eyebrow>
@@ -261,7 +301,7 @@ const Home = () => {
               {t('home.getInTouch')}
             </Button>
             <Link
-              href="https://drive.google.com/file/d/1oWOw_YBpAOkuspCKvnnyOlLTcXwI-dmG/view?usp=sharing"
+              href={resumeUrl}
               target="_blank"
               fontFamily="mono"
               fontSize="sm"

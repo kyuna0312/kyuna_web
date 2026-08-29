@@ -1,7 +1,7 @@
 {
   "skipToContent": "本文へスキップ",
   "seo": {
-    "defaultDescription": "ウランバートルを拠点とするシステム＆ツーリングエンジニア。開発環境、エディタ、低レイヤの実験をRust、C/C++、Lua、TypeScriptで作っています。"
+    "defaultDescription": "ウランバートル拠点の独立系フルスタックデベロッパー。React、TypeScript、Node.js、NestJS、Flutter、Javaでウェブ・モバイル・開発ツール・フィンテック・ソーシャルプラットフォームのプロダクトを作っています。"
   },
   "navbar": {
     "contact": "お問い合わせ"
@@ -14,17 +14,17 @@
     "visit": "見る",
     "source": "ソース",
     "dotfiles": "dotfiles",
-    "dotfilesDescription": "マルチOS対応、インストールシステム、全ツールを貫くひとつのデザインシステムを持つ開発環境。",
+    "dotfilesDescription": "自動インストールと、シェル・ターミナル・エディタ・Linux・macOSを貫く共通のデザイン言語を持つマルチプラットフォーム開発環境。",
     "nyanvim": "NyanVim",
-    "nyanvimDescription": "CI、インストーラ、ベンチマーク、ヘルスチェックを備えた自作NeoVimディストリビューション。見た目は可愛く、中身は本気。",
+    "nyanvimDescription": "インストーラ、CI、ベンチマーク、ヘルスチェックを備えた自作Neovimディストリビューション。完全な開発環境をポータブルで信頼できるものにするための設計。",
     "kitvcs": "kit-vcs",
-    "kitvcsDescription": "オブジェクトストレージ、コミット、ブランチを理解するためにC++で作ったGit風バージョン管理システム。",
+    "kitvcsDescription": "オブジェクトストレージ、コミット、ブランチ、CLI設計を探るためにC++で作ったGit風バージョン管理システム。",
     "NomadX": "NomadX",
-    "NomadXDescription": "モンゴルのアーティストのためのNFTマーケットプレイス。ウェブとモバイル対応。",
+    "NomadXDescription": "モンゴルのクリエイターのためのフィンテック＆NFTマーケットプレイス。Sod Mongol Groupのエンジニアリングチームの一員としてウェブとモバイルで提供。",
     "mongolnet": "Mongol.net",
-    "mongolnetDescription": "React、NestJS、GraphQL、Flutterで構築した国民的ソーシャルネットワークプラットフォーム。",
+    "mongolnetDescription": "モンゴルのコミュニティのための国民的ソーシャルネットワーク＆マーケットプレイス。ウェブ、バックエンド、モバイルを横断して開発。",
     "madoka_react": "Magia",
-    "madoka_reactDescription": "魔法少女まどか☆マギカのCSSアニメーション習作 — このサイトのデザイン言語の原点。",
+    "madoka_reactDescription": "ReactとSassで作ったインタラクティブなアニメーションとビジュアルデザインの習作 — このサイトのデザイン言語の原点。",
     "offKeyboard": {
       "label": "キーボードを離れて",
       "heading": "コスプレと衣装づくり",
@@ -35,48 +35,73 @@
     }
   },
   "home": {
-    "greeting": "こんにちは！kyunaです — 趣味で開発ツールを作っています。",
-    "subtitle": "開発者 · デザイナー · コスプレイヤー",
-    "description": "地球でいちばん寒い首都で、開発環境・エディタ・低レイヤの実験を作るシステム＆ツーリングエンジニアです。Rust、C/C++、Lua、TypeScriptを使っています。",
+    "pageTitle": "Baatarsuren Khatanzorig — 独立系フルスタックデベロッパー",
+    "greeting": "こんにちは！Kyunaです — ウランバートル拠点の独立系デベロッパーです。",
+    "title": "システムからインターフェイスまで、考え抜いたソフトウェアを作ります。",
+    "subtitle": "独立系デベロッパー · フルスタックエンジニア · デザイナー",
+    "description": "ウェブ、モバイル、開発ツール、フィンテック、ソーシャルプラットフォームのプロダクトを手がけて5年以上のフルスタックエンジニアです。要件定義と技術設計から実装、デプロイ、保守まで一貫して担当します。",
+    "availability": "フリーランス案件・プロダクト協業のご相談を受け付けています",
     "location": "ウランバートル、モンゴル · 北緯47.92°",
     "frostFlower": "霜の花",
     "viewProjects": "プロジェクトを見る",
-    "getInTouch": "連絡する",
+    "startProject": "プロジェクトの相談",
+    "getInTouch": "話を始める",
     "craftLabel": "クラフト",
-    "craftHeading": "カーネルからインターフェイスまで",
+    "craftHeading": "作っているもの",
     "craft": {
+      "fullstack": {
+        "title": "フルスタックプロダクト",
+        "description": "要件定義とアーキテクチャから本番デプロイ・保守まで、ウェブとモバイルのプロダクトを一気通貫で作ります。"
+      },
       "systems": {
-        "title": "システム",
-        "description": "マシンを理解するための低レイヤ実験 — x86カーネル、Git風バージョン管理システム、Rust製ゲームエンジン。"
+        "title": "システムと開発ツール",
+        "description": "ソフトウェアの作り方を理解し改善するための開発環境、エディタ、CLIツール、低レイヤの実験。"
       },
-      "tooling": {
-        "title": "開発ツール",
-        "description": "エディタと環境 — マシンやOSをまたいで私についてくるNeoVimディストリビューションとdotfiles。"
-      },
-      "web": {
-        "title": "ウェブ、端から端まで",
-        "description": "必要とあらば世に出すプロダクト — マーケットプレイス、ソーシャルプラットフォーム、そしてこのサイト。"
+      "backend": {
+        "title": "バックエンドとインフラ",
+        "description": "保守しやすい本番システムのためのAPI、検索サービス、データ連携、コンテナ化ワークフロー。"
       },
       "design": {
-        "title": "デザイン",
-        "description": "レイアウト、タイポグラフィ、モーションを意図して決める。作るものを自分でデザインし、デザインしたものを自分で作る。"
+        "title": "プロダクトとインターフェイスデザイン",
+        "description": "明快なインターフェイス、意図あるモーション、実用的なデザインシステムを、その裏のソフトウェアと一緒に形づくります。"
       }
     },
     "roadLabel": "道のり",
     "roadHeading": "ウランバートルから、外へ",
     "now": "現在",
     "timeline": {
-      "2000": "モンゴル・ウランバートルに生まれる。",
-      "2019": "Able Softで開発者としてのキャリアを始める。",
-      "2021": "MUSTを卒業し、Sod Mongol LLCにフルスタック開発者として入社。",
-      "2023-01": "Sod Mongol LLCでの仕事を終える。",
-      "2023-02": "現在はNext Social Platform LLCでプロダクトを作っている。"
+      "internships": "Golomt、Dentsu Data Artist Mongolia、Able Linksでソフトウェアとデータのインターンを経験。",
+      "2021": "モンゴル科学技術大学を卒業し、Sod Mongol Groupにソフトウェアエンジニアとして入社。",
+      "sodmongol": "Sod Mongol Groupでウェブ・モバイル・検索・バックエンドを開発し、フィンテックプロダクトNomadXに参加。",
+      "mongolnet": "Next Social Platform ProvidersでMongol.netのフルスタックなウェブ・モバイル機能を開発。",
+      "brexia": "Brexia Technologyで日本のエンジニアリング環境のもと、タブレット・モバイル・社内業務システムを開発。",
+      "now": "独立系デベロッパー／フリーランスエンジニアとして、ウェブとモバイルのプロダクトを一気通貫で提供中。"
+    },
+    "servicesLabel": "サービス",
+    "servicesHeading": "お手伝いできること",
+    "services": {
+      "web": {
+        "title": "フルスタックWeb開発",
+        "description": "React、Next.js、TypeScript、Node.js、NestJSによるレスポンシブなプロダクト、ダッシュボード、マーケットプレイス、社内ツール。"
+      },
+      "mobile": {
+        "title": "モバイルアプリ開発",
+        "description": "Flutterによるクロスプラットフォームのモバイルアプリと業務用タブレットツール。"
+      },
+      "backend": {
+        "title": "バックエンドと連携",
+        "description": "REST・GraphQL API、検索サービス、データベース連携、コンテナ化デプロイ。"
+      },
+      "tooling": {
+        "title": "開発ツール",
+        "description": "エディタ、CLIツール、開発環境、ワークフロー自動化。"
+      }
     },
     "cta": {
-      "pre": "",
-      "highlight": "作る価値のあるもの",
-      "post": "、ありますか？",
-      "body": "システム、ツール、ウェブのプロジェクトを、最初のスケッチから完成まで引き受けます。考えていることを聞かせてください。"
+      "pre": "解決する価値のあるプロダクトや技術課題、",
+      "highlight": "ありますか",
+      "post": "？",
+      "body": "フルスタックWeb、モバイル、バックエンド、開発ツールのプロジェクトでクライアントや協業相手と仕事をしています。作りたいもの、解決したい課題、希望のスケジュールを教えてください。"
     },
     "resumeButton": "履歴書を見る"
   },
@@ -107,8 +132,7 @@
       "subjectPlaceholder": "どんなご用件ですか？",
       "message": "メッセージ",
       "messagePlaceholder": "アイデアを聞かせてください",
-      "send": "送信する",
-      "sending": "送信中…"
+      "send": "送信する"
     },
     "errors": {
       "nameRequired": "お名前を入力してください。",
@@ -119,12 +143,8 @@
       "messageMinLength": "もう少し詳しく — 10文字以上でお願いします。"
     },
     "success": {
-      "title": "メッセージを送信しました",
-      "description": "ありがとうございます。すぐに返信します。"
-    },
-    "error": {
-      "title": "送信できませんでした",
-      "description": "もう一度お試しいただくか、SNSでご連絡ください。"
+      "title": "メールアプリを開いています",
+      "description": "メッセージを下書きとして用意しました。開かない場合は {{email}} まで直接ご連絡ください。"
     },
     "social": {
       "title": "その他の場所"

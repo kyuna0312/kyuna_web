@@ -11,7 +11,7 @@ const SEOHead = ({
   description,
   image = '/images/icon.png',
   type = 'website',
-  author = 'Amari Hana'
+  author = 'Baatarsuren Khatanzorig'
 }) => {
   const router = useRouter()
   const { t } = useTranslation('common')
@@ -44,8 +44,8 @@ const SEOHead = ({
       <meta key="og:site_name" property="og:site_name" content={siteTitle} />
       <meta key="og:locale" property="og:locale" content={locale.ogLocale} />
 
-      {/* Twitter */}
-      <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
+      {/* Twitter — 'summary' card: the OG image is the square site icon, not a wide banner */}
+      <meta key="twitter:card" name="twitter:card" content="summary" />
       <meta key="twitter:title" name="twitter:title" content={pageTitle} />
       <meta key="twitter:description" name="twitter:description" content={pageDescription} />
       <meta key="twitter:image" name="twitter:image" content={`${siteUrl}${image}`} />
@@ -96,31 +96,35 @@ const SEOHead = ({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": "Shimoka (霜花)",
+            "name": "Baatarsuren Khatanzorig",
+            "alternateName": "Shimoka (霜花)",
             "url": siteUrl,
             "sameAs": [site.github, site.twitter, site.instagram],
-            "jobTitle": "Systems & Developer Tooling Engineer",
-            "worksFor": {
-              "@type": "Organization",
-              "name": "Next Social Platform LLC"
-            },
+            "jobTitle": "Independent Full-Stack Developer",
+            "email": `mailto:${site.email}`,
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Ulaanbaatar",
               "addressCountry": "Mongolia"
             },
             "knowsAbout": [
+              "TypeScript",
+              "React",
+              "Next.js",
+              "Node.js",
+              "NestJS",
+              "Flutter",
+              "Java",
+              "GraphQL",
+              "Docker",
+              "Kubernetes",
               "Rust",
               "C",
               "C++",
               "Lua",
               "Linux",
               "Neovim",
-              "Developer Tooling",
-              "TypeScript",
-              "React",
-              "Next.js",
-              "Flutter"
+              "Developer Tooling"
             ]
           })
         }}

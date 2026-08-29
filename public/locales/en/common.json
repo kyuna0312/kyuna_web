@@ -1,7 +1,7 @@
 {
   "skipToContent": "Skip to main content",
   "seo": {
-    "defaultDescription": "Systems and developer-tooling engineer in Ulaanbaatar — developer environments, editors, and low-level experiments in Rust, C/C++, Lua, and TypeScript."
+    "defaultDescription": "Independent full-stack developer in Ulaanbaatar building web, mobile, developer-tooling, fintech, and social-platform products with React, TypeScript, Node.js, NestJS, Flutter, and Java."
   },
   "navbar": {
     "contact": "Contact"
@@ -14,17 +14,17 @@
     "visit": "visit",
     "source": "source",
     "dotfiles": "dotfiles",
-    "dotfilesDescription": "A development environment with multi-OS support, an install system, and one design system unifying every tool.",
+    "dotfilesDescription": "A multi-platform development environment with automated installation and a shared design language across shells, terminals, editors, Linux, and macOS.",
     "nyanvim": "NyanVim",
-    "nyanvimDescription": "A personal NeoVim distribution with CI, an installer, benchmarks, and health checks — cute on the surface, serious underneath.",
+    "nyanvimDescription": "A personal Neovim distribution with an installer, CI, benchmarks, and health checks — designed to make a complete development environment portable and dependable.",
     "kitvcs": "kit-vcs",
-    "kitvcsDescription": "A Git-inspired version-control system in C++, built to understand object storage, commits, and branching.",
+    "kitvcsDescription": "A Git-inspired version-control system built in C++ to explore object storage, commits, branches, and command-line tool design.",
     "NomadX": "NomadX",
-    "NomadXDescription": "An NFT marketplace for Mongolian artists — web and mobile.",
+    "NomadXDescription": "A fintech and NFT marketplace for Mongolian creators, delivered across web and mobile as part of the Sod Mongol Group engineering team.",
     "mongolnet": "Mongol.net",
-    "mongolnetDescription": "A national social network platform, built with React, NestJS, GraphQL, and Flutter.",
+    "mongolnetDescription": "A national social-network and marketplace platform for Mongolian communities, developed across web, backend, and mobile applications.",
     "madoka_react": "Magia",
-    "madoka_reactDescription": "A 魔法少女まどか☆マギカ CSS animation study — the design language this site is built on.",
+    "madoka_reactDescription": "An interactive animation and visual-design study built with React and Sass, exploring expressive motion and interface composition — the design language this site is built on.",
     "offKeyboard": {
       "label": "Off the keyboard",
       "heading": "Cosplay and costume craft",
@@ -35,48 +35,73 @@
     }
   },
   "home": {
-    "greeting": "Hello! I'm kyuna — I build developer tools for fun.",
-    "subtitle": "Developer · Designer · Cosplayer",
-    "description": "I'm a systems and developer-tooling engineer in the coldest capital on earth — building developer environments, editors, and low-level experiments in Rust, C/C++, Lua, and TypeScript.",
+    "pageTitle": "Baatarsuren Khatanzorig — Independent Full-Stack Developer",
+    "greeting": "Hello! I'm Kyuna — an independent developer from Ulaanbaatar.",
+    "title": "I build thoughtful software from system to interface.",
+    "subtitle": "Independent Developer · Full-Stack Engineer · Designer",
+    "description": "I'm an independent developer and full-stack software engineer with 5+ years of experience building web, mobile, developer-tooling, fintech, and social-platform products. I take ideas from requirements and technical design through implementation, deployment, and maintenance.",
+    "availability": "Available for selected freelance and product collaborations",
     "location": "Ulaanbaatar, Mongolia · 47.92° N",
     "frostFlower": "frost flower",
     "viewProjects": "View projects",
-    "getInTouch": "Write to me",
+    "startProject": "Start a project",
+    "getInTouch": "Start a conversation",
     "craftLabel": "Craft",
-    "craftHeading": "From kernel to interface",
+    "craftHeading": "What I build",
     "craft": {
+      "fullstack": {
+        "title": "Full-stack products",
+        "description": "Web and mobile products delivered end to end — from requirements and architecture to production deployment and maintenance."
+      },
       "systems": {
-        "title": "Systems",
-        "description": "Low-level experiments built to understand the machine — an x86 kernel, a Git-inspired version-control system, a Rust game engine."
+        "title": "Systems and developer tooling",
+        "description": "Developer environments, editors, command-line tools, and low-level experiments built to understand and improve the way software is made."
       },
-      "tooling": {
-        "title": "Developer tooling",
-        "description": "Editors and environments: a NeoVim distribution and dotfiles that follow me across machines and operating systems."
-      },
-      "web": {
-        "title": "Web, end to end",
-        "description": "Shipped products when the project calls for it — marketplaces, social platforms, this site."
+      "backend": {
+        "title": "Backend and infrastructure",
+        "description": "APIs, search services, data integrations, and containerized workflows designed for maintainable production systems."
       },
       "design": {
-        "title": "Design",
-        "description": "Layout, type, and motion decided on purpose. I design what I build, and build what I design."
+        "title": "Product and interface design",
+        "description": "Clear interfaces, intentional motion, and practical design systems shaped together with the software behind them."
       }
     },
     "roadLabel": "The road",
     "roadHeading": "From Ulaanbaatar, outward",
     "now": "now",
     "timeline": {
-      "2000": "Born in Ulaanbaatar, Mongolia.",
-      "2019": "First developer role, at Able Soft.",
-      "2021": "Graduated from MUST; joined Sod Mongol LLC as a full-stack developer.",
-      "2023-01": "Finished my time at Sod Mongol LLC.",
-      "2023-02": "Building products at Next Social Platform LLC."
+      "internships": "Completed software and data internships at Golomt, Dentsu Data Artist Mongolia, and Able Links.",
+      "2021": "Graduated from Mongolian University of Science and Technology and joined Sod Mongol Group as a Software Engineer.",
+      "sodmongol": "Built web, mobile, search, and backend capabilities at Sod Mongol Group; contributed to the NomadX fintech product.",
+      "mongolnet": "Developed full-stack web and mobile features for Mongol.net at Next Social Platform Providers.",
+      "brexia": "Worked in a Japanese engineering environment at Brexia Technology, developing tablet, mobile, and internal business software.",
+      "now": "Working as an Independent Developer and Freelance Software Engineer, delivering web and mobile products end to end."
+    },
+    "servicesLabel": "Services",
+    "servicesHeading": "How I can help",
+    "services": {
+      "web": {
+        "title": "Full-stack web development",
+        "description": "Responsive products, dashboards, marketplaces, and internal tools built with React, Next.js, TypeScript, Node.js, and NestJS."
+      },
+      "mobile": {
+        "title": "Mobile application development",
+        "description": "Cross-platform mobile applications and internal tablet tools built with Flutter."
+      },
+      "backend": {
+        "title": "Backend and integrations",
+        "description": "REST and GraphQL APIs, search services, database integrations, and containerized deployments."
+      },
+      "tooling": {
+        "title": "Developer tooling",
+        "description": "Editors, CLI tools, development environments, and workflow automation."
+      }
     },
     "cta": {
-      "pre": "Have something worth ",
-      "highlight": "building",
+      "pre": "Have a product or technical problem worth ",
+      "highlight": "solving",
       "post": "?",
-      "body": "I take on systems, tooling, and web projects — from a first sketch to a shipped product. Tell me what you have in mind."
+      "body": "I work with clients and collaborators on full-stack web, mobile, backend, and developer-tooling projects. Share what you are building, the problem you want to solve, and your expected timeline."
     },
     "resumeButton": "View résumé"
   },
@@ -107,8 +132,7 @@
       "subjectPlaceholder": "What is this about?",
       "message": "Message",
       "messagePlaceholder": "Tell me about your idea",
-      "send": "Send message",
-      "sending": "Sending…"
+      "send": "Send message"
     },
     "errors": {
       "nameRequired": "Enter your name.",
@@ -119,12 +143,8 @@
       "messageMinLength": "A little more, please — at least 10 characters."
     },
     "success": {
-      "title": "Message sent",
-      "description": "Thank you — I'll reply soon."
-    },
-    "error": {
-      "title": "The message didn't send",
-      "description": "Try again, or reach me on social media."
+      "title": "Opening your email app",
+      "description": "Your message is ready as a draft. If nothing opened, write to me directly at {{email}}."
     },
     "social": {
       "title": "Elsewhere"
