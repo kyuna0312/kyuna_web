@@ -14,12 +14,8 @@ import { Eyebrow, CrystalDivider } from '../components/frost';
 
 const MotionBox = motion(Box);
 
-// Cards render statically — the page-load fade is the only animated moment.
-const riseInView = {};
-
 const ProjectCard = ({ title, description, thumbnail, url, github, tech, featured, t }) => (
-  <MotionBox
-    {...riseInView}
+  <Box
     as="article"
     bg="pane"
     border="1px solid"
@@ -88,7 +84,7 @@ const ProjectCard = ({ title, description, thumbnail, url, github, tech, feature
         )}
       </HStack>
     </Box>
-  </MotionBox>
+  </Box>
 );
 
 const Projects = ({ rows }) => {
@@ -125,7 +121,7 @@ const Projects = ({ rows }) => {
         <CrystalDivider my={{ base: 16, md: 20 }} />
 
         {/* Off the keyboard */}
-        <MotionBox {...riseInView}>
+        <Box>
           <Eyebrow kanji="芸" color="gold">{t('projects.offKeyboard.label')}</Eyebrow>
           <Heading as="h2" fontSize={{ base: '2xl', md: '3xl' }} mb={4} maxW="24ch">
             {t('projects.offKeyboard.heading')}
@@ -146,7 +142,7 @@ const Projects = ({ rows }) => {
           >
             instagram.com/{site.handle}
           </Link>
-        </MotionBox>
+        </Box>
       </Container>
     </Layout>
   );
