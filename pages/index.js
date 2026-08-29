@@ -19,7 +19,7 @@ import nextI18NextConfig from '../next-i18next.config'
 import { motion } from 'framer-motion'
 import { ShimokaTitle, Eyebrow, CrystalDivider } from '../components/frost'
 
-const MotionBox = motion(Box)
+const MotionBox = motion.create(Box)
 
 const rise = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },

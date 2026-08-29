@@ -27,7 +27,6 @@ const Main = ({ children, router }) => {
         {t('skipToContent')}
       </Box>
       <Box
-        as="main"
         position="relative"
         minH="100vh"
         display="flex"
@@ -39,11 +38,10 @@ const Main = ({ children, router }) => {
         <NavBar path={router.asPath} id="navigation" />
 
         <Box
+          as="main"
           id="main-content"
           tabIndex={-1}
           pb={{ base: 8, md: 12 }}
-          role="main"
-          aria-label="Main content"
           position="relative"
           zIndex={1}
           flex="1"

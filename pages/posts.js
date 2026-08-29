@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { Eyebrow } from '../components/frost';
 import { sql, ensureSchema } from '../lib/db';
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 const Posts = ({ posts }) => {
   const { t } = useTranslation('common');

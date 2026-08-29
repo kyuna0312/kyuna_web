@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 import { socialLinks } from '../lib/site'
 import { Eyebrow } from '../components/frost'
 
-const MotionBox = motion(Box)
+const MotionBox = motion.create(Box)
 
 const Contact = () => {
   const { t } = useTranslation('common')

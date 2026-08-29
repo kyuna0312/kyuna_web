@@ -12,7 +12,7 @@ import { defaultProjects } from '../lib/project-defaults';
 import { sql, ensureSchema } from '../lib/db';
 import { Eyebrow, CrystalDivider } from '../components/frost';
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 const ProjectCard = ({ title, description, thumbnail, url, github, tech, featured, t }) => (
   <Box

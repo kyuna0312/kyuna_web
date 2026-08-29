@@ -7,7 +7,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import nextI18NextConfig from '../next-i18next.config';
 import { FrostCrystal } from '../components/frost';
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 const NotFound = () => {
   const { t } = useTranslation('common');

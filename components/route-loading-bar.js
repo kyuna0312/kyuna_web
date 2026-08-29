@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Box } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 // Thin ice-line at the top of the page during route changes.
 // Self-contained: owns the router-event wiring, so callers just render it.

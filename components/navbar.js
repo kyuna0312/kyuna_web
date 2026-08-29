@@ -49,8 +49,7 @@ const LinkItem = ({ href, path, target, children, ...props }) => {
 	);
 };
 
-const Navbar = (props) => {
-	const { path } = props;
+const Navbar = ({ path, ...rest }) => {
 	const { t } = useTranslation('common');
 
 	return (
@@ -60,7 +59,7 @@ const Navbar = (props) => {
 			borderBottom="1px solid"
 			borderColor="hairline"
 			zIndex={10}
-			{...props}
+			{...rest}
 		>
 			<Container
 				display="flex"

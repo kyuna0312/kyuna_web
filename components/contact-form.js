@@ -70,7 +70,7 @@ const ContactForm = () => {
       const mailtoLink = `mailto:${site.email}?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )}`
-      window.open(mailtoLink, '_blank')
+      window.location.href = mailtoLink
 
       toast({
         title: t('contact.success.title'),
