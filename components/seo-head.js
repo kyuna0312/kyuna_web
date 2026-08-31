@@ -11,7 +11,7 @@ const SEOHead = ({
   description,
   image = '/images/icon.png',
   type = 'website',
-  author = 'Baatarsuren Khatanzorig'
+  author = 'Kyuna'
 }) => {
   const router = useRouter()
   const { t } = useTranslation('common')
@@ -96,7 +96,7 @@ const SEOHead = ({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": "Baatarsuren Khatanzorig",
+            "name": "Kyuna",
             "alternateName": "Shimoka (霜花)",
             "url": siteUrl,
             "sameAs": [site.github, site.twitter, site.instagram],
