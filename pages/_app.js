@@ -29,7 +29,7 @@ function Website({ Component, pageProps, router }) {
     <ErrorBoundary>
       <ChakraProvider theme={theme}>
         <style jsx global>{`
-          @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
         `}</style>
         <RouteLoadingBar />
         <Layout router={router}>

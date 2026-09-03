@@ -3,8 +3,10 @@ import { requireAuth } from '../../../lib/admin-auth';
 
 // The posts page is static (ISR); regenerate it right after a change so a
 // new post is visible immediately, not a minute later.
-const revalidatePosts = async res => {
-  for (const path of ['/posts', '/jp/posts', '/mn/posts']) {
+const revalidatePosts = async (res, id) => {
+  const paths = ['/posts', '/jp/posts', '/mn/posts'];
+  if (id) paths.push(`/posts/${id}`, `/jp/posts/${id}`, `/mn/posts/${id}`);
+  for (const path of paths) {
     try {
       await res.revalidate(path);
     } catch {
@@ -30,6 +32,8 @@ export default async function handler(req, res) {
     const id = Number(req.query.id);
     if (!id) return res.status(400).json({ error: 'id required' });
     await sql`DELETE FROM posts WHERE id = ${id}`;
+    await revalidatePosts(res, id);
+    return res.json({ ok: true });
   } else {
     return res.status(405).end();
   }

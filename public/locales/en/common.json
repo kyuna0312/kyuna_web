@@ -16,7 +16,7 @@
     "dotfiles": "dotfiles",
     "dotfilesDescription": "A multi-platform development environment with automated installation and a shared design language across shells, terminals, editors, Linux, and macOS.",
     "nyanvim": "NyanVim",
-    "nyanvimDescription": "A personal Neovim distribution with an installer, CI, benchmarks, and health checks — designed to make a complete development environment portable and dependable.",
+    "nyanvimDescription": "A small, fast Neovim setup: IDE features out of the box, ~30 ms startup, a live theme switcher, and a try-before-you-switch installer that leaves your own config untouched. About 1,200 lines of Lua, one plugin per file.",
     "kitvcs": "kit-vcs",
     "kitvcsDescription": "A Git-inspired version-control system built in C++ to explore object storage, commits, branches, and command-line tool design.",
     "NomadX": "NomadX",
@@ -156,6 +156,11 @@
   "posts": {
     "title": "Posts",
     "description": "Small notes from the workshop — what I’m building, reading, and thinking about.",
-    "empty": "Nothing here yet."
+    "empty": "Nothing here yet.",
+    "back": "All posts",
+    "older": "Older",
+    "newer": "Newer",
+    "onMedium": "on Medium",
+    "moreOnMedium": "More stories on Medium"
   }
 }

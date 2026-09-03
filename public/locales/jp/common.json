@@ -16,7 +16,7 @@
     "dotfiles": "dotfiles",
     "dotfilesDescription": "自動インストールと、シェル・ターミナル・エディタ・Linux・macOSを貫く共通のデザイン言語を持つマルチプラットフォーム開発環境。",
     "nyanvim": "NyanVim",
-    "nyanvimDescription": "インストーラ、CI、ベンチマーク、ヘルスチェックを備えた自作Neovimディストリビューション。完全な開発環境をポータブルで信頼できるものにするための設計。",
+    "nyanvimDescription": "小さく速いNeovimセットアップ。IDE機能をそのまま、起動は約30ms、ライブテーマ切り替え、既存の設定を触らずに試せるインストーラ付き。約1,200行のLua、プラグインごとに1ファイル。",
     "kitvcs": "kit-vcs",
     "kitvcsDescription": "オブジェクトストレージ、コミット、ブランチ、CLI設計を探るためにC++で作ったGit風バージョン管理システム。",
     "NomadX": "NomadX",
@@ -156,6 +156,11 @@
   "posts": {
     "title": "投稿",
     "description": "作業場からの小さなメモ — いま作っているもの、読んでいるもの、考えていること。",
-    "empty": "まだ何もありません。"
+    "empty": "まだ何もありません。",
+    "back": "投稿一覧へ",
+    "older": "前の投稿",
+    "newer": "次の投稿",
+    "onMedium": "Medium にて",
+    "moreOnMedium": "Medium の記事をもっと読む"
   }
 }
