@@ -148,7 +148,7 @@ export async function getStaticProps({ locale }) {
       ...(await serverSideTranslations(locale, ['common'], nextI18NextConfig)),
       posts,
     },
-    revalidate: 600,
+    revalidate: 60,
   };
 }
 
