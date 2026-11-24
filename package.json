@@ -19,7 +19,7 @@
     "@vercel/analytics": "^2.0.1",
     "@vercel/postgres": "^0.10.0",
     "framer-motion": "^12.43.0",
-    "i18next": "^24.2.3",
+    "i18next": "^27.2.7",
     "next": "^15.5.24",
     "next-i18next": "^15.4.3",
     "react": "^18.3.1",
